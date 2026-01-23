@@ -50,7 +50,12 @@ import {
 } from './databases/tasks.js';
 
 // Page creators
-import { createDashboardPage, createMobileWritingRoom } from './pages/dashboard.js';
+import {
+  createDashboardPage,
+  createMobileWritingRoom,
+  createStoryBiblePage,
+  createRomantasyHubPage,
+} from './pages/dashboard.js';
 
 /**
  * Main function to create the entire Author Dashboard
@@ -210,11 +215,12 @@ async function createAuthorDashboard() {
     console.log('');
 
     // ═══════════════════════════════════════════════════════════════
-    // PHASE 7: Create additional pages
+    // PHASE 7: Create additional styled pages
     // ═══════════════════════════════════════════════════════════════
-    console.log('📱 Phase 7: Creating additional pages...');
+    console.log('📱 Phase 7: Creating styled hub pages...');
+    await createStoryBiblePage(dashboardPage.id);
+    await createRomantasyHubPage(dashboardPage.id);
     await createMobileWritingRoom(dashboardPage.id);
-    console.log('   ✓ Mobile Writing Room');
     console.log('');
 
     // ═══════════════════════════════════════════════════════════════

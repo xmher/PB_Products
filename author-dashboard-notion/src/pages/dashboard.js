@@ -1,48 +1,80 @@
 import notion from '../utils/notionClient.js';
+import { COVER_IMAGES, ICONS, DIVIDERS, QUOTES } from '../utils/aesthetics.js';
 
 /**
- * Creates the main Author Dashboard page with content blocks
+ * Creates the main Author Dashboard page with Dark Academia aesthetic
  */
 export async function createDashboardPage(parentPageId) {
   const page = await notion.pages.create({
     parent: { type: 'page_id', page_id: parentPageId },
-    icon: { type: 'emoji', emoji: '📚' },
+    icon: { type: 'emoji', emoji: ICONS.dashboard },
     cover: {
       type: 'external',
-      external: {
-        url: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=1200',
-      },
+      external: { url: COVER_IMAGES.dashboard },
     },
     properties: {
-      title: [
-        {
-          type: 'text',
-          text: { content: 'Author Dashboard' },
-        },
-      ],
+      title: [{ type: 'text', text: { content: 'Author Dashboard' } }],
     },
     children: [
-      // Header callout
+      // ═══════════════════════════════════════════════════════════════
+      // HEADER
+      // ═══════════════════════════════════════════════════════════════
       {
         object: 'block',
-        type: 'callout',
-        callout: {
-          icon: { type: 'emoji', emoji: '✨' },
-          color: 'purple_background',
+        type: 'paragraph',
+        paragraph: {
           rich_text: [
             {
               type: 'text',
-              text: {
-                content: 'Welcome to your Author Dashboard — your home base for managing your writing life, from first draft to published book.',
-              },
+              text: { content: DIVIDERS.moon },
+              annotations: { color: 'gray' },
             },
           ],
         },
       },
-      // Divider
-      { object: 'block', type: 'divider', divider: {} },
+      {
+        object: 'block',
+        type: 'heading_1',
+        heading_1: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Welcome, Storyteller' },
+            },
+          ],
+          color: 'default',
+        },
+      },
+      {
+        object: 'block',
+        type: 'quote',
+        quote: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: QUOTES.dashboard },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: DIVIDERS.moon },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
 
-      // Quick Actions Section
+      // ═══════════════════════════════════════════════════════════════
+      // QUICK ACTIONS - Elegant callouts
+      // ═══════════════════════════════════════════════════════════════
       {
         object: 'block',
         type: 'heading_2',
@@ -64,9 +96,48 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '✍️' },
+                      icon: { type: 'emoji', emoji: '🕯️' },
+                      color: 'purple_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Log Writing Session' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: '\nTrack your words & time' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              object: 'block',
+              type: 'column',
+              column: {
+                children: [
+                  {
+                    object: 'block',
+                    type: 'callout',
+                    callout: {
+                      icon: { type: 'emoji', emoji: '🎭' },
                       color: 'blue_background',
-                      rich_text: [{ type: 'text', text: { content: 'Log Writing Session' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'New Scene' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: '\nAdd to your manuscript' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -81,26 +152,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '📝' },
-                      color: 'green_background',
-                      rich_text: [{ type: 'text', text: { content: 'Add New Scene' } }],
-                    },
-                  },
-                ],
-              },
-            },
-            {
-              object: 'block',
-              type: 'column',
-              column: {
-                children: [
-                  {
-                    object: 'block',
-                    type: 'callout',
-                    callout: {
-                      icon: { type: 'emoji', emoji: '👤' },
+                      icon: { type: 'emoji', emoji: '🪞' },
                       color: 'pink_background',
-                      rich_text: [{ type: 'text', text: { content: 'New Character' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'New Character' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: '\nBring someone to life' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -117,7 +182,18 @@ export async function createDashboardPage(parentPageId) {
                     callout: {
                       icon: { type: 'emoji', emoji: '💡' },
                       color: 'yellow_background',
-                      rich_text: [{ type: 'text', text: { content: 'Capture Idea' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Capture Idea' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: '\nBefore it escapes' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -129,77 +205,38 @@ export async function createDashboardPage(parentPageId) {
 
       { object: 'block', type: 'divider', divider: {} },
 
-      // Main Navigation Section
+      // ═══════════════════════════════════════════════════════════════
+      // MANUSCRIPTS SECTION
+      // ═══════════════════════════════════════════════════════════════
       {
         object: 'block',
         type: 'heading_2',
         heading_2: {
-          rich_text: [{ type: 'text', text: { content: '📖 Your Writing Hub' } }],
+          rich_text: [{ type: 'text', text: { content: '📜 Your Manuscripts' } }],
         },
       },
-
-      // Two column layout for databases
       {
         object: 'block',
-        type: 'column_list',
-        column_list: {
-          children: [
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '📚' },
+          color: 'brown_background',
+          rich_text: [
             {
-              object: 'block',
-              type: 'column',
-              column: {
-                children: [
-                  {
-                    object: 'block',
-                    type: 'heading_3',
-                    heading_3: {
-                      rich_text: [{ type: 'text', text: { content: '📚 Manuscripts' } }],
-                    },
-                  },
-                  {
-                    object: 'block',
-                    type: 'paragraph',
-                    paragraph: {
-                      rich_text: [{ type: 'text', text: { content: 'Track all your WIPs from idea to published. Use Kanban view to visualize your pipeline.' } }],
-                    },
-                  },
-                ],
-              },
+              type: 'text',
+              text: { content: 'Your works-in-progress live here. Each manuscript is a world waiting to be discovered.\n\n' },
             },
             {
-              object: 'block',
-              type: 'column',
-              column: {
-                children: [
-                  {
-                    object: 'block',
-                    type: 'heading_3',
-                    heading_3: {
-                      rich_text: [{ type: 'text', text: { content: '🎬 Scenes & Chapters' } }],
-                    },
-                  },
-                  {
-                    object: 'block',
-                    type: 'paragraph',
-                    paragraph: {
-                      rich_text: [{ type: 'text', text: { content: 'Plot structure with Three-Act and Save the Cat beats. Track every scene.' } }],
-                    },
-                  },
-                ],
-              },
+              type: 'text',
+              text: { content: 'Tip: ' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: 'Create a Board view grouped by Status to see your pipeline at a glance.' },
+              annotations: { italic: true, color: 'gray' },
             },
           ],
-        },
-      },
-
-      { object: 'block', type: 'divider', divider: {} },
-
-      // Story Bible Section
-      {
-        object: 'block',
-        type: 'heading_2',
-        heading_2: {
-          rich_text: [{ type: 'text', text: { content: '📜 Story Bible' } }],
         },
       },
       {
@@ -209,7 +246,39 @@ export async function createDashboardPage(parentPageId) {
           rich_text: [
             {
               type: 'text',
-              text: { content: 'Everything about your world, characters, and lore in one connected wiki.' },
+              text: { content: '→ ' },
+              annotations: { color: 'gray' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Open Manuscripts Database' },
+              annotations: { bold: true },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      // ═══════════════════════════════════════════════════════════════
+      // STORY BIBLE SECTION
+      // ═══════════════════════════════════════════════════════════════
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '📖 Story Bible' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'quote',
+        quote: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: QUOTES.worldBuilding },
+              annotations: { italic: true, color: 'gray' },
             },
           ],
         },
@@ -228,26 +297,40 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '👤' },
+                      icon: { type: 'emoji', emoji: '🪞' },
                       color: 'pink_background',
-                      rich_text: [{ type: 'text', text: { content: 'Characters\nProfiles, arcs, relationships' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Characters\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Souls that breathe on the page. Profiles, arcs, secrets, and lies.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
-                ],
-              },
-            },
-            {
-              object: 'block',
-              type: 'column',
-              column: {
-                children: [
                   {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '🏰' },
+                      icon: { type: 'emoji', emoji: '🔮' },
                       color: 'purple_background',
-                      rich_text: [{ type: 'text', text: { content: 'Locations\nPlaces, cultures, maps' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Magic Systems\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Rules, costs, and the price of power.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -262,26 +345,40 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '✨' },
+                      icon: { type: 'emoji', emoji: '🗺️' },
                       color: 'blue_background',
-                      rich_text: [{ type: 'text', text: { content: 'Magic Systems\nPowers, rules, costs' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Locations\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Kingdoms, cities, and hidden places. Make your world feel real.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
-                ],
-              },
-            },
-            {
-              object: 'block',
-              type: 'column',
-              column: {
-                children: [
                   {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '📜' },
+                      icon: { type: 'emoji', emoji: '⚱️' },
                       color: 'brown_background',
-                      rich_text: [{ type: 'text', text: { content: 'Lore & Rules\nHistory, politics, mythology' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Lore & History\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'The past shapes the present. Mythology, politics, culture.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -293,22 +390,39 @@ export async function createDashboardPage(parentPageId) {
 
       { object: 'block', type: 'divider', divider: {} },
 
-      // Romantasy Tools Section
+      // ═══════════════════════════════════════════════════════════════
+      // ROMANTASY TOOLS SECTION
+      // ═══════════════════════════════════════════════════════════════
       {
         object: 'block',
         type: 'heading_2',
         heading_2: {
-          rich_text: [{ type: 'text', text: { content: '💕 Romantasy Tools' } }],
+          rich_text: [{ type: 'text', text: { content: '🥀 Romantasy Tools' } }],
         },
       },
       {
         object: 'block',
-        type: 'paragraph',
-        paragraph: {
+        type: 'quote',
+        quote: {
           rich_text: [
             {
               type: 'text',
-              text: { content: 'Genre-specific tools for tracking romance arcs, tropes, and spice levels.' },
+              text: { content: QUOTES.romantasy },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '🖤' },
+          color: 'red_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Tools designed for the romantasy writer. Track the tension, the tropes, and the heat.\n\n' },
             },
           ],
         },
@@ -327,9 +441,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '💘' },
-                      color: 'red_background',
-                      rich_text: [{ type: 'text', text: { content: 'Trope Tracker\nMacro & micro tropes, BookTok hooks' } }],
+                      icon: { type: 'emoji', emoji: '💫' },
+                      color: 'pink_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Trope Tracker\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Enemies to Lovers? Fated Mates? Track every delicious trope and BookTok moment.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -344,9 +469,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '💞' },
-                      color: 'pink_background',
-                      rich_text: [{ type: 'text', text: { content: 'Relationships\nTension, chemistry, stages' } }],
+                      icon: { type: 'emoji', emoji: '🖤' },
+                      color: 'purple_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Relationship Tracker\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Chemistry scores. Tension levels. The slow burn from hate to love.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -363,7 +499,18 @@ export async function createDashboardPage(parentPageId) {
                     callout: {
                       icon: { type: 'emoji', emoji: '🔥' },
                       color: 'orange_background',
-                      rich_text: [{ type: 'text', text: { content: 'Spice Tracker\nHeat levels, pacing, scenes' } }],
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Spice Tracker\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'From sweet tension to explicit heat. Pace your romantic scenes perfectly.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -375,12 +522,64 @@ export async function createDashboardPage(parentPageId) {
 
       { object: 'block', type: 'divider', divider: {} },
 
-      // Progress & Goals Section
+      // ═══════════════════════════════════════════════════════════════
+      // PLOTTING & SCENES SECTION
+      // ═══════════════════════════════════════════════════════════════
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '🎭 Plotting & Scenes' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '🎬' },
+          color: 'blue_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Scenes & Chapters Database\n\n' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: 'Plot your story with built-in structure support:\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• Three-Act Structure beats\n• Save the Cat! beats\n• Romance progression tracking\n• POV and location linking' },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      // ═══════════════════════════════════════════════════════════════
+      // PROGRESS TRACKING SECTION
+      // ═══════════════════════════════════════════════════════════════
       {
         object: 'block',
         type: 'heading_2',
         heading_2: {
           rich_text: [{ type: 'text', text: { content: '📊 Progress & Goals' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'quote',
+        quote: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: QUOTES.goals },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
         },
       },
       {
@@ -397,9 +596,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '📈' },
-                      color: 'green_background',
-                      rich_text: [{ type: 'text', text: { content: 'Writing Sessions\nTrack words, time, and pace' } }],
+                      icon: { type: 'emoji', emoji: '🕯️' },
+                      color: 'yellow_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Writing Sessions\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Log your daily words. Track your pace. See your progress.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -415,8 +625,19 @@ export async function createDashboardPage(parentPageId) {
                     type: 'callout',
                     callout: {
                       icon: { type: 'emoji', emoji: '🎯' },
-                      color: 'blue_background',
-                      rich_text: [{ type: 'text', text: { content: 'Goals\nDaily, weekly, project targets' } }],
+                      color: 'green_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Writing Goals\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Daily, weekly, monthly. Set targets and crush them.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -431,9 +652,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '✅' },
-                      color: 'yellow_background',
-                      rich_text: [{ type: 'text', text: { content: 'Tasks\nYour writing to-do list' } }],
+                      icon: { type: 'emoji', emoji: '📋' },
+                      color: 'default',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Tasks\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'Your master to-do list across all projects.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -445,7 +677,9 @@ export async function createDashboardPage(parentPageId) {
 
       { object: 'block', type: 'divider', divider: {} },
 
-      // Business Section
+      // ═══════════════════════════════════════════════════════════════
+      // AUTHOR BUSINESS SECTION
+      // ═══════════════════════════════════════════════════════════════
       {
         object: 'block',
         type: 'heading_2',
@@ -455,6 +689,494 @@ export async function createDashboardPage(parentPageId) {
       },
       {
         object: 'block',
+        type: 'toggle',
+        toggle: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: '✉️ Querying & Submissions' },
+              annotations: { bold: true },
+            },
+          ],
+          children: [
+            {
+              object: 'block',
+              type: 'callout',
+              callout: {
+                icon: { type: 'emoji', emoji: '📬' },
+                color: 'purple_background',
+                rich_text: [
+                  {
+                    type: 'text',
+                    text: { content: 'Query Tracker — ' },
+                    annotations: { bold: true },
+                  },
+                  {
+                    type: 'text',
+                    text: { content: 'Track agents, submissions, and responses. Never lose track of where you\'ve queried.' },
+                  },
+                ],
+              },
+            },
+            {
+              object: 'block',
+              type: 'callout',
+              callout: {
+                icon: { type: 'emoji', emoji: '📚' },
+                color: 'brown_background',
+                rich_text: [
+                  {
+                    type: 'text',
+                    text: { content: 'Beta Readers & ARCs — ' },
+                    annotations: { bold: true },
+                  },
+                  {
+                    type: 'text',
+                    text: { content: 'Manage your reader team. Track feedback and reviews.' },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'toggle',
+        toggle: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: '📱 Marketing & Launch' },
+              annotations: { bold: true },
+            },
+          ],
+          children: [
+            {
+              object: 'block',
+              type: 'callout',
+              callout: {
+                icon: { type: 'emoji', emoji: '📅' },
+                color: 'pink_background',
+                rich_text: [
+                  {
+                    type: 'text',
+                    text: { content: 'Content Calendar — ' },
+                    annotations: { bold: true },
+                  },
+                  {
+                    type: 'text',
+                    text: { content: 'Plan your BookTok, Instagram, and social media content.' },
+                  },
+                ],
+              },
+            },
+            {
+              object: 'block',
+              type: 'callout',
+              callout: {
+                icon: { type: 'emoji', emoji: '💡' },
+                color: 'yellow_background',
+                rich_text: [
+                  {
+                    type: 'text',
+                    text: { content: 'Marketing Ideas — ' },
+                    annotations: { bold: true },
+                  },
+                  {
+                    type: 'text',
+                    text: { content: 'Capture viral content ideas. Trope bingos, quote graphics, aesthetics.' },
+                  },
+                ],
+              },
+            },
+            {
+              object: 'block',
+              type: 'callout',
+              callout: {
+                icon: { type: 'emoji', emoji: '🚀' },
+                color: 'red_background',
+                rich_text: [
+                  {
+                    type: 'text',
+                    text: { content: 'Launch Checklist — ' },
+                    annotations: { bold: true },
+                  },
+                  {
+                    type: 'text',
+                    text: { content: 'Step-by-step book release planning. Never miss a beat.' },
+                  },
+                ],
+              },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      // ═══════════════════════════════════════════════════════════════
+      // FOOTER
+      // ═══════════════════════════════════════════════════════════════
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: DIVIDERS.moon },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '✨' },
+          color: 'gray_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Pro Tips\n\n' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Filter by Manuscript' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — Every database links to Manuscripts. Filter to focus on one project.\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Create Views' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — Add Kanban, Gallery, and Calendar views to databases.\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Use Linked Databases' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — Embed filtered views on manuscript pages for project-specific views.' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: '\n' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'quote',
+        quote: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: QUOTES.writing },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
+        },
+      },
+    ],
+  });
+
+  console.log('   ✓ Dashboard page created');
+  return page;
+}
+
+/**
+ * Creates the Mobile Writing Room - simplified for on-the-go
+ */
+export async function createMobileWritingRoom(parentPageId) {
+  const page = await notion.pages.create({
+    parent: { type: 'page_id', page_id: parentPageId },
+    icon: { type: 'emoji', emoji: '📱' },
+    cover: {
+      type: 'external',
+      external: { url: COVER_IMAGES.mobile },
+    },
+    properties: {
+      title: [{ type: 'text', text: { content: 'Mobile Writing Room' } }],
+    },
+    children: [
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: DIVIDERS.moon },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '📱' },
+          color: 'purple_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'A quiet space for writing on the go.\n' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: 'Simplified for mobile. Capture ideas before they escape.' },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '💭 Quick Capture' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Ideas, dialogue, scenes — write them here:' },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '✍️' },
+          color: 'default',
+          rich_text: [{ type: 'text', text: { content: '\n\n\n' } }],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '🌙 Where I Left Off' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'quote',
+        quote: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Last scene: \nLast line: \nNext: ' },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '📋 Today\'s Focus' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'to_do',
+        to_do: {
+          rich_text: [{ type: 'text', text: { content: 'Scene to write:' } }],
+          checked: false,
+        },
+      },
+      {
+        object: 'block',
+        type: 'to_do',
+        to_do: {
+          rich_text: [{ type: 'text', text: { content: 'Word count goal:' } }],
+          checked: false,
+        },
+      },
+      {
+        object: 'block',
+        type: 'to_do',
+        to_do: {
+          rich_text: [{ type: 'text', text: { content: 'One thing to remember:' } }],
+          checked: false,
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '💡 Stray Thoughts' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'bulleted_list_item',
+        bulleted_list_item: {
+          rich_text: [{ type: 'text', text: { content: '' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'bulleted_list_item',
+        bulleted_list_item: {
+          rich_text: [{ type: 'text', text: { content: '' } }],
+        },
+      },
+
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: '\n' + DIVIDERS.moon },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+    ],
+  });
+
+  console.log('   ✓ Mobile Writing Room created');
+  return page;
+}
+
+/**
+ * Creates a beautiful Story Bible hub page
+ */
+export async function createStoryBiblePage(parentPageId) {
+  const page = await notion.pages.create({
+    parent: { type: 'page_id', page_id: parentPageId },
+    icon: { type: 'emoji', emoji: '📖' },
+    cover: {
+      type: 'external',
+      external: { url: COVER_IMAGES.storyBible },
+    },
+    properties: {
+      title: [{ type: 'text', text: { content: 'Story Bible' } }],
+    },
+    children: [
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: DIVIDERS.moon },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'heading_1',
+        heading_1: {
+          rich_text: [{ type: 'text', text: { content: 'The Story Bible' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'quote',
+        quote: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Every world has its secrets. Keep them here.' },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: DIVIDERS.moon },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Your Story Bible is a living document — a wiki for your fictional world. Every character, location, magic system, and piece of lore lives here, interconnected and searchable.\n\nAs your story grows, so does this bible. Use it to maintain consistency, spark ideas, and remember the details that make your world feel real.' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
         type: 'column_list',
         column_list: {
           children: [
@@ -467,9 +1189,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '📬' },
-                      color: 'purple_background',
-                      rich_text: [{ type: 'text', text: { content: 'Query Tracker\nAgents, submissions, status' } }],
+                      icon: { type: 'emoji', emoji: '🪞' },
+                      color: 'pink_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Characters\n\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'The souls of your story. Physical traits, personality, motivations, secrets, and fatal flaws.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -484,9 +1217,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '📖' },
-                      color: 'brown_background',
-                      rich_text: [{ type: 'text', text: { content: 'Beta/ARC Readers\nManage feedback & reviews' } }],
+                      icon: { type: 'emoji', emoji: '🗺️' },
+                      color: 'blue_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Locations\n\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'The places where your story unfolds. Kingdoms, cities, hidden groves, and cursed forests.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -509,9 +1253,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '📅' },
-                      color: 'pink_background',
-                      rich_text: [{ type: 'text', text: { content: 'Content Calendar\nSocial media planning' } }],
+                      icon: { type: 'emoji', emoji: '🔮' },
+                      color: 'purple_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Magic Systems\n\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'The rules of power. Sources, limitations, costs, and how magic ties to your romance.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -526,9 +1281,20 @@ export async function createDashboardPage(parentPageId) {
                     object: 'block',
                     type: 'callout',
                     callout: {
-                      icon: { type: 'emoji', emoji: '🚀' },
-                      color: 'red_background',
-                      rich_text: [{ type: 'text', text: { content: 'Launch Checklist\nBook release planning' } }],
+                      icon: { type: 'emoji', emoji: '⚱️' },
+                      color: 'brown_background',
+                      rich_text: [
+                        {
+                          type: 'text',
+                          text: { content: 'Lore & History\n\n' },
+                          annotations: { bold: true },
+                        },
+                        {
+                          type: 'text',
+                          text: { content: 'The weight of the past. Mythology, wars, prophecies, and the secrets buried in time.' },
+                          annotations: { color: 'gray' },
+                        },
+                      ],
                     },
                   },
                 ],
@@ -540,7 +1306,6 @@ export async function createDashboardPage(parentPageId) {
 
       { object: 'block', type: 'divider', divider: {} },
 
-      // Footer
       {
         object: 'block',
         type: 'callout',
@@ -550,9 +1315,30 @@ export async function createDashboardPage(parentPageId) {
           rich_text: [
             {
               type: 'text',
-              text: {
-                content: 'Tip: Use the sidebar to navigate between databases. Each database can be filtered by manuscript to show only relevant entries.',
-              },
+              text: { content: 'Tip: ' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: 'Use ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Gallery view' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' for Characters with reference images. Use ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Board view' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' for Locations grouped by type.' },
             },
           ],
         },
@@ -560,118 +1346,264 @@ export async function createDashboardPage(parentPageId) {
     ],
   });
 
-  console.log('Created Dashboard page:', page.id);
+  console.log('   ✓ Story Bible page created');
   return page;
 }
 
 /**
- * Creates the Mobile Writing Room - a simplified quick-action page
+ * Creates the Romantasy Hub page
  */
-export async function createMobileWritingRoom(parentPageId) {
+export async function createRomantasyHubPage(parentPageId) {
   const page = await notion.pages.create({
     parent: { type: 'page_id', page_id: parentPageId },
-    icon: { type: 'emoji', emoji: '📱' },
+    icon: { type: 'emoji', emoji: '🥀' },
+    cover: {
+      type: 'external',
+      external: { url: COVER_IMAGES.romantasy },
+    },
     properties: {
-      title: [
-        {
-          type: 'text',
-          text: { content: 'Mobile Writing Room' },
-        },
-      ],
+      title: [{ type: 'text', text: { content: 'Romantasy Hub' } }],
     },
     children: [
       {
         object: 'block',
-        type: 'callout',
-        callout: {
-          icon: { type: 'emoji', emoji: '📱' },
-          color: 'blue_background',
+        type: 'paragraph',
+        paragraph: {
           rich_text: [
             {
               type: 'text',
-              text: {
-                content: 'A simplified view optimized for mobile. Quick capture and writing on the go.',
-              },
+              text: { content: DIVIDERS.rose },
+              annotations: { color: 'gray' },
             },
           ],
         },
       },
-      { object: 'block', type: 'divider', divider: {} },
       {
         object: 'block',
-        type: 'heading_2',
-        heading_2: {
-          rich_text: [{ type: 'text', text: { content: '📝 Quick Note Capture' } }],
-        },
-      },
-      {
-        object: 'block',
-        type: 'paragraph',
-        paragraph: {
-          rich_text: [{ type: 'text', text: { content: 'Jot down ideas, dialogue snippets, or scene notes here:' } }],
-        },
-      },
-      {
-        object: 'block',
-        type: 'paragraph',
-        paragraph: {
-          rich_text: [{ type: 'text', text: { content: '' } }],
-        },
-      },
-      { object: 'block', type: 'divider', divider: {} },
-      {
-        object: 'block',
-        type: 'heading_2',
-        heading_2: {
-          rich_text: [{ type: 'text', text: { content: '✍️ Today\'s Writing Focus' } }],
-        },
-      },
-      {
-        object: 'block',
-        type: 'to_do',
-        to_do: {
-          rich_text: [{ type: 'text', text: { content: 'What scene am I working on?' } }],
-          checked: false,
-        },
-      },
-      {
-        object: 'block',
-        type: 'to_do',
-        to_do: {
-          rich_text: [{ type: 'text', text: { content: 'Today\'s word count goal:' } }],
-          checked: false,
-        },
-      },
-      { object: 'block', type: 'divider', divider: {} },
-      {
-        object: 'block',
-        type: 'heading_2',
-        heading_2: {
-          rich_text: [{ type: 'text', text: { content: '💭 Where I Left Off' } }],
-        },
-      },
-      {
-        object: 'block',
-        type: 'paragraph',
-        paragraph: {
-          rich_text: [{ type: 'text', text: { content: 'Update this before ending each session:' } }],
+        type: 'heading_1',
+        heading_1: {
+          rich_text: [{ type: 'text', text: { content: 'Romantasy Hub' } }],
         },
       },
       {
         object: 'block',
         type: 'quote',
         quote: {
-          rich_text: [{ type: 'text', text: { content: 'Last scene: [Scene name]\nLast line written: [Your last line]\nNext: [What happens next]' } }],
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: '"He looked at her like she was the answer to a question he\'d been asking his whole life."' },
+              annotations: { italic: true, color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: DIVIDERS.rose },
+              annotations: { color: 'gray' },
+            },
+          ],
+        },
+      },
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Tools designed specifically for the romantasy writer. Track the slow burn. Map the tension. Ensure every trope hits exactly when it should.' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '💫 Trope Tracker' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '💘' },
+          color: 'pink_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Readers come for the tropes. Make sure you deliver.\n\n' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Macro Tropes' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — Enemies to Lovers, Fated Mates, Forbidden Love\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Micro Tropes' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — "Who did this to you?", The Hand Necklace, Injury Care\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'BookTok Hooks' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — Capture the moments that go viral' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '🖤 Relationship Tracker' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '💕' },
+          color: 'purple_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Map the journey from hate to love.\n\n' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Tension Level' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — From "barely tolerating" to "breaking point"\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Chemistry Score' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — Sparks to Inferno\n' },
+            },
+            {
+              type: 'text',
+              text: { content: '• ' },
+            },
+            {
+              type: 'text',
+              text: { content: 'Stage' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: ' — First Encounter → Antagonistic → Falling → HEA' },
+            },
+          ],
+        },
+      },
+
+      { object: 'block', type: 'divider', divider: {} },
+
+      {
+        object: 'block',
+        type: 'heading_2',
+        heading_2: {
+          rich_text: [{ type: 'text', text: { content: '🔥 Spice Tracker' } }],
+        },
+      },
+      {
+        object: 'block',
+        type: 'callout',
+        callout: {
+          icon: { type: 'emoji', emoji: '🌶️' },
+          color: 'red_background',
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: 'Pace your heat. Build the anticipation.\n\n' },
+              annotations: { bold: true },
+            },
+            {
+              type: 'text',
+              text: { content: 'Track every romantic scene from sweet tension to explicit heat. Know where each moment falls in your manuscript. Ensure the slow burn actually burns.' },
+            },
+          ],
+        },
+      },
+
+      {
+        object: 'block',
+        type: 'paragraph',
+        paragraph: {
+          rich_text: [
+            {
+              type: 'text',
+              text: { content: '\n' + DIVIDERS.rose },
+              annotations: { color: 'gray' },
+            },
+          ],
         },
       },
     ],
   });
 
-  console.log('Created Mobile Writing Room:', page.id);
+  console.log('   ✓ Romantasy Hub page created');
   return page;
 }
 
 export default {
   createDashboardPage,
   createMobileWritingRoom,
+  createStoryBiblePage,
+  createRomantasyHubPage,
 };
