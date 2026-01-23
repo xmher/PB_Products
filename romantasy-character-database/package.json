@@ -1,0 +1,26 @@
+{
+  "name": "romantasy-character-database",
+  "version": "1.0.0",
+  "description": "A Notion template generator for Romantasy authors - comprehensive character database with romance-specific features",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "generate": "node src/index.js"
+  },
+  "keywords": [
+    "notion",
+    "romantasy",
+    "writing",
+    "character-database",
+    "author-tools",
+    "fantasy",
+    "romance"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "dotenv": "^16.3.1"
+  }
+}
