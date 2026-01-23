@@ -1,0 +1,27 @@
+{
+  "name": "author-dashboard-notion",
+  "version": "1.0.0",
+  "description": "Notion template generator for the Author Dashboard - a comprehensive hub for romantasy/fiction writers",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "create-template": "node src/index.js",
+    "test": "node --test"
+  },
+  "keywords": [
+    "notion",
+    "author",
+    "writer",
+    "dashboard",
+    "romantasy",
+    "fiction",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "dotenv": "^16.3.1"
+  }
+}
