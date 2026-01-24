@@ -1,0 +1,196 @@
+﻿The Anatomical Approach to Genre: Designing a Comprehensive "Read Like a Writer" System for Romantasy
+1. Introduction: The Pedagogy of Structural Deconstruction
+The transition from a passive consumer of fiction to an active analyst of craft represents the most critical developmental threshold for an aspiring author. For writers of Romantasy—the hybrid genre fusing the emotional intimacy of Romance with the high-stakes world-building of Fantasy—this transition presents a unique set of cognitive demands. Unlike literary fiction, where analysis often centers on thematic ambiguity and prose style, Romantasy demands a rigorous understanding of structural rigidity, genre conventions, and the delicate interplay between external world-building and internal emotional arcs. The Romantasy writer must essentially master two languages simultaneously: the "A-Story" of quests, wars, and magic systems, and the "B-Story" of attraction, repulsion, and vulnerability.
+To create an effective "Read Like a Writer" guide for this specific demographic, one cannot simply rely on generalized literary criticism. The product must synthesize the close-reading methodologies of traditional literary analysis with the beat-driven architecture of commercial fiction. The goal of such a product is not merely to encourage observation but to systematize the deconstruction of "magic" into replicable mechanics. It must transform the subjective experience of "loving a book" into an objective understanding of why the book works. This report outlines the methodologies, structural frameworks, craft elements, and practical design considerations necessary to build an exhaustive analytical tool for Romantasy writers, drawing upon established literary theory, commercial beat sheets, and contemporary pedagogical tools.
+The following analysis is structured to provide a blueprint for a product that serves as both a workbook and a masterclass. It examines the theoretical underpinnings of reading as a creative act, dissects the dual-engine structure of Romantasy, and proposes specific, actionable tools—from tension thermometers to reverse outlining logs—that will allow aspiring writers to reverse-engineer the success of bestsellers in their genre.
+2. Methodologies of "Reading Like a Writer"
+The foundation of any writer’s guide must be a robust methodology for reading. Most aspiring writers consume books for pleasure, allowing the "fictive dream" described by John Gardner to wash over them. To write, they must learn to fracture this dream, analyzing the machinery that generates the illusion. The guide must, therefore, begin by establishing a new mode of consumption: the analytical gaze.
+2.1 The Francine Prose Method: Cellular Analysis
+Francine Prose’s seminal work, Reading Like a Writer, establishes the baseline for this pedagogical approach. Her methodology posits that the primary unit of literature is not the "theme" or the "plot," but the word and the sentence. For a Romantasy guide, this granular analysis is essential to prevent the writer from becoming overwhelmed by the macro-elements of magic systems and wars. The guide must teach the user to slow down and observe the raw material of the craft.
+Prose argues that the enduring power of masters—from Chekhov to Woolf—lies in their specific diction and sentence construction. In the context of Romantasy, this translates to analyzing how specific adjectives evoke atmosphere without resorting to "info-dumping." For instance, a guide should prompt the user to examine how an author establishes the "fantasy" tone in the first paragraph. Does the author use archaic diction? Do they employ sensory details that imply a magic system (e.g., the smell of ozone or the hum of energy) without explicitly explaining it?
+Furthermore, Prose emphasizes the analysis of sentence mechanics as a tool for pacing. A Romantasy writer must learn to control the speed of the narrative, particularly during high-stakes action sequences or moments of intense romantic tension. The guide should include exercises that force the user to count words in sentences during these different scenes. By analyzing sentence variety and length, the user can see how short, staccato sentences increase tension, while long, meandering sentences slow time, allowing for introspection or world-building. This cellular analysis moves the writer away from vague feelings of "this is exciting" to a concrete understanding of the syntax that creates excitement.
+2.2 Narrative Distance and Psychic Proximity
+A critical, often overlooked aspect of reading like a writer is analyzing narrative distance—the proximity of the reader to the protagonist’s internal state. This is particularly vital in Romance, where the "pining" and internal conflict drive the plot, and in Fantasy, where the reader must often be grounded in a strange world through a specific perspective.
+The guide must teach writers to identify where they are on the spectrum of psychic distance. This spectrum ranges from the "Cinematic/Objective" (fly on the wall) to "Deep POV" (deep immersion in the character's psyche). In Romantasy, the shift in distance is often a strategic choice. Authors may "zoom out" during travel sequences or large-scale battles to cover ground and describe the setting, but they must "zoom in" aggressively during moments of high emotion or romantic intimacy.
+To facilitate this understanding, the guide should include analysis prompts that ask the user to rewrite a paragraph from the book they are reading in a different narrative distance. For example, if a scene is written in deep internal monologue, the user could be tasked with rewriting it as an objective report. This exercise highlights what is lost—usually the emotional resonance—when the narrative distance is too great. By analyzing these shifts, the aspiring writer learns to manipulate the "camera lens" of their own story, ensuring that the reader is close when it matters most.
+2.3 Reverse Outlining as a Diagnostic Tool
+While close reading focuses on the micro-level, the guide must also provide tools for macro-level analysis. Reverse outlining is a powerful technique for understanding structure. Instead of planning forward, the reader maps the story backward from the finished text, revealing the skeleton beneath the prose.
+This methodology involves summarizing the core purpose of each scene or chapter in a single sentence. The guide should provide a "Chapter Log" where the user records these summaries. By listing these summaries sequentially, the user creates a structural MRI of the novel. This visual representation reveals pacing issues, such as three consecutive scenes of "traveling" with no plot advancement, or a lack of escalation in the romance arc.
+For the Romantasy writer, reverse outlining is essential for tracking the balance between the two main plots. A user might notice, through their reverse outline, that a book they are reading has five chapters of fantasy action followed by one chapter of romance. This imbalance might explain why the romance feels underdeveloped. Alternatively, they might see how a master author weaves the two together, ensuring that every chapter advances both the quest and the relationship. The guide must frame reverse outlining not just as a way to summarize, but as a diagnostic tool to check for "saggy middles" and structural integrity.
+2.4 The "Show, Don't Tell" Detective Work
+The advice to "Show, Don't Tell" is ubiquitous, but often misunderstood. A "Read Like a Writer" guide must move beyond the slogan and teach the user to identify how authors show. This involves analyzing the use of sensory details and action to convey emotion and information.
+In Romantasy, "showing" is crucial for world-building and magic. Instead of an author stating "the magic was dangerous," they might show a character's nose bleeding after casting a spell. The guide should include a "Show, Don't Tell" detective sheet, where users copy a sentence that made them feel an emotion or understand a rule of the world, and then underline the specific sensory words (verbs and nouns) responsible for that effect.
+This analysis should also extend to the romantic arc. Users should look for "somatic vocabulary"—the physical manifestations of desire and love (e.g., "heat coiled in her belly," "breath hitched")—rather than abstract labels of emotion. By collecting these examples, the user builds a personal library of "showing" techniques that they can deploy in their own writing.
+3. Structural Frameworks: The Dual Architecture of Romantasy
+Romantasy is a dual-engine genre. It must satisfy the external stakes of High Fantasy (save the world, defeat the dark lord) and the internal stakes of Romance (win the heart, overcome emotional wounds). A "Read Like a Writer" guide must provide frameworks that track both simultaneously, teaching the user to overlay the beats of a quest onto the beats of a courtship.
+3.1 The "Romancing the Beat" Framework (Gwen Hayes)
+For the romance arc, Gwen Hayes’s Romancing the Beat structure is the industry standard. It is essential for the guide to break this down, as it dictates the emotional rhythm of the story. Hayes divides the romance narrative into four distinct phases, each with specific beats that ensure the relationship feels earned and paced correctly.
+Phase 1: The Setup (0–25%) This phase establishes the characters and their separation.
+* Introduce H1 & H2: The guide should track how authors introduce the protagonists’ external goals (The Quest) and internal voids (The Hole in the Heart). In Romantasy, the external goal is often the catalyst for the fantasy plot.
+* The Meet Cute: In Romantasy, this is often a "Meet Ugly" or a hostile encounter, frequently involving a weapon or a magical threat.
+* The "No Way": The explicit reason why a relationship is impossible. In fantasy, this is often tied to the world-building (e.g., "He is Fae, and I am human," or "Our kingdoms are at war").
+* The Adhesion: This is the critical beat where the fantasy plot acts as the glue. The guide must highlight that the characters cannot simply walk away because of an external force (a curse, a magical bond, a shared quest). This "forced proximity" is a staple of the genre.
+Phase 2: Falling in Love (25–50%)
+* Inkling of Desire: Small moments of attraction amidst the danger.
+* Deepening Desire: The characters are forced to cooperate to survive the fantasy elements, leading to intimacy. The guide should ask users to identify specific scenes where the fantasy threat forces the characters to rely on each other, thereby deepening the romantic bond.
+Phase 3: Retreating from Love (50–75%)
+* The Midpoint: A moment of false victory or "High" where they believe they can have it all.
+* The Retreat/Shields Up: The internal fears resurface, often triggered by an external fantasy threat (e.g., a betrayal for the greater good).
+* The Break Up: The darkest moment where the relationship seems impossible.
+Phase 4: Fighting for Love (75–100%)
+* The Dark Night: Realizing life without the other is meaningless.
+* The Grand Gesture: In Romantasy, this often involves risking one's life or sacrificing magic power to save the other. The guide should prompt users to identify exactly what is sacrificed.
+3.2 The "Save the Cat!" Framework (Blake Snyder/Jessica Brody)
+While Hayes focuses on the relationship, Save the Cat! (STC) excels at managing the external plot. A Romantasy guide must teach writers to overlay STC onto Hayes’s beats to ensure the fantasy plot is robust and well-paced.
+* Catalyst (Inciting Incident): This usually aligns with the "Adhesion" or precedes it. It is the event that disrupts the status quo (e.g., the dragon attacks, the selection begins).
+* Fun and Games: In Romantasy, this aligns with the "Falling in Love" phase. It is where the "promise of the premise" is fulfilled—the characters explore the magical world, train in their powers, and navigate the initial stages of their relationship.
+* All is Lost: This aligns with "The Break Up." In Romantasy, this beat usually signifies the victory of the antagonist (the villain wins, the kingdom falls) and the dissolution of the romantic bond simultaneously. The guide should encourage users to see how these two low points reinforce each other.
+3.3 The Hybrid Model: Integrating Quest and Courtship
+The most challenging aspect for aspiring writers is weaving these two threads together. The guide should include a "Dual-Track Analysis" tool that allows users to visualize how the beats of one framework support the beats of the other. The table below illustrates how a user might be guided to analyze the integration of these structures.
+Table 1: The Hybrid Romantasy Beat Sheet Integration
+Percent
+	Romance Beat (Hayes)
+	Fantasy Beat (STC/Hero's Journey)
+	Analysis Prompt for User
+	0-10%
+	Intro H1/H2 (Hole in Heart)
+	Status Quo / Setup
+	How does the author show the character's magical/political lack and emotional loneliness?
+	10-15%
+	The Meet Cute
+	Inciting Incident (Catalyst)
+	Does the inciting incident (e.g., invasion) force the meeting?
+	20-25%
+	The Adhesion
+	Break into Two (Crossing Threshold)
+	Identify the external force preventing them from separating. Is it magical?
+	25-50%
+	Fun & Games / Inkling of Desire
+	Tests, Allies, Enemies
+	How does fighting monsters/surviving magic create "forced proximity"?
+	50%
+	Midpoint (False High)
+	Midpoint (False Victory/Defeat)
+	Is the first kiss or major intimacy placed here? How does it raise the stakes?
+	50-75%
+	Bad Guys Close In / Doubt
+	Approaching the Inmost Cave
+	How does the external villain exploit the couple's internal fears?
+	75%
+	The Break Up
+	All is Lost
+	Identify the betrayal. Did a character choose the "Quest" over the "Love"?
+	85-95%
+	Grand Gesture / Sacrifice
+	Finale / Resurrection
+	Does the Hero sacrifice their goal (power/crown) to save the Love Interest?
+	Source Analysis: Integration of
+By using this comparative framework, the guide demystifies the structure of the genre. It shows that the "magic" of a great Romantasy novel is often a result of rigorous structural planning, where every beat serves a dual purpose.
+4. Deconstructing Romantasy Craft Elements
+Beyond structure, specific craft elements define the Romantasy genre. A specialized guide must provide tools to dissect these elements, from the way world-building constrains character choices to the mechanics of sexual tension.
+4.1 World-Building as Character Constraint
+In Romantasy, world-building is not just scenery; it is often an active antagonist or a facilitator of the romance. The guide should teach users to analyze "Adhesion" through world-building elements.
+* Magical Systems & Compatibility: Users should analyze how magic systems affect the relationship. For example, do the characters share a telepathic bond? Does one’s magic harm the other? These magical rules often create the "No Way" barrier or the "Adhesion" that keeps them together.
+* Political Geography: How do borders, warring courts, or caste systems create conflict? The guide can prompt users to map the physical journey against the emotional journey, noting how entering new territories (e.g., the enemy kingdom) escalates the romantic tension.
+* Info-Dump Management: A major pain point for writers is delivering lore without slowing the pace. The guide needs prompts to identify how successful authors weave lore into action. For instance, did the author explain the history of the dragon riders during a flight scene or a lecture? Analyzing these choices helps the user learn to integrate world-building seamlessly.
+4.2 The Mechanics of "Slow Burn" and Tension
+"Slow burn" is a pacing strategy, not just a duration. It requires a distinct set of micro-beats to sustain tension over hundreds of pages. The guide should include a "Tension Tracker" to help users analyze this progression.
+* Micro-Beats of Intimacy: The guide should track the progression of physical intimacy: Notice -> Eye Contact -> Non-sexual Touch -> Vulnerable Conversation -> Sexual Touch -> Act. By logging these micro-beats, the user can see how the author incrementally increases the heat level without giving away the tension too early.
+* Interruption Mechanics: Analyzing how the author delays gratification is crucial. Is the interruption external (monster attack) or internal (misunderstanding)? The guide should prompt users to identify these interruption points and evaluate their effectiveness.
+* The "Almost" Moments: Highlighting scenes where the potential for intimacy is higher than the act itself helps users understand that anticipation is often more powerful than consummation.
+4.3 Deconstructing Tropes: "Enemies to Lovers"
+"Enemies to Lovers" is the dominant trope in current Romantasy. A "read-along" guide must dissect the transition from hate to love to ensure it feels earned, not sudden. This requires specific tracking of the relationship's evolution.
+* Phase 1: Justified Hatred: The user must identify why H1 hates H2. Is it personal (he killed my father) or systemic (he is Fae, I am human)?
+* Phase 2: The Crack in the Armor: Identifying the specific scene where H1 sees H2 do something that contradicts their bias (e.g., the cruel prince saves a child).
+* Phase 3: Reluctant Allies: The shift from "I want to kill you" to "I need you to survive."
+* Phase 4: Respect: The transition from need to admiration of skill or character. The guide should ask users to pinpoint the moment respect turns into attraction.
+4.4 "Spice" and Heat Level Pacing
+Analyzing sexual content is crucial for meeting genre expectations. The guide should provide tools to chart "Heat Levels" alongside plot points.
+* Placement Strategy: Users should note where spice occurs. Does it happen at the Midpoint (50%) or the Finale? Understanding standard placement helps writers pace their own novels.
+* Emotional Integration: Does the sex scene advance the character arc, or does it pause the plot? The guide should prompt users to identify what changed emotionally after the physical act. If the relationship dynamic is exactly the same after sex as it was before, the scene may be gratuitous. This analysis teaches the integration of spice into the narrative arc.
+5. Designing the "Read-Along" Guide Product
+To create a commercially viable and educationally potent product, the format must be interactive. It should be a workspace, not just a textbook. The design must accommodate the specific needs of the Romantasy writer, providing space for both data tracking and deep reflection.
+5.1 Product Architecture and Sections
+The guide should be divided into three distinct sections for each book analyzed, mirroring the reading process:
+1. Pre-Read Setup: Setting expectations and establishing the baseline.
+2. Chapter-by-Chapter (or Phase-by-Phase) Analysis: The active workbook where the user logs beats and tracks tension.
+3. Post-Read Synthesis: The "reverse outline" and structural review where the user looks back at the whole.
+5.2 Interactive Elements and Tools
+Based on research regarding reading journals, bullet journaling, and Notion templates, the following interactive elements are highly effective for this type of guide:
+A. Visual Data Trackers
+* The Tension Thermometer: A vertical bar graph on the side of the page where the user colors in the level of romantic tension for each chapter. This provides a visual representation of the "slow burn" pacing.
+* World-Building Map Overlay: A space for the user to sketch the map and annotate where key romantic beats occurred (e.g., "First Kiss at the Cliffs of Insanity"). This connects the physical journey to the emotional one.
+* Color-Coding Key: A system for highlighters to visually dissect the text. For example:
+   * Pink: Romantic Beat
+   * Blue: Fantasy/Plot Beat
+   * Green: World-Building/Lore
+   * Yellow: Character Backstory/Wound.
+B. The "Deconstruction" Worksheets
+* The "Show, Don't Tell" Detective Sheet: A spread where the user copies a sentence that made them feel an emotion, then underlines the specific sensory words responsible.
+* The Dialogue Subtext Grid: A table with two columns: "What they said" vs. "What they meant." This teaches subtext analysis.
+* The "Scene Anatomy" Card: A template to fill out for every major scene, tracking the POV character, their goal, the conflict, the disaster, and their reaction. This reinforces the concept of scene structure.
+C. Genre-Specific "Bingo" Boards
+* Gamification elements where users check off tropes as they spot them (e.g., "Only One Bed," "Who Did This To You?", "Magic exhaustion leads to caretaking"). This reinforces trope recognition and makes the analysis fun.
+5.3 Digital vs. Analog Formats
+The choice between a physical and digital guide depends on the user's preference, but each has specific advantages.
+* Printable PDF/Physical Journal: Best for "distraction-free" deep reading. It allows for tactile highlighting and margin notes, which many writers find conducive to learning. The physical act of writing helps commit lessons to memory.
+* Notion Template: Best for database management. A Notion template allows users to sort books by "Heat Level," "Trope," or "Structure." It can include formulas for progress bars and relations between "Characters" and "Books" databases, making it a powerful tool for analyzing patterns across many books.
+6. Comprehensive Prompt Bank for the Guide
+The core value of the product lies in the quality of the questions it asks the writer. These prompts must move beyond subjective questions like "Did you like it?" to objective, structural questions like "How was it built?" The following taxonomy of prompts is designed to guide the user through the different layers of the text.
+6.1 Macro-Structure Prompts (The Skeleton)
+These prompts focus on the overall architecture of the novel.
+* Identify the "Adhesion": What specific external force prevents the Hero and Love Interest from parting ways in Chapters 1-5?
+* Locate the Midpoint (approx. 50%): Does the couple kiss, have sex, or declare a truce here? How does this moment create a "False High" before the villain attacks?
+* The "All is Lost" Moment: How does the author combine the failure of the quest (fantasy) with the breaking of the relationship (romance)? Identify the specific event that causes both failures.
+6.2 Character & Arc Prompts (The Soul)
+These prompts focus on the internal journey of the characters.
+* The "Ghost" or "Wound": What past trauma is established in the first 10% that explains why the Hero believes they are unlovable? Quote the specific passage.
+* The "Lie": What specific lie does the protagonist tell themselves about the world (e.g., "Love is a weakness")? Quote the sentence where this is stated.
+* Agency Analysis: In the climax, does the Hero save themselves, or are they saved by the Love Interest? How does this align with their character growth?
+6.3 Scene-Level Craft Prompts (The Microscope)
+These prompts focus on the specific execution of scenes and sentences.
+* Sensory Audit: In the first description of the magic system, identify three sensory words (sight, sound, smell) used. How do these words establish the tone (e.g., dangerous vs. whimsical)?
+* Pacing Check: Count the words in the sentences during the action sequence. Are they shorter than in the introspection scenes? How does this sentence length affect the feeling of speed?
+* Narrative Distance: Rewrite the first paragraph of Chapter 3 from the villain's perspective. How does the availability of information change?
+6.4 Romance-Specific Prompts (The Heart)
+These prompts focus on the mechanics of the relationship.
+* The "Look": Find the first time H1 notices a physical detail about H2. Is it sexual, judgmental, or curious? What does this tell us about their dynamic?
+* Barriers to Entry: List three reasons given in the first Act why this couple cannot be together. Are they internal (fear) or external (war)?
+* The "Grand Gesture": What did the Hero sacrifice to prove their love? Was it power, safety, or pride?
+7. Implementation Strategy: Addressing User Pain Points
+To be truly effective, the guide must address the common frustrations aspiring writers face, using the reading process as the solution. By identifying these pain points and providing targeted exercises, the guide becomes a problem-solving tool.
+7.1 The "Saggy Middle"
+Many writers struggle with the middle of their book, where the plot often loses momentum.
+* Pain Point: "My pacing sags in the middle."
+* Solution in Guide: A "Midpoint Check" exercise. Have the user analyze Fourth Wing or A Court of Thorns and Roses to see exactly what happens at the 50% mark to reinvigorate the plot. The guide should prompt the user to look for the "False High" or "False Defeat" that raises the stakes and propels the characters into the second half.
+7.2 Flat Characters and Missing Motivations
+Writers often struggle to make their characters feel three-dimensional.
+* Pain Point: "My characters feel flat."
+* Solution in Guide: A "Wound Tracking" log. Users track every time the author mentions the protagonist's past trauma. This reveals how often the "Ghost" must haunt the narrative to remain relevant. By seeing how successful authors keep the wound active throughout the story, the user learns to do the same.
+7.3 Balancing Magic and Romance
+The hybrid nature of the genre is its biggest challenge.
+* Pain Point: "I can't balance magic and kissing."
+* Solution in Guide: The "Two-Column Timeline." A spread with parallel timelines—one for the War/Quest, one for the Romance—visualizing how they intersect. This visual tool helps the user see that in the best books, these timelines are not separate but intertwined.
+7.4 Format Considerations for the Final Product
+To maximize usability, the physical design of the guide is critical.
+* Binding: If physical, it must lay flat (spiral or stitched) to allow for writing while reading. A book that snaps shut is frustrating for a user trying to take notes.
+* Portability: Ideally A5 or B5 size to fit in a bag alongside a novel. It should be a companion, not a burden.
+* PDF Interactivity: If digital, the guide must include fillable text boxes and tick-boxes. Internal linking is essential to allow the user to jump between the "Trope Glossary" and the "Analysis Pages" without scrolling endlessly.
+8. Conclusion
+The "Read Like a Writer" guide for Romantasy is more than a reading log; it is a structural autopsy kit. By equipping aspiring writers with the tools to dissect the "Adhesion" of plot, the "Ghost" of character, and the "Beats" of romance, this product shifts their perspective from immersion to understanding. It validates the genre not just as entertainment, but as a complex craft requiring the synchronization of internal vulnerability and external grandeur.
+The ultimate success of the guide lies in its ability to make the invisible architecture of the story visible. When a user can look at a page and see not just a dragon, but a "Catalyst," not just a kiss, but a "Midpoint," they have truly learned to read like a writer. This transformation is the product's true value proposition.
+Recommended Product Outline (Table of Contents for User's Guide)
+To assist in the immediate development of this product, the following outline serves as a master structure for the guide itself.
+1. Introduction: How to Read Like an Architect (Philosophy & Methodology).
+2. The Toolbox: Glossary of terms (Beats, Adhesion, Deep POV, Show Don't Tell).
+3. The Blueprint: The Combined Beat Sheet (Romancing the Beat + Save the Cat).
+4. Book Analysis Pages: (Repeated templates for 10-20 books).
+   * Metadata & Expectations.
+   * Reverse Outline Log.
+   * Beat Sheet Mapping.
+   * Scene Dissection Worksheet.
+5. Craft Workshops: Specific exercises (Color Coding, Rewrite Prompts).
+6. Trope Encyclopedia: A personal database for the user to define tropes they encounter.
+7. Final Review: A section for synthesizing lessons learned across multiple books.
+Works cited
+1. Reading Like a Writer: A Guide for People Who Love Books and for Those Who Want to Write Them by Francine Prose, Paperback | Barnes & Noble®, https://www.barnesandnoble.com/w/reading-like-a-writer-francine-prose/1100150961 2. Reading Like a Writer - Author Resources - Passionate Writer Coaching, https://passionatewritercoaching.com/reading-like-a-writer/ 3. Writing Prompts & Exercises - Poets & Writers, https://www.pw.org/writing-prompts-exercises 4. Mastering Narrative Distance: Perspective in Storytelling - Literary Devices, https://literarydevices.net/mastering-narrative-distance-perspective-in-storytelling/ 5. Immersive Interiority: How to Collapse Narrative Distance to Get Emotion on the Page, https://janefriedman.com/immersive-interiority-how-to-collapse-narrative-distance-to-get-emotion-on-the-page/ 6. Narrating Deep or Shallow: The Spectrum of Psychic Distance - Storm Writing School, https://stormwritingschool.com/psychic-distance/ 7. Reverse Outlining - Writing Center - Kennesaw State University, https://campus.kennesaw.edu/current-students/academics/writing-center/resources/reverse-outlining.php 8. Reverse Outlining | Writing Handouts | Resources for Faculty - Brandeis University, https://www.brandeis.edu/writing-program/resources/faculty/handouts/reverse-outlining.html 9. Reverse Outlining | Miami University, https://miamioh.edu/howe-center/hwc/writing-resources/handouts/writing-process/reverse-outlining.html 10. “Show, Don't Tell” in Creative Writing | Writers.com, https://writers.com/show-dont-tell-writing 11. Show, Don't Tell: Tips and Examples of The Golden Rule - Reedsy, https://reedsy.com/blog/show-dont-tell/ 12. Creating Romantic Tension in Your Novel - Between the Lines Editorial, https://btleditorial.com/2023/01/25/creating-romantic-tension-in-your-novel/ 13. Romancing the Beat: How to Plot a Romance Novel - Fictionary, https://fictionary.co/journal/romancing-the-beat/ 14. The ultimate guide to Romancing the Beat - First Draft Pro, https://www.firstdraftpro.com/blog/gwen-hayes-romancing-the-beat 15. 4 ways to outline a romance novel | Rachel Rowlands, Editor & Author, https://racheljrowlands.com/2024/08/13/4-ways-to-outline-a-romance-novel/ 16. The Structure of Romance - DIY MFA, https://diymfa.com/writing/structure-romance-writing/ 17. Help understanding want vs need (Save The Cat!) in romance novels - Reddit, https://www.reddit.com/r/romanceauthors/comments/18secnh/help_understanding_want_vs_need_save_the_cat_in/ 18. 16 Narrative Structures to Plot a Book With - Campfire, https://www.campfirewriting.com/learn/narrative-structure 19. World-Building Tips for Romantasy Novels - IngramSpark, https://www.ingramspark.com/blog/world-building-for-romantasy 20. Critique: 8 Quick Tips for Show, Don't Tell - Helping Writers Become Authors, https://www.helpingwritersbecomeauthors.com/critique-8-quick-tips-for-show-dont-tell/ 21. How long should a slow burn be until the two characters finally kiss? : r/FanFiction - Reddit, https://www.reddit.com/r/FanFiction/comments/sx3q0e/how_long_should_a_slow_burn_be_until_the_two/ 22. Slow-Burn: The Sexy Slo-Mo Pace of Shockingly Good Relationships - Medium, https://medium.com/relationshipfire/slow-burn-the-sexy-slo-mo-pace-of-shockingly-good-relationships-ffde6118f5ad 23. 5 Keys to Writing a Slow Burn Romance - Writer's Digest, https://www.writersdigest.com/write-better-fiction/5-keys-to-writing-a-slow-burn-romance 24. How to Write Enemies to Lovers Trope (Outline + Examples) — Quill&Steel, https://www.quillandsteel.com/blogs/writing-tips/how-to-write-enemies-to-lovers-trope 25. Enemies-to-Lovers Beat Sheet: Exact Structure | River Blog - The AI Workspace for Writers, https://rivereditor.com/blogs/enemies-to-lovers-beat-sheet-bestseller-couples 26. Exploring the Spice Levels in Fantasy Romance Books - Lemon8-app, https://www.lemon8-app.com/@elisabethwheatley/7455701985443234346?region=us 27. The Complete Self-editing Checklist For Authors - BubbleCow, https://bubblecow.com/blog/book-editing/self-editing-checklists/the-complete-self-editing-checklist-for-authors/ 28. Excel Thermometer Chart: Goal Tracking Made Easy - YouTube, https://www.youtube.com/watch?v=tWxKQG7K7mU 29. A Heatmap of Over 900 Days of Writing Data from My Google Docs Writing Tracker, https://jamierubin.net/2015/08/31/a-heatmap-of-over-900-days-of-writing-data-from-my-google-docs-writing-tracker/ 30. Color Coding Your First Draft for Editing - Write for Harlequin, https://www.writeforharlequin.com/color-coding-your-first-draft-for-editing/ 31. Susanne Lakin Scene Template: Crafting the Perfect Scene - Plottr, https://plottr.com/susanne-lakin-scene-template/ 32. Tools for Pre-writing: Dissecting the Scene Worksheet | J.P.Sloan's Fistful of Fiction, https://jp-sloan.com/2011/09/08/tools-for-pre-writing-dissecting-the-scene-worksheet/ 33. Reading Journal Setup for 2025 - Vial Designs, https://www.vialdesigns.com/reading-journal-setup/ 34. 10 Book Tracking Spread Ideas For Your Reading Journal - Archer and Olive, https://www.archerandolive.com/blogs/news/10-reading-tracker-spread-ideas-for-your-bullet-journal-or-book-journal 35. Ultimate Book Writing Template by Bárbara cohen | Notion Marketplace, https://www.notion.com/templates/bookwriting 36. Notion Reading List with Note Taking and Stats Tracker - Nodi.so, https://www.nodi.so/template/reading-list-with-goals-and-notes 37. How to Build a Book Tracker in Notion from Scratch (Progress Bar Notion Tutorial + Free Template) - YouTube, https://www.youtube.com/watch?v=vMvqmvB7Bl8 38. A Character Arc Template for Crafting Riveting Transformations - Dabble, https://www.dabblewriter.com/articles/character-arc-template 39. Giving Your Character a Ghost (or Wound) ~ September C. Fawkes - Editor, Writer, Instructor, https://www.septembercfawkes.com/2021/01/giving-your-protagonist-ghost.html 40. Developmental Checklist - The Writer's Assistant, https://the-writers-assistant.com/2019/01/18/developmental-checklist/ 41. Pacing In Writing: Engage Your Readers With Every Page - Jericho Writers, https://jerichowriters.com/pacing-in-writing/ 42. Romancing the Beat: Foolproof Romance Recipe [Template] - Plottr, https://plottr.com/romancing-the-beat-template/ 43. Romancing the Beat Overview: Featuring Disney's Tangled - Newbie to Novelist, https://newbietonovelist.com/2021/02/02/romancing-the-beat-overview-featuring-disneys-tangled/ 44. Quick, Quick, Slow: How to Pace Your Romance Novel Just Right - Dabble, https://www.dabblewriter.com/articles/how-to-pace-your-romance-novel 45. Plotting Fantasy + Romance : r/RomanceWriters - Reddit, https://www.reddit.com/r/RomanceWriters/comments/1b2lnqj/plotting_fantasy_romance/ 46. Interactive PDF Guide: Examples and Content Tips - FlippingBook Blog, https://flippingbook.com/blog/marketing-tips/interactive-pdf-ideas
