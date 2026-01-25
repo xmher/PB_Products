@@ -1,0 +1,25 @@
+{
+  "name": "romantasy-analysis-guide-notion",
+  "version": "1.0.0",
+  "description": "Notion template generator for the Romantasy Analysis Guide - a read-along companion for aspiring romantasy writers",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "generate": "node src/index.js"
+  },
+  "keywords": [
+    "notion",
+    "romantasy",
+    "writing",
+    "craft",
+    "analysis",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14",
+    "dotenv": "^16.3.1"
+  }
+}
