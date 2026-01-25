@@ -4,290 +4,541 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Read Like a Writer: The Romantasy Analysis Companion</title>
-
-    <!-- Paged.js for print formatting -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
-
     <style>
-        /* ========================================
-           CSS VARIABLES & BASE STYLES
-           ======================================== */
         :root {
-            --color-primary: #8B4A6B;
-            --color-secondary: #D4A5A5;
-            --color-accent: #4A6B8B;
-            --color-dark: #2C3E50;
-            --color-light: #F8F6F4;
-            --color-romance: #E8B4B8;
-            --color-fantasy: #A8C5DB;
-            --color-craft: #C5B8E8;
-            --color-world: #B8E8C5;
-            --font-heading: 'Georgia', serif;
-            --font-body: 'Helvetica Neue', Arial, sans-serif;
+            /* ROMANTASY COLOR PALETTE - Deep rose/burgundy theme */
+            --color-guide: #6b2d4d;
+            --color-guide-light: rgba(107, 45, 77, 0.08);
+            --color-bg: #faf9f7;
+            --color-noir: #1a1515;
+            --color-accent: #c9a962;
+            --color-accent-light: rgba(201, 169, 98, 0.15);
+            --color-highlight: #2d4a6b;
+            --color-highlight-light: rgba(45, 74, 107, 0.08);
+            --color-text-main: #121212;
+            --color-text-sub: #444444;
+            --color-text-muted: #888888;
+
+            /* Romance/Fantasy accent colors */
+            --color-romance: #8b4a6b;
+            --color-romance-light: rgba(139, 74, 107, 0.1);
+            --color-fantasy: #4a6b8b;
+            --color-fantasy-light: rgba(74, 107, 139, 0.1);
+
+            --font-display: 'Libre Baskerville', serif;
+            --font-accent: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+
+            --theme-color: var(--color-guide);
+            --theme-color-light: var(--color-guide-light);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
             font-family: var(--font-body);
+            line-height: 1.6;
             font-size: 11pt;
-            line-height: 1.5;
-            color: var(--color-dark);
-            background: white;
         }
 
-        /* ========================================
-           PAGED.JS PRINT CONFIGURATION
-           ======================================== */
+        /* PAGE SETUP */
         @page {
-            size: letter;
-            margin: 0.75in 0.75in 1in 0.75in;
-
+            size: 8.5in 11in;
+            margin: 70px 80px 100px 80px;
+            background: var(--color-bg);
             @bottom-center {
                 content: counter(page);
-                font-family: var(--font-body);
-                font-size: 10pt;
-                color: var(--color-primary);
+                font-family: 'Libre Baskerville', serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                color: var(--color-guide);
+            }
+            @bottom-left {
+                content: string(section-title);
+                font-family: 'Libre Baskerville', serif;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #888;
             }
         }
 
         @page:first {
-            margin-top: 0;
-            @bottom-center {
-                content: none;
-            }
+            @bottom-center { content: none; }
+            @bottom-left { content: none; }
         }
 
-        @page chapter-start {
-            margin-top: 1.5in;
+        /* DECORATIVE PAGE BORDER */
+        .pagedjs_page {
+            background: var(--color-bg) !important;
+            position: relative !important;
         }
 
-        /* ========================================
-           TYPOGRAPHY
-           ======================================== */
+        .pagedjs_pagebox {
+            position: relative !important;
+        }
+
+        .pagedjs_pagebox::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 18px !important;
+            left: 18px !important;
+            right: 18px !important;
+            bottom: 18px !important;
+            border: 2px solid var(--color-guide) !important;
+            pointer-events: none !important;
+            z-index: 1000 !important;
+        }
+
+        .pagedjs_pagebox::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 12px !important;
+            left: 12px !important;
+            width: 30px !important;
+            height: 30px !important;
+            border-top: 3px solid var(--color-accent) !important;
+            border-left: 3px solid var(--color-accent) !important;
+            pointer-events: none !important;
+            z-index: 1001 !important;
+        }
+
+        /* TYPOGRAPHY */
+        h2 { string-set: section-title content(); }
+
         h1 {
-            font-family: var(--font-heading);
-            font-size: 28pt;
-            color: var(--color-primary);
-            margin-bottom: 0.5em;
-            text-align: center;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-noir);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
         }
 
         h2 {
-            font-family: var(--font-heading);
-            font-size: 18pt;
-            color: var(--color-primary);
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-            padding-bottom: 0.25em;
-            border-bottom: 2px solid var(--color-secondary);
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-noir);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
             break-after: avoid;
         }
 
         h3 {
-            font-family: var(--font-heading);
-            font-size: 14pt;
-            color: var(--color-accent);
-            margin-top: 1.2em;
-            margin-bottom: 0.4em;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--theme-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
             break-after: avoid;
         }
 
         h4 {
-            font-family: var(--font-body);
-            font-size: 12pt;
-            font-weight: bold;
-            color: var(--color-dark);
-            margin-top: 1em;
-            margin-bottom: 0.3em;
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-text-sub);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
             break-after: avoid;
         }
 
         p {
-            margin-bottom: 0.8em;
+            margin-bottom: 1rem;
             text-align: justify;
+            hyphens: auto;
+            orphans: 3;
+            widows: 3;
         }
 
-        /* ========================================
-           COVER PAGE
-           ======================================== */
-        .cover-page {
-            page: cover;
+        .lead-text {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hint {
+            font-family: var(--font-accent);
+            font-style: italic;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            break-after: avoid;
+        }
+
+        ul, ol { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* TITLE PAGE */
+        .title-page {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             text-align: center;
-            background: linear-gradient(135deg, var(--color-light) 0%, white 100%);
-            padding: 2in;
+            min-height: 9in;
+            break-after: page;
         }
 
-        .cover-page h1 {
-            font-size: 36pt;
-            margin-bottom: 0.3em;
-            line-height: 1.2;
+        .guide-badge {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: white;
+            background: var(--theme-color);
+            padding: 6px 20px;
+            margin-bottom: 2rem;
         }
 
-        .cover-subtitle {
-            font-family: var(--font-heading);
-            font-size: 16pt;
-            color: var(--color-accent);
+        .title-page h1 {
+            font-size: 2.5rem;
+            letter-spacing: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-page .subtitle {
+            font-family: var(--font-accent);
+            font-size: 1.3rem;
             font-style: italic;
-            margin-bottom: 2em;
+            color: var(--theme-color);
+            margin-bottom: 0.5rem;
         }
 
-        .cover-tagline {
-            font-size: 12pt;
-            color: var(--color-dark);
-            max-width: 4in;
-            margin-bottom: 3em;
+        .title-page .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--color-accent);
+            margin: 1.5rem 0;
         }
 
-        .cover-decorative {
-            font-size: 24pt;
-            color: var(--color-secondary);
-            letter-spacing: 0.5em;
+        .title-page .tagline {
+            font-family: var(--font-accent);
+            font-size: 1.05rem;
+            color: var(--color-text-muted);
+            max-width: 380px;
+            line-height: 1.6;
         }
 
-        /* ========================================
-           SECTION BREAKS & CHAPTERS
-           ======================================== */
-        .chapter {
-            break-before: page;
+        .series-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--theme-color);
+            display: block;
+            margin-bottom: 0.5rem;
         }
 
-        .section-intro {
-            background: var(--color-light);
-            padding: 1em;
-            border-left: 4px solid var(--color-primary);
-            margin: 1em 0;
+        /* SECTION TITLE PAGES */
+        .section-title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 9in;
+            break-after: page;
+        }
+
+        .section-title-page .section-label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--theme-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title-page h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title-page .section-intro {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
             font-style: italic;
+            color: var(--color-text-sub);
+            line-height: 1.8;
+            max-width: 90%;
         }
 
-        .why-matters {
-            background: linear-gradient(90deg, var(--color-craft) 0%, white 100%);
-            padding: 0.8em 1em;
-            border-radius: 4px;
-            margin: 1em 0;
-            font-size: 10pt;
-        }
-
-        .why-matters strong {
-            color: var(--color-primary);
-        }
-
-        /* ========================================
-           TABLES & FORMS
-           ======================================== */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1em 0;
-            font-size: 10pt;
+        /* INSIGHT BOX */
+        .insight-box {
+            border-left: 4px solid var(--theme-color);
+            background: var(--theme-color-light);
+            padding: 20px 25px;
+            margin: 1.5rem 0;
             break-inside: avoid;
         }
 
-        th {
-            background: var(--color-primary);
-            color: white;
-            padding: 0.5em;
+        .insight-box .insight-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--theme-color);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .insight-box p {
+            margin-bottom: 0.5rem;
             text-align: left;
-            font-weight: bold;
+        }
+
+        .insight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* PRINCIPLE CARD */
+        .principle-card {
+            border: 2px solid var(--color-noir);
+            background: white;
+            margin: 1.5rem 0;
+            padding: 25px;
+            break-inside: avoid;
+        }
+
+        .principle-title {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .principle-content {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 1.15rem;
+            border-left: 3px solid var(--color-accent);
+            padding-left: 15px;
+        }
+
+        /* EXAMPLE BOX */
+        .example-box {
+            border: 1px solid var(--color-accent);
+            background: var(--color-accent-light);
+            padding: 20px 25px;
+            margin: 1.5rem 0;
+            break-inside: avoid;
+        }
+
+        .example-box .example-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .example-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .example-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* PITFALL BOX */
+        .pitfall-box {
+            border-left: 4px solid var(--color-highlight);
+            background: var(--color-highlight-light);
+            padding: 20px 25px;
+            margin: 1.5rem 0;
+            break-inside: avoid;
+        }
+
+        .pitfall-box .pitfall-label {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-highlight);
+            margin-bottom: 0.75rem;
+        }
+
+        .pitfall-box p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .pitfall-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ROMANCE-THEMED BOXES */
+        .romance-box {
+            border-left: 4px solid var(--color-romance);
+            background: var(--color-romance-light);
+            padding: 20px 25px;
+            margin: 1.5rem 0;
+            break-inside: avoid;
+        }
+
+        .romance-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-romance);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* FANTASY-THEMED BOXES */
+        .fantasy-box {
+            border-left: 4px solid var(--color-fantasy);
+            background: var(--color-fantasy-light);
+            padding: 20px 25px;
+            margin: 1.5rem 0;
+            break-inside: avoid;
+        }
+
+        .fantasy-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-fantasy);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        /* QUICK REFERENCE BOX */
+        .quick-ref {
+            border: 2px solid var(--theme-color);
+            background: white;
+            padding: 20px 25px;
+            margin: 1.5rem 0;
+            break-inside: avoid;
+        }
+
+        .quick-ref h4 {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--theme-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-style: normal;
+        }
+
+        .quick-ref ul {
+            margin: 0.5rem 0 0.5rem 1.5rem;
+        }
+
+        .quick-ref li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            break-inside: avoid;
+            border: 1px solid var(--color-noir);
+        }
+
+        th {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--theme-color);
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--color-noir);
         }
 
         td {
-            border: 1px solid #ddd;
-            padding: 0.5em;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
             vertical-align: top;
         }
 
         tr:nth-child(even) {
-            background: var(--color-light);
+            background: rgba(0,0,0,0.02);
         }
 
+        thead { display: table-header-group; }
+        tr { break-inside: avoid; }
+
+        /* WRITE SPACE FOR NOTES */
         .write-space {
-            min-height: 0.8in;
-            background: repeating-linear-gradient(
-                transparent,
-                transparent 23px,
-                #e0e0e0 23px,
-                #e0e0e0 24px
-            );
+            min-height: 1in;
+            border: 1px solid #ddd;
+            background: white;
+            margin: 0.5rem 0;
         }
 
-        .write-space-small {
-            min-height: 0.5in;
-            background: repeating-linear-gradient(
-                transparent,
-                transparent 23px,
-                #e0e0e0 23px,
-                #e0e0e0 24px
-            );
+        .write-space-sm {
+            min-height: 0.6in;
+            border: 1px solid #ddd;
+            background: white;
+            margin: 0.5rem 0;
         }
 
-        .write-space-large {
+        .write-space-lg {
             min-height: 1.5in;
+            border: 1px solid #ddd;
+            background: white;
+            margin: 0.5rem 0;
+        }
+
+        .write-lines {
+            min-height: 1in;
             background: repeating-linear-gradient(
                 transparent,
-                transparent 23px,
-                #e0e0e0 23px,
-                #e0e0e0 24px
+                transparent 24px,
+                #e8e8e8 24px,
+                #e8e8e8 25px
             );
+            border: 1px solid #ddd;
+            margin: 0.5rem 0;
         }
 
-        /* ========================================
-           SPECIAL FORM ELEMENTS
-           ======================================== */
-        .checkbox-list {
-            list-style: none;
-            padding: 0;
-            margin: 0.5em 0;
-        }
-
-        .checkbox-list li {
-            margin: 0.3em 0;
-            padding-left: 1.5em;
-            position: relative;
-        }
-
-        .checkbox-list li::before {
-            content: "☐";
-            position: absolute;
-            left: 0;
-            font-size: 14pt;
-        }
-
-        .rating-scale {
-            display: flex;
-            gap: 0.3em;
-            align-items: center;
-            margin: 0.5em 0;
-        }
-
-        .rating-circle {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--color-primary);
-            border-radius: 50%;
-            display: inline-block;
-            text-align: center;
-            font-size: 9pt;
-            line-height: 16px;
-        }
-
+        /* FIELD ROW */
         .field-row {
             display: flex;
-            margin: 0.5em 0;
-            align-items: flex-start;
+            align-items: baseline;
+            margin: 0.6rem 0;
+            gap: 0.5rem;
         }
 
         .field-label {
-            font-weight: bold;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-text-sub);
             min-width: 2in;
             flex-shrink: 0;
         }
@@ -296,2018 +547,1226 @@
             flex-grow: 1;
             border-bottom: 1px solid #ccc;
             min-height: 1.2em;
+            padding-bottom: 2px;
         }
 
-        /* ========================================
-           TRACKERS & VISUALIZATIONS
-           ======================================== */
-        .tension-grid {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            gap: 2px;
-            margin: 1em 0;
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
         }
 
-        .tension-column {
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 2px;
+        .checklist li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
         }
 
-        .tension-cell {
-            width: 100%;
-            aspect-ratio: 1;
-            border: 1px solid #ddd;
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--theme-color);
             background: white;
         }
 
-        .chapter-numbers {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr);
-            gap: 2px;
-            font-size: 8pt;
-            text-align: center;
-            margin-top: 0.3em;
-        }
-
-        .thermometer-labels {
+        /* RATING SCALE */
+        .rating-scale {
             display: flex;
-            flex-direction: column-reverse;
-            justify-content: space-between;
-            font-size: 8pt;
-            padding-right: 0.5em;
-            height: 200px;
+            gap: 0.4rem;
+            align-items: center;
+            margin: 0.5rem 0;
         }
 
-        /* ========================================
-           COLOR-CODED BOXES
-           ======================================== */
-        .romance-box {
+        .rating-circle {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--theme-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--theme-color);
+        }
+
+        /* FLOURISH DIVIDER */
+        .flourish-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 2rem 0;
+        }
+
+        .flourish-divider::before,
+        .flourish-divider::after {
+            content: '';
+            height: 2px;
+            width: 80px;
+            background: var(--color-accent);
+        }
+
+        .flourish-divider .divider-icon {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+        }
+
+        /* BEAT TRACKER TABLE */
+        .beat-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.85rem;
+        }
+
+        .beat-table th {
             background: var(--color-romance);
-            padding: 1em;
-            border-radius: 4px;
-            margin: 1em 0;
+            font-size: 0.65rem;
+            padding: 10px 12px;
         }
 
-        .fantasy-box {
+        .beat-table.fantasy th {
             background: var(--color-fantasy);
-            padding: 1em;
-            border-radius: 4px;
-            margin: 1em 0;
         }
 
-        .craft-box {
-            background: var(--color-craft);
-            padding: 1em;
-            border-radius: 4px;
-            margin: 1em 0;
+        .beat-table td {
+            padding: 10px 12px;
+            min-height: 50px;
         }
 
-        .world-box {
-            background: var(--color-world);
-            padding: 1em;
-            border-radius: 4px;
-            margin: 1em 0;
+        .beat-table .beat-name {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.03);
+            width: 25%;
         }
 
-        /* ========================================
-           QUICK REFERENCE BOXES
-           ======================================== */
-        .quick-ref {
-            border: 2px solid var(--color-primary);
-            padding: 1em;
-            margin: 1em 0;
-            break-inside: avoid;
-        }
-
-        .quick-ref h4 {
-            margin-top: 0;
-            color: var(--color-primary);
-        }
-
-        .definition {
-            margin: 0.5em 0;
-            padding-left: 1em;
-            border-left: 3px solid var(--color-secondary);
-        }
-
-        .definition dt {
-            font-weight: bold;
-            color: var(--color-accent);
-        }
-
-        .definition dd {
-            margin-left: 0;
-            margin-bottom: 0.5em;
-        }
-
-        /* ========================================
-           TABLE OF CONTENTS
-           ======================================== */
-        .toc {
-            break-before: page;
-        }
-
-        .toc-entry {
-            display: flex;
-            justify-content: space-between;
-            margin: 0.3em 0;
-            border-bottom: 1px dotted #ccc;
-        }
-
-        .toc-entry.level-1 {
-            font-weight: bold;
-            margin-top: 0.8em;
-        }
-
-        .toc-entry.level-2 {
-            padding-left: 1em;
-        }
-
-        /* ========================================
-           PRINT-SPECIFIC OVERRIDES
-           ======================================== */
-        @media print {
-            .no-print {
-                display: none;
-            }
-
-            .chapter {
-                break-before: page;
-            }
-
-            table {
-                break-inside: avoid;
-            }
-
-            .quick-ref {
-                break-inside: avoid;
-            }
-        }
-
-        /* ========================================
-           BEAT SHEET SPECIFIC STYLES
-           ======================================== */
-        .beat-sheet {
-            margin: 1em 0;
-        }
-
-        .beat-phase {
-            margin: 1.5em 0;
-            break-inside: avoid;
-        }
-
-        .beat-phase h4 {
-            background: var(--color-primary);
-            color: white;
-            padding: 0.5em;
-            margin: 0;
-        }
-
-        .beat-row {
-            display: grid;
-            grid-template-columns: 1.5in 1fr 0.8in;
-            border: 1px solid #ddd;
-            border-top: none;
-        }
-
-        .beat-row > div {
-            padding: 0.5em;
-            border-right: 1px solid #ddd;
-        }
-
-        .beat-row > div:last-child {
-            border-right: none;
-        }
-
-        .beat-name {
-            font-weight: bold;
-            background: var(--color-light);
-        }
-
-        /* ========================================
-           SCENE TEMPLATE STYLES
-           ======================================== */
-        .scene-template {
-            border: 2px solid var(--color-accent);
-            padding: 1em;
-            margin: 1em 0;
-            break-inside: avoid;
-        }
-
-        .scene-template h4 {
-            color: var(--color-accent);
-            border-bottom: 1px solid var(--color-accent);
-            padding-bottom: 0.3em;
-        }
-
-        .scene-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1em;
-            margin-top: 1em;
-        }
-
-        /* ========================================
-           CHAPTER LOG REPEATABLE
-           ======================================== */
+        /* CHAPTER LOG */
         .chapter-log {
             border: 1px solid #ddd;
-            padding: 1em;
-            margin: 1em 0;
+            padding: 20px;
+            margin: 1rem 0;
             break-inside: avoid;
-            background: var(--color-light);
+            background: white;
         }
 
         .chapter-log-header {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1em;
-            margin-bottom: 1em;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
         }
 
-        .tension-quick {
-            display: flex;
-            gap: 1em;
-            margin: 0.5em 0;
-        }
-
-        .tension-item {
+        /* TENSION TRACKER */
+        .tension-row {
             display: flex;
             align-items: center;
-            gap: 0.3em;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
         }
 
-        .mini-scale {
+        .tension-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            min-width: 1.2in;
+            color: var(--color-text-sub);
+        }
+
+        .tension-scale {
             display: flex;
-            gap: 2px;
+            gap: 3px;
         }
 
-        .mini-scale span {
-            width: 12px;
-            height: 12px;
-            border: 1px solid var(--color-primary);
-            font-size: 7pt;
-            text-align: center;
-            line-height: 10px;
+        .tension-scale span {
+            width: 18px;
+            height: 18px;
+            border: 1px solid var(--theme-color);
+            font-size: 0.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+
+        /* TWO COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        /* UTILITY CLASSES */
+        .mt-0 { margin-top: 0; }
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mb-0 { margin-bottom: 0; }
+        .mb-1 { margin-bottom: 0.5rem; }
+        .mb-2 { margin-bottom: 1rem; }
+        .text-center { text-align: center; }
+        .text-muted { color: var(--color-text-muted); }
+        .break-before { break-before: page; }
+        .break-after { break-after: page; }
+
+        /* SCREEN/PRINT ADJUSTMENTS */
+        @media screen {
+            body {
+                background: #d8dce3;
+                padding: 20px;
+            }
+            .pagedjs_page {
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                margin-bottom: 20px;
+            }
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- ============================================
-     COVER PAGE
-     ============================================ -->
-<div class="cover-page">
-    <h1>Read Like a Writer</h1>
-    <div class="cover-subtitle">The Romantasy Analysis Companion</div>
-    <div class="cover-tagline">
-        Transform how you read. Extract craft lessons, track story structure,
-        and understand the techniques that make romantasy novels work.
-    </div>
-    <div class="cover-decorative">~ ~ ~</div>
-    <p style="margin-top: 2em; font-size: 10pt; color: #666;">
-        A read-along workbook for aspiring romantasy writers
-    </p>
+<!-- ==========================================
+     TITLE PAGE
+     ========================================== -->
+
+<div class="title-page">
+    <span class="guide-badge">Analysis Companion</span>
+    <span class="series-label">For Aspiring Romantasy Writers</span>
+    <h1>Read Like<br>a Writer</h1>
+    <p class="subtitle">The Romantasy Analysis Companion</p>
+    <div class="divider"></div>
+    <p class="tagline">Extract craft lessons, track story structure, and understand the techniques that make romantasy novels work</p>
 </div>
 
-<!-- ============================================
-     TABLE OF CONTENTS
-     ============================================ -->
-<div class="toc chapter">
-    <h2>Contents</h2>
 
-    <div class="toc-entry level-1"><span>How to Use This Guide</span></div>
-    <div class="toc-entry level-2"><span>The Analytical Gaze</span></div>
-    <div class="toc-entry level-2"><span>Color-Coding System</span></div>
-    <div class="toc-entry level-2"><span>Quick-Fill vs. Deep-Dive Paths</span></div>
-
-    <div class="toc-entry level-1"><span>Pre-Read Setup</span></div>
-    <div class="toc-entry level-2"><span>Book Metadata</span></div>
-    <div class="toc-entry level-2"><span>Expectations & Learning Goals</span></div>
-
-    <div class="toc-entry level-1"><span>Chapter-by-Chapter Logs</span></div>
-    <div class="toc-entry level-2"><span>Quick Log Templates (x25)</span></div>
-
-    <div class="toc-entry level-1"><span>Romance Arc Tracking</span></div>
-    <div class="toc-entry level-2"><span>Romancing the Beat Framework</span></div>
-    <div class="toc-entry level-2"><span>Four-Phase Beat Sheet</span></div>
-
-    <div class="toc-entry level-1"><span>Fantasy Plot Tracking</span></div>
-    <div class="toc-entry level-2"><span>Save the Cat! / Three-Act Structure</span></div>
-
-    <div class="toc-entry level-1"><span>Dual-Arc Integration</span></div>
-    <div class="toc-entry level-2"><span>Two-Column Timeline</span></div>
-
-    <div class="toc-entry level-1"><span>Trope Execution Tracker</span></div>
-    <div class="toc-entry level-2"><span>Macro Tropes</span></div>
-    <div class="toc-entry level-2"><span>Micro Tropes (Viral Moments)</span></div>
-
-    <div class="toc-entry level-1"><span>Tension & Pacing</span></div>
-    <div class="toc-entry level-2"><span>Tension Thermometer</span></div>
-    <div class="toc-entry level-2"><span>Pacing Pattern Analysis</span></div>
-
-    <div class="toc-entry level-1"><span>Spice & Intimacy Tracking</span></div>
-    <div class="toc-entry level-2"><span>Heat Level Progression</span></div>
-    <div class="toc-entry level-2"><span>Banter Collection</span></div>
-
-    <div class="toc-entry level-1"><span>World-Building Analysis</span></div>
-
-    <div class="toc-entry level-1"><span>Character Craft</span></div>
-    <div class="toc-entry level-2"><span>Protagonist Deep Dives</span></div>
-
-    <div class="toc-entry level-1"><span>Scene Dissection Worksheets</span></div>
-
-    <div class="toc-entry level-1"><span>Craft Moves to Steal</span></div>
-
-    <div class="toc-entry level-1"><span>Post-Read Synthesis</span></div>
-    <div class="toc-entry level-2"><span>Reverse Outline</span></div>
-    <div class="toc-entry level-2"><span>Lessons Learned</span></div>
-
-    <div class="toc-entry level-1"><span>Appendices</span></div>
-    <div class="toc-entry level-2"><span>Glossary of Terms</span></div>
-    <div class="toc-entry level-2"><span>Beat Sheet Quick Reference</span></div>
-</div>
-
-<!-- ============================================
+<!-- ==========================================
      HOW TO USE THIS GUIDE
-     ============================================ -->
-<div class="chapter">
-    <h2>How to Use This Guide</h2>
+     ========================================== -->
 
-    <div class="section-intro">
-        This guide transforms you from a passive reader into an active analyst of craft.
-        The goal is not to ruin your reading enjoyment, but to make the invisible
-        architecture of storytelling visible.
-    </div>
+<h2 class="mt-0">How to Use This Guide</h2>
 
-    <h3>The Analytical Gaze</h3>
-    <p>
-        Most aspiring writers consume books for pleasure, allowing the "fictive dream" to wash over them.
-        To write, you must learn to fracture this dream—to analyze the machinery that generates the illusion.
-    </p>
+<p class="lead-text">This guide transforms you from a passive reader into an active analyst of craft. The goal is to make the invisible architecture of storytelling visible—to understand WHY a book works, not just whether you enjoyed it.</p>
 
-    <p>
-        This doesn't mean you can't enjoy the book. Instead, think of it as watching a magic trick
-        twice: once to be amazed, and once to understand how it's done. Many writers read a book
-        first for pleasure, then analyze it on a second pass. Others develop the skill of
-        dual-awareness, enjoying and analyzing simultaneously.
-    </p>
+<p>As Francine Prose writes in <em>Reading Like a Writer</em>, most aspiring writers consume books for pleasure, allowing the "fictive dream" to wash over them. To write, you must learn to fracture this dream—to analyze the machinery that generates the illusion.</p>
 
-    <h3>The Color-Coding System</h3>
-    <p>Use highlighters or colored pens while reading to visually categorize elements:</p>
-
-    <table>
-        <tr>
-            <th style="background: #E8B4B8; color: black;">Pink/Red</th>
-            <td><strong>Romance Beats</strong> — Romantic tension, kisses, declarations, yearning moments</td>
-        </tr>
-        <tr>
-            <th style="background: #A8C5DB; color: black;">Blue</th>
-            <td><strong>Fantasy/Plot Beats</strong> — Quest progress, magic use, battles, external conflict</td>
-        </tr>
-        <tr>
-            <th style="background: #B8E8C5; color: black;">Green</th>
-            <td><strong>World-Building</strong> — Lore, setting details, magic system rules, political structure</td>
-        </tr>
-        <tr>
-            <th style="background: #FFFACD; color: black;">Yellow</th>
-            <td><strong>Character Backstory</strong> — Wounds, ghosts, motivations, lies they believe</td>
-        </tr>
-        <tr>
-            <th style="background: #C5B8E8; color: black;">Purple</th>
-            <td><strong>Craft Moves to Steal</strong> — Exceptional techniques worth emulating</td>
-        </tr>
-    </table>
-
-    <h3>Choose Your Path</h3>
-
-    <div class="quick-ref">
-        <h4>Quick-Fill Path (Minimal Disruption)</h4>
-        <p><strong>Time:</strong> ~2-3 minutes per chapter + 20 minutes post-read</p>
-        <ul>
-            <li>Fill out Chapter Quick Logs only</li>
-            <li>Mark tension levels (1-10)</li>
-            <li>Complete Reverse Outline after finishing</li>
-            <li>Record 3-5 Craft Moves to Steal</li>
-        </ul>
-    </div>
-
-    <div class="quick-ref">
-        <h4>Deep-Dive Path (Full Analysis)</h4>
-        <p><strong>Time:</strong> ~5-10 minutes per chapter + 60-90 minutes post-read</p>
-        <ul>
-            <li>Complete all tracking sections as you read</li>
-            <li>Update beat sheets when you encounter beats</li>
-            <li>Fill tension thermometer each chapter</li>
-            <li>Complete full post-read synthesis</li>
-            <li>Dissect 3-5 key scenes in detail</li>
-        </ul>
-    </div>
-
-    <h3>Key Terms to Know</h3>
-
-    <dl class="definition">
-        <dt>Adhesion</dt>
-        <dd>The external force that prevents protagonists from separating (forced proximity, shared quest, magical bond)</dd>
-
-        <dt>Beat</dt>
-        <dd>A specific story event that fulfills a structural function in the narrative</dd>
-
-        <dt>Ghost/Wound</dt>
-        <dd>Past trauma that shapes character behavior and beliefs about love/the world</dd>
-
-        <dt>The Lie</dt>
-        <dd>A false belief the character holds that must be overcome for growth</dd>
-
-        <dt>Slow Burn</dt>
-        <dd>Extended romantic tension with delayed gratification—a pacing strategy, not just duration</dd>
-    </dl>
+<div class="principle-card">
+    <span class="principle-title">The Core Principle</span>
+    <div class="principle-content">"The ultimate success of a guide like this lies in its ability to make the invisible architecture of the story visible. When you can look at a page and see not just a dragon, but a 'Catalyst,' not just a kiss, but a 'Midpoint,' you have truly learned to read like a writer."</div>
 </div>
 
-<!-- ============================================
-     PRE-READ SETUP
-     ============================================ -->
-<div class="chapter">
-    <h2>Pre-Read Setup</h2>
+<h3>Choose Your Analysis Path</h3>
 
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Understanding your assumptions before reading helps you
-        identify when an author subverts or fulfills genre expectations. This baseline makes
-        your analysis more insightful.
+<div class="two-col">
+    <div class="insight-box">
+        <span class="insight-label">Quick-Fill Path</span>
+        <p><strong>Time:</strong> ~2-3 min/chapter + 20 min post-read</p>
+        <p>Chapter logs with tension ratings only</p>
+        <p>Quick post-read synthesis</p>
+        <p>3-5 craft moves captured</p>
+        <p><em>Best for: pleasure reading with light analysis</em></p>
     </div>
 
-    <h3>Book Metadata</h3>
-
-    <div class="field-row">
-        <span class="field-label">Title:</span>
-        <span class="field-value"></span>
+    <div class="insight-box">
+        <span class="insight-label">Deep-Dive Path</span>
+        <p><strong>Time:</strong> ~5-10 min/chapter + 60-90 min post-read</p>
+        <p>Full beat tracking (Romance + Fantasy)</p>
+        <p>Trope analysis, spice tracking</p>
+        <p>Character deep dives, scene dissection</p>
+        <p><em>Best for: serious craft study</em></p>
     </div>
-    <div class="field-row">
-        <span class="field-label">Author:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Series & Book #:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Publication Year:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Page Count:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Subgenre:</span>
-        <span class="field-value"></span>
-    </div>
-
-    <h4>Expected Heat Level</h4>
-    <div class="rating-scale">
-        <span class="rating-circle">0</span>
-        <span class="rating-circle">1</span>
-        <span class="rating-circle">2</span>
-        <span class="rating-circle">3</span>
-        <span class="rating-circle">4</span>
-        <span class="rating-circle">5</span>
-        <span style="margin-left: 1em; font-size: 9pt;">(0=Clean, 5=Explicit)</span>
-    </div>
-
-    <h4>Stated/Expected Tropes</h4>
-    <ul class="checkbox-list">
-        <li>Enemies to Lovers</li>
-        <li>Forced Proximity</li>
-        <li>Fated Mates / Soul Bond</li>
-        <li>Slow Burn</li>
-        <li>Forbidden Love</li>
-        <li>Grumpy/Sunshine</li>
-        <li>Morally Grey Hero</li>
-        <li>Found Family</li>
-        <li>Second Chance</li>
-        <li>Other: _________________</li>
-    </ul>
-
-    <h3>Expectation Setting</h3>
-
-    <h4>What do I expect from this book based on cover/blurb?</h4>
-    <div class="write-space"></div>
-
-    <h4>What's my current mood going into this read?</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Have I read this author before? What do I expect from their style?</h4>
-    <div class="write-space"></div>
-
-    <h3>Learning Goals</h3>
-
-    <h4>What specific craft element am I hoping to learn from this book?</h4>
-    <div class="write-space"></div>
-
-    <h4>What weakness in my own writing do I hope this book can teach me to fix?</h4>
-    <div class="write-space"></div>
 </div>
 
-<!-- ============================================
-     CHAPTER-BY-CHAPTER LOGS (Template x10)
-     ============================================ -->
-<div class="chapter">
-    <h2>Chapter-by-Chapter Logs</h2>
+<h3>The Color-Coding System</h3>
+<p>If reading a physical book, use highlighters to mark different elements:</p>
 
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> These quick logs capture your in-the-moment observations
-        before the "fictive dream" fades. They become the raw data for your post-read analysis.
-    </div>
+<table>
+    <thead>
+        <tr>
+            <th>Color</th>
+            <th>Category</th>
+            <th>What to Mark</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="background: #E8B4B8; font-weight: bold;">Pink/Red</td>
+            <td>Romance Beats</td>
+            <td>Tension, kisses, declarations, yearning moments</td>
+        </tr>
+        <tr>
+            <td style="background: #A8C5DB; font-weight: bold;">Blue</td>
+            <td>Fantasy/Plot</td>
+            <td>Quest progress, magic use, battles, external conflict</td>
+        </tr>
+        <tr>
+            <td style="background: #B8E8C5; font-weight: bold;">Green</td>
+            <td>World-Building</td>
+            <td>Lore, setting details, magic system rules</td>
+        </tr>
+        <tr>
+            <td style="background: #FFFACD; font-weight: bold;">Yellow</td>
+            <td>Character</td>
+            <td>Wounds, ghosts, backstory, motivations</td>
+        </tr>
+        <tr>
+            <td style="background: #C5B8E8; font-weight: bold;">Purple</td>
+            <td>Craft Moves</td>
+            <td>Exceptional techniques worth stealing</td>
+        </tr>
+    </tbody>
+</table>
 
-    <p><em>Complete one log per chapter. Focus on quick observations—don't let this interrupt your reading flow.</em></p>
+
+<!-- ==========================================
+     KEY TERMS
+     ========================================== -->
+
+<h2>Key Terms</h2>
+
+<p>These terms will appear throughout your analysis. Understanding them is essential to reading like a writer.</p>
+
+<div class="quick-ref">
+    <h4>Essential Vocabulary</h4>
+    <p><strong>Adhesion:</strong> The external force preventing characters from separating (forced proximity, shared quest, magical bond). In romantasy, this is often fantasy-based—a curse, a bargain, a war.</p>
+    <p><strong>Ghost/Wound:</strong> Past trauma shaping the character's behavior and beliefs about love or the world. This creates internal conflict.</p>
+    <p><strong>The Lie:</strong> A false belief the character holds that must be overcome for growth. Often manifests as "Love is weakness" or "I'm unworthy of love."</p>
+    <p><strong>Deep POV:</strong> Narrative perspective deeply immersed in the character's psyche—no emotional distance between reader and character.</p>
+    <p><strong>Slow Burn:</strong> A pacing strategy (not just duration) that builds tension through delayed gratification and "almost" moments.</p>
+    <p><strong>HEA/HFN:</strong> Happily Ever After / Happy For Now—the required resolution types for romance.</p>
 </div>
 
-<!-- Chapter Log 1-5 -->
+
+<!-- ==========================================
+     SECTION: PRE-READ SETUP
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section One</span>
+    <h1>Pre-Read Setup</h1>
+    <p class="section-intro">Before you begin reading, establish your baseline expectations. Understanding your assumptions helps identify when an author subverts or fulfills genre expectations—and teaches you to do the same.</p>
+</div>
+
+<h2 class="mt-0">Book Metadata</h2>
+
+<div class="field-row">
+    <span class="field-label">Title:</span>
+    <span class="field-value"></span>
+</div>
+<div class="field-row">
+    <span class="field-label">Author:</span>
+    <span class="field-value"></span>
+</div>
+<div class="field-row">
+    <span class="field-label">Series & Book #:</span>
+    <span class="field-value"></span>
+</div>
+<div class="field-row">
+    <span class="field-label">Publication Year:</span>
+    <span class="field-value"></span>
+</div>
+<div class="field-row">
+    <span class="field-label">Page Count:</span>
+    <span class="field-value"></span>
+</div>
+<div class="field-row">
+    <span class="field-label">Subgenre:</span>
+    <span class="field-value"></span>
+</div>
+
+<h4>Expected Heat Level</h4>
+<div class="rating-scale">
+    <span class="rating-circle">0</span>
+    <span class="rating-circle">1</span>
+    <span class="rating-circle">2</span>
+    <span class="rating-circle">3</span>
+    <span class="rating-circle">4</span>
+    <span class="rating-circle">5</span>
+    <span class="text-muted" style="margin-left: 0.5rem; font-size: 0.8rem;">(0 = Clean, 5 = Explicit)</span>
+</div>
+
+<h4>Anticipated Tropes</h4>
+<ul class="checklist">
+    <li>Enemies to Lovers</li>
+    <li>Forced Proximity</li>
+    <li>Fated Mates / Soul Bond</li>
+    <li>Slow Burn</li>
+    <li>Forbidden Love</li>
+    <li>Grumpy/Sunshine</li>
+    <li>Morally Grey Hero</li>
+    <li>Found Family</li>
+</ul>
+
+<h3>Expectations & Goals</h3>
+
+<h4>What do I expect from this book based on cover/blurb?</h4>
+<div class="write-lines" style="min-height: 1in;"></div>
+
+<h4>What specific craft element am I hoping to learn from this book?</h4>
+<div class="write-lines" style="min-height: 0.8in;"></div>
+
+<h4>What weakness in my own writing do I hope this book can help me improve?</h4>
+<div class="write-lines" style="min-height: 0.8in;"></div>
+
+
+<!-- ==========================================
+     SECTION: CHAPTER LOGS
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Two</span>
+    <h1>Chapter-by-Chapter Logs</h1>
+    <p class="section-intro">These quick logs capture your in-the-moment observations before they fade. Fill out after each chapter—aim for 2-3 minutes maximum. Don't let analysis interrupt the reading experience.</p>
+</div>
+
+<h2 class="mt-0">Chapter Logs</h2>
+
+<p class="hint">Complete one log per chapter. Focus on quick observations rather than deep analysis.</p>
+
+<!-- Chapter Log Template x5 -->
 <div class="chapter-log">
     <div class="chapter-log-header">
         <div>
-            <strong>Chapter:</strong> ______<br>
-            <strong>Pages:</strong> ______ - ______
+            <strong>Chapter:</strong> ________<br>
+            <strong>Pages:</strong> _____ – _____
         </div>
         <div>
             <strong>POV Character:</strong><br>
-            _________________________
+            _______________________
         </div>
         <div>
             <strong>Location:</strong><br>
-            _________________________
+            _______________________
         </div>
     </div>
 
-    <h4>One-Line Summary (most important thing that happens):</h4>
-    <div class="write-space-small"></div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens?</p>
+    <div class="write-space-sm"></div>
 
-    <h4>Beat Type (check all that apply):</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3em;">
-        <label><input type="checkbox" style="margin-right: 0.3em;">Fantasy Plot</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Romance Beat</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">World-Building</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Character Reveal</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Action/Battle</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Quiet Moment</label>
-    </div>
-
-    <h4>Tension Levels:</h4>
-    <div class="tension-quick">
-        <div class="tension-item">
-            <span>Romantic:</span>
-            <div class="mini-scale">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
-        </div>
-        <div class="tension-item">
-            <span>Plot:</span>
-            <div class="mini-scale">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-            </div>
-        </div>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;">
-        <div>
-            <strong>One thing that surprised me:</strong>
-            <div class="write-space-small"></div>
-        </div>
-        <div>
-            <strong>One craft move I noticed:</strong>
-            <div class="write-space-small"></div>
-        </div>
-    </div>
-</div>
-
-<!-- Repeat Chapter Log Template 4 more times -->
-<div class="chapter-log">
-    <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ______<br><strong>Pages:</strong> ______ - ______</div>
-        <div><strong>POV Character:</strong><br>_________________________</div>
-        <div><strong>Location:</strong><br>_________________________</div>
-    </div>
-    <h4>One-Line Summary:</h4>
-    <div class="write-space-small"></div>
-    <h4>Beat Type:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3em;">
-        <label><input type="checkbox" style="margin-right: 0.3em;">Fantasy Plot</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Romance Beat</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">World-Building</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Character Reveal</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Action/Battle</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Quiet Moment</label>
-    </div>
-    <h4>Tension Levels:</h4>
-    <div class="tension-quick">
-        <div class="tension-item"><span>Romantic:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-        <div class="tension-item"><span>Plot:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;">
-        <div><strong>Surprised me:</strong><div class="write-space-small"></div></div>
-        <div><strong>Craft move:</strong><div class="write-space-small"></div></div>
-    </div>
-</div>
-
-<div class="chapter-log">
-    <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ______<br><strong>Pages:</strong> ______ - ______</div>
-        <div><strong>POV Character:</strong><br>_________________________</div>
-        <div><strong>Location:</strong><br>_________________________</div>
-    </div>
-    <h4>One-Line Summary:</h4>
-    <div class="write-space-small"></div>
-    <h4>Beat Type:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3em;">
-        <label><input type="checkbox" style="margin-right: 0.3em;">Fantasy Plot</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Romance Beat</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">World-Building</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Character Reveal</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Action/Battle</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Quiet Moment</label>
-    </div>
-    <h4>Tension Levels:</h4>
-    <div class="tension-quick">
-        <div class="tension-item"><span>Romantic:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-        <div class="tension-item"><span>Plot:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;">
-        <div><strong>Surprised me:</strong><div class="write-space-small"></div></div>
-        <div><strong>Craft move:</strong><div class="write-space-small"></div></div>
-    </div>
-</div>
-
-<div class="chapter-log">
-    <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ______<br><strong>Pages:</strong> ______ - ______</div>
-        <div><strong>POV Character:</strong><br>_________________________</div>
-        <div><strong>Location:</strong><br>_________________________</div>
-    </div>
-    <h4>One-Line Summary:</h4>
-    <div class="write-space-small"></div>
-    <h4>Beat Type:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3em;">
-        <label><input type="checkbox" style="margin-right: 0.3em;">Fantasy Plot</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Romance Beat</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">World-Building</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Character Reveal</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Action/Battle</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Quiet Moment</label>
-    </div>
-    <h4>Tension Levels:</h4>
-    <div class="tension-quick">
-        <div class="tension-item"><span>Romantic:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-        <div class="tension-item"><span>Plot:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;">
-        <div><strong>Surprised me:</strong><div class="write-space-small"></div></div>
-        <div><strong>Craft move:</strong><div class="write-space-small"></div></div>
-    </div>
-</div>
-
-<div class="chapter-log">
-    <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ______<br><strong>Pages:</strong> ______ - ______</div>
-        <div><strong>POV Character:</strong><br>_________________________</div>
-        <div><strong>Location:</strong><br>_________________________</div>
-    </div>
-    <h4>One-Line Summary:</h4>
-    <div class="write-space-small"></div>
-    <h4>Beat Type:</h4>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.3em;">
-        <label><input type="checkbox" style="margin-right: 0.3em;">Fantasy Plot</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Romance Beat</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">World-Building</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Character Reveal</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Action/Battle</label>
-        <label><input type="checkbox" style="margin-right: 0.3em;">Quiet Moment</label>
-    </div>
-    <h4>Tension Levels:</h4>
-    <div class="tension-quick">
-        <div class="tension-item"><span>Romantic:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-        <div class="tension-item"><span>Plot:</span><div class="mini-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em; margin-top: 0.5em;">
-        <div><strong>Surprised me:</strong><div class="write-space-small"></div></div>
-        <div><strong>Craft move:</strong><div class="write-space-small"></div></div>
-    </div>
-</div>
-
-<p style="text-align: center; font-style: italic; margin: 2em 0;">
-    (Additional chapter log pages continue in the full printable version)
-</p>
-
-<!-- ============================================
-     ROMANCE ARC TRACKING
-     ============================================ -->
-<div class="chapter">
-    <h2>Romance Arc Tracking</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Romance readers have subconscious expectations for relationship
-        progression. The "Romancing the Beat" framework (Gwen Hayes) reveals the emotional rhythm that
-        makes a love story feel satisfying and earned.
-    </div>
-
-    <div class="quick-ref">
-        <h4>Romancing the Beat: Quick Reference</h4>
-        <p><strong>Phase 1 (0-25%):</strong> Setup — Meet Cute/Ugly, The "No Way," The Adhesion</p>
-        <p><strong>Phase 2 (25-50%):</strong> Falling — Inkling of Desire, Deepening, Midpoint Intimacy</p>
-        <p><strong>Phase 3 (50-75%):</strong> Retreating — Shields Up, Doubt, The Break Up</p>
-        <p><strong>Phase 4 (75-100%):</strong> Fighting — Dark Night, Grand Gesture, HEA/HFN</p>
-    </div>
-
-    <div class="romance-box">
-        <h3>Phase 1: The Setup (0-25%)</h3>
-
-        <h4>Introducing the First Protagonist (H1)</h4>
-        <table>
-            <tr>
-                <td style="width: 40%;"><strong>H1's External Goal</strong><br><em>What do they want to achieve?</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>H1's Internal Wound/Void</strong><br><em>What emotional need drives them?</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>H1's "Lie" They Believe</strong><br><em>What false belief about love/self?</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-
-        <h4>Introducing the Love Interest (H2)</h4>
-        <table>
-            <tr>
-                <td style="width: 40%;"><strong>H2's External Goal</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>H2's Internal Wound/Void</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>H2's "Lie" They Believe</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-
-        <h4>The Meet Cute/Meet Ugly</h4>
-        <div class="field-row">
-            <span class="field-label">Chapter/Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>Describe the first meeting:</strong></p>
-        <div class="write-space"></div>
-        <p><strong>H1's first impression of H2:</strong></p>
-        <div class="write-space-small"></div>
-        <p><strong>H2's first impression of H1:</strong></p>
-        <div class="write-space-small"></div>
-
-        <h4>The "No Way"</h4>
-        <p><em>Why can't they be together? List all barriers (internal fears AND external obstacles):</em></p>
-        <div class="write-space"></div>
-
-        <h4>The Adhesion</h4>
-        <p><em>What external force prevents them from parting ways?</em></p>
-        <div class="write-space"></div>
-        <div class="field-row">
-            <span class="field-label">Is it magical/fantasy-based?</span>
-            <span>☐ Yes &nbsp;&nbsp; ☐ No</span>
-        </div>
-    </div>
-
-    <div class="romance-box">
-        <h3>Phase 2: Falling in Love (25-50%)</h3>
-
-        <h4>Inkling of Desire</h4>
-        <div class="field-row">
-            <span class="field-label">Chapter/Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>First moment of genuine attraction (describe):</strong></p>
-        <div class="write-space"></div>
-        <p><strong>What triggers this shift?</strong></p>
-        <div class="write-space-small"></div>
-
-        <h4>Deepening Desire</h4>
-        <p><strong>What forces them to cooperate and builds intimacy?</strong></p>
-        <div class="write-space"></div>
-        <p><strong>Key scene where fantasy threat creates romantic development:</strong></p>
-        <div class="write-space"></div>
-
-        <h4>The Midpoint (approximately 50%)</h4>
-        <div class="field-row">
-            <span class="field-label">Chapter/Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>What intimacy milestone occurs here?</strong></p>
-        <ul class="checkbox-list">
-            <li>First kiss</li>
-            <li>First "I love you" / confession</li>
-            <li>First sexual encounter</li>
-            <li>Major vulnerability shared</li>
-            <li>Other: _______________</li>
-        </ul>
-        <p><strong>How does this create a "False High"?</strong></p>
-        <div class="write-space"></div>
-    </div>
-
-    <div class="romance-box">
-        <h3>Phase 3: Retreating from Love (50-75%)</h3>
-
-        <h4>Shields Up / The Retreat</h4>
-        <p><strong>What causes H1/H2 to retreat emotionally?</strong></p>
-        <div class="write-space"></div>
-        <p><strong>Which internal fear resurfaces?</strong></p>
-        <div class="write-space-small"></div>
-
-        <h4>The Break Up / Black Moment</h4>
-        <div class="field-row">
-            <span class="field-label">Chapter/Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>What happens? What causes the split?</strong></p>
-        <div class="write-space"></div>
-        <p><strong>Did someone choose the "Quest" over "Love"?</strong></p>
-        <div class="write-space-small"></div>
-    </div>
-
-    <div class="romance-box">
-        <h3>Phase 4: Fighting for Love (75-100%)</h3>
-
-        <h4>Dark Night of the Soul</h4>
-        <p><strong>What realization occurs?</strong> <em>(Usually: life without them is meaningless)</em></p>
-        <div class="write-space"></div>
-
-        <h4>The Grand Gesture / Proof</h4>
-        <div class="field-row">
-            <span class="field-label">Chapter/Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>What does the Hero sacrifice to prove their love?</strong></p>
-        <ul class="checkbox-list">
-            <li>Power / Magic</li>
-            <li>Crown / Position</li>
-            <li>Safety / Life</li>
-            <li>Pride / Reputation</li>
-            <li>Other: _______________</li>
-        </ul>
-        <p><strong>Describe the gesture:</strong></p>
-        <div class="write-space"></div>
-
-        <h4>HEA / HFN Resolution</h4>
-        <p><strong>How is the happy ending achieved?</strong></p>
-        <div class="write-space"></div>
-        <div class="field-row">
-            <span class="field-label">Type:</span>
-            <span>☐ HEA (Happily Ever After) &nbsp;&nbsp; ☐ HFN (Happy For Now)</span>
-        </div>
-    </div>
-</div>
-
-<!-- ============================================
-     FANTASY PLOT TRACKING
-     ============================================ -->
-<div class="chapter">
-    <h2>Fantasy Plot Tracking</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> In Romantasy, the fantasy plot creates the crucible that
-        forces romantic development. Understanding the "Save the Cat!" structure helps you build
-        stories where both arcs reinforce each other.
-    </div>
-
-    <div class="fantasy-box">
-        <h3>Act 1: The Setup (0-25%)</h3>
-
-        <table>
-            <tr>
-                <th style="width: 30%;">Beat</th>
-                <th style="width: 15%;">Page/Ch</th>
-                <th style="width: 30%;">What Happens</th>
-                <th style="width: 25%;">Romance Connection</th>
-            </tr>
-            <tr>
-                <td><strong>Opening Image</strong><br><em>First impression of the world</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Theme Stated</strong><br><em>What is this book about?</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Setup / Status Quo</strong><br><em>Normal world before disruption</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Catalyst</strong><br><em>Inciting incident</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Debate</strong><br><em>Should I go on this journey?</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Break Into Two</strong><br><em>Crossing the threshold</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="fantasy-box">
-        <h3>Act 2A: Fun & Games (25-50%)</h3>
-
-        <table>
-            <tr>
-                <th style="width: 30%;">Beat</th>
-                <th style="width: 15%;">Page/Ch</th>
-                <th style="width: 30%;">What Happens</th>
-                <th style="width: 25%;">Romance Connection</th>
-            </tr>
-            <tr>
-                <td><strong>B Story</strong><br><em>Usually the love story</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Fun and Games</strong><br><em>Promise of the premise</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Midpoint</strong><br><em>False victory or defeat</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-
-        <p style="margin-top: 1em;"><strong>How does "Fun and Games" fulfill the promise of the premise?</strong></p>
-        <div class="write-space"></div>
-    </div>
-
-    <div class="fantasy-box">
-        <h3>Act 2B: Bad Guys Close In (50-75%)</h3>
-
-        <table>
-            <tr>
-                <th style="width: 30%;">Beat</th>
-                <th style="width: 15%;">Page/Ch</th>
-                <th style="width: 30%;">What Happens</th>
-                <th style="width: 25%;">Romance Connection</th>
-            </tr>
-            <tr>
-                <td><strong>Bad Guys Close In</strong><br><em>External pressure mounts</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>All Is Lost</strong><br><em>Lowest point</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Dark Night of Soul</strong><br><em>Internal reckoning</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-
-        <p style="margin-top: 1em;"><strong>How does "All Is Lost" combine quest failure with romance break-up?</strong></p>
-        <div class="write-space"></div>
-    </div>
-
-    <div class="fantasy-box">
-        <h3>Act 3: The Finale (75-100%)</h3>
-
-        <table>
-            <tr>
-                <th style="width: 30%;">Beat</th>
-                <th style="width: 15%;">Page/Ch</th>
-                <th style="width: 30%;">What Happens</th>
-                <th style="width: 25%;">Romance Connection</th>
-            </tr>
-            <tr>
-                <td><strong>Break Into Three</strong><br><em>New plan emerges</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Finale / Climax</strong><br><em>Final battle</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Final Image</strong><br><em>New status quo</em></td>
-                <td></td>
-                <td class="write-space-small"></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-
-        <p style="margin-top: 1em;"><strong>How does the Final Image contrast with the Opening Image?</strong></p>
-        <div class="write-space"></div>
-    </div>
-</div>
-
-<!-- ============================================
-     DUAL-ARC INTEGRATION
-     ============================================ -->
-<div class="chapter">
-    <h2>Dual-Arc Integration Analysis</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> The best romantasy novels ensure every chapter advances
-        BOTH the quest and the relationship. This visualization reveals whether an author achieves
-        this balance—and teaches you to do the same.
-    </div>
-
-    <h3>Two-Column Timeline</h3>
-    <p><em>Fill in as you read or during post-read synthesis.</em></p>
-
-    <table>
-        <tr>
-            <th style="width: 8%;">Ch</th>
-            <th style="width: 38%;">Fantasy Arc Progress</th>
-            <th style="width: 38%;">Romance Arc Progress</th>
-            <th style="width: 16%;">Integrated?</th>
-        </tr>
-        <tr><td>1</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>2</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>3</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>4</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>5</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>6</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>7</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>8</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>9</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-        <tr><td>10</td><td class="write-space-small"></td><td class="write-space-small"></td><td>☐ Yes ☐ No</td></tr>
-    </table>
-
-    <p style="text-align: center; font-style: italic;">(Continue on additional pages as needed)</p>
-
-    <h3>Integration Analysis Questions</h3>
-
-    <h4>At what percentage does the romance begin to drive the fantasy plot?</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Identify 3 scenes where fantasy threat directly caused romantic development:</h4>
-    <table>
-        <tr>
-            <th>Scene/Chapter</th>
-            <th>Fantasy Threat</th>
-            <th>Romantic Development Caused</th>
-        </tr>
-        <tr><td></td><td class="write-space-small"></td><td class="write-space-small"></td></tr>
-        <tr><td></td><td class="write-space-small"></td><td class="write-space-small"></td></tr>
-        <tr><td></td><td class="write-space-small"></td><td class="write-space-small"></td></tr>
-    </table>
-
-    <h4>Where are the "saggy" spots (one arc stalls while other progresses)?</h4>
-    <div class="write-space"></div>
-
-    <h4>The Hybrid Success Test:</h4>
-    <ul class="checkbox-list">
-        <li>Did the romance NEED the fantasy elements to work?</li>
-        <li>Did the fantasy NEED the romance to be emotionally resonant?</li>
-        <li>Could you remove one arc and still have a complete story? (If yes, integration failed)</li>
+    <h4>Beat Types Present</h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
+
+    <h4>Tension Levels</h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 1rem;">
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+    </div>
 </div>
 
-<!-- ============================================
-     TROPE EXECUTION TRACKER
-     ============================================ -->
-<div class="chapter">
-    <h2>Trope Execution Tracker</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Tropes are promises to readers. Understanding how
-        successful authors set up and pay off tropes teaches you to satisfy (or cleverly subvert)
-        reader expectations.
+<!-- Repeat Chapter Log x4 more -->
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
     </div>
-
-    <h3>Macro Tropes</h3>
-    <p><em>Large-scale relationship dynamics that define the romance.</em></p>
-
-    <div class="scene-template">
-        <h4>Enemies to Lovers</h4>
-        <table>
-            <tr>
-                <td style="width: 35%;"><strong>Phase 1: Justified Hatred</strong><br><em>Why does H1 hate H2?</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Phase 2: Crack in Armor</strong><br><em>Scene where H1 sees H2 contradict bias</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Phase 3: Reluctant Allies</strong><br><em>"I need you to survive"</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Phase 4: Respect to Attraction</strong><br><em>Moment respect becomes desire</em></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types Present</h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension Levels</h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
     </div>
+</div>
 
-    <div class="scene-template">
-        <h4>Forced Proximity</h4>
-        <div class="field-row">
-            <span class="field-label">What forces them together?</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Duration of proximity:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">What finally breaks it?</span>
-            <span class="field-value"></span>
-        </div>
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
     </div>
-
-    <div class="scene-template">
-        <h4>Slow Burn Metrics</h4>
-        <div class="field-row">
-            <span class="field-label">Pages to first kiss:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Number of "almost" moments:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>List the "almost" moments:</strong></p>
-        <div class="write-space"></div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types Present</h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension Levels</h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
     </div>
+</div>
 
-    <h3>Micro Tropes (Viral Moments)</h3>
-    <p><em>Specific scenes that readers screenshot and share. Check off when you find them.</em></p>
+<p class="text-center text-muted" style="margin: 2rem 0;"><em>(Additional chapter log pages in full printed version)</em></p>
 
-    <table>
+
+<!-- ==========================================
+     SECTION: ROMANCE BEATS
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Three</span>
+    <h1>Romance Arc Tracking</h1>
+    <p class="section-intro">Romance readers have subconscious expectations for relationship progression. The "Romancing the Beat" framework (Gwen Hayes) reveals the emotional rhythm that makes a love story feel satisfying and earned.</p>
+</div>
+
+<h2 class="mt-0">Romancing the Beat Framework</h2>
+
+<div class="principle-card">
+    <span class="principle-title">The Romance Promise</span>
+    <div class="principle-content">"Romance is the only genre with a mandatory ending. Readers come expecting an HEA or HFN—your job is to make them doubt it's possible until the very last moment, then deliver it in a way that feels inevitable."</div>
+</div>
+
+<div class="romance-box">
+    <span class="box-label">Phase 1: The Setup (0–25%)</span>
+    <p>Establish the characters, their wounds, why they can't be together, and what forces them to stay in proximity.</p>
+</div>
+
+<table class="beat-table">
+    <thead>
         <tr>
-            <th>Micro Trope</th>
-            <th style="width: 15%;">Ch/Page</th>
+            <th>Beat</th>
+            <th>Chapter/Page</th>
             <th>How It's Executed</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
-            <td>☐ "Who Did This To You?"</td>
+            <td class="beat-name">Meet Cute/Ugly</td>
+            <td style="width: 15%;"></td>
             <td></td>
-            <td class="write-space-small"></td>
         </tr>
         <tr>
-            <td>☐ Hand on Throat (Possessive)</td>
+            <td class="beat-name">The "No Way"</td>
             <td></td>
-            <td class="write-space-small"></td>
+            <td></td>
         </tr>
         <tr>
-            <td>☐ Injury Care / Wound Tending</td>
+            <td class="beat-name">The Adhesion</td>
             <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ Forehead Touch</td>
             <td></td>
-            <td class="write-space-small"></td>
         </tr>
-        <tr>
-            <td>☐ Only One Bed</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ Carrying to Bed</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ Jealousy Scene</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ Training Scene Tension</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ Dance Scene</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ "I'd burn the world for you"</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ Protective Snarl/Threat</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>☐ First Use of Real Name</td>
-            <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-    </table>
+    </tbody>
+</table>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For</span>
+    <p><strong>Meet Cute/Ugly:</strong> In romantasy, often a hostile encounter involving weapons or magic.</p>
+    <p><strong>The "No Way":</strong> Why can't they be together? Often world-building based: "He's Fae, I'm human" or "Our kingdoms are at war."</p>
+    <p><strong>The Adhesion:</strong> What external force prevents them from walking away? Curses, bargains, shared quests.</p>
 </div>
 
-<!-- ============================================
-     TENSION & PACING
-     ============================================ -->
-<div class="chapter">
-    <h2>Tension & Pacing Visualization</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Pacing is about controlling emotional intensity.
-        Visualizing the rhythm helps you understand how masters build and release tension
-        without burning out the reader.
-    </div>
-
-    <h3>Tension Thermometer</h3>
-    <p><em>After each chapter, shade the appropriate level. Use different colors or marks for Romance (R) vs. Plot (P) tension.</em></p>
-
-    <div style="display: flex; gap: 1em;">
-        <div class="thermometer-labels">
-            <span>10 - Peak</span>
-            <span>9</span>
-            <span>8</span>
-            <span>7</span>
-            <span>6</span>
-            <span>5</span>
-            <span>4</span>
-            <span>3</span>
-            <span>2</span>
-            <span>1 - Low</span>
-        </div>
-        <div style="flex-grow: 1;">
-            <div class="tension-grid" style="height: 200px;">
-                <!-- 20 columns for chapters 1-20 -->
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-                <div class="tension-column"><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div><div class="tension-cell"></div></div>
-            </div>
-            <div class="chapter-numbers">
-                <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
-                <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-                <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
-                <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-            </div>
-        </div>
-    </div>
-
-    <p style="font-size: 9pt; margin-top: 0.5em;"><strong>Legend:</strong> R = Romance tension | P = Plot tension | B = Both peaks together</p>
-
-    <h3>Pacing Pattern Analysis</h3>
-
-    <h4>Where are the tension peaks? Are they evenly distributed or clustered?</h4>
-    <div class="write-space-small"></div>
-
-    <h4>How many chapters between peaks? (Ideal: 2-4)</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Is there a "saggy middle"? (Chapters in the 40-60% range)</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Count the "almost" moments before first kiss:</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Dominant tension-building technique used:</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Dominant release valve technique:</h4>
-    <div class="write-space-small"></div>
+<div class="romance-box">
+    <span class="box-label">Phase 2: Falling in Love (25–50%)</span>
+    <p>Characters are forced to cooperate, creating intimacy. Attraction grows despite resistance.</p>
 </div>
 
-<!-- ============================================
-     SPICE & INTIMACY
-     ============================================ -->
-<div class="chapter">
-    <h2>Spice & Intimacy Tracking</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Understanding where intimacy is placed and what purpose
-        it serves teaches you to integrate physical connection meaningfully. Great spice advances
-        character and relationship—it doesn't pause the plot.
-    </div>
-
-    <h3>Heat Level Progression</h3>
-
-    <table>
+<table class="beat-table">
+    <thead>
         <tr>
-            <th style="width: 8%;">#</th>
-            <th style="width: 12%;">Chapter</th>
-            <th style="width: 15%;">Heat (0-5)</th>
-            <th style="width: 25%;">Type of Scene</th>
-            <th style="width: 40%;">What Changed After?</th>
+            <th>Beat</th>
+            <th>Chapter/Page</th>
+            <th>How It's Executed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Inkling of Desire</td>
+            <td style="width: 15%;"></td>
+            <td></td>
         </tr>
         <tr>
-            <td>1</td>
+            <td class="beat-name">Deepening Desire</td>
             <td></td>
-            <td>☐0 ☐1 ☐2 ☐3 ☐4 ☐5</td>
             <td></td>
-            <td class="write-space-small"></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Midpoint Intimacy</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="romance-box">
+    <span class="box-label">Phase 3: Retreating from Love (50–75%)</span>
+    <p>Internal fears resurface. External threats exploit vulnerabilities. The relationship fractures.</p>
+</div>
+
+<table class="beat-table">
+    <thead>
+        <tr>
+            <th>Beat</th>
+            <th>Chapter/Page</th>
+            <th>How It's Executed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Shields Up</td>
+            <td style="width: 15%;"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">The Retreat</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">The Break Up</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="romance-box">
+    <span class="box-label">Phase 4: Fighting for Love (75–100%)</span>
+    <p>Realization that life without the other is meaningless. Sacrifice proves love. HEA achieved.</p>
+</div>
+
+<table class="beat-table">
+    <thead>
+        <tr>
+            <th>Beat</th>
+            <th>Chapter/Page</th>
+            <th>How It's Executed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Dark Night of Soul</td>
+            <td style="width: 15%;"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Grand Gesture</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">HEA/HFN</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pitfall-box">
+    <span class="pitfall-label">Common Pitfall</span>
+    <p>The "Grand Gesture" in romantasy often involves sacrificing magic, power, or safety for love. If your protagonist sacrifices nothing, the gesture rings hollow. Track what the hero gives up—the greater the sacrifice, the more earned the HEA.</p>
+</div>
+
+
+<!-- ==========================================
+     SECTION: FANTASY BEATS
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Four</span>
+    <h1>Fantasy Plot Tracking</h1>
+    <p class="section-intro">In Romantasy, the fantasy plot creates the crucible that forces romantic development. Understanding the "Save the Cat!" structure helps you build stories where both arcs reinforce each other.</p>
+</div>
+
+<h2 class="mt-0">Save the Cat! / Three-Act Structure</h2>
+
+<div class="principle-card">
+    <span class="principle-title">The Dual-Engine Genre</span>
+    <div class="principle-content">"Romantasy must satisfy the external stakes of High Fantasy (save the world, defeat the dark lord) AND the internal stakes of Romance (win the heart, overcome wounds). The best books make these inseparable."</div>
+</div>
+
+<div class="fantasy-box">
+    <span class="box-label">Act 1: The Setup (0–25%)</span>
+    <p>Establish the status quo, introduce the catalyst that disrupts everything, and cross the threshold into adventure.</p>
+</div>
+
+<table class="beat-table fantasy">
+    <thead>
+        <tr>
+            <th>Beat</th>
+            <th>Ch/Page</th>
+            <th>What Happens</th>
+            <th>Romance Connection</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Opening Image</td>
+            <td style="width: 12%;"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Catalyst</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Break Into Two</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="fantasy-box">
+    <span class="box-label">Act 2A: Fun & Games (25–50%)</span>
+    <p>The "promise of the premise"—exploring the magical world, training powers, navigating initial romance.</p>
+</div>
+
+<table class="beat-table fantasy">
+    <thead>
+        <tr>
+            <th>Beat</th>
+            <th>Ch/Page</th>
+            <th>What Happens</th>
+            <th>Romance Connection</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Fun and Games</td>
+            <td style="width: 12%;"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Midpoint</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="fantasy-box">
+    <span class="box-label">Act 2B: Bad Guys Close In (50–75%)</span>
+    <p>External pressure mounts. The villain gains ground. Internal doubts fracture the team/relationship.</p>
+</div>
+
+<table class="beat-table fantasy">
+    <thead>
+        <tr>
+            <th>Beat</th>
+            <th>Ch/Page</th>
+            <th>What Happens</th>
+            <th>Romance Connection</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Bad Guys Close In</td>
+            <td style="width: 12%;"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">All Is Lost</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="fantasy-box">
+    <span class="box-label">Act 3: The Finale (75–100%)</span>
+    <p>A new plan emerges from the ashes. The climax resolves both external and internal conflicts.</p>
+</div>
+
+<table class="beat-table fantasy">
+    <thead>
+        <tr>
+            <th>Beat</th>
+            <th>Ch/Page</th>
+            <th>What Happens</th>
+            <th>Romance Connection</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="beat-name">Finale/Climax</td>
+            <td style="width: 12%;"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Final Image</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="insight-box">
+    <span class="insight-label">Integration Analysis</span>
+    <p>After tracking both arcs, ask yourself:</p>
+    <p>Does the romance NEED the fantasy elements to work?</p>
+    <p>Does the fantasy NEED the romance to be emotionally resonant?</p>
+    <p>Could you remove one arc and still have a complete story?</p>
+    <p>If yes to the last question, the integration has failed. The best romantasy makes the arcs inseparable.</p>
+</div>
+
+
+<!-- ==========================================
+     SECTION: TROPES
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Five</span>
+    <h1>Trope Execution</h1>
+    <p class="section-intro">Tropes are promises to readers. Understanding how successful authors set up and pay off tropes teaches you to satisfy (or cleverly subvert) reader expectations.</p>
+</div>
+
+<h2 class="mt-0">Macro Tropes</h2>
+<p>Large-scale relationship dynamics that define the romance.</p>
+
+<div class="example-box">
+    <span class="example-label">Enemies to Lovers: The Four Phases</span>
+    <p><strong>Phase 1 — Justified Hatred:</strong> Why does H1 hate H2? Personal or systemic?</p>
+    <p><strong>Phase 2 — Crack in Armor:</strong> H1 sees H2 contradict their bias</p>
+    <p><strong>Phase 3 — Reluctant Allies:</strong> "I need you to survive"</p>
+    <p><strong>Phase 4 — Respect to Attraction:</strong> Admiration becomes desire</p>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Trope</th>
+            <th>Present?</th>
+            <th>Setup (Ch)</th>
+            <th>Payoff (Ch)</th>
+            <th>What Makes It Work</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Enemies to Lovers</td>
+            <td style="width: 10%; text-align: center;">&#9744;</td>
+            <td style="width: 12%;"></td>
+            <td style="width: 12%;"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Forced Proximity</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Fated Mates</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Slow Burn</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Forbidden Love</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Morally Grey Hero</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Micro Tropes (Viral Moments)</h2>
+<p>Specific scenes readers screenshot and share. These are the moments that sell books on BookTok.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Micro Trope</th>
+            <th>Found?</th>
+            <th>Chapter</th>
+            <th>How It's Executed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>"Who Did This To You?"</td>
+            <td style="width: 10%; text-align: center;">&#9744;</td>
+            <td style="width: 12%;"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Wound Tending / Injury Care</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Only One Bed</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Training Scene Tension</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Jealousy Scene</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Protective Snarl/Threat</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Dance Scene</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Almost Kiss (Interrupted)</td>
+            <td style="text-align: center;">&#9744;</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- ==========================================
+     SECTION: SPICE & INTIMACY
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Six</span>
+    <h1>Spice & Intimacy</h1>
+    <p class="section-intro">Understanding where intimacy is placed and what purpose it serves teaches you to integrate physical connection meaningfully. Great spice advances character and relationship—it doesn't pause the plot.</p>
+</div>
+
+<h2 class="mt-0">Heat Level Progression</h2>
+
+<div class="quick-ref">
+    <h4>Heat Level Scale</h4>
+    <p><strong>0 – Clean:</strong> No physical intimacy beyond hand-holding</p>
+    <p><strong>1 – Sweet:</strong> Closed-door, sweet kisses</p>
+    <p><strong>2 – Mild:</strong> Heated kissing, some touching</p>
+    <p><strong>3 – Moderate:</strong> Fade to black with buildup</p>
+    <p><strong>4 – Steamy:</strong> On-page intimacy, some detail</p>
+    <p><strong>5 – Explicit:</strong> Detailed, explicit scenes</p>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Chapter</th>
+            <th>Heat Level</th>
+            <th>Scene Type</th>
+            <th>What Changed After?</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="width: 5%;">1</td>
+            <td style="width: 12%;"></td>
+            <td style="width: 15%;"></td>
+            <td style="width: 20%;"></td>
+            <td></td>
         </tr>
         <tr>
             <td>2</td>
             <td></td>
-            <td>☐0 ☐1 ☐2 ☐3 ☐4 ☐5</td>
             <td></td>
-            <td class="write-space-small"></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>3</td>
             <td></td>
-            <td>☐0 ☐1 ☐2 ☐3 ☐4 ☐5</td>
             <td></td>
-            <td class="write-space-small"></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>4</td>
             <td></td>
-            <td>☐0 ☐1 ☐2 ☐3 ☐4 ☐5</td>
             <td></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td>5</td>
             <td></td>
-            <td>☐0 ☐1 ☐2 ☐3 ☐4 ☐5</td>
             <td></td>
-            <td class="write-space-small"></td>
         </tr>
-    </table>
+    </tbody>
+</table>
 
-    <div class="quick-ref">
-        <h4>Heat Level Scale</h4>
-        <p><strong>0 - Clean:</strong> No physical intimacy beyond hand-holding</p>
-        <p><strong>1 - Sweet:</strong> Closed-door, sweet kisses</p>
-        <p><strong>2 - Mild:</strong> Heated kissing, some touching</p>
-        <p><strong>3 - Moderate:</strong> Fade to black with buildup</p>
-        <p><strong>4 - Steamy:</strong> On-page intimacy, some detail</p>
-        <p><strong>5 - Explicit:</strong> Detailed, explicit scenes</p>
-    </div>
-
-    <h3>Intimacy Scene Deep Dive</h3>
-    <p><em>For the most significant intimate scene, answer:</em></p>
-
-    <h4>What is the emotional context? (Reunion, danger aftermath, comfort, celebration)</h4>
-    <div class="write-space-small"></div>
-
-    <h4>What does this scene reveal about the characters?</h4>
-    <div class="write-space"></div>
-
-    <h4>How does the relationship dynamic shift after?</h4>
-    <div class="write-space"></div>
-
-    <h4>Is this scene plot-integrated or plot-pausing?</h4>
-    <div class="write-space-small"></div>
-
-    <h3>Banter & Verbal Chemistry Collection</h3>
-
-    <table>
-        <tr>
-            <th style="width: 15%;">Chapter</th>
-            <th style="width: 45%;">Quote/Exchange</th>
-            <th style="width: 40%;">Technique Used</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td class="write-space"></td>
-            <td class="write-space"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td class="write-space"></td>
-            <td class="write-space"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td class="write-space"></td>
-            <td class="write-space"></td>
-        </tr>
-    </table>
-
-    <p><strong>Banter Techniques:</strong> Double meanings • Callback humor • Power play • Vulnerability disguised as wit • Pet names (mocking/affectionate)</p>
+<div class="insight-box">
+    <span class="insight-label">Analysis Questions</span>
+    <p>For each significant intimate scene, ask:</p>
+    <p>What is the emotional context? (Reunion, danger aftermath, comfort, celebration)</p>
+    <p>What does this scene reveal about the characters?</p>
+    <p>How does the relationship dynamic shift after?</p>
+    <p>Is this scene plot-integrated or plot-pausing?</p>
 </div>
 
-<!-- ============================================
-     WORLD-BUILDING ANALYSIS
-     ============================================ -->
-<div class="chapter">
-    <h2>World-Building Analysis</h2>
+<h3>Banter & Verbal Chemistry</h3>
+<p>Collect examples of verbal sparring that builds chemistry.</p>
 
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> In romantasy, world-building creates the "Adhesion" that
-        binds characters together and the stakes that threaten them. Elegant integration—revealing
-        lore through action rather than info-dumps—is essential craft.
-    </div>
-
-    <h3>Magic System Deconstruction</h3>
-
-    <div class="world-box">
-        <table>
-            <tr>
-                <td style="width: 30%;"><strong>Source of Magic</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Cost / Limitation</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Rules</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Hierarchy / Types</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Mate Bonds / Magic Connections</strong></td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-    </div>
-
-    <h4>Is the magic system "soft" (mysterious) or "hard" (rule-based)?</h4>
-    <div class="write-space-small"></div>
-
-    <h4>Does magic ever THREATEN the romance? How?</h4>
-    <div class="write-space"></div>
-
-    <h4>Does magic ever ENABLE the romance? How?</h4>
-    <div class="write-space"></div>
-
-    <h3>World-Building Delivery Techniques</h3>
-    <p><em>Check off which techniques the author uses:</em></p>
-
-    <ul class="checkbox-list">
-        <li><strong>Conflict Reveal:</strong> Rules explained during fight/argument</li>
-        <li><strong>Training Scene:</strong> Exposition through lessons</li>
-        <li><strong>Fish Out of Water:</strong> Character learns as reader learns</li>
-        <li><strong>Dialogue Debate:</strong> Characters argue about world rules</li>
-        <li><strong>Sensory Immersion:</strong> World through taste/smell/sound</li>
-        <li><strong>Memory/Flashback:</strong> Past events reveal history</li>
-        <li><strong>Document/Book:</strong> Letters, prophecies, in-world texts</li>
-        <li><strong>Travel Exposition:</strong> World described during journey</li>
-        <li><strong>Stakes Demonstration:</strong> Show what happens when rules break</li>
-    </ul>
-
-    <h4>Best integration example (copy a passage where lore is delivered elegantly):</h4>
-    <div class="write-space-large"></div>
-</div>
-
-<!-- ============================================
-     CHARACTER CRAFT
-     ============================================ -->
-<div class="chapter">
-    <h2>Character Craft Analysis</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Romance lives or dies on character—readers must fall
-        in love alongside the protagonists. Understanding how authors build compelling, wounded,
-        growing characters is essential to writing them yourself.
-    </div>
-
-    <h3>Protagonist Deep Dive (H1)</h3>
-
-    <h4>External Layer</h4>
-    <table>
+<table>
+    <thead>
         <tr>
-            <td style="width: 35%;"><strong>Name</strong></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><strong>Key Appearance Details</strong></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>Role / Position</strong></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><strong>External Goal</strong></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>Skills / Powers</strong></td>
-            <td class="write-space-small"></td>
-        </tr>
-    </table>
-
-    <h4>Internal Layer</h4>
-    <table>
-        <tr>
-            <td style="width: 35%;"><strong>The Wound / Ghost</strong><br><em>Past trauma shaping them</em></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>The Lie They Believe</strong><br><em>False belief about world/self</em></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>The Truth They Need</strong><br><em>What they must learn</em></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>What They Fear Most</strong></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>What They WANT (surface)</strong></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>What They NEED (deep)</strong></td>
-            <td class="write-space-small"></td>
-        </tr>
-    </table>
-
-    <h4>Arc Tracking</h4>
-    <div class="field-row">
-        <span class="field-label">Moment wound is first shown:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Moment lie is first challenged:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Moment of greatest vulnerability:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Moment of transformation:</span>
-        <span class="field-value"></span>
-    </div>
-
-    <h3>Love Interest Deep Dive (H2)</h3>
-
-    <h4>External Layer</h4>
-    <table>
-        <tr><td style="width: 35%;"><strong>Name</strong></td><td></td></tr>
-        <tr><td><strong>Key Appearance Details</strong></td><td class="write-space-small"></td></tr>
-        <tr><td><strong>Role / Position</strong></td><td></td></tr>
-        <tr><td><strong>External Goal</strong></td><td class="write-space-small"></td></tr>
-        <tr><td><strong>Skills / Powers</strong></td><td class="write-space-small"></td></tr>
-    </table>
-
-    <h4>Internal Layer</h4>
-    <table>
-        <tr><td style="width: 35%;"><strong>The Wound / Ghost</strong></td><td class="write-space-small"></td></tr>
-        <tr><td><strong>The Lie They Believe</strong></td><td class="write-space-small"></td></tr>
-        <tr><td><strong>The Truth They Need</strong></td><td class="write-space-small"></td></tr>
-        <tr><td><strong>What They Fear Most</strong></td><td class="write-space-small"></td></tr>
-        <tr><td><strong>What They WANT vs. NEED</strong></td><td class="write-space-small"></td></tr>
-    </table>
-
-    <h3>Character Voice Differentiation</h3>
-
-    <table>
-        <tr>
-            <th>Element</th>
-            <th>H1</th>
-            <th>H2</th>
-        </tr>
-        <tr>
-            <td><strong>Speech patterns</strong></td>
-            <td class="write-space-small"></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>Internal monologue style</strong></td>
-            <td class="write-space-small"></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>What they notice first</strong></td>
-            <td class="write-space-small"></td>
-            <td class="write-space-small"></td>
-        </tr>
-        <tr>
-            <td><strong>How they express emotion</strong></td>
-            <td class="write-space-small"></td>
-            <td class="write-space-small"></td>
-        </tr>
-    </table>
-</div>
-
-<!-- ============================================
-     SCENE DISSECTION
-     ============================================ -->
-<div class="chapter">
-    <h2>Scene Dissection Worksheets</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> This is where you move from "I loved it" to "I understand
-        how it works." Deep analysis of pivotal scenes reveals the craft at the sentence level.
-    </div>
-
-    <p><em>Use these worksheets for 3-5 pivotal scenes during post-read synthesis.</em></p>
-
-    <div class="scene-template">
-        <h4>Scene Dissection #1</h4>
-
-        <div class="field-row">
-            <span class="field-label">Scene Name/Description:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Chapter & Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">POV Character:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Scene Type:</span>
-            <span>☐ Romantic Beat &nbsp;&nbsp; ☐ Plot Beat &nbsp;&nbsp; ☐ Both</span>
-        </div>
-
-        <h4 style="margin-top: 1em;">Scene Structure (Goal → Conflict → Outcome)</h4>
-        <table>
-            <tr>
-                <td style="width: 30%;"><strong>Goal:</strong> What does POV want?</td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Conflict:</strong> What opposes them?</td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Outcome:</strong> How does it go?</td>
-                <td class="write-space-small"></td>
-            </tr>
-            <tr>
-                <td><strong>Reaction/Decision:</strong> What next?</td>
-                <td class="write-space-small"></td>
-            </tr>
-        </table>
-
-        <h4>Craft Analysis</h4>
-        <div class="field-row">
-            <span class="field-label">First sentence (hook):</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Last sentence (pull):</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Narrative distance:</span>
-            <span>☐ Cinematic &nbsp;&nbsp; ☐ Close Third &nbsp;&nbsp; ☐ Deep POV</span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Dominant sense used:</span>
-            <span class="field-value"></span>
-        </div>
-
-        <p><strong>"Show Don't Tell" example from this scene:</strong></p>
-        <div class="write-space"></div>
-    </div>
-
-    <div class="scene-template">
-        <h4>Scene Dissection #2</h4>
-
-        <div class="field-row">
-            <span class="field-label">Scene Name/Description:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Chapter & Page:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">POV Character:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Scene Type:</span>
-            <span>☐ Romantic Beat &nbsp;&nbsp; ☐ Plot Beat &nbsp;&nbsp; ☐ Both</span>
-        </div>
-
-        <table>
-            <tr><td style="width: 30%;"><strong>Goal:</strong></td><td class="write-space-small"></td></tr>
-            <tr><td><strong>Conflict:</strong></td><td class="write-space-small"></td></tr>
-            <tr><td><strong>Outcome:</strong></td><td class="write-space-small"></td></tr>
-            <tr><td><strong>Reaction/Decision:</strong></td><td class="write-space-small"></td></tr>
-        </table>
-
-        <div class="field-row">
-            <span class="field-label">First sentence:</span>
-            <span class="field-value"></span>
-        </div>
-        <div class="field-row">
-            <span class="field-label">Last sentence:</span>
-            <span class="field-value"></span>
-        </div>
-        <p><strong>"Show Don't Tell" example:</strong></p>
-        <div class="write-space"></div>
-    </div>
-</div>
-
-<!-- ============================================
-     CRAFT MOVES TO STEAL
-     ============================================ -->
-<div class="chapter">
-    <h2>Craft Moves to Steal</h2>
-
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> Great writers are great readers. This section transforms
-        reading into a transferable skill set—a personal library of techniques you can deploy
-        in your own writing.
-    </div>
-
-    <h3>Prose Techniques</h3>
-
-    <table>
-        <tr>
+            <th>Chapter</th>
+            <th>The Exchange</th>
             <th>Technique</th>
-            <th>Example (Quote)</th>
-            <th style="width: 15%;">Page</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="width: 12%;"></td>
+            <td></td>
+            <td style="width: 25%;"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="hint">Techniques: Double meaning | Callback humor | Power play | Vulnerability as wit | Pet names | One-upmanship | Innuendo</p>
+
+
+<!-- ==========================================
+     SECTION: CRAFT MOVES
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Seven</span>
+    <h1>Craft Moves to Steal</h1>
+    <p class="section-intro">Your personal library of techniques to emulate. When you read something brilliant, capture it here. Great writers are great readers who systematically study what works.</p>
+</div>
+
+<h2 class="mt-0">Technique Collection</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>The Quote/Example</th>
             <th>Why It Works</th>
         </tr>
+    </thead>
+    <tbody>
         <tr>
-            <td><strong>Opening hook</strong></td>
-            <td class="write-space"></td>
+            <td style="width: 20%;">Opening Hook</td>
             <td></td>
-            <td class="write-space"></td>
+            <td style="width: 30%;"></td>
         </tr>
         <tr>
-            <td><strong>Sensory description</strong></td>
-            <td class="write-space"></td>
+            <td>Sensory Description</td>
             <td></td>
-            <td class="write-space"></td>
+            <td></td>
         </tr>
         <tr>
-            <td><strong>Tension building</strong></td>
-            <td class="write-space"></td>
+            <td>Tension Building</td>
             <td></td>
-            <td class="write-space"></td>
+            <td></td>
         </tr>
         <tr>
-            <td><strong>Emotional moment</strong></td>
-            <td class="write-space"></td>
+            <td>Emotional Moment</td>
             <td></td>
-            <td class="write-space"></td>
+            <td></td>
         </tr>
         <tr>
-            <td><strong>Dialogue</strong></td>
-            <td class="write-space"></td>
+            <td>Dialogue/Banter</td>
             <td></td>
-            <td class="write-space"></td>
+            <td></td>
         </tr>
         <tr>
-            <td><strong>Action sequence</strong></td>
-            <td class="write-space"></td>
+            <td>Action Sequence</td>
             <td></td>
-            <td class="write-space"></td>
+            <td></td>
         </tr>
-    </table>
+        <tr>
+            <td>Chapter Ending</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
-    <h3>Swoon-Worthy Lines Collection</h3>
+<h3>Swoon-Worthy Lines</h3>
+<p>Quotes that made your heart race. Study what makes them hit.</p>
 
-    <table>
-        <tr>
-            <th>Quote</th>
-            <th style="width: 12%;">Page</th>
-            <th style="width: 30%;">Why It Hits</th>
-        </tr>
-        <tr>
-            <td class="write-space"></td>
-            <td></td>
-            <td class="write-space"></td>
-        </tr>
-        <tr>
-            <td class="write-space"></td>
-            <td></td>
-            <td class="write-space"></td>
-        </tr>
-        <tr>
-            <td class="write-space"></td>
-            <td></td>
-            <td class="write-space"></td>
-        </tr>
-        <tr>
-            <td class="write-space"></td>
-            <td></td>
-            <td class="write-space"></td>
-        </tr>
-    </table>
+<div class="write-lines" style="min-height: 2in;"></div>
 
-    <h3>World-Building Gold</h3>
 
-    <table>
-        <tr>
-            <th>Quote/Passage</th>
-            <th style="width: 12%;">Page</th>
-            <th style="width: 30%;">What It Teaches</th>
-        </tr>
-        <tr>
-            <td class="write-space"></td>
-            <td></td>
-            <td class="write-space"></td>
-        </tr>
-        <tr>
-            <td class="write-space"></td>
-            <td></td>
-            <td class="write-space"></td>
-        </tr>
-    </table>
+<!-- ==========================================
+     SECTION: POST-READ SYNTHESIS
+     ========================================== -->
+
+<div class="section-title-page">
+    <span class="section-label">Section Eight</span>
+    <h1>Post-Read Synthesis</h1>
+    <p class="section-intro">This is where individual observations become transferable knowledge. Complete within 24 hours of finishing while the book is fresh.</p>
 </div>
 
-<!-- ============================================
-     POST-READ SYNTHESIS
-     ============================================ -->
-<div class="chapter">
-    <h2>Post-Read Synthesis</h2>
+<h2 class="mt-0">Structural Metrics</h2>
 
-    <div class="why-matters">
-        <strong>Why This Matters:</strong> This is where individual observations become transferable
-        knowledge. Complete within 24 hours of finishing while the book is fresh.
+<div class="two-col">
+    <div>
+        <div class="field-row">
+            <span class="field-label">Chapters to inciting incident:</span>
+            <span class="field-value"></span>
+        </div>
+        <div class="field-row">
+            <span class="field-label">First kiss page/%:</span>
+            <span class="field-value"></span>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Midpoint page/%:</span>
+            <span class="field-value"></span>
+        </div>
     </div>
-
-    <h3>Reverse Outline</h3>
-    <p><em>Go back through your chapter notes and create a one-line summary of each chapter:</em></p>
-
-    <table>
-        <tr>
-            <th style="width: 8%;">Ch</th>
-            <th>One-Line Summary</th>
-            <th style="width: 25%;">Function</th>
-        </tr>
-        <tr><td>1</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>2</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>3</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>4</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>5</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>6</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>7</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>8</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>9</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-        <tr><td>10</td><td class="write-space-small"></td><td>☐Setup ☐Romance ☐Plot ☐Both</td></tr>
-    </table>
-
-    <p style="text-align: center; font-style: italic;">(Continue on additional pages)</p>
-
-    <h3>Structural Metrics</h3>
-
-    <div class="field-row">
-        <span class="field-label">Chapters until inciting incident:</span>
-        <span class="field-value"></span>
+    <div>
+        <div class="field-row">
+            <span class="field-label">"All Is Lost" page/%:</span>
+            <span class="field-value"></span>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Total chapters:</span>
+            <span class="field-value"></span>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Actual heat level:</span>
+            <span class="field-value"></span>
+        </div>
     </div>
-    <div class="field-row">
-        <span class="field-label">Page/% of midpoint:</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Page/% of "All Is Lost":</span>
-        <span class="field-value"></span>
-    </div>
-    <div class="field-row">
-        <span class="field-label">Page/% of first kiss:</span>
-        <span class="field-value"></span>
-    </div>
+</div>
 
-    <h3>Overall Assessment</h3>
+<h3>Overall Assessment</h3>
 
-    <table>
+<table>
+    <thead>
         <tr>
             <th>Element</th>
             <th>Rating (1-5)</th>
             <th>Notes</th>
         </tr>
-        <tr><td>Pacing</td><td>☐1 ☐2 ☐3 ☐4 ☐5</td><td class="write-space-small"></td></tr>
-        <tr><td>Romance arc satisfaction</td><td>☐1 ☐2 ☐3 ☐4 ☐5</td><td class="write-space-small"></td></tr>
-        <tr><td>Fantasy plot satisfaction</td><td>☐1 ☐2 ☐3 ☐4 ☐5</td><td class="write-space-small"></td></tr>
-        <tr><td>Arc integration</td><td>☐1 ☐2 ☐3 ☐4 ☐5</td><td class="write-space-small"></td></tr>
-        <tr><td>Character development</td><td>☐1 ☐2 ☐3 ☐4 ☐5</td><td class="write-space-small"></td></tr>
-        <tr><td>World-building delivery</td><td>☐1 ☐2 ☐3 ☐4 ☐5</td><td class="write-space-small"></td></tr>
-    </table>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Pacing</td>
+            <td style="width: 15%; text-align: center;">&#9744;1 &#9744;2 &#9744;3 &#9744;4 &#9744;5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Romance Arc</td>
+            <td style="text-align: center;">&#9744;1 &#9744;2 &#9744;3 &#9744;4 &#9744;5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Fantasy Plot</td>
+            <td style="text-align: center;">&#9744;1 &#9744;2 &#9744;3 &#9744;4 &#9744;5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Arc Integration</td>
+            <td style="text-align: center;">&#9744;1 &#9744;2 &#9744;3 &#9744;4 &#9744;5</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Character Development</td>
+            <td style="text-align: center;">&#9744;1 &#9744;2 &#9744;3 &#9744;4 &#9744;5</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
-    <h3>Lessons for My Writing</h3>
+<h3>Lessons for My Writing</h3>
 
-    <h4>Three things this book did exceptionally well:</h4>
-    <ol>
-        <li><div class="write-space-small"></div></li>
-        <li><div class="write-space-small"></div></li>
-        <li><div class="write-space-small"></div></li>
-    </ol>
+<h4>Three things this book did exceptionally well:</h4>
+<div class="write-lines" style="min-height: 1.2in;"></div>
 
-    <h4>One thing I would have done differently:</h4>
-    <div class="write-space"></div>
+<h4>One thing I would have done differently:</h4>
+<div class="write-lines" style="min-height: 0.8in;"></div>
 
-    <h4>Specific techniques I will try in my WIP:</h4>
-    <ol>
-        <li><div class="write-space-small"></div></li>
-        <li><div class="write-space-small"></div></li>
-        <li><div class="write-space-small"></div></li>
-    </ol>
+<h4>Specific techniques I will try in my WIP:</h4>
+<div class="write-lines" style="min-height: 1in;"></div>
+
+<div class="flourish-divider">
+    <span class="divider-icon">&#9830;</span>
 </div>
 
-<!-- ============================================
-     APPENDICES
-     ============================================ -->
-<div class="chapter">
-    <h2>Appendix: Quick Reference</h2>
-
-    <div class="quick-ref">
-        <h4>Romancing the Beat (Gwen Hayes)</h4>
-        <p><strong>Phase 1 (0-25%):</strong> Meet Cute/Ugly → "No Way" → Adhesion</p>
-        <p><strong>Phase 2 (25-50%):</strong> Inkling → Deepening Desire → Midpoint Intimacy</p>
-        <p><strong>Phase 3 (50-75%):</strong> Shields Up → Doubt → Break Up / Black Moment</p>
-        <p><strong>Phase 4 (75-100%):</strong> Dark Night → Grand Gesture → HEA/HFN</p>
-    </div>
-
-    <div class="quick-ref">
-        <h4>Save the Cat! (Blake Snyder)</h4>
-        <p><strong>Act 1 (0-25%):</strong> Opening → Setup → Catalyst → Debate → Break Into Two</p>
-        <p><strong>Act 2A (25-50%):</strong> B Story → Fun & Games → Midpoint</p>
-        <p><strong>Act 2B (50-75%):</strong> Bad Guys Close In → All Is Lost → Dark Night</p>
-        <p><strong>Act 3 (75-100%):</strong> Break Into Three → Finale → Final Image</p>
-    </div>
-
-    <div class="quick-ref">
-        <h4>Key Terms</h4>
-        <dl class="definition">
-            <dt>Adhesion</dt>
-            <dd>External force preventing characters from separating (forced proximity, quest, bond)</dd>
-            <dt>Ghost/Wound</dt>
-            <dd>Past trauma shaping character's behavior and beliefs</dd>
-            <dt>The Lie</dt>
-            <dd>False belief character holds that must be overcome</dd>
-            <dt>Deep POV</dt>
-            <dd>Narrative style deeply immersed in character's psyche</dd>
-            <dt>Slow Burn</dt>
-            <dd>Extended romantic tension with delayed gratification</dd>
-            <dt>HEA/HFN</dt>
-            <dd>Happily Ever After / Happy For Now (romance resolution types)</dd>
-        </dl>
-    </div>
-
-    <div class="quick-ref">
-        <h4>Heat Level Scale</h4>
-        <p><strong>0:</strong> Clean (no physical intimacy beyond hand-holding)</p>
-        <p><strong>1:</strong> Sweet (closed-door, sweet kisses)</p>
-        <p><strong>2:</strong> Mild (heated kissing, some touching)</p>
-        <p><strong>3:</strong> Moderate (fade to black with buildup)</p>
-        <p><strong>4:</strong> Steamy (on-page intimacy, some detail)</p>
-        <p><strong>5:</strong> Explicit (detailed, explicit scenes)</p>
-    </div>
-
-    <div class="quick-ref">
-        <h4>Color-Coding Key</h4>
-        <table>
-            <tr><td style="background: #E8B4B8; width: 20%;">Pink/Red</td><td>Romance Beats</td></tr>
-            <tr><td style="background: #A8C5DB;">Blue</td><td>Fantasy/Plot Beats</td></tr>
-            <tr><td style="background: #B8E8C5;">Green</td><td>World-Building</td></tr>
-            <tr><td style="background: #FFFACD;">Yellow</td><td>Character Backstory</td></tr>
-            <tr><td style="background: #C5B8E8;">Purple</td><td>Craft Moves to Steal</td></tr>
-        </table>
-    </div>
+<div class="principle-card">
+    <span class="principle-title">Remember</span>
+    <div class="principle-content">"Guides inform. Analysis reveals. But only you can write your story. Take what serves you, leave what doesn't, and trust your instincts about what your particular story needs."</div>
 </div>
 
 </body>
