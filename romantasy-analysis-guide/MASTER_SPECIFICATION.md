@@ -4,9 +4,9 @@
 
 **Product Name:** Read Like a Writer: The Romantasy Analysis Companion
 
-**Purpose:** A comprehensive read-along guide that teaches aspiring romantasy writers to extract craft lessons, track story structure, and understand the techniques that make romantasy novels work.
+**Purpose:** This guide helps aspiring romantasy writers learn from the books they love. It provides a framework for tracking story structure, analysing craft, and extracting lessons you can apply to your own work.
 
-**Core Philosophy:** Transform the subjective experience of "loving a book" into an objective understanding of WHY the book works. The goal is to make the invisible architecture of storytelling visible.
+**Core Philosophy:** When you love a book, you know something works. But knowing it works isn't the same as understanding how it works. This guide helps you see the architecture behind the story—so you can build your own.
 
 ---
 
@@ -25,7 +25,7 @@
 
 ### Three-Phase Reading Approach
 
-The guide follows the natural reading process:
+The guide follows how you naturally read a book. There are things to do before you start, things to track while you're reading, and analysis to complete after you finish.
 
 | Phase | When | Duration | Purpose |
 |-------|------|----------|---------|
@@ -39,14 +39,13 @@ The guide follows the natural reading process:
 
 ### SECTION 1: How to Use This Guide (Introduction)
 
-**Purpose:** Orient the user to the methodology and set proper expectations.
+**Purpose:** This section explains how the guide works and sets expectations.
 
 **Contents:**
-- The difference between reading for pleasure vs. reading for craft
-- The "analytical gaze" concept (Francine Prose methodology)
-- How to balance analysis without ruining enjoyment
-- Color-coding system explanation
-- Quick-fill vs. deep-dive options for time management
+
+The introduction covers the difference between reading for pleasure and reading for craft. When you read for pleasure, you let the story wash over you. When you read for craft, you notice the choices the author made.
+
+This section also explains the colour-coding system (for marking up physical books), and the two analysis paths: quick-fill for light analysis, and deep-dive for serious study.
 
 **Color-Coding Key:**
 | Color | Meaning | What to Mark |
@@ -61,9 +60,9 @@ The guide follows the natural reading process:
 
 ### SECTION 2: Pre-Read Setup
 
-**Purpose:** Establish baseline expectations before analysis begins.
+**Purpose:** Before you start reading, record what you expect from the book. This baseline helps you notice later when the author surprises you or delivers exactly what you anticipated.
 
-**Timing:** Fill out ONCE before starting the book (5-10 minutes)
+**Timing:** Complete once before starting the book. It should take about 5-10 minutes.
 
 #### 2.1 Book Metadata
 | Field | What to Record |
@@ -78,7 +77,8 @@ The guide follows the natural reading process:
 | Stated Tropes | Tropes listed in blurb/marketing |
 
 #### 2.2 Expectation Setting
-**WHY THIS MATTERS:** Understanding your assumptions helps identify when an author subverts or fulfills genre expectations.
+
+Understanding your assumptions before you read helps you notice when the author surprises you. It also helps you see when they deliver exactly what the genre promises. Both are worth studying.
 
 **Prompts:**
 - What do I expect from this book based on cover/blurb?
@@ -95,9 +95,9 @@ The guide follows the natural reading process:
 
 ### SECTION 3: Chapter-by-Chapter Active Reading Log
 
-**Purpose:** Track beats and observations while reading without disrupting flow.
+**Purpose:** These logs capture your observations while they're fresh. The goal is to stay aware of craft without interrupting your enjoyment of the story.
 
-**Timing:** Quick entries after each chapter (2-3 minutes max)
+**Timing:** Fill one out after each chapter. Aim for 2-3 minutes maximum. Don't overthink it.
 
 #### 3.1 Chapter Quick Log Template
 
@@ -140,11 +140,11 @@ For EACH chapter, record:
 
 ### SECTION 4: Romance Arc Tracking (Romancing the Beat)
 
-**Purpose:** Track the specific beats of the romantic relationship using Gwen Hayes's framework.
+**Purpose:** This section helps you track the specific beats of the romantic relationship using Gwen Hayes's framework.
 
-**Timing:** Fill in as you encounter each beat (some chapters may have none)
+**Timing:** Fill in beats as you encounter them. Some chapters may have none.
 
-**WHY THIS MATTERS:** Romance readers have subconscious expectations for relationship progression. Understanding these beats helps you pace your own love stories.
+Romance readers have expectations for how a love story should unfold, even if they can't articulate them. Learning to identify these beats helps you understand why some romances feel satisfying and others feel rushed or unearned.
 
 #### 4.1 The Romance Beat Sheet
 
@@ -202,11 +202,11 @@ For EACH chapter, record:
 
 ### SECTION 5: Fantasy Plot Tracking (Save the Cat!/Three-Act)
 
-**Purpose:** Track the external plot structure running parallel to the romance.
+**Purpose:** This section tracks the external plot structure that runs parallel to the romance.
 
-**Timing:** Fill in as you encounter each beat
+**Timing:** Fill in beats as you encounter them.
 
-**WHY THIS MATTERS:** In Romantasy, the fantasy plot creates the crucible that forces romantic development. Understanding this structure helps you build stories where both arcs reinforce each other.
+In romantasy, the fantasy plot isn't just backdrop. It creates the pressure that forces romantic development. When you understand how both structures work together, you can build stories where the arcs reinforce each other instead of competing for attention.
 
 #### 5.1 The Fantasy Beat Sheet
 
@@ -249,11 +249,11 @@ For EACH chapter, record:
 
 ### SECTION 6: Dual-Arc Integration Analysis
 
-**Purpose:** Visualize how the romance and fantasy arcs weave together.
+**Purpose:** This section helps you see how the romance and fantasy arcs weave together.
 
-**Timing:** Fill in during reading or during post-read synthesis.
+**Timing:** You can fill this in during reading or save it for post-read synthesis.
 
-**WHY THIS MATTERS:** The best romantasy novels ensure every chapter advances BOTH the quest and the relationship. This visualization reveals whether an author achieves this balance.
+The best romantasy novels advance both the quest and the relationship in nearly every chapter. When you visualise both arcs side by side, you can see whether the author achieves this integration—or whether the arcs run parallel without connecting.
 
 #### 6.1 Two-Column Timeline
 
@@ -277,11 +277,11 @@ After completing the timeline:
 
 ### SECTION 7: Trope Execution Tracker
 
-**Purpose:** Document how specific tropes are set up and paid off.
+**Purpose:** This section documents how specific tropes are set up and paid off.
 
 **Timing:** Add entries when you identify a trope and again when it pays off.
 
-**WHY THIS MATTERS:** Tropes are promises to readers. Understanding setup and payoff teaches you to satisfy (or cleverly subvert) reader expectations.
+Tropes are promises to readers. When you advertise "enemies to lovers," readers expect certain beats. Understanding how successful authors set up and deliver on these promises teaches you to satisfy reader expectations—or subvert them in ways that feel fresh rather than frustrating.
 
 #### 7.1 Macro Trope Analysis
 
@@ -342,11 +342,11 @@ After completing the timeline:
 
 ### SECTION 8: Tension & Pacing Visualization
 
-**Purpose:** Create a visual map of emotional intensity throughout the book.
+**Purpose:** This section creates a visual map of emotional intensity throughout the book.
 
 **Timing:** Update the tension thermometer after each chapter or reading session.
 
-**WHY THIS MATTERS:** Pacing is about controlling emotional intensity. Visualizing the rhythm helps you understand how masters build and release tension.
+Pacing isn't about how fast things happen. It's about controlling emotional intensity—knowing when to build tension and when to release it. Visualising the rhythm helps you see patterns that would otherwise be invisible.
 
 #### 8.1 The Tension Thermometer
 
@@ -394,11 +394,11 @@ After completing the thermometer:
 
 ### SECTION 9: Spice & Intimacy Tracking
 
-**Purpose:** Analyze the pacing and purpose of romantic/intimate scenes.
+**Purpose:** This section analyses the pacing and purpose of romantic and intimate scenes.
 
 **Timing:** Log each intimate scene as you encounter it.
 
-**WHY THIS MATTERS:** Understanding where spice is placed and what purpose it serves teaches you to integrate intimacy meaningfully rather than gratuitously.
+Intimacy scenes work best when they serve the story. Tracking where they appear and what purpose they serve helps you understand the difference between scenes that advance character and relationship versus scenes that pause the plot.
 
 #### 9.1 Heat Level Progression Log
 
@@ -456,11 +456,11 @@ For each significant intimate scene:
 
 ### SECTION 10: World-Building Analysis
 
-**Purpose:** Track how the author delivers lore without info-dumping.
+**Purpose:** This section tracks how the author delivers lore without info-dumping.
 
 **Timing:** Note techniques as you encounter them.
 
-**WHY THIS MATTERS:** In romantasy, world-building creates the "Adhesion" that binds characters together and the stakes that threaten them. Elegant integration is essential.
+In romantasy, world-building does more than create atmosphere. It creates the forces that bind characters together and the stakes that threaten them. Learning to deliver lore elegantly—woven into action and dialogue rather than dropped in blocks—is essential for the genre.
 
 #### 10.1 Magic System Deconstruction
 
@@ -499,11 +499,11 @@ For each significant intimate scene:
 
 ### SECTION 11: Character Craft Analysis
 
-**Purpose:** Deconstruct how the author creates compelling, complex characters.
+**Purpose:** This section deconstructs how the author creates compelling, complex characters.
 
 **Timing:** Fill in as you learn about each character.
 
-**WHY THIS MATTERS:** Romance lives or dies on character—readers must fall in love alongside the protagonists.
+Romance lives or dies on character. Readers need to fall in love alongside the protagonists. Understanding how an author builds interiority, reveals wounds, and differentiates voice helps you create characters readers will care about.
 
 #### 11.1 Protagonist Deep Dive (H1)
 
@@ -552,11 +552,11 @@ For each significant intimate scene:
 
 ### SECTION 12: Scene Dissection Worksheets
 
-**Purpose:** Deep-dive analysis of key scenes to understand craft at the micro level.
+**Purpose:** This section provides deep-dive analysis of key scenes to understand craft at the sentence level.
 
 **Timing:** Use for 3-5 pivotal scenes during post-read synthesis.
 
-**WHY THIS MATTERS:** This is where you move from "I loved it" to "I understand how it works."
+This is where you move from "I loved this scene" to "I understand how it works." Breaking down a scene's structure, hooks, and techniques gives you concrete tools to apply in your own writing.
 
 #### 12.1 Scene Anatomy Template
 
@@ -594,11 +594,11 @@ For each significant intimate scene:
 
 ### SECTION 13: Craft Moves to Steal
 
-**Purpose:** Build your personal library of techniques to emulate.
+**Purpose:** This is your personal library of techniques to emulate.
 
-**Timing:** Add entries whenever you encounter exceptional craft.
+**Timing:** Add entries whenever you encounter something that makes you think, "I want to do that."
 
-**WHY THIS MATTERS:** Great writers are great readers. This section transforms reading into a transferable skill set.
+Great writers are great readers. When you systematically capture the techniques that impress you, reading becomes a transferable skill. Over time, you'll build a collection of moves to draw from in your own work.
 
 #### 13.1 Prose Techniques
 
@@ -646,11 +646,11 @@ For each significant intimate scene:
 
 ### SECTION 14: Post-Read Synthesis
 
-**Purpose:** Step back and analyze the complete work after finishing.
+**Purpose:** This section helps you step back and analyse the complete work after finishing.
 
-**Timing:** Complete within 24 hours of finishing the book.
+**Timing:** Try to complete this within 24 hours of finishing the book, while everything is still fresh.
 
-**WHY THIS MATTERS:** This is where individual observations become transferable knowledge.
+This is where your scattered observations become usable knowledge. The synthesis process helps you identify patterns you might have missed and extract concrete lessons for your own writing.
 
 #### 14.1 The Reverse Outline
 
@@ -723,11 +723,11 @@ If you've analyzed other books in this genre:
 
 ### SECTION 15: Multi-Book Pattern Recognition
 
-**Purpose:** Track patterns across multiple analyzed books.
+**Purpose:** This section tracks patterns across multiple analysed books.
 
 **Timing:** Update after completing each book analysis.
 
-**WHY THIS MATTERS:** Genre mastery comes from recognizing patterns across many examples, not just one deep read.
+One book can teach you a lot, but genre mastery comes from recognising patterns across many examples. When you've analysed several romantasy novels, you'll start to see what's typical and what's exceptional. That's when the real learning happens.
 
 #### 15.1 Book Comparison Database
 
@@ -915,7 +915,7 @@ After 3+ books:
 
 ### Quick-Fill Path (Minimal Time Investment)
 
-For readers who want craft insight without disrupting the reading experience:
+You don't have to use every section. This path is for readers who want craft insight without disrupting the reading experience.
 
 **During Reading (2-3 min/chapter):**
 - Section 3: Chapter Quick Log only
@@ -929,7 +929,7 @@ For readers who want craft insight without disrupting the reading experience:
 
 ### Deep-Dive Path (Full Analysis)
 
-For serious craft study:
+This path is for serious craft study. It takes more time, but you'll come away with a thorough understanding of how the book works.
 
 **Pre-Read (10 min):**
 - Complete Section 2: Pre-Read Setup
@@ -954,7 +954,7 @@ For serious craft study:
 
 ### Targeted Study Path (Specific Skill Focus)
 
-Choose ONE focus area per book:
+If you're working on a specific weakness in your own writing, you can use a book to study just that element. Choose one focus area per book and use the relevant sections.
 
 | Focus | Primary Sections |
 |-------|-----------------|
@@ -1098,4 +1098,4 @@ Choose ONE focus area per book:
 
 ---
 
-*This specification document serves as the blueprint for all format versions (Printable, Notion, Google Sheets) of the Romantasy Analysis Guide.*
+*This specification document serves as the blueprint for all format versions of the Romantasy Analysis Guide, including printable, Notion, and Google Sheets versions.*
