@@ -653,6 +653,18 @@
             background: white;
         }
 
+        .chapter-number {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-guide);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-guide);
+        }
+
         .chapter-log-header {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -770,6 +782,48 @@
             color: var(--color-text-muted);
         }
 
+        /* NAVIGATION BAR */
+        .nav-bar {
+            position: running(nav);
+            font-family: var(--font-body);
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--color-guide);
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-bar a {
+            color: var(--color-guide);
+            text-decoration: none;
+            padding: 0.15rem 0.3rem;
+            border-radius: 2px;
+            white-space: nowrap;
+        }
+
+        .nav-bar a:hover {
+            background: var(--color-guide-light);
+        }
+
+        .nav-sep {
+            color: #ccc;
+        }
+
+        @page {
+            @top-center {
+                content: element(nav);
+            }
+        }
+
+        @page:first {
+            @top-center { content: none; }
+        }
+
         /* SCREEN/PRINT ADJUSTMENTS */
         @media screen {
             body {
@@ -791,6 +845,25 @@
     </style>
 </head>
 <body>
+
+<!-- NAVIGATION BAR (appears on every page via CSS running header) -->
+<div class="nav-bar">
+    <a href="#book-info">Book Info</a>
+    <span class="nav-sep">|</span>
+    <a href="#chapter-logs">Ch. Logs</a>
+    <span class="nav-sep">|</span>
+    <a href="#romance-beats">Romance</a>
+    <span class="nav-sep">|</span>
+    <a href="#fantasy-plot">Fantasy</a>
+    <span class="nav-sep">|</span>
+    <a href="#tropes">Tropes</a>
+    <span class="nav-sep">|</span>
+    <a href="#spice">Spice</a>
+    <span class="nav-sep">|</span>
+    <a href="#craft-moves">Craft</a>
+    <span class="nav-sep">|</span>
+    <a href="#synthesis">Synthesis</a>
+</div>
 
 <!-- ==========================================
      TITLE PAGE
@@ -964,7 +1037,7 @@
      SECTION: PRE-READ SETUP
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="book-info">
     <span class="section-label">Section One</span>
     <h1>Pre-Read Setup</h1>
     <p class="section-intro">Before you start reading, take a few minutes to record what you expect from this book. This helps you notice later when the author surprises you or delivers exactly what you anticipated. Both are worth studying.</p>
@@ -1036,7 +1109,7 @@
      SECTION: CHAPTER LOGS
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="chapter-logs">
     <span class="section-label">Section Two</span>
     <h1>Chapter-by-Chapter Logs</h1>
     <p class="section-intro">These logs help you capture observations while they're fresh. Fill one out after each chapter. It should only take a few minutes. The goal is to stay aware of craft without interrupting your enjoyment of the story.</p>
@@ -1046,11 +1119,10 @@
 
 <p class="hint">Don't overthink these. Quick impressions are valuable. You can always return to a chapter later if something stands out.</p>
 
-<!-- Chapter Log Template x5 -->
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-1">
+    <div class="chapter-number">Chapter 1</div>
     <div class="chapter-log-header">
         <div>
-            <strong>Chapter:</strong> ________<br>
             <strong>Pages:</strong> _____ – _____
         </div>
         <div>
@@ -1064,7 +1136,7 @@
     </div>
 
     <h4 class="mt-0">One-Line Summary</h4>
-    <p class="hint">What is the single most important thing that happens?</p>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
 
     <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
@@ -1105,631 +1177,1696 @@
     </div>
 </div>
 
-<!-- Chapter logs 2-40 -->
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-2">
+    <div class="chapter-number">Chapter 2</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-3">
+    <div class="chapter-number">Chapter 3</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-4">
+    <div class="chapter-number">Chapter 4</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-5">
+    <div class="chapter-number">Chapter 5</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-6">
+    <div class="chapter-number">Chapter 6</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-7">
+    <div class="chapter-number">Chapter 7</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-8">
+    <div class="chapter-number">Chapter 8</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-9">
+    <div class="chapter-number">Chapter 9</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-10">
+    <div class="chapter-number">Chapter 10</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-11">
+    <div class="chapter-number">Chapter 11</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-12">
+    <div class="chapter-number">Chapter 12</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-13">
+    <div class="chapter-number">Chapter 13</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-14">
+    <div class="chapter-number">Chapter 14</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-15">
+    <div class="chapter-number">Chapter 15</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-16">
+    <div class="chapter-number">Chapter 16</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-17">
+    <div class="chapter-number">Chapter 17</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-18">
+    <div class="chapter-number">Chapter 18</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-19">
+    <div class="chapter-number">Chapter 19</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-20">
+    <div class="chapter-number">Chapter 20</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-21">
+    <div class="chapter-number">Chapter 21</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-22">
+    <div class="chapter-number">Chapter 22</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-23">
+    <div class="chapter-number">Chapter 23</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-24">
+    <div class="chapter-number">Chapter 24</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-25">
+    <div class="chapter-number">Chapter 25</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-26">
+    <div class="chapter-number">Chapter 26</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-27">
+    <div class="chapter-number">Chapter 27</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-28">
+    <div class="chapter-number">Chapter 28</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<div class="chapter-log">
+<div class="chapter-log" id="chapter-29">
+    <div class="chapter-number">Chapter 29</div>
     <div class="chapter-log-header">
-        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
-        <div><strong>POV Character:</strong><br>_______________________</div>
-        <div><strong>Location:</strong><br>_______________________</div>
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
     </div>
+
     <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
     <div class="write-space-sm"></div>
-    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
     <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
-        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
-        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
     </ul>
-    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
-    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
     <div class="two-col" style="margin-top: 1rem;">
-        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
-        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
     </div>
 </div>
 
-<p class="text-center text-muted" style="margin: 2rem 0;"><em>Need more chapter logs? Print additional copies of this section as needed.</em></p>
+<div class="chapter-log" id="chapter-30">
+    <div class="chapter-number">Chapter 30</div>
+    <div class="chapter-log-header">
+        <div>
+            <strong>Pages:</strong> _____ – _____
+        </div>
+        <div>
+            <strong>POV Character:</strong><br>
+            _______________________
+        </div>
+        <div>
+            <strong>Location:</strong><br>
+            _______________________
+        </div>
+    </div>
+
+    <h4 class="mt-0">One-Line Summary</h4>
+    <p class="hint">What is the single most important thing that happens in this chapter?</p>
+    <div class="write-space-sm"></div>
+
+    <h4>Beat Types Present <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all that apply)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li>
+        <li>Romance Beat</li>
+        <li>World-Building</li>
+        <li>Character Reveal</li>
+        <li>Action/Battle</li>
+        <li>Quiet Moment</li>
+    </ul>
+
+    <h4>Tension Levels <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one number for each)</span></h4>
+    <div class="tension-row">
+        <span class="tension-label">Romantic:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+    <div class="tension-row">
+        <span class="tension-label">Plot:</span>
+        <div class="tension-scale">
+            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+        </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 1rem;">
+        <div>
+            <h4 class="mt-0">What surprised me:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+        <div>
+            <h4 class="mt-0">Craft move noticed:</h4>
+            <div class="write-space-sm"></div>
+        </div>
+    </div>
+</div>
+
+<p class="text-center text-muted" style="margin: 2rem 0;"><em>Need more chapter logs? Use the Chapter Logs Supplement for books with 30+ chapters.</em></p>
 
 
 <!-- ==========================================
      SECTION: ROMANCE BEATS
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="romance-beats">
     <span class="section-label">Section Three</span>
     <h1>Romance Arc Tracking</h1>
     <p class="section-intro">Romance readers have expectations for how a love story should unfold, even if they can't articulate them. This section helps you identify the beats that make a romance feel satisfying.</p>
@@ -1751,7 +2888,18 @@
     <p>This is where you meet the characters. You learn their wounds, why they can't be together, and what forces them to stay in proximity anyway.</p>
 </div>
 
-<p class="hint">For each beat, jot down where it happens and how the author handles it.</p>
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Phase 1</span>
+    <p>Phase 1 is about creating the conditions for love while making love seem impossible. Pay close attention to these elements:</p>
+    
+    <p><strong>The Meet Cute/Ugly:</strong> In romantasy, the first meeting is rarely cute. Look for tension, hostility, or danger. Someone might try to kill, capture, or manipulate the other. Ask yourself: What emotion does this first meeting create? Anger? Fear? Grudging respect? The stronger the initial conflict, the more satisfying the eventual love will feel.</p>
+    
+    <p><strong>The "No Way" (Why They Can't Be Together):</strong> This is the engine of your entire romance. In romantasy, it's almost always tied to worldbuilding: "He's Fae, I'm mortal." "Our kingdoms are at war." "He's my captor/enemy/the person who destroyed my family." Look for whether the obstacle is external (worldbuilding-based) or internal (wound-based). The best books have both.</p>
+    
+    <p><strong>The Adhesion (What Forces Proximity):</strong> Despite the "No Way," something forces these characters together. Look for: magical bonds, bargains with consequences, shared quests, captivity situations, or forced alliances. Ask: How does the author make it impossible for them to simply walk away from each other?</p>
+    
+    <p><strong>Character Wounds:</strong> What past pain is each character carrying? In romantasy, these often involve betrayal, loss, or trauma tied to the magical system. The wound should make love feel dangerous to the character—not just inconvenient.</p>
+</div>
 
 <table class="beat-table">
     <thead>
@@ -1782,19 +2930,35 @@
             <td></td>
             <td></td>
         </tr>
+        <tr>
+            <td class="beat-name">Character A's Wound</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Character B's Wound</td>
+            <td></td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
-
-<div class="insight-box">
-    <span class="insight-label">What to Look For</span>
-    <p><strong>Meet Cute/Ugly:</strong> In romantasy, the first meeting is often hostile. Weapons may be involved. Someone might try to kill the other person. This creates immediate tension.</p>
-    <p><strong>The "No Way":</strong> Why can't they be together? In romantasy, this is often world-building based. "He's Fae, I'm human." "Our kingdoms are at war." "He's my captor."</p>
-    <p><strong>The Adhesion:</strong> What forces them to stay together despite not wanting to? A curse, a bargain, a shared quest, a magical bond. This is the engine of forced proximity.</p>
-</div>
 
 <div class="romance-box">
     <span class="box-label">Phase 2: Falling in Love (25–50%)</span>
     <p>The characters are forced to cooperate. Proximity creates intimacy. Attraction grows despite their resistance to it.</p>
+</div>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Phase 2</span>
+    <p>This phase is about the slow erosion of resistance. The characters don't want to fall in love, but they can't help it. Look for:</p>
+    
+    <p><strong>The Inkling of Desire:</strong> This is the first crack in the armor. It's often physical—a moment where one character notices something attractive about the other despite themselves. Look for: stolen glances, unwanted awareness of the other's body, finding excuses to be near them. How does the author show attraction while the character is still in denial?</p>
+    
+    <p><strong>Vulnerability Moments:</strong> Watch for scenes where one character sees the other's true self—often their pain, their kindness, or their competence. In romantasy, this might happen during a battle, a magical trial, or a moment of physical danger. What makes one character start to see the other as a person rather than an enemy/stranger?</p>
+    
+    <p><strong>The Deepening:</strong> Attraction becomes something more. Look for: conversations that go deeper than necessary, shared secrets, moments of unexpected tenderness. How does the author escalate emotional intimacy? What small moments build the connection?</p>
+    
+    <p><strong>The Midpoint Intimacy:</strong> Around the 50% mark, something significant happens in the relationship. This might be a first kiss, a confession, or a physical intimacy scene. But note: this moment should feel earned AND premature. The characters aren't ready—that's what creates the tension for Phase 3.</p>
 </div>
 
 <table class="beat-table">
@@ -1812,7 +2976,17 @@
             <td></td>
         </tr>
         <tr>
+            <td class="beat-name">First Vulnerability</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <td class="beat-name">Deepening Desire</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Shared Secret/Bond</td>
             <td></td>
             <td></td>
         </tr>
@@ -1827,6 +3001,19 @@
 <div class="romance-box">
     <span class="box-label">Phase 3: Retreating from Love (50–75%)</span>
     <p>Just when things are going well, internal fears resurface. External threats exploit the characters' vulnerabilities. The relationship fractures. This is often the most painful part of the book.</p>
+</div>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Phase 3</span>
+    <p>This phase is about everything falling apart. The characters were getting close, but now their wounds, fears, and external circumstances conspire to drive them apart. This should hurt.</p>
+    
+    <p><strong>Shields Up:</strong> After the vulnerability of Phase 2, characters often retreat into old patterns. Look for: emotional walls going back up, characters pushing each other away, reverting to antagonistic behavior. What triggers the retreat? Usually it's fear—fear of being hurt, fear of losing everything, fear of what love means.</p>
+    
+    <p><strong>The Retreat/Breakup:</strong> Something happens that makes one or both characters pull away decisively. In romantasy, this is often tied to the external plot: a betrayal (real or perceived), a revelation about identity or past, a sacrifice demanded by the magical conflict. How does the author make the separation feel both devastating and inevitable?</p>
+    
+    <p><strong>The Dark Night of the Soul:</strong> This is rock bottom. One or both characters must confront their deepest fears about love, about themselves, about what they're willing to risk. Look for: moments of despair, realization of what they've lost, confronting the lie they've been telling themselves.</p>
+    
+    <p><strong>The "Black Moment":</strong> The relationship seems completely, irreparably broken. As a reader, you should genuinely doubt whether they'll find their way back. If you don't doubt it, the author hasn't done their job. How does the author make reunion seem impossible?</p>
 </div>
 
 <table class="beat-table">
@@ -1844,12 +3031,22 @@
             <td></td>
         </tr>
         <tr>
-            <td class="beat-name">The Retreat</td>
+            <td class="beat-name">The Retreat/Breakup</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
-            <td class="beat-name">The Break Up</td>
+            <td class="beat-name">External Pressure Peak</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Dark Night of Soul</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">The Black Moment</td>
             <td></td>
             <td></td>
         </tr>
@@ -1858,7 +3055,20 @@
 
 <div class="romance-box">
     <span class="box-label">Phase 4: Fighting for Love (75–100%)</span>
-    <p>One or both characters realise that life without the other isn't worth living. A sacrifice proves the depth of their love. The HEA is earned.</p>
+    <p>The protagonist realizes love is worth the risk. They make a choice to fight for the relationship, often at great personal cost. The HEA is earned through sacrifice and growth.</p>
+</div>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Phase 4</span>
+    <p>This phase is about earning the happy ending. After all the pain of Phase 3, the characters must actively choose love. This choice must cost them something.</p>
+    
+    <p><strong>The Realization:</strong> One or both characters understands what they truly want—and what they're willing to sacrifice to get it. In romantasy, this often means choosing love over power, safety, duty, or revenge. What lie does the character finally reject? What truth do they finally accept?</p>
+    
+    <p><strong>The Grand Gesture:</strong> This is the visible proof of inner change. It's not just words—it's action. In romantasy, grand gestures often involve: giving up magical power, defying fate or prophecy, risking death, or standing against their own people/kingdom. Look for: What does the character sacrifice? The bigger the sacrifice, the more earned the HEA feels.</p>
+    
+    <p><strong>The Proof of Change:</strong> The grand gesture should demonstrate that the character has overcome their wound, their fear, their fatal flaw. They are not the same person they were in Chapter 1. How does the author show (not tell) this transformation?</p>
+    
+    <p><strong>The HEA/HFN:</strong> The Happy Ever After or Happy For Now. In romantasy, this often intertwines with the resolution of the fantasy plot. Look for: How does the author make the ending feel both surprising and inevitable? What loose ends are tied up? What promises to the reader are fulfilled?</p>
 </div>
 
 <table class="beat-table">
@@ -1871,12 +3081,22 @@
     </thead>
     <tbody>
         <tr>
-            <td class="beat-name">Dark Night of Soul</td>
+            <td class="beat-name">The Realization</td>
             <td style="width: 15%;"></td>
             <td></td>
         </tr>
         <tr>
+            <td class="beat-name">The Choice</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <td class="beat-name">Grand Gesture</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Proof of Change</td>
             <td></td>
             <td></td>
         </tr>
@@ -1889,9 +3109,11 @@
 </table>
 
 <div class="pitfall-box">
-    <span class="pitfall-label">Watch For This</span>
-    <p>In romantasy, the grand gesture often involves sacrificing magic, power, or safety for love. Pay attention to what the character gives up.</p>
-    <p>If the protagonist sacrifices nothing meaningful, the gesture will feel hollow. The greater the cost, the more earned the HEA feels.</p>
+    <span class="pitfall-label">Common Pitfalls to Notice</span>
+    <p><strong>Unearned HEA:</strong> If the grand gesture costs nothing, or if the characters haven't truly changed, the ending feels hollow. Did this book earn its happy ending?</p>
+    <p><strong>Weak "No Way":</strong> If the obstacle to love could be solved with a simple conversation, the romance lacks tension. Was the obstacle genuinely difficult to overcome?</p>
+    <p><strong>Rushed Phase 2:</strong> If falling in love happens too fast, we don't believe in the connection. Did the author give us enough moments to believe these characters belong together?</p>
+    <p><strong>Insufficient Pain in Phase 3:</strong> If the breakup doesn't hurt, the reunion won't satisfy. Did you genuinely worry they wouldn't end up together?</p>
 </div>
 
 
@@ -1899,7 +3121,7 @@
      SECTION: FANTASY BEATS
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="fantasy-plot">
     <span class="section-label">Section Four</span>
     <h1>Fantasy Plot Tracking</h1>
     <p class="section-intro">In romantasy, the fantasy plot isn't just backdrop. It creates the pressure that forces romantic development. This section helps you track how the external plot and the romance work together.</p>
@@ -1921,6 +3143,21 @@
     <p>We meet the protagonist in their ordinary world. Something disrupts that world. They cross a threshold into adventure.</p>
 </div>
 
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Act 1</span>
+    <p>Act 1 is about establishing normal so you can destroy it. Pay attention to:</p>
+    
+    <p><strong>The Opening Image:</strong> What is the very first scene? This often mirrors the final image in some way—either as a contrast (showing how far the character has come) or as a completion (showing a cycle finishing). What world does the author establish? What tone? What questions are planted in your mind?</p>
+    
+    <p><strong>The "Stasis = Death" Moment:</strong> Before the catalyst, the author should show us why the protagonist can't stay where they are. Their current situation is untenable. In romantasy, this might be: an abusive home situation, a loveless engagement, a power they can't control, a secret that's about to be exposed. What makes staying impossible?</p>
+    
+    <p><strong>The Catalyst:</strong> This is the inciting incident—the event that disrupts everything. In romantasy, it often involves: discovering magic, being captured/sold/bartered, a death that changes everything, or meeting the love interest under dramatic circumstances. Note: The catalyst happens TO the protagonist. They don't choose it.</p>
+    
+    <p><strong>The Debate/Refusal:</strong> After the catalyst, there's usually hesitation. The protagonist isn't ready to leave their old life. What internal and external forces pull them back? What eventually pushes them forward?</p>
+    
+    <p><strong>Break Into Two:</strong> The protagonist makes a choice to enter the new world. This is the first time they actively decide rather than react. In romantasy, this might mean: accepting a bargain, entering the Fae realm, joining a rebellion, or agreeing to a fake marriage/arrangement.</p>
+</div>
+
 <table class="beat-table fantasy">
     <thead>
         <tr>
@@ -1938,7 +3175,19 @@
             <td></td>
         </tr>
         <tr>
+            <td class="beat-name">Stasis = Death</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <td class="beat-name">Catalyst</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Debate/Refusal</td>
             <td></td>
             <td></td>
             <td></td>
@@ -1955,6 +3204,19 @@
 <div class="fantasy-box">
     <span class="box-label">Act 2A: Fun & Games (25–50%)</span>
     <p>This is the "promise of the premise." The protagonist explores the magical world, trains their powers, and navigates the early stages of romance. This is often the most enjoyable part of the book.</p>
+</div>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Act 2A</span>
+    <p>This is the section readers came for. It's where the author delivers on the promise of their premise. Watch for:</p>
+    
+    <p><strong>The "Fun and Games":</strong> This is what the book jacket promised. If it's a Fae court book, we're IN the Fae court. If it's a magical academy, we're taking classes. If it's enemies-to-lovers, we're getting delicious tension. How does the author deliver on reader expectations while keeping things fresh?</p>
+    
+    <p><strong>The B-Story (Romance):</strong> In romantasy, the romance IS the B-story of the fantasy plot—and the fantasy IS the B-story of the romance. Notice how the external plot forces romantic proximity. How does surviving danger together create intimacy?</p>
+    
+    <p><strong>Building the World:</strong> Act 2A is where we really learn the rules of this world—the magic system, the politics, the dangers. Notice: Does the worldbuilding feel organic (learned through experience) or forced (info-dumps)?</p>
+    
+    <p><strong>The Midpoint:</strong> Around 50%, something big happens that changes everything. The protagonist gets new information, wins a false victory, or suffers a false defeat. In romantasy, this often coincides with a significant romantic moment (first kiss, first intimacy, or a major confession). The midpoint should raise the stakes for both arcs.</p>
 </div>
 
 <table class="beat-table fantasy">
@@ -1974,7 +3236,19 @@
             <td></td>
         </tr>
         <tr>
-            <td class="beat-name">Midpoint</td>
+            <td class="beat-name">B-Story Development</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Worldbuilding Reveal</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Midpoint (False Victory/Defeat)</td>
             <td></td>
             <td></td>
             <td></td>
@@ -1985,6 +3259,19 @@
 <div class="fantasy-box">
     <span class="box-label">Act 2B: Bad Guys Close In (50–75%)</span>
     <p>The fun is over. External pressure mounts. The villain gains ground. Internal doubts fracture the team and the relationship. Everything that can go wrong does.</p>
+</div>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Act 2B</span>
+    <p>This is where the author earns their climax. If things don't get bad enough here, the ending won't feel satisfying. Watch for:</p>
+    
+    <p><strong>Bad Guys Close In:</strong> The antagonist gets stronger, smarter, or closer. Maybe secrets are revealed. Maybe allies are lost. Maybe the protagonist's plans crumble. How does the author systematically destroy everything the protagonist built in Act 2A?</p>
+    
+    <p><strong>Internal Bad Guys:</strong> It's not just external threats—it's internal ones too. Team members turn on each other. Trust breaks down. Old wounds resurface. In romantasy, this is where the romance often fractures. Look for: What internal flaw or fear causes the protagonist to make things worse?</p>
+    
+    <p><strong>All Is Lost:</strong> Rock bottom. Someone important might die. Hope might die. The protagonist might die (metaphorically). This should genuinely feel like the end. How does the author make recovery seem impossible?</p>
+    
+    <p><strong>The Whiff of Death:</strong> There's often a literal or metaphorical death here—a character, a relationship, a dream, or an identity. What does the protagonist lose that they can never get back?</p>
 </div>
 
 <table class="beat-table fantasy">
@@ -2004,7 +3291,19 @@
             <td></td>
         </tr>
         <tr>
+            <td class="beat-name">Internal Fracture</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
             <td class="beat-name">All Is Lost</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Whiff of Death</td>
             <td></td>
             <td></td>
             <td></td>
@@ -2015,6 +3314,19 @@
 <div class="fantasy-box">
     <span class="box-label">Act 3: The Finale (75–100%)</span>
     <p>From the ashes of defeat, a new plan emerges. The climax resolves both the external threat and the internal romantic conflict. Ideally, these resolutions are intertwined.</p>
+</div>
+
+<div class="insight-box">
+    <span class="insight-label">What to Look For in Act 3</span>
+    <p>This is where everything comes together—or should. Watch for how the author weaves both arcs into a single climax:</p>
+    
+    <p><strong>Dark Night of the Soul:</strong> After "All Is Lost," there's a moment of reflection. The protagonist must confront their deepest fear, their fatal flaw, the lie they've believed. In romantasy, this often involves realizing what they're willing to sacrifice for love—and what they're not willing to sacrifice anymore.</p>
+    
+    <p><strong>Break Into Three:</strong> A new plan emerges. It might come from combining everything the protagonist learned in Act 2, or from finally accepting help, or from letting go of the thing that held them back. What shifts that makes victory possible?</p>
+    
+    <p><strong>The Finale/Climax:</strong> This should resolve BOTH the external fantasy plot AND the internal romance arc. In the best romantasy, these are inseparable—you can't solve one without solving the other. Look for: How does the romance enable the fantasy victory? How does the fantasy victory prove the romance?</p>
+    
+    <p><strong>The Final Image:</strong> Mirror to the opening image. How has the world changed? How has the protagonist changed? In romantasy, this often shows us the couple together in their new normal. What promise is made about their future?</p>
 </div>
 
 <table class="beat-table fantasy">
@@ -2028,8 +3340,20 @@
     </thead>
     <tbody>
         <tr>
-            <td class="beat-name">Finale/Climax</td>
+            <td class="beat-name">Dark Night of Soul</td>
             <td style="width: 12%;"></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Break Into Three</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="beat-name">Finale/Climax</td>
+            <td></td>
             <td></td>
             <td></td>
         </tr>
@@ -2043,11 +3367,12 @@
 </table>
 
 <div class="insight-box">
-    <span class="insight-label">Integration Analysis</span>
-    <p>After you've tracked both arcs, step back and ask yourself a few questions.</p>
-    <p>Does the romance need the fantasy elements to work? Does the fantasy need the romance to be emotionally resonant?</p>
-    <p>Could you remove one arc and still have a complete story? If the answer is yes, the integration has failed.</p>
-    <p>The best romantasy makes the two arcs feel inseparable. Pay attention to how successful authors achieve this.</p>
+    <span class="insight-label">Integration Analysis: The Key Question</span>
+    <p>After tracking both arcs, ask yourself the most important question:</p>
+    <p><strong>Could you remove the romance and still have a complete fantasy story?</strong> If yes, the integration has failed.</p>
+    <p><strong>Could you remove the fantasy plot and still have a complete romance?</strong> If yes, the integration has failed.</p>
+    <p>In the best romantasy, the answer to both questions is NO. The romance is the fantasy plot. The fantasy plot is the romance. They're two expressions of the same story.</p>
+    <p>Pay attention to HOW successful authors achieve this integration. That's the real craft lesson.</p>
 </div>
 
 
@@ -2055,24 +3380,55 @@
      SECTION: TROPES
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="tropes">
     <span class="section-label">Section Five</span>
     <h1>Trope Execution</h1>
     <p class="section-intro">Tropes are promises to readers. When you advertise "enemies to lovers," readers expect certain beats. This section helps you study how successful authors deliver on those promises.</p>
 </div>
 
-<h2 class="mt-0">Macro Tropes</h2>
+<h2 class="mt-0">Understanding Tropes</h2>
 
-<p>These are the large-scale dynamics that define a romance. Readers often search for books by trope, so understanding how to execute them well is essential.</p>
+<p>Tropes aren't clichés—they're reader expectations. When someone picks up a book tagged "enemies to lovers," they're not hoping to be surprised. They WANT the enemies-to-lovers experience. They're paying for it. Your job is to deliver it in a way that feels fresh.</p>
 
-<p>For each trope you identify, note where it's established and where it pays off. This will help you see the structure behind reader satisfaction.</p>
+<p>The difference between a well-executed trope and a cliché is specificity. Generic tropes bore readers. Specific tropes thrill them.</p>
+
+<div class="insight-box">
+    <span class="insight-label">What Makes a Trope Work</span>
+    <p>When analysing trope execution, ask yourself these questions:</p>
+
+    <p><strong>Is the Setup Earned?</strong> For enemies-to-lovers, is the hatred justified and specific? For forced proximity, is the proximity genuinely inescapable? Weak setups create weak payoffs.</p>
+
+    <p><strong>Is the Progression Believable?</strong> Readers want to feel each step of the journey. If enemies become lovers too quickly, we don't believe it. If it takes too long, we get frustrated. How does the author pace the shift?</p>
+
+    <p><strong>Is the Payoff Specific?</strong> The best trope payoffs are unique to these characters. A "who did this to you?" scene hits different when we know exactly what this character would do for revenge. How does the author make familiar moments feel specific?</p>
+
+    <p><strong>Does It Serve the Larger Story?</strong> Tropes shouldn't feel like checkboxes. They should be integral to the character arcs and plot. How does the trope connect to the themes of the book?</p>
+</div>
+
+<h2>Macro Tropes</h2>
+
+<p>These are the large-scale dynamics that define the romance. Mark which ones appear in your book, then analyse how they're executed.</p>
 
 <div class="example-box">
     <span class="example-label">Enemies to Lovers: The Four Phases</span>
-    <p><strong>Phase 1 — Justified Hatred:</strong> We need to believe the hatred is real. Is it personal or systemic?</p>
-    <p><strong>Phase 2 — Crack in Armour:</strong> One character sees the other contradict their assumptions.</p>
-    <p><strong>Phase 3 — Reluctant Allies:</strong> Circumstances force cooperation. "I don't like you, but I need you to survive."</p>
-    <p><strong>Phase 4 — Respect to Attraction:</strong> Grudging admiration becomes desire.</p>
+    <p><strong>Phase 1 — Justified Hatred:</strong> The hatred must feel REAL. Ask: Is it personal (he killed my family) or systemic (our peoples are at war)? Is it based on a misunderstanding that will be corrected, or a genuine wrong that requires redemption?</p>
+    <p><strong>Phase 2 — Crack in Armor:</strong> One character sees the other contradict their assumptions. This is often a witnessed act of kindness, competence, or vulnerability. What moment makes one think "maybe I was wrong about them"?</p>
+    <p><strong>Phase 3 — Reluctant Allies:</strong> External circumstances force cooperation. "I don't like you, but I need you to survive." How does the author force proximity while maintaining animosity?</p>
+    <p><strong>Phase 4 — Respect to Attraction:</strong> Grudging admiration becomes desire. This is where tension becomes romantic. What specific moment marks the shift?</p>
+</div>
+
+<div class="example-box">
+    <span class="example-label">Forced Proximity: How to Make It Work</span>
+    <p><strong>The Trap Must Be Airtight:</strong> Readers will poke holes. If characters could reasonably leave, they would. The author must close all escape routes.</p>
+    <p><strong>Common Setups:</strong> Magical bonds, captivity, dangerous journeys, one-bed-in-an-inn, shared hiding place, academy/court assignments, fake relationships that require constant presence.</p>
+    <p><strong>What to Watch:</strong> How does the author use physical closeness to create emotional intimacy? What conversations happen because they can't escape each other?</p>
+</div>
+
+<div class="example-box">
+    <span class="example-label">Fated Mates/Soul Bonds: The Challenge</span>
+    <p><strong>The Problem:</strong> If they're fated, where's the tension? Good authors create conflict BECAUSE of the bond, not despite it.</p>
+    <p><strong>What to Watch:</strong> Does one character resist the bond? Is the bond incomplete or conditional? Does the bond create obligations that conflict with desires?</p>
+    <p><strong>The Best Version:</strong> The bond forces them together, but they must CHOOSE each other to make it real. Fate brings them together; love makes them stay.</p>
 </div>
 
 <table>
@@ -2133,9 +3489,23 @@
 
 <h2>Micro Tropes (Viral Moments)</h2>
 
-<p>These are the specific scenes readers screenshot and share on social media. They're often the moments that sell books on BookTok and Bookstagram.</p>
+<p>These are the specific scenes readers screenshot and share on social media. They're the moments that sell books on BookTok and Bookstagram. They're the lines people tattoo on their arms.</p>
 
-<p>When you find one, note what made it work. These are the beats readers crave.</p>
+<p>Understanding WHY these moments work is essential for any romantasy writer.</p>
+
+<div class="insight-box">
+    <span class="insight-label">What Makes Micro Tropes Go Viral</span>
+
+    <p><strong>"Who Did This To You?"</strong> This works because it shows protective rage from someone who was previously cold or restrained. The power dynamic shifts. The reader thinks: "They would burn down the world for this person." Look for: What triggers the rage? How is it expressed? What does it reveal about their feelings?</p>
+
+    <p><strong>Wound Tending / Injury Care:</strong> Forced intimacy + vulnerability + tenderness = reader catnip. One character must touch the other. There's often pain, which creates permission for comfort. Look for: How does the author slow down time? What small gestures carry emotional weight?</p>
+
+    <p><strong>The Training Scene:</strong> Physical contact + competence display + sweating/breathing hard = tension. The best training scenes are foreplay disguised as combat. Look for: How does the author make fighting feel like flirting?</p>
+
+    <p><strong>Jealousy / Possessive Moment:</strong> "Mine." The appeal is seeing how much one character cares, often before they've admitted it to themselves. Look for: What triggers the jealousy? How does it manifest? Is it addressed or suppressed?</p>
+
+    <p><strong>Almost Kiss (Interrupted):</strong> Delayed gratification builds tension. Look for: How close do they get? What interrupts? How do they react to the interruption?</p>
+</div>
 
 <table>
     <thead>
@@ -2203,17 +3573,37 @@
      SECTION: SPICE & INTIMACY
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="spice">
     <span class="section-label">Section Six</span>
     <h1>Spice & Intimacy</h1>
     <p class="section-intro">Intimacy scenes work best when they serve the story. This section helps you analyse where physical moments happen, what purpose they serve, and how the relationship changes afterward.</p>
 </div>
 
-<h2 class="mt-0">Heat Level Progression</h2>
+<h2 class="mt-0">Intimacy as Storytelling</h2>
 
-<p>Tracking intimate scenes in sequence reveals pacing patterns. You'll notice how authors build tension and where they place emotional turning points.</p>
+<p>The best intimacy scenes aren't gratuitous—they're story. They reveal character, advance the relationship, and mark emotional turning points. When analysing spice, don't just note WHAT happens. Focus on WHY and WHAT IT MEANS.</p>
 
-<p>Use the scale below for consistent ratings across different books.</p>
+<div class="insight-box">
+    <span class="insight-label">What to Analyse in Intimacy Scenes</span>
+
+    <p><strong>Placement Matters:</strong> Where in the story does physical intimacy occur? Too early feels unearned. Too late frustrates readers. Most successful romantasy places the first major intimate scene around 50-65% of the book—after the relationship has built, but before the black moment can destroy it.</p>
+
+    <p><strong>What Triggers It:</strong> Is this a celebration? A comfort after danger? A moment of weakness? An impulsive mistake? The emotional context shapes how readers interpret the scene.</p>
+
+    <p><strong>Power Dynamics:</strong> Who initiates? Who's more vulnerable? Does the power dynamic shift during the scene? In the best scenes, both characters give and take.</p>
+
+    <p><strong>What's Revealed:</strong> Good intimacy scenes reveal something new about the characters—their fears, their tenderness, their hidden desires. What do we learn that we couldn't learn any other way?</p>
+
+    <p><strong>What Changes After:</strong> If nothing changes after an intimate scene, it didn't do its job. Does the relationship deepen? Do new fears emerge? Does vulnerability create new problems?</p>
+
+    <p><strong>The Language Choices:</strong> Pay attention to word choices. Clinical language creates distance. Poetic language creates romance. Raw language creates intensity. How do the author's word choices affect the tone?</p>
+</div>
+
+<h2>Heat Level Progression</h2>
+
+<p>Tracking intimate scenes in sequence reveals pacing patterns. Most books escalate gradually, then deliver the most intense scene after maximum emotional build-up.</p>
+
+<p>Use the scale below for consistent ratings.</p>
 
 <div class="quick-ref">
     <h4>Heat Level Scale</h4>
@@ -2267,20 +3657,25 @@
     </tbody>
 </table>
 
+<h2>Banter & Verbal Chemistry</h2>
+
+<p>Chemistry isn't just physical. Often the most memorable romantic tension lives in dialogue. The way characters talk to each other—the teasing, the double meanings, the things left unsaid—can be more charged than any physical scene.</p>
+
 <div class="insight-box">
-    <span class="insight-label">Questions to Consider</span>
-    <p>For each significant intimate scene, think about a few things.</p>
-    <p>What's the emotional context? Are the characters reuniting, recovering from danger, seeking comfort, or celebrating victory?</p>
-    <p>What does this scene reveal about the characters that we didn't know before?</p>
-    <p>How does the relationship change afterward? Does intimacy bring them closer or create new tension?</p>
-    <p>Is this scene woven into the plot, or does the plot pause while it happens?</p>
+    <span class="insight-label">What Creates Verbal Chemistry</span>
+
+    <p><strong>Subtext:</strong> Characters saying one thing while meaning another. "I hate you" that sounds like "I want you." Insults that are really compliments. Pay attention to the gap between what's said and what's meant.</p>
+
+    <p><strong>Rhythm & Pacing:</strong> Great banter has a rhythm—quick back-and-forth, interruptions, finishing each other's sentences. How does the author create this breathless quality?</p>
+
+    <p><strong>Power Shifts:</strong> One character has the upper hand, then the other. The best verbal sparring feels like a duel where the lead keeps changing. Who wins each exchange? How?</p>
+
+    <p><strong>Callbacks:</strong> References to earlier conversations create intimacy. They have a shared history, inside jokes, a private language. What callbacks does the author use?</p>
+
+    <p><strong>Vulnerability Through Wit:</strong> Sometimes a character reveals something true while pretending to joke. The other character catches it. How does the author weave real emotion into banter?</p>
 </div>
 
-<h3>Banter & Verbal Chemistry</h3>
-
-<p>Chemistry isn't just physical. The best romantic tension often lives in dialogue. Collect exchanges that made you feel the spark between characters.</p>
-
-<p>Try to identify what technique the author used. A few common ones are listed below the table.</p>
+<p>Collect exchanges that sparked chemistry. Try to identify the technique.</p>
 
 <table>
     <thead>
@@ -2316,15 +3711,35 @@
      SECTION: CRAFT MOVES
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="craft-moves">
     <span class="section-label">Section Seven</span>
     <h1>Craft Moves to Steal</h1>
     <p class="section-intro">This is your personal library. When you read something that makes you think, "I want to do that," capture it here. Over time, you'll build a collection of techniques to draw from in your own writing.</p>
 </div>
 
-<h2 class="mt-0">Technique Collection</h2>
+<h2 class="mt-0">Building Your Craft Library</h2>
 
-<p>When a passage stops you in your tracks, copy it here. Then ask yourself what the author did that made it work. Being specific about the technique will help you apply it later.</p>
+<p>Great writers are thieves. Not of words—of techniques. When you read something that makes you stop and think "how did they DO that?", you've found gold. Your job is to mine it.</p>
+
+<div class="insight-box">
+    <span class="insight-label">How to Extract Usable Lessons</span>
+
+    <p><strong>Don't Just Copy—Analyse:</strong> Anyone can write down a beautiful sentence. The craft lesson is in understanding WHY it's beautiful. Break it apart. What specific choices make it work?</p>
+
+    <p><strong>Opening Hooks:</strong> How does the author create immediate interest? Look for: questions raised, tension introduced, voice established, world hinted. The best first lines do multiple jobs at once.</p>
+
+    <p><strong>Sensory Details:</strong> Which senses does the author use? How specific are the details? Notice: Great writers don't describe everything—they pick the ONE detail that brings a scene alive.</p>
+
+    <p><strong>Tension Building:</strong> How does the author make you turn pages? Look for: unanswered questions, delayed revelations, ticking clocks, competing desires. How do they make you NEED to know what happens next?</p>
+
+    <p><strong>Emotional Moments:</strong> What made you feel something? Pay attention to pacing—did time slow down? Did the author use space, silence, or a single detail? Emotion often lives in what's NOT said.</p>
+
+    <p><strong>Chapter Endings:</strong> How does the author end chapters? Hook (question raised), cliff (danger), revelation (new information), or beat (emotional landing)? Strong chapter endings are why readers stay up past midnight.</p>
+</div>
+
+<h2>Technique Collection</h2>
+
+<p>Copy passages that stopped you. Then be specific about the technique.</p>
 
 <table>
     <thead>
@@ -2389,7 +3804,7 @@
      SECTION: POST-READ SYNTHESIS
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="synthesis">
     <span class="section-label">Section Eight</span>
     <h1>Post-Read Synthesis</h1>
     <p class="section-intro">This is where your scattered observations become usable knowledge. Try to complete this section within a day of finishing the book, while everything is still fresh.</p>
@@ -2473,15 +3888,30 @@
 
 <h3>Lessons for My Writing</h3>
 
-<p>This is the most important part. Everything you've tracked should lead to insights you can apply to your own work.</p>
+<p>This is the most important part. All your tracking, all your analysis—it only matters if it changes how you write.</p>
 
-<h4>Three things this book did exceptionally well:</h4>
+<div class="insight-box">
+    <span class="insight-label">Questions to Drive Your Synthesis</span>
+
+    <p><strong>What Made This Book Work (Or Not)?</strong> Not "I liked it" or "I didn't like it"—WHY? Be specific. The answers will teach you something about reader expectations, genre conventions, and your own taste.</p>
+
+    <p><strong>What Can I Steal?</strong> Not plagiarize—LEARN FROM. A technique, a structure, a way of handling a trope. How can you apply it to YOUR story?</p>
+
+    <p><strong>What Would I Do Differently?</strong> This isn't criticism—it's craft analysis. If something didn't work for you, articulate why. Then figure out how YOU would solve that problem.</p>
+
+    <p><strong>What Does This Book Do That My Book Needs?</strong> The most useful comp analysis is personal. What does this author do well that you struggle with? That's what you should study most closely.</p>
+</div>
+
+<h4>Three things this book did exceptionally well (be specific):</h4>
 <div class="write-lines"></div>
 
-<h4>One thing I would have done differently:</h4>
+<h4>One thing I would have done differently (and why):</h4>
 <div class="write-lines"></div>
 
 <h4>Specific techniques I will try in my current project:</h4>
+<div class="write-lines"></div>
+
+<h4>The single most important craft lesson from this book:</h4>
 <div class="write-lines"></div>
 
 <div class="flourish-divider">
