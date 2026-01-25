@@ -776,6 +776,20 @@
             color: var(--color-text-main);
         }
 
+        .toc-link {
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--color-text-main);
+            text-decoration: none;
+            display: block;
+            padding: 0.2rem 0;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .toc-link:hover {
+            color: var(--color-guide);
+        }
+
         .toc-dots {
             flex-grow: 1;
             border-bottom: 1px dotted #ccc;
@@ -893,55 +907,30 @@
 <div class="toc-page">
     <h2 class="toc-title">Contents</h2>
 
-    <div class="toc-section">
+    <div class="toc-section" style="margin-bottom: 1rem;">
         <span class="toc-label">Getting Started</span>
-        <div class="toc-item"><span class="toc-name">How to Use This Guide</span><span class="toc-dots"></span></div>
-        <div class="toc-item"><span class="toc-name">Key Terms</span><span class="toc-dots"></span></div>
+        <div class="toc-item"><a href="#how-to-use" class="toc-link">How to Use This Guide</a></div>
+        <div class="toc-item"><a href="#book-info" class="toc-link">Pre-Read Setup</a></div>
+        <div class="toc-item"><a href="#craft-toolkit" class="toc-link">The Craft Toolkit</a></div>
     </div>
 
-    <div class="toc-section">
-        <span class="toc-label">Section One</span>
-        <div class="toc-item"><span class="toc-name">Pre-Read Setup</span><span class="toc-dots"></span></div>
+    <div class="toc-section" style="margin-bottom: 1rem;">
+        <span class="toc-label">While You Read</span>
+        <div class="toc-item"><a href="#chapter-logs" class="toc-link">Chapter-by-Chapter Logs</a></div>
     </div>
 
-    <div class="toc-section">
-        <span class="toc-label">Craft Reference</span>
-        <div class="toc-item"><span class="toc-name">The Craft Toolkit</span><span class="toc-dots"></span></div>
+    <div class="toc-section" style="margin-bottom: 1rem;">
+        <span class="toc-label">Deep Analysis</span>
+        <div class="toc-item"><a href="#romance-beats" class="toc-link">Romance Arc Tracking</a></div>
+        <div class="toc-item"><a href="#fantasy-plot" class="toc-link">Fantasy Plot Tracking</a></div>
+        <div class="toc-item"><a href="#tropes" class="toc-link">Trope Execution</a></div>
+        <div class="toc-item"><a href="#spice" class="toc-link">Spice & Intimacy</a></div>
     </div>
 
-    <div class="toc-section">
-        <span class="toc-label">Section Two</span>
-        <div class="toc-item"><span class="toc-name">Chapter-by-Chapter Logs</span><span class="toc-dots"></span></div>
-    </div>
-
-    <div class="toc-section">
-        <span class="toc-label">Section Three</span>
-        <div class="toc-item"><span class="toc-name">Romance Arc Tracking</span><span class="toc-dots"></span></div>
-    </div>
-
-    <div class="toc-section">
-        <span class="toc-label">Section Four</span>
-        <div class="toc-item"><span class="toc-name">Fantasy Plot Tracking</span><span class="toc-dots"></span></div>
-    </div>
-
-    <div class="toc-section">
-        <span class="toc-label">Section Five</span>
-        <div class="toc-item"><span class="toc-name">Trope Execution</span><span class="toc-dots"></span></div>
-    </div>
-
-    <div class="toc-section">
-        <span class="toc-label">Section Six</span>
-        <div class="toc-item"><span class="toc-name">Spice & Intimacy</span><span class="toc-dots"></span></div>
-    </div>
-
-    <div class="toc-section">
-        <span class="toc-label">Section Seven</span>
-        <div class="toc-item"><span class="toc-name">Craft Moves to Steal</span><span class="toc-dots"></span></div>
-    </div>
-
-    <div class="toc-section">
-        <span class="toc-label">Section Eight</span>
-        <div class="toc-item"><span class="toc-name">Post-Read Synthesis</span><span class="toc-dots"></span></div>
+    <div class="toc-section" style="margin-bottom: 1rem;">
+        <span class="toc-label">After You Finish</span>
+        <div class="toc-item"><a href="#craft-moves" class="toc-link">Craft Moves to Steal</a></div>
+        <div class="toc-item"><a href="#synthesis" class="toc-link">Post-Read Synthesis</a></div>
     </div>
 </div>
 
@@ -950,7 +939,7 @@
      HOW TO USE THIS GUIDE
      ========================================== -->
 
-<h2 class="mt-0">How to Use This Guide</h2>
+<h2 class="mt-0" id="how-to-use">How to Use This Guide</h2>
 
 <p class="lead-text">When you read for pleasure, you let the story wash over you. That's wonderful, but it won't teach you how to write.</p>
 
@@ -1143,7 +1132,7 @@
      SECTION: CRAFT REFERENCE GUIDE
      ========================================== -->
 
-<div class="section-title-page">
+<div class="section-title-page" id="craft-toolkit">
     <span class="section-label">Craft Reference</span>
     <h1>The Craft Toolkit</h1>
     <p class="section-intro">Before you start logging chapters, familiarize yourself with these core craft concepts. This is your cheat sheet—refer back to it whenever you're not sure what you're looking at.</p>
