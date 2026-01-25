@@ -781,13 +781,31 @@
             font-size: 0.95rem;
             color: var(--color-text-main);
             text-decoration: none;
-            display: block;
-            padding: 0.2rem 0;
-            border-bottom: 1px dotted #ddd;
+            display: flex;
+            align-items: baseline;
+            padding: 0.25rem 0;
         }
 
         .toc-link:hover {
             color: var(--color-guide);
+        }
+
+        .toc-link::after {
+            content: target-counter(attr(href), page);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .toc-link .toc-text {
+            flex-shrink: 0;
+        }
+
+        .toc-link .toc-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #ccc;
+            margin: 0 0.5rem;
+            min-width: 1rem;
         }
 
         .toc-dots {
@@ -909,28 +927,28 @@
 
     <div class="toc-section" style="margin-bottom: 1rem;">
         <span class="toc-label">Getting Started</span>
-        <div class="toc-item"><a href="#how-to-use" class="toc-link">How to Use This Guide</a></div>
-        <div class="toc-item"><a href="#book-info" class="toc-link">Pre-Read Setup</a></div>
-        <div class="toc-item"><a href="#craft-toolkit" class="toc-link">The Craft Toolkit</a></div>
+        <div class="toc-item"><a href="#how-to-use" class="toc-link"><span class="toc-text">How to Use This Guide</span><span class="toc-dots"></span></a></div>
+        <div class="toc-item"><a href="#book-info" class="toc-link"><span class="toc-text">Pre-Read Setup</span><span class="toc-dots"></span></a></div>
+        <div class="toc-item"><a href="#craft-toolkit" class="toc-link"><span class="toc-text">The Craft Toolkit</span><span class="toc-dots"></span></a></div>
     </div>
 
     <div class="toc-section" style="margin-bottom: 1rem;">
         <span class="toc-label">While You Read</span>
-        <div class="toc-item"><a href="#chapter-logs" class="toc-link">Chapter-by-Chapter Logs</a></div>
+        <div class="toc-item"><a href="#chapter-logs" class="toc-link"><span class="toc-text">Chapter-by-Chapter Logs</span><span class="toc-dots"></span></a></div>
     </div>
 
     <div class="toc-section" style="margin-bottom: 1rem;">
         <span class="toc-label">Deep Analysis</span>
-        <div class="toc-item"><a href="#romance-beats" class="toc-link">Romance Arc Tracking</a></div>
-        <div class="toc-item"><a href="#fantasy-plot" class="toc-link">Fantasy Plot Tracking</a></div>
-        <div class="toc-item"><a href="#tropes" class="toc-link">Trope Execution</a></div>
-        <div class="toc-item"><a href="#spice" class="toc-link">Spice & Intimacy</a></div>
+        <div class="toc-item"><a href="#romance-beats" class="toc-link"><span class="toc-text">Romance Arc Tracking</span><span class="toc-dots"></span></a></div>
+        <div class="toc-item"><a href="#fantasy-plot" class="toc-link"><span class="toc-text">Fantasy Plot Tracking</span><span class="toc-dots"></span></a></div>
+        <div class="toc-item"><a href="#tropes" class="toc-link"><span class="toc-text">Trope Execution</span><span class="toc-dots"></span></a></div>
+        <div class="toc-item"><a href="#spice" class="toc-link"><span class="toc-text">Spice & Intimacy</span><span class="toc-dots"></span></a></div>
     </div>
 
     <div class="toc-section" style="margin-bottom: 1rem;">
         <span class="toc-label">After You Finish</span>
-        <div class="toc-item"><a href="#craft-moves" class="toc-link">Craft Moves to Steal</a></div>
-        <div class="toc-item"><a href="#synthesis" class="toc-link">Post-Read Synthesis</a></div>
+        <div class="toc-item"><a href="#craft-moves" class="toc-link"><span class="toc-text">Craft Moves to Steal</span><span class="toc-dots"></span></a></div>
+        <div class="toc-item"><a href="#synthesis" class="toc-link"><span class="toc-text">Post-Read Synthesis</span><span class="toc-dots"></span></a></div>
     </div>
 </div>
 
@@ -1043,12 +1061,12 @@
      KEY TERMS
      ========================================== -->
 
-<h2>Key Terms</h2>
+<h2 style="break-before: page;">Key Terms</h2>
 
-<p>You'll see these terms throughout your analysis. Knowing what they mean will help you identify them in the books you read.</p>
+<p style="margin-bottom: 0.5rem;">You'll see these terms throughout your analysis. Knowing what they mean will help you identify them in the books you read.</p>
 
-<div class="quick-ref">
-    <h4>Essential Vocabulary</h4>
+<div class="quick-ref" style="margin-top: 0;">
+    <h4 class="mt-0">Essential Vocabulary</h4>
     <p><strong>Adhesion:</strong> This is the external force that keeps characters together when they'd rather walk away. In romantasy, it's often fantasy-based. A curse, a bargain, a war, a shared quest. It creates forced proximity.</p>
     <p><strong>Ghost/Wound:</strong> The past trauma that shapes how your character sees love and the world. It explains why they behave the way they do and creates internal conflict.</p>
     <p><strong>The Lie:</strong> A false belief the character holds that must be overcome for them to grow. In romance, this often sounds like "Love is weakness" or "I'm unworthy of being loved."</p>
@@ -1129,6 +1147,9 @@
 <h4>What weakness in my own writing do I hope this book can help me improve?</h4>
 <div class="write-lines"></div>
 
+<h4>Why did I choose THIS book to study right now?</h4>
+<div class="write-lines" style="min-height: 1.5in;"></div>
+
 
 <!-- ==========================================
      SECTION: CRAFT REFERENCE GUIDE
@@ -1162,7 +1183,7 @@
     <p><strong>Resolution:</strong> New normal established. Final image mirrors or contrasts opening.</p>
 </div>
 
-<h2>Scene Craft: The Building Blocks</h2>
+<h2 style="break-before: page;">Scene Craft: The Building Blocks</h2>
 
 <p>Stories are made of scenes. A scene is a unit of story that happens in one time and place, with a clear purpose. Understanding scenes is understanding craft.</p>
 
@@ -1182,7 +1203,7 @@
     <p><strong>Scene Types:</strong> Action scenes (something happens), reaction scenes (characters process), revelation scenes (information delivered), transition scenes (moving through time/space).</p>
 </div>
 
-<h2>Tension & Pacing: The Rhythm</h2>
+<h2 style="break-before: page;">Tension & Pacing: The Rhythm</h2>
 
 <p>Pacing isn't just "fast" or "slow"—it's the rhythm of tension and release that keeps readers turning pages.</p>
 
@@ -1202,7 +1223,7 @@
     <p><strong>Scene Breaks:</strong> White space signals time passing, perspective shifts, or tonal changes. Controls reader breathing room.</p>
 </div>
 
-<h2>Character Craft: Making People Real</h2>
+<h2 style="break-before: page;">Character Craft: Making People Real</h2>
 
 <p>Characters aren't just descriptions—they're patterns of behavior, contradiction, and desire that create the illusion of a real person on the page.</p>
 
@@ -1222,7 +1243,7 @@
     <p><strong>Voice:</strong> How a character speaks—word choice, rhythm, what they notice—should be distinct from other characters.</p>
 </div>
 
-<h2>Line-Level Craft: The Micro Skills</h2>
+<h2 style="break-before: page;">Line-Level Craft: The Micro Skills</h2>
 
 <p>Big-picture structure matters, but stories live or die at the sentence level. These are the small moves that separate good from great.</p>
 
@@ -1242,7 +1263,7 @@
     <p><strong>Sensory Balance:</strong> Most writers default to visual. Use sound, smell, touch, taste. Smell is especially powerful for memory and emotion.</p>
 </div>
 
-<h2>Dialogue Craft: Making Characters Talk</h2>
+<h2 style="break-before: page;">Dialogue Craft: Making Characters Talk</h2>
 
 <p>Great dialogue does multiple jobs at once—reveals character, advances plot, creates tension, and entertains—all while sounding natural.</p>
 
