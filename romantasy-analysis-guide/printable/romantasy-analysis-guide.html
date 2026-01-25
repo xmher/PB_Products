@@ -717,6 +717,64 @@
         .break-before { break-before: page; }
         .break-after { break-after: page; }
 
+        /* TABLE OF CONTENTS */
+        .toc-page {
+            break-after: page;
+            padding-top: 1rem;
+        }
+
+        .toc-title {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-noir);
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .toc-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .toc-label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--theme-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+        }
+
+        .toc-name {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-text-main);
+        }
+
+        .toc-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted #ccc;
+            margin: 0 0.5rem;
+            min-width: 2rem;
+        }
+
+        .toc-page-num {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
         /* SCREEN/PRINT ADJUSTMENTS */
         @media screen {
             body {
@@ -750,6 +808,61 @@
     <p class="subtitle">The Romantasy Analysis Companion</p>
     <div class="divider"></div>
     <p class="tagline">Extract craft lessons, track story structure, and understand the techniques that make romantasy novels work</p>
+</div>
+
+
+<!-- ==========================================
+     TABLE OF CONTENTS
+     ========================================== -->
+
+<div class="toc-page">
+    <h2 class="toc-title">Contents</h2>
+
+    <div class="toc-section">
+        <span class="toc-label">Getting Started</span>
+        <div class="toc-item"><span class="toc-name">How to Use This Guide</span><span class="toc-dots"></span></div>
+        <div class="toc-item"><span class="toc-name">Key Terms</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section One</span>
+        <div class="toc-item"><span class="toc-name">Pre-Read Setup</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Two</span>
+        <div class="toc-item"><span class="toc-name">Chapter-by-Chapter Logs</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Three</span>
+        <div class="toc-item"><span class="toc-name">Romance Arc Tracking</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Four</span>
+        <div class="toc-item"><span class="toc-name">Fantasy Plot Tracking</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Five</span>
+        <div class="toc-item"><span class="toc-name">Trope Execution</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Six</span>
+        <div class="toc-item"><span class="toc-name">Spice & Intimacy</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Seven</span>
+        <div class="toc-item"><span class="toc-name">Craft Moves to Steal</span><span class="toc-dots"></span></div>
+    </div>
+
+    <div class="toc-section">
+        <span class="toc-label">Section Eight</span>
+        <div class="toc-item"><span class="toc-name">Post-Read Synthesis</span><span class="toc-dots"></span></div>
+    </div>
 </div>
 
 
@@ -995,7 +1108,7 @@
     </div>
 </div>
 
-<!-- Repeat Chapter Log x4 more -->
+<!-- Chapter logs 2-40 -->
 <div class="chapter-log">
     <div class="chapter-log-header">
         <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
@@ -1040,7 +1153,579 @@
     </div>
 </div>
 
-<p class="text-center text-muted" style="margin: 2rem 0;"><em>(Additional chapter log pages in full printed version)</em></p>
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<div class="chapter-log">
+    <div class="chapter-log-header">
+        <div><strong>Chapter:</strong> ________<br><strong>Pages:</strong> _____ – _____</div>
+        <div><strong>POV Character:</strong><br>_______________________</div>
+        <div><strong>Location:</strong><br>_______________________</div>
+    </div>
+    <h4 class="mt-0">One-Line Summary</h4>
+    <div class="write-space-sm"></div>
+    <h4>Beat Types <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check all)</span></h4>
+    <ul class="checklist" style="columns: 3; margin: 0.5rem 0;">
+        <li>Fantasy Plot</li><li>Romance Beat</li><li>World-Building</li>
+        <li>Character Reveal</li><li>Action/Battle</li><li>Quiet Moment</li>
+    </ul>
+    <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+    <div class="tension-row"><span class="tension-label">Romantic:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+    <div class="two-col" style="margin-top: 1rem;">
+        <div><h4 class="mt-0">Surprised me:</h4><div class="write-space-sm"></div></div>
+        <div><h4 class="mt-0">Craft move:</h4><div class="write-space-sm"></div></div>
+    </div>
+</div>
+
+<p class="text-center text-muted" style="margin: 2rem 0;"><em>Need more chapter logs? Print additional copies of this section as needed.</em></p>
 
 
 <!-- ==========================================
