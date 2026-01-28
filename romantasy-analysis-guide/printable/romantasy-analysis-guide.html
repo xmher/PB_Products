@@ -878,6 +878,56 @@
             @top-center { content: none; }
         }
 
+        /* COPYRIGHT PAGE */
+        .copyright-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 9in;
+            break-after: page;
+            page: copyright;
+        }
+
+        @page copyright {
+            @bottom-center { content: none; }
+            @bottom-left { content: none; }
+            @top-center { content: none; }
+        }
+
+        .copyright-page .copyright-logo svg {
+            width: 200px;
+            height: auto;
+        }
+
+        .copyright-page .copyright-text {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            color: var(--color-text-sub);
+            line-height: 1.9;
+            max-width: 420px;
+            margin-top: 2rem;
+        }
+
+        .copyright-page .copyright-text p {
+            text-align: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .copyright-page .copyright-notice {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-noir);
+            margin-bottom: 1.5rem;
+        }
+
+        .title-page .title-logo svg {
+            width: 130px;
+            height: auto;
+        }
+
         /* SCREEN/PRINT ADJUSTMENTS */
         @media screen {
             body {
@@ -932,6 +982,110 @@
     <p class="subtitle">The Romantasy Analysis Companion</p>
     <div class="divider"></div>
     <p class="tagline">Extract craft lessons, track story structure, and understand the techniques that make romantasy novels work</p>
+    <div class="title-logo" style="margin-top: 2rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 310">
+            <!-- Sparkle -->
+            <path d="M78,52 L82,38 L86,52 L100,56 L86,60 L82,74 L78,60 L64,56 Z" fill="#c9a240"/>
+            <path d="M63,34 L64.5,28 L66,34 L72,35.5 L66,37 L64.5,43 L63,37 L57,35.5 Z" fill="#c9a240" opacity="0.5"/>
+            <!-- Steam -->
+            <path d="M118,78 C124,58 110,48 118,28 C126,8 112,-2 118,-18" fill="none" stroke="#b5ad9c" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+            <path d="M148,70 C142,50 156,40 148,20 C140,0 154,-10 148,-26" fill="none" stroke="#b5ad9c" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+            <!-- Cup body -->
+            <path d="M65,95 L76,212 Q76,234 140,234 Q204,234 204,212 L215,95 Z" fill="#4a7a7a"/>
+            <g stroke="#3d6b6b" stroke-width="0.7" opacity="0.2">
+                <line x1="82" y1="100" x2="88" y2="228"/><line x1="100" y1="97" x2="103" y2="232"/>
+                <line x1="120" y1="96" x2="120" y2="234"/><line x1="140" y1="95" x2="140" y2="234"/>
+                <line x1="160" y1="96" x2="160" y2="234"/><line x1="180" y1="97" x2="183" y2="232"/>
+                <line x1="198" y1="100" x2="195" y2="228"/>
+            </g>
+            <!-- Cup rim -->
+            <ellipse cx="140" cy="95" rx="77" ry="17" fill="#3d6b6b"/>
+            <!-- Coffee surface -->
+            <ellipse cx="140" cy="97" rx="68" ry="13" fill="#8b6c42"/>
+            <!-- Handle -->
+            <path d="M215,128 C255,128 258,195 215,195" fill="none" stroke="#4a7a7a" stroke-width="16" stroke-linecap="round"/>
+            <path d="M215,142 C243,142 245,181 215,181" fill="none" stroke="#5a8a8a" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+            <!-- Pencil -->
+            <g transform="rotate(-32, 200, 82)">
+                <rect x="185" y="8" width="15" height="18" fill="#cc8b7a" rx="2"/>
+                <rect x="184" y="24" width="17" height="5" fill="#a8a8a8" rx="0.5"/>
+                <rect x="185" y="15" width="15" height="105" fill="#d4a843" rx="1"/>
+                <rect x="185" y="8" width="15" height="14" fill="#cc8b7a" rx="2"/>
+                <rect x="184" y="20" width="17" height="4" fill="#a8a8a8"/>
+                <polygon points="185,120 200,120 192.5,138" fill="#f0dcc8"/>
+                <polygon points="190,131 195,131 192.5,138" fill="#444"/>
+            </g>
+            <!-- Saucer -->
+            <ellipse cx="140" cy="239" rx="110" ry="22" fill="#4a7a7a"/>
+            <ellipse cx="140" cy="236" rx="92" ry="16" fill="#5a8a8a" opacity="0.5"/>
+            <!-- Shadow -->
+            <ellipse cx="140" cy="260" rx="95" ry="8" fill="#8b7a50" opacity="0.12"/>
+            <!-- PLOT BREW text -->
+            <defs><path id="titleBrewArc" d="M32,280 Q140,335 248,280"/></defs>
+            <text font-family="'Trebuchet MS', 'Arial Black', sans-serif" font-size="30" font-weight="900" fill="#5a5030" letter-spacing="4">
+                <textPath href="#titleBrewArc" startOffset="50%" text-anchor="middle">PLOT BREW</textPath>
+            </text>
+        </svg>
+    </div>
+</div>
+
+<!-- ==========================================
+     COPYRIGHT / LOGO PAGE
+     ========================================== -->
+
+<div class="copyright-page">
+    <div class="copyright-logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 310">
+            <!-- Sparkle -->
+            <path d="M78,52 L82,38 L86,52 L100,56 L86,60 L82,74 L78,60 L64,56 Z" fill="#c9a240"/>
+            <path d="M63,34 L64.5,28 L66,34 L72,35.5 L66,37 L64.5,43 L63,37 L57,35.5 Z" fill="#c9a240" opacity="0.5"/>
+            <!-- Steam -->
+            <path d="M118,78 C124,58 110,48 118,28 C126,8 112,-2 118,-18" fill="none" stroke="#b5ad9c" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+            <path d="M148,70 C142,50 156,40 148,20 C140,0 154,-10 148,-26" fill="none" stroke="#b5ad9c" stroke-width="4" stroke-linecap="round" opacity="0.45"/>
+            <!-- Cup body -->
+            <path d="M65,95 L76,212 Q76,234 140,234 Q204,234 204,212 L215,95 Z" fill="#4a7a7a"/>
+            <g stroke="#3d6b6b" stroke-width="0.7" opacity="0.2">
+                <line x1="82" y1="100" x2="88" y2="228"/><line x1="100" y1="97" x2="103" y2="232"/>
+                <line x1="120" y1="96" x2="120" y2="234"/><line x1="140" y1="95" x2="140" y2="234"/>
+                <line x1="160" y1="96" x2="160" y2="234"/><line x1="180" y1="97" x2="183" y2="232"/>
+                <line x1="198" y1="100" x2="195" y2="228"/>
+            </g>
+            <!-- Cup rim -->
+            <ellipse cx="140" cy="95" rx="77" ry="17" fill="#3d6b6b"/>
+            <!-- Coffee surface -->
+            <ellipse cx="140" cy="97" rx="68" ry="13" fill="#8b6c42"/>
+            <!-- Handle -->
+            <path d="M215,128 C255,128 258,195 215,195" fill="none" stroke="#4a7a7a" stroke-width="16" stroke-linecap="round"/>
+            <path d="M215,142 C243,142 245,181 215,181" fill="none" stroke="#5a8a8a" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+            <!-- Pencil -->
+            <g transform="rotate(-32, 200, 82)">
+                <rect x="185" y="8" width="15" height="18" fill="#cc8b7a" rx="2"/>
+                <rect x="184" y="24" width="17" height="5" fill="#a8a8a8" rx="0.5"/>
+                <rect x="185" y="15" width="15" height="105" fill="#d4a843" rx="1"/>
+                <rect x="185" y="8" width="15" height="14" fill="#cc8b7a" rx="2"/>
+                <rect x="184" y="20" width="17" height="4" fill="#a8a8a8"/>
+                <polygon points="185,120 200,120 192.5,138" fill="#f0dcc8"/>
+                <polygon points="190,131 195,131 192.5,138" fill="#444"/>
+            </g>
+            <!-- Saucer -->
+            <ellipse cx="140" cy="239" rx="110" ry="22" fill="#4a7a7a"/>
+            <ellipse cx="140" cy="236" rx="92" ry="16" fill="#5a8a8a" opacity="0.5"/>
+            <!-- Shadow -->
+            <ellipse cx="140" cy="260" rx="95" ry="8" fill="#8b7a50" opacity="0.12"/>
+            <!-- PLOT BREW text -->
+            <defs><path id="copyrightBrewArc" d="M32,280 Q140,335 248,280"/></defs>
+            <text font-family="'Trebuchet MS', 'Arial Black', sans-serif" font-size="30" font-weight="900" fill="#5a5030" letter-spacing="4">
+                <textPath href="#copyrightBrewArc" startOffset="50%" text-anchor="middle">PLOT BREW</textPath>
+            </text>
+        </svg>
+    </div>
+
+    <div class="copyright-text">
+        <p class="copyright-notice">&copy; 2025 Plot Brew. All rights reserved.</p>
+        <p>No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher.</p>
+        <p>This guide is intended for personal use only. Unauthorized copying, sharing, selling, or redistribution of this material is strictly prohibited.</p>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: var(--color-text-muted);">Read Like a Writer: The Romantasy Analysis Companion<br>Published by Plot Brew</p>
+    </div>
 </div>
 
 
