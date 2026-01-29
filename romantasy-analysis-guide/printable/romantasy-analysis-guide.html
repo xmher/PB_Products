@@ -1030,6 +1030,19 @@
             accent-color: var(--theme-color);
         }
 
+        /* Quick-Fill path label */
+        .qf-label {
+            font-size: 0.55rem;
+            font-weight: 700;
+            color: var(--theme-color);
+            background: color-mix(in srgb, var(--theme-color) 12%, white);
+            padding: 0.5px 3px;
+            border-radius: 2px;
+            margin-left: 0.15rem;
+            vertical-align: super;
+            letter-spacing: 0.02em;
+        }
+
         .checklist li {
             cursor: pointer;
             user-select: none;
@@ -1206,7 +1219,7 @@
     <div class="insight-box">
         <span class="insight-label">Quick-Fill Path</span>
         <p>This takes about 2-3 minutes per chapter, plus 20 minutes when you finish the book.</p>
-        <p>You'll complete chapter logs with tension ratings, do a quick post-read synthesis, and capture 3-5 craft moves.</p>
+        <p>You'll complete chapter logs with tension ratings, do a quick post-read synthesis, and capture 3-5 craft moves. In the chapter logs, look for the <sup class="qf-label">QF</sup> marker next to each field that's part of this path.</p>
         <p>This is ideal if you're reading for pleasure but want to stay aware of craft.</p>
     </div>
 
@@ -1615,8 +1628,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1624,7 +1637,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -1638,7 +1651,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -1666,7 +1679,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -1679,8 +1692,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1688,7 +1701,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -1702,7 +1715,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -1730,7 +1743,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -1743,8 +1756,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1752,7 +1765,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -1766,7 +1779,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -1794,7 +1807,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -1807,8 +1820,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1816,7 +1829,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -1830,7 +1843,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -1858,7 +1871,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -1871,8 +1884,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1880,7 +1893,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -1894,7 +1907,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -1922,7 +1935,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -1935,8 +1948,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1944,7 +1957,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -1958,7 +1971,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -1986,7 +1999,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -1999,8 +2012,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2008,7 +2021,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2022,7 +2035,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2050,7 +2063,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2063,8 +2076,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2072,7 +2085,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2086,7 +2099,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2114,7 +2127,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2127,8 +2140,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2136,7 +2149,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2150,7 +2163,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2178,7 +2191,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2191,8 +2204,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2200,7 +2213,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2214,7 +2227,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2242,7 +2255,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2255,8 +2268,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2264,7 +2277,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2278,7 +2291,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2306,7 +2319,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2319,8 +2332,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2328,7 +2341,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2342,7 +2355,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2370,7 +2383,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2383,8 +2396,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2392,7 +2405,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2406,7 +2419,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2434,7 +2447,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2447,8 +2460,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2456,7 +2469,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2470,7 +2483,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2498,7 +2511,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2511,8 +2524,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2520,7 +2533,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2534,7 +2547,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2562,7 +2575,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2575,8 +2588,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2584,7 +2597,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2598,7 +2611,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2626,7 +2639,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2639,8 +2652,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2648,7 +2661,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2662,7 +2675,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2690,7 +2703,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2703,8 +2716,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2712,7 +2725,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2726,7 +2739,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2754,7 +2767,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2767,8 +2780,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2776,7 +2789,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2790,7 +2803,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2818,7 +2831,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2831,8 +2844,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2840,7 +2853,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2854,7 +2867,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2882,7 +2895,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2895,8 +2908,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2904,7 +2917,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2918,7 +2931,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -2946,7 +2959,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -2959,8 +2972,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2968,7 +2981,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -2982,7 +2995,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3010,7 +3023,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3023,8 +3036,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3032,7 +3045,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3046,7 +3059,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3074,7 +3087,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3087,8 +3100,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3096,7 +3109,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3110,7 +3123,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3138,7 +3151,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3151,8 +3164,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3160,7 +3173,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3174,7 +3187,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3202,7 +3215,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3215,8 +3228,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3224,7 +3237,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3238,7 +3251,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3266,7 +3279,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3279,8 +3292,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3288,7 +3301,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3302,7 +3315,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3330,7 +3343,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3343,8 +3356,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3352,7 +3365,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3366,7 +3379,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3394,7 +3407,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3407,8 +3420,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3416,7 +3429,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3430,7 +3443,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3458,7 +3471,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 </div>
 
@@ -3471,8 +3484,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
+        <div><strong>Arc Driver<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source<sup class="qf-label">QF</sup>:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3480,7 +3493,7 @@
             <h4 class="mt-0" style="margin-bottom: 0.2rem;">This chapter's JOB: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Why does it exist?</span></h4>
             <div class="write-space-xs"></div>
             
-            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary</h4>
+            <h4 style="margin-bottom: 0.2rem;">One-Sentence Summary<sup class="qf-label">QF</sup></h4>
             <p class="hint" style="margin: 0 0 0.2rem 0;">[Who] wants [what] but [obstacle] so [outcome]</p>
             <div class="write-space-xs"></div>
         </div>
@@ -3494,7 +3507,7 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <h4>Tension<sup class="qf-label">QF</sup> <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
             <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
             <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
@@ -3522,7 +3535,7 @@
         </div>
     </div>
 
-    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
+    <h4 style="margin-bottom: 0.2rem;">Craft Move to Steal<sup class="qf-label">QF</sup>: <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">Quote it if you can!</span></h4>
     <div class="write-space-md"></div>
 
     <p class="text-center text-muted" style="margin: 2rem 0 0 0;"><em>Need more chapter logs? Use the Chapter Logs Supplement for books with 30+ chapters.</em></p>
