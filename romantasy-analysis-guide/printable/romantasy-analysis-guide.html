@@ -599,19 +599,6 @@
             margin: 0.5rem 0;
         }
 
-        .rating-circle {
-            width: 22px;
-            height: 22px;
-            border: 2px solid var(--theme-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: var(--theme-color);
-        }
-
         /* FLOURISH DIVIDER */
         .flourish-divider {
             display: flex;
@@ -722,14 +709,10 @@
         }
 
         .tension-scale span {
-            width: 18px;
-            height: 18px;
-            border: 1px solid var(--theme-color);
             font-size: 0.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: white;
         }
 
         /* TWO COLUMN LAYOUT */
@@ -1000,22 +983,51 @@
             background: #fefdf5;
         }
 
-        .rating-circle.selected {
-            background: var(--theme-color);
-            color: white;
-        }
-        .rating-circle {
+        /* Inline checkbox groups (Arc Driver, Tension Source) */
+        .inline-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.2rem;
+            margin-left: 0.4rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            user-select: none;
+        }
+        .inline-check input[type="checkbox"] {
+            width: 11px;
+            height: 11px;
+            margin: 0;
+            accent-color: var(--theme-color);
         }
 
-        .tension-scale span {
+        /* Rating scale checkboxes (Heat Level, Mirror Effect) */
+        .rating-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.15rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--theme-color);
             cursor: pointer;
-            user-select: none;
         }
-        .tension-scale span.selected {
-            background: var(--theme-color);
-            color: white;
+        .rating-check input[type="checkbox"] {
+            width: 14px;
+            height: 14px;
+            margin: 0;
+            accent-color: var(--theme-color);
+        }
+
+        /* Tension scale checkboxes (1-10) */
+        .tension-scale label {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+            cursor: pointer;
+        }
+        .tension-scale input[type="checkbox"] {
+            width: 10px;
+            height: 10px;
+            margin: 0;
+            accent-color: var(--theme-color);
         }
 
         .checklist li {
@@ -1033,17 +1045,6 @@
             color: white;
             font-size: 0.75rem;
             font-weight: bold;
-        }
-
-        .circle-option {
-            cursor: pointer;
-            padding: 2px 6px;
-            border-radius: 3px;
-            user-select: none;
-        }
-        .circle-option.selected {
-            background: var(--theme-color);
-            color: white;
         }
 
     </style>
@@ -1328,14 +1329,14 @@
     <span class="field-value"></span>
 </div>
 
-<h4>Expected Heat Level <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle one)</span></h4>
+<h4>Expected Heat Level <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check one)</span></h4>
 <div class="rating-scale">
-    <span class="rating-circle">0</span>
-    <span class="rating-circle">1</span>
-    <span class="rating-circle">2</span>
-    <span class="rating-circle">3</span>
-    <span class="rating-circle">4</span>
-    <span class="rating-circle">5</span>
+    <label class="rating-check"><input type="checkbox"> 0</label>
+    <label class="rating-check"><input type="checkbox"> 1</label>
+    <label class="rating-check"><input type="checkbox"> 2</label>
+    <label class="rating-check"><input type="checkbox"> 3</label>
+    <label class="rating-check"><input type="checkbox"> 4</label>
+    <label class="rating-check"><input type="checkbox"> 5</label>
     <span class="text-muted" style="margin-left: 0.5rem; font-size: 0.8rem;">(0 = Clean, 5 = Explicit)</span>
 </div>
 
@@ -1614,8 +1615,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1637,9 +1638,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -1678,8 +1679,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1701,9 +1702,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -1742,8 +1743,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1765,9 +1766,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -1806,8 +1807,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1829,9 +1830,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -1870,8 +1871,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1893,9 +1894,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -1934,8 +1935,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -1957,9 +1958,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -1998,8 +1999,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2021,9 +2022,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2062,8 +2063,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2085,9 +2086,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2126,8 +2127,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2149,9 +2150,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2190,8 +2191,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2213,9 +2214,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2254,8 +2255,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2277,9 +2278,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2318,8 +2319,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2341,9 +2342,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2382,8 +2383,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2405,9 +2406,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2446,8 +2447,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2469,9 +2470,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2510,8 +2511,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2533,9 +2534,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2574,8 +2575,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2597,9 +2598,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2638,8 +2639,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2661,9 +2662,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2702,8 +2703,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2725,9 +2726,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2766,8 +2767,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2789,9 +2790,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2830,8 +2831,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2853,9 +2854,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2894,8 +2895,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2917,9 +2918,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -2958,8 +2959,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -2981,9 +2982,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3022,8 +3023,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3045,9 +3046,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3086,8 +3087,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3109,9 +3110,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3150,8 +3151,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3173,9 +3174,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3214,8 +3215,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3237,9 +3238,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3278,8 +3279,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3301,9 +3302,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3342,8 +3343,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3365,9 +3366,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3406,8 +3407,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3429,9 +3430,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -3470,8 +3471,8 @@
     </div>
 
     <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
-        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Fantasy &nbsp;| &nbsp;Romance &nbsp;| &nbsp;Both Intertwined</div>
-        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(circle)</span> &nbsp;Danger &nbsp;| &nbsp;Will-They/Won't-They &nbsp;| &nbsp;Mystery &nbsp;| &nbsp;Emotional Intimacy</div>
+        <div><strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
+        <div><strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.75rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
 
     <div class="two-col" style="margin-top: 0.5rem;">
@@ -3493,9 +3494,9 @@
                 <li>Action</li>
                 <li>Quiet</li>
             </ul>
-            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(circle)</span></h4>
-            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
-            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span></div></div>
+            <h4>Tension <span class="text-muted" style="font-weight: normal; font-size: 0.7rem;">(check one per row)</span></h4>
+            <div class="tension-row"><span class="tension-label">Romance:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
+            <div class="tension-row"><span class="tension-label">Plot:</span><div class="tension-scale"><label><input type="checkbox"> <span>1</span></label><label><input type="checkbox"> <span>2</span></label><label><input type="checkbox"> <span>3</span></label><label><input type="checkbox"> <span>4</span></label><label><input type="checkbox"> <span>5</span></label><label><input type="checkbox"> <span>6</span></label><label><input type="checkbox"> <span>7</span></label><label><input type="checkbox"> <span>8</span></label><label><input type="checkbox"> <span>9</span></label><label><input type="checkbox"> <span>10</span></label></div></div>
         </div>
     </div>
 
@@ -4348,13 +4349,13 @@
 <h4>Examples of the Emotional Mirror in this book:</h4>
 <div class="write-space-sm"></div>
 
-<h4>How strong is the mirror effect? <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(circle)</span></h4>
+<h4>How strong is the mirror effect? <span class="text-muted" style="font-weight: normal; font-size: 0.8rem;">(check one)</span></h4>
 <div class="rating-scale">
-    <span class="rating-circle">1</span>
-    <span class="rating-circle">2</span>
-    <span class="rating-circle">3</span>
-    <span class="rating-circle">4</span>
-    <span class="rating-circle">5</span>
+    <label class="rating-check"><input type="checkbox"> 1</label>
+    <label class="rating-check"><input type="checkbox"> 2</label>
+    <label class="rating-check"><input type="checkbox"> 3</label>
+    <label class="rating-check"><input type="checkbox"> 4</label>
+    <label class="rating-check"><input type="checkbox"> 5</label>
     <span class="text-muted" style="margin-left: 0.5rem; font-size: 0.8rem;">(1 = No mirror, 5 = World fully reflects relationship)</span>
 </div>
 
@@ -5175,31 +5176,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // 4. Rating circles: click to select (one per scale)
-    document.querySelectorAll('.rating-scale').forEach(function(scale) {
-        scale.querySelectorAll('.rating-circle').forEach(function(circle) {
-            circle.addEventListener('click', function() {
-                scale.querySelectorAll('.rating-circle').forEach(function(c) {
-                    c.classList.remove('selected');
-                });
-                circle.classList.toggle('selected');
-            });
-        });
-    });
-
-    // 5. Tension scale: click to select (one per row)
-    document.querySelectorAll('.tension-scale').forEach(function(scale) {
-        scale.querySelectorAll('span').forEach(function(span) {
-            span.addEventListener('click', function() {
-                scale.querySelectorAll('span').forEach(function(s) {
-                    s.classList.remove('selected');
-                });
-                span.classList.toggle('selected');
-            });
-        });
-    });
-
-    // 6. Checklists: click to toggle checked state
+    // 4. Checklists: click to toggle checked state
     document.querySelectorAll('.checklist li').forEach(function(li) {
         // Skip items that are just blank lines (custom fill-in)
         var text = li.textContent.trim();
@@ -5211,35 +5188,6 @@ document.addEventListener('DOMContentLoaded', function() {
         li.addEventListener('click', function() {
             li.classList.toggle('checked');
         });
-    });
-
-    // 7. "Circle one" options: make pipe-separated choices clickable
-    document.querySelectorAll('.chapter-log-header div, .chapter-log div').forEach(function(div) {
-        var html = div.innerHTML;
-        if (html.indexOf('(circle)') !== -1 && html.indexOf('|') !== -1) {
-            // Extract the label part and options
-            var parts = html.split('(circle)');
-            if (parts.length === 2) {
-                var label = parts[0].replace(/<span[^>]*>.*?<\/span>/gi, '').trim();
-                var optionsText = parts[1];
-                var options = optionsText.split('|').map(function(o) { return o.trim(); }).filter(function(o) { return o; });
-                var optionsHtml = options.map(function(o) {
-                    return '<span class="circle-option">' + o + '</span>';
-                }).join(' | ');
-                div.innerHTML = label + ' ' + optionsHtml;
-            }
-        }
-    });
-
-    // Click handler for circle options (one per group)
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('circle-option')) {
-            var parent = e.target.parentElement;
-            parent.querySelectorAll('.circle-option').forEach(function(opt) {
-                opt.classList.remove('selected');
-            });
-            e.target.classList.toggle('selected');
-        }
     });
 
 });
