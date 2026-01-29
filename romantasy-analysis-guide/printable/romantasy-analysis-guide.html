@@ -961,6 +961,91 @@
                 print-color-adjust: exact !important;
             }
         }
+        /* INTERACTIVE / FILLABLE STATES */
+        .write-lines[contenteditable],
+        .write-space-xs[contenteditable],
+        .write-space-sm[contenteditable],
+        .write-space-md[contenteditable] {
+            cursor: text;
+            outline: none;
+        }
+        .write-lines[contenteditable]:focus,
+        .write-space-xs[contenteditable]:focus,
+        .write-space-sm[contenteditable]:focus,
+        .write-space-md[contenteditable]:focus {
+            background: #fefdf5;
+            box-shadow: inset 0 0 0 1px var(--theme-color);
+        }
+
+        .field-value[contenteditable] {
+            cursor: text;
+            outline: none;
+            min-width: 80px;
+        }
+        .field-value[contenteditable]:focus {
+            background: #fefdf5;
+        }
+
+        .chapter-log-header input[type="text"] {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            outline: none;
+            width: 60%;
+        }
+        .chapter-log-header input[type="text"]:focus {
+            border-bottom-color: var(--theme-color);
+            background: #fefdf5;
+        }
+
+        .rating-circle.selected {
+            background: var(--theme-color);
+            color: white;
+        }
+        .rating-circle {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .tension-scale span {
+            cursor: pointer;
+            user-select: none;
+        }
+        .tension-scale span.selected {
+            background: var(--theme-color);
+            color: white;
+        }
+
+        .checklist li {
+            cursor: pointer;
+            user-select: none;
+        }
+        .checklist li.checked::before {
+            background: var(--theme-color) !important;
+        }
+        .checklist li.checked::after {
+            content: '✓';
+            position: absolute;
+            left: 3px;
+            top: 0px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .circle-option {
+            cursor: pointer;
+            padding: 2px 6px;
+            border-radius: 3px;
+            user-select: none;
+        }
+        .circle-option.selected {
+            background: var(--theme-color);
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -5069,5 +5154,95 @@
     <p><strong>Deep POV:</strong> Narrative perspective that puts the reader inside the character's head with no emotional distance. Immediate and intimate.</p>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // 1. Make all write spaces contenteditable
+    document.querySelectorAll('.write-lines, .write-space-xs, .write-space-sm, .write-space-md').forEach(function(el) {
+        el.setAttribute('contenteditable', 'true');
+    });
+
+    // 2. Make field-value spans contenteditable
+    document.querySelectorAll('.field-value').forEach(function(el) {
+        el.setAttribute('contenteditable', 'true');
+    });
+
+    // 3. Replace underscore placeholders in chapter-log-headers with input fields
+    document.querySelectorAll('.chapter-log-header div').forEach(function(div) {
+        var html = div.innerHTML;
+        if (html.indexOf('_') !== -1) {
+            div.innerHTML = html.replace(/_{3,}/g, '<input type="text">');
+        }
+    });
+
+    // 4. Rating circles: click to select (one per scale)
+    document.querySelectorAll('.rating-scale').forEach(function(scale) {
+        scale.querySelectorAll('.rating-circle').forEach(function(circle) {
+            circle.addEventListener('click', function() {
+                scale.querySelectorAll('.rating-circle').forEach(function(c) {
+                    c.classList.remove('selected');
+                });
+                circle.classList.toggle('selected');
+            });
+        });
+    });
+
+    // 5. Tension scale: click to select (one per row)
+    document.querySelectorAll('.tension-scale').forEach(function(scale) {
+        scale.querySelectorAll('span').forEach(function(span) {
+            span.addEventListener('click', function() {
+                scale.querySelectorAll('span').forEach(function(s) {
+                    s.classList.remove('selected');
+                });
+                span.classList.toggle('selected');
+            });
+        });
+    });
+
+    // 6. Checklists: click to toggle checked state
+    document.querySelectorAll('.checklist li').forEach(function(li) {
+        // Skip items that are just blank lines (custom fill-in)
+        var text = li.textContent.trim();
+        if (text.match(/^_+$/)) {
+            // Replace underscore-only items with editable input
+            li.innerHTML = '<input type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-family:var(--font-body); font-size:0.85rem; outline:none; width:80%;">';
+            return;
+        }
+        li.addEventListener('click', function() {
+            li.classList.toggle('checked');
+        });
+    });
+
+    // 7. "Circle one" options: make pipe-separated choices clickable
+    document.querySelectorAll('.chapter-log-header div, .chapter-log div').forEach(function(div) {
+        var html = div.innerHTML;
+        if (html.indexOf('(circle)') !== -1 && html.indexOf('|') !== -1) {
+            // Extract the label part and options
+            var parts = html.split('(circle)');
+            if (parts.length === 2) {
+                var label = parts[0].replace(/<span[^>]*>.*?<\/span>/gi, '').trim();
+                var optionsText = parts[1];
+                var options = optionsText.split('|').map(function(o) { return o.trim(); }).filter(function(o) { return o; });
+                var optionsHtml = options.map(function(o) {
+                    return '<span class="circle-option">' + o + '</span>';
+                }).join(' | ');
+                div.innerHTML = label + ' ' + optionsHtml;
+            }
+        }
+    });
+
+    // Click handler for circle options (one per group)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('circle-option')) {
+            var parent = e.target.parentElement;
+            parent.querySelectorAll('.circle-option').forEach(function(opt) {
+                opt.classList.remove('selected');
+            });
+            e.target.classList.toggle('selected');
+        }
+    });
+
+});
+</script>
 </body>
 </html>
