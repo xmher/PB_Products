@@ -127,6 +127,66 @@
             body { background: #d8dce3; padding: 20px; }
             .pagedjs_page { box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-bottom: 20px; }
         }
+        /* INTERACTIVE / FILLABLE STATES */
+        .write-space-xs[contenteditable],
+        .write-space-md[contenteditable] {
+            cursor: text;
+            outline: none;
+        }
+        .write-space-xs[contenteditable]:focus,
+        .write-space-md[contenteditable]:focus {
+            background: #fefdf5;
+            box-shadow: inset 0 0 0 1px var(--theme-color);
+        }
+
+        .chapter-number[contenteditable] {
+            cursor: text;
+            outline: none;
+        }
+        .chapter-number[contenteditable]:focus {
+            background: #fefdf5;
+        }
+
+        .chapter-log-header input[type="text"] {
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background: transparent;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            outline: none;
+            width: 60%;
+        }
+        .chapter-log-header input[type="text"]:focus {
+            border-bottom-color: var(--theme-color);
+            background: #fefdf5;
+        }
+
+        .tension-scale span {
+            cursor: pointer;
+            user-select: none;
+        }
+        .tension-scale span.selected {
+            background: var(--theme-color);
+            color: white;
+        }
+
+        .checklist li {
+            cursor: pointer;
+            user-select: none;
+        }
+        .checklist li.checked::before {
+            background: var(--theme-color) !important;
+        }
+        .checklist li.checked::after {
+            content: '✓';
+            position: absolute;
+            left: 2px;
+            top: -1px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -6037,4 +6097,46 @@
     <div class="write-space-md"></div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    // 1. Make all write spaces contenteditable
+    document.querySelectorAll('.write-space-xs, .write-space-md').forEach(function(el) {
+        el.setAttribute('contenteditable', 'true');
+    });
+
+    // 2. Make chapter numbers editable
+    document.querySelectorAll('.chapter-number').forEach(function(el) {
+        el.setAttribute('contenteditable', 'true');
+    });
+
+    // 3. Replace underscore placeholders in chapter-log-headers with input fields
+    document.querySelectorAll('.chapter-log-header div').forEach(function(div) {
+        var html = div.innerHTML;
+        if (html.indexOf('_') !== -1) {
+            div.innerHTML = html.replace(/_{3,}/g, '<input type="text">');
+        }
+    });
+
+    // 4. Tension scale: click to select (one per row)
+    document.querySelectorAll('.tension-scale').forEach(function(scale) {
+        scale.querySelectorAll('span').forEach(function(span) {
+            span.addEventListener('click', function() {
+                scale.querySelectorAll('span').forEach(function(s) {
+                    s.classList.remove('selected');
+                });
+                span.classList.toggle('selected');
+            });
+        });
+    });
+
+    // 5. Checklists: click to toggle checked state
+    document.querySelectorAll('.checklist li').forEach(function(li) {
+        li.addEventListener('click', function() {
+            li.classList.toggle('checked');
+        });
+    });
+
+});
+</script>
 </body></html>
