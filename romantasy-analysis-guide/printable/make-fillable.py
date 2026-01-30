@@ -570,20 +570,27 @@ def apply_fields(page, fields, preview=False):
         w = fitz.Widget()
         w.field_name = name
         w.rect = rect
+        w.border_width = 1
+        w.border_color = (0.7, 0.7, 0.7)
 
         if ftype == "checkbox":
             w.field_type = fitz.PDF_WIDGET_TYPE_CHECKBOX
+            w.border_width = 0.5
+            w.border_color = (0.5, 0.5, 0.5)
         elif ftype == "text":
             w.field_type = fitz.PDF_WIDGET_TYPE_TEXT
             w.text_fontsize = 9
             w.text_color = (0, 0, 0)
+            w.fill_color = (1, 1, 1)
         elif ftype == "multitext":
             w.field_type = fitz.PDF_WIDGET_TYPE_TEXT
             w.text_fontsize = 9
             w.text_color = (0, 0, 0)
+            w.fill_color = (1, 1, 1)
             w.field_flags = fitz.PDF_TX_FIELD_IS_MULTILINE
 
         page.add_widget(w)
+        w.update()  # generate appearance stream
 
     return counts
 
@@ -638,7 +645,14 @@ def make_fillable(input_path, output_path, preview=False):
               f"{counts.get('text', 0)} txt, "
               f"{counts.get('multitext', 0)} area)")
 
-    doc.save(output_path)
+    # Tell PDF viewers to regenerate appearances for form fields
+    if not preview:
+        cat = doc.pdf_catalog()
+        cat_str = doc.xref_object(cat)
+        if "/NeedAppearances true" not in cat_str:
+            doc.xref_set_key(cat, "AcroForm/NeedAppearances", "true")
+
+    doc.save(output_path, deflate=True, garbage=3)
     doc.close()
 
     total = sum(totals.values())
