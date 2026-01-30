@@ -1,0 +1,3031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write the Heat: A Spice Scene Development Workbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+    <style>
+        :root {
+            /* SPICE WORKBOOK COLOR PALETTE - Crimson/wine theme */
+            --color-primary: #8b2232;
+            --color-primary-light: rgba(139, 34, 50, 0.08);
+            --color-bg: #faf8f6;
+            --color-noir: #1a1515;
+            --color-accent: #c9a962;
+            --color-accent-light: rgba(201, 169, 98, 0.15);
+            --color-highlight: #4a2040;
+            --color-highlight-light: rgba(74, 32, 64, 0.08);
+            --color-text-main: #121212;
+            --color-text-sub: #444444;
+            --color-text-muted: #888888;
+
+            /* Spice-specific accent colors */
+            --color-heat: #c0392b;
+            --color-heat-light: rgba(192, 57, 43, 0.08);
+            --color-emotion: #6b4a8b;
+            --color-emotion-light: rgba(107, 74, 139, 0.1);
+            --color-sensory: #b07d4b;
+            --color-sensory-light: rgba(176, 125, 75, 0.1);
+
+            --font-display: 'Libre Baskerville', serif;
+            --font-accent: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+
+            --theme-color: var(--color-primary);
+            --theme-color-light: var(--color-primary-light);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            font-size: 11pt;
+        }
+
+        /* PAGE SETUP */
+        @page {
+            size: 8.5in 11in;
+            margin: 70px 80px 100px 80px;
+            background: var(--color-bg);
+            @bottom-center {
+                content: counter(page);
+                font-family: 'Libre Baskerville', serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                color: var(--color-primary);
+            }
+            @bottom-left {
+                content: string(section-title);
+                font-family: 'Libre Baskerville', serif;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #888;
+            }
+        }
+
+        @page:first {
+            @bottom-center { content: none; }
+            @bottom-left { content: none; }
+        }
+
+        /* DECORATIVE PAGE BORDER */
+        .pagedjs_page {
+            background: var(--color-bg) !important;
+            position: relative !important;
+        }
+
+        .pagedjs_pagebox {
+            position: relative !important;
+        }
+
+        .pagedjs_pagebox::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 18px !important;
+            left: 18px !important;
+            right: 18px !important;
+            bottom: 18px !important;
+            border: 2px solid var(--color-primary) !important;
+            pointer-events: none !important;
+            z-index: 1000 !important;
+        }
+
+        .pagedjs_pagebox::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 12px !important;
+            left: 12px !important;
+            width: 30px !important;
+            height: 30px !important;
+            border-top: 3px solid var(--color-accent) !important;
+            border-left: 3px solid var(--color-accent) !important;
+            pointer-events: none !important;
+            z-index: 1001 !important;
+        }
+
+        /* TYPOGRAPHY */
+        h2 { string-set: section-title content(); }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-noir);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-noir);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+            break-after: avoid;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--theme-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            break-after: avoid;
+        }
+
+        h4 {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-text-sub);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            hyphens: auto;
+            orphans: 3;
+            widows: 3;
+        }
+
+        .lead-text {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hint {
+            font-family: var(--font-accent);
+            font-style: italic;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            break-after: avoid;
+        }
+
+        ul, ol { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* TITLE PAGE */
+        .title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 9in;
+            break-after: page;
+        }
+
+        .guide-badge {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+            border: 1.5px solid var(--color-accent);
+            padding: 6px 20px;
+            margin-bottom: 2.5rem;
+            display: inline-block;
+        }
+
+        .title-page h1 {
+            font-size: 2.6rem;
+            letter-spacing: 5px;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+
+        .title-subtitle {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--color-text-sub);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .title-tagline {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .title-divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            margin: 0 auto 2rem;
+        }
+
+        .title-edition {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-text-muted);
+        }
+
+        /* TABLE OF CONTENTS */
+        .toc-page {
+            break-after: page;
+        }
+
+        .toc-page h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .toc-section {
+            margin-bottom: 0.25rem;
+        }
+
+        .toc-section a {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            text-decoration: none;
+            color: var(--color-text-main);
+            padding: 6px 0;
+            border-bottom: 1px dotted #ddd;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+        }
+
+        .toc-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .toc-section .toc-title {
+            flex-shrink: 0;
+        }
+
+        .toc-section .toc-page-num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-left: 8px;
+            flex-shrink: 0;
+            content: target-counter(attr(href url), page);
+        }
+
+        .toc-group-label {
+            font-family: var(--font-accent);
+            font-size: 1rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-primary);
+            margin-top: 1.25rem;
+            margin-bottom: 0.25rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--color-accent);
+        }
+
+        .toc-group-label:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        /* SECTION TITLE PAGES */
+        .section-title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 8in;
+            break-before: page;
+            break-after: page;
+        }
+
+        .section-title-page .section-number {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-title-page h1 {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title-page .section-desc {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        /* CONTENT BOXES */
+        .insight-box {
+            background: var(--color-primary-light);
+            border-left: 4px solid var(--color-primary);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .insight-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .principle-card {
+            border: 1.5px solid var(--color-accent);
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 6px;
+            text-align: center;
+            break-inside: avoid;
+        }
+
+        .principle-card .card-content {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: var(--color-accent-light);
+            border-left: 4px solid var(--color-accent);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .example-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a7533;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .pitfall-box {
+            background: var(--color-heat-light);
+            border-left: 4px solid var(--color-heat);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .pitfall-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-heat);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .emotion-box {
+            background: var(--color-emotion-light);
+            border-left: 4px solid var(--color-emotion);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .emotion-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-emotion);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .sensory-box {
+            background: var(--color-sensory-light);
+            border-left: 4px solid var(--color-sensory);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .sensory-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-sensory);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* QUICK REFERENCE BOX */
+        .quick-ref {
+            border: 1.5px solid var(--color-primary);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            break-inside: avoid;
+        }
+
+        .quick-ref .ref-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .quick-ref ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .quick-ref ul li {
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .quick-ref ul li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            background: var(--color-primary);
+            color: white;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        tbody td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0ddd8;
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(0,0,0,0.02);
+        }
+
+        tbody tr.example-row {
+            background: var(--color-accent-light);
+            font-style: italic;
+            color: var(--color-text-sub);
+        }
+
+        /* WRITE SPACES */
+        .write-space {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 120px;
+            margin: 0.75rem 0 1.25rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        .write-space-xs {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 45px;
+            margin: 0.5rem 0 1rem;
+            background: white;
+            padding: 8px 12px;
+        }
+
+        .write-space-sm {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 70px;
+            margin: 0.5rem 0 1rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        .write-space-md {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 150px;
+            margin: 0.75rem 0 1.25rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        .write-space-lg {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 220px;
+            margin: 0.75rem 0 1.25rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        /* TWO-COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .col-box {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 6px;
+            padding: 1rem;
+            break-inside: avoid;
+        }
+
+        .col-box h4 {
+            margin-top: 0;
+            color: var(--color-primary);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* HEAT SCALE */
+        .heat-scale {
+            display: flex;
+            gap: 0;
+            margin: 1rem 0 1.5rem;
+            break-inside: avoid;
+        }
+
+        .heat-level {
+            flex: 1;
+            text-align: center;
+            padding: 12px 8px;
+            border: 1px solid #d0cdc8;
+            font-size: 0.8rem;
+        }
+
+        .heat-level .level-num {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .heat-level .level-name {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .heat-0 { background: #f8f4f0; }
+        .heat-0 .level-num { color: #999; }
+        .heat-1 { background: #fdf2f0; }
+        .heat-1 .level-num { color: #d4a08a; }
+        .heat-2 { background: #fce8e4; }
+        .heat-2 .level-num { color: #c47d6d; }
+        .heat-3 { background: #f8dbd4; }
+        .heat-3 .level-num { color: #b35a4a; }
+        .heat-4 { background: #f0ccc4; }
+        .heat-4 .level-num { color: #993d30; }
+        .heat-5 { background: #e8bab2; }
+        .heat-5 .level-num { color: #7a1f1f; }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: 1.75rem;
+            position: relative;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            border: 1.5px solid var(--color-primary);
+            border-radius: 2px;
+        }
+
+        /* RATING CIRCLES */
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .rating-row .label {
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        .rating-circles {
+            display: flex;
+            gap: 4px;
+        }
+
+        .rating-circles .circle {
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid var(--color-primary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .rating-circles .circle.filled {
+            background: var(--color-primary);
+        }
+
+        /* ESCALATION TRACK */
+        .escalation-track {
+            margin: 1rem 0;
+        }
+
+        .escalation-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #e8e6e2;
+            break-inside: avoid;
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            min-width: 28px;
+            height: 28px;
+            border: 2px solid var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content .step-title {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text-main);
+        }
+
+        .step-content .step-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-sub);
+            margin-top: 2px;
+        }
+
+        .step-field {
+            flex: 0 0 200px;
+        }
+
+        .step-field .write-space-xs {
+            min-height: 28px;
+            margin: 0;
+        }
+
+        /* LAYER DIAGRAM */
+        .layer-stack {
+            margin: 1.25rem 0;
+            break-inside: avoid;
+        }
+
+        .layer-item {
+            border: 1.5px solid;
+            padding: 0.75rem 1rem;
+            margin-bottom: -1px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .layer-item:first-child {
+            border-radius: 6px 6px 0 0;
+        }
+
+        .layer-item:last-child {
+            border-radius: 0 0 6px 6px;
+        }
+
+        .layer-num {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 80px;
+        }
+
+        .layer-desc {
+            font-size: 0.9rem;
+            flex: 1;
+        }
+
+        .layer-physical { border-color: var(--color-heat); background: var(--color-heat-light); }
+        .layer-physical .layer-num { color: var(--color-heat); }
+        .layer-emotional { border-color: var(--color-emotion); background: var(--color-emotion-light); }
+        .layer-emotional .layer-num { color: var(--color-emotion); }
+        .layer-sensory { border-color: var(--color-sensory); background: var(--color-sensory-light); }
+        .layer-sensory .layer-num { color: var(--color-sensory); }
+        .layer-thought { border-color: var(--color-highlight); background: var(--color-highlight-light); }
+        .layer-thought .layer-num { color: var(--color-highlight); }
+        .layer-dialogue { border-color: var(--color-primary); background: var(--color-primary-light); }
+        .layer-dialogue .layer-num { color: var(--color-primary); }
+
+        /* PACING BAR */
+        .pacing-bar {
+            display: flex;
+            margin: 1.25rem 0;
+            border-radius: 6px;
+            overflow: hidden;
+            height: 50px;
+            break-inside: avoid;
+        }
+
+        .pacing-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .pacing-anticipation { background: var(--color-sensory); flex: 1; }
+        .pacing-build { background: var(--color-primary); flex: 1; }
+        .pacing-climax { background: var(--color-highlight); flex: 1; }
+
+        /* SCREEN PREVIEW STYLES */
+        @media screen {
+            body {
+                max-width: 8.5in;
+                margin: 0 auto;
+                padding: 1in;
+                background: #e0ddd8;
+            }
+        }
+
+        /* PRINT COLOR PRESERVATION */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        /* PAGE BREAK UTILITIES */
+        .page-break { break-before: page; }
+        .no-break { break-inside: avoid; }
+
+        /* WORKSHEET CONTAINER */
+        .worksheet {
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            break-inside: avoid;
+        }
+
+        .worksheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--color-accent);
+        }
+
+        .worksheet-title {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .worksheet-num {
+            font-family: var(--font-accent);
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+
+        /* INLINE FIELD */
+        .inline-field {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .inline-field .field-label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-text-sub);
+            white-space: nowrap;
+        }
+
+        .inline-field .field-line {
+            flex: 1;
+            border-bottom: 1.5px solid #d0cdc8;
+            min-height: 1.2em;
+        }
+
+        /* SCENE WORKSHEET SPECIFIC */
+        .scene-worksheet {
+            break-before: page;
+            border: 2px solid var(--color-primary);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .scene-worksheet .worksheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .scene-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .scene-meta-grid .inline-field {
+            margin-bottom: 0.5rem;
+        }
+
+        /* WORD BANK */
+        .word-bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 0.75rem 0;
+        }
+
+        .word-bank .word {
+            background: var(--color-primary-light);
+            color: var(--color-primary);
+            font-family: var(--font-accent);
+            font-size: 0.85rem;
+            font-style: italic;
+            padding: 3px 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(139, 34, 50, 0.15);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================ -->
+    <!-- TITLE PAGE                                                    -->
+    <!-- ============================================================ -->
+    <div class="title-page">
+        <div class="guide-badge">Writer's Workbook</div>
+        <h1>Write the Heat</h1>
+        <div class="title-subtitle">A Spice Scene Development Workbook<br>for Romance &amp; Romantasy Writers</div>
+        <div class="title-divider"></div>
+        <div class="title-tagline">
+            Plan, layer, and refine intimate scenes that serve your characters,
+            advance your plot, and leave your readers breathless.
+        </div>
+        <div class="title-edition">Printable Edition</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TABLE OF CONTENTS                                             -->
+    <!-- ============================================================ -->
+    <div class="toc-page">
+        <h1>Contents</h1>
+
+        <div class="toc-group-label">Getting Started</div>
+        <div class="toc-section">
+            <a href="#how-to-use"><span class="toc-title">How to Use This Workbook</span></a>
+        </div>
+
+        <div class="toc-group-label">Foundations</div>
+        <div class="toc-section">
+            <a href="#heat-compass"><span class="toc-title">1. Your Heat Level Compass</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#intimacy-profiles"><span class="toc-title">2. Character Intimacy Profiles</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#escalation"><span class="toc-title">3. The 12 Stages of Physical Escalation</span></a>
+        </div>
+
+        <div class="toc-group-label">Craft</div>
+        <div class="toc-section">
+            <a href="#five-layers"><span class="toc-title">4. The Five Layers of a Spice Scene</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#pacing"><span class="toc-title">5. Scene Pacing &amp; Structure</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#sensory"><span class="toc-title">6. Sensory Integration</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#dialogue"><span class="toc-title">7. Dialogue &amp; Verbal Chemistry</span></a>
+        </div>
+
+        <div class="toc-group-label">Quality Control</div>
+        <div class="toc-section">
+            <a href="#physics-consent"><span class="toc-title">8. The Physics &amp; Consent Audit</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#aftermath"><span class="toc-title">9. Aftermath &amp; Consequences</span></a>
+        </div>
+
+        <div class="toc-group-label">Worksheets &amp; Reference</div>
+        <div class="toc-section">
+            <a href="#scene-worksheets"><span class="toc-title">10. Scene Planning Worksheets</span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#appendices"><span class="toc-title">Appendices: Word Banks, Pitfalls &amp; Quick Reference</span></a>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HOW TO USE THIS WORKBOOK                                      -->
+    <!-- ============================================================ -->
+    <div id="how-to-use" class="page-break">
+        <h2>How to Use This Workbook</h2>
+
+        <p class="lead-text">
+            This workbook is designed for active use while you write. It is not a craft
+            book to read cover to cover&mdash;it is a tool to open beside your manuscript
+            when you are planning, drafting, or revising intimate scenes.
+        </p>
+
+        <h3>Three Ways In</h3>
+
+        <div class="two-col">
+            <div class="col-box">
+                <h4>Planning a New Scene</h4>
+                <p>Start with <strong>Section 1</strong> to set your heat level, then jump to <strong>Section 10</strong> and fill out a Scene Planning Worksheet. Reference the middle sections as needed.</p>
+            </div>
+            <div class="col-box">
+                <h4>Revising a Draft</h4>
+                <p>Go straight to <strong>Section 4</strong> (Five Layers) and audit your existing scene layer by layer. Then run the <strong>Section 8</strong> physics and consent checklist.</p>
+            </div>
+        </div>
+
+        <div class="col-box" style="margin-top: 0;">
+            <h4>Building Your Craft Toolkit</h4>
+            <p>Work through sections 1&ndash;9 in order using a published book you admire as reference. Annotate what that author does well, then apply the frameworks to your own work.</p>
+        </div>
+
+        <h3>Workbook Conventions</h3>
+
+        <div class="insight-box">
+            <div class="box-label">Write Spaces</div>
+            <p style="margin-bottom:0;">Lined areas are for your notes and plans. Write freely&mdash;these are thinking spaces, not final drafts. If you run out of room, continue on the back of the page or in a notebook.</p>
+        </div>
+
+        <div class="example-box">
+            <div class="box-label">Example Rows</div>
+            <p style="margin-bottom:0;">Gold-highlighted rows in tables show sample entries so you can see what a completed field looks like. Replace or ignore them as you work.</p>
+        </div>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfalls</div>
+            <p style="margin-bottom:0;">Red-bordered boxes flag mistakes that commonly appear in intimate scenes. Read these before drafting to save yourself a revision pass.</p>
+        </div>
+
+        <div class="principle-card">
+            <div class="card-content">
+                The best spice scenes are not about bodies&mdash;they are about characters
+                revealing themselves in moments of vulnerability. Every physical choice
+                should tell us something about who these people are.
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: YOUR HEAT LEVEL COMPASS                            -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="heat-compass">
+        <div class="section-number">Section One</div>
+        <h1>Your Heat Level Compass</h1>
+        <div class="section-desc">
+            Define your book's heat level before you write a single scene.
+            Consistency is what readers trust&mdash;and what they buy the next book for.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Heat Scale: 0&ndash;5</h2>
+
+        <p>Every romance and romantasy book sits somewhere on the heat scale. Knowing where yours falls&mdash;and committing to it&mdash;prevents the two most common reader complaints: <em>"too tame for what was promised"</em> and <em>"that scene came out of nowhere."</em></p>
+
+        <div class="heat-scale">
+            <div class="heat-level heat-0">
+                <span class="level-num">0</span>
+                <span class="level-name">Sweet</span>
+                No physical intimacy beyond hand-holding or a chaste kiss
+            </div>
+            <div class="heat-level heat-1">
+                <span class="level-num">1</span>
+                <span class="level-name">Mild</span>
+                Kissing with some tension; fade to black before anything explicit
+            </div>
+            <div class="heat-level heat-2">
+                <span class="level-num">2</span>
+                <span class="level-name">Warm</span>
+                On-page intimacy with euphemistic or poetic language; sensual but not graphic
+            </div>
+            <div class="heat-level heat-3">
+                <span class="level-num">3</span>
+                <span class="level-name">Hot</span>
+                Explicit scenes with clear anatomical language; emotional depth present
+            </div>
+            <div class="heat-level heat-4">
+                <span class="level-num">4</span>
+                <span class="level-name">Steamy</span>
+                Detailed, frequent explicit scenes; multiple encounters driving the arc
+            </div>
+            <div class="heat-level heat-5">
+                <span class="level-num">5</span>
+                <span class="level-name">Scorching</span>
+                Graphic, boundary-pushing content; intimacy is central to the narrative
+            </div>
+        </div>
+
+        <h3>Your Book's Heat Commitment</h3>
+        <p class="hint">Fill this out before drafting. Return here if you feel the heat drifting mid-manuscript.</p>
+
+        <div class="worksheet">
+            <div class="inline-field">
+                <span class="field-label">Book Title / WIP:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Target Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Comp Title at Same Heat:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Reader Expectation (genre/subgenre):</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>What your readers will see on-page:</h4>
+            <div class="write-space-sm"></div>
+
+            <h4>What your readers will NOT see (fade-to-black boundary):</h4>
+            <div class="write-space-sm"></div>
+        </div>
+
+        <h3>Heat Consistency Checklist</h3>
+        <p>Use this checklist during revision to ensure your heat level stays consistent across scenes.</p>
+
+        <ul class="checklist">
+            <li>Every intimate scene matches the committed heat level (no sudden jumps or drops without narrative justification)</li>
+            <li>Language register is consistent (not switching between euphemistic and clinical within the same scene)</li>
+            <li>The level of physical detail matches what the POV character would actually notice and think about</li>
+            <li>Emotional depth matches or exceeds the physical explicitness</li>
+            <li>Each intimate scene escalates something&mdash;physical closeness, emotional trust, or vulnerability&mdash;compared to the last</li>
+            <li>The heat level matches genre expectations communicated by the cover, blurb, and marketing</li>
+        </ul>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfall</div>
+            <p style="margin-bottom:0;"><strong>The Heat Whiplash:</strong> Writing at level 2 for most of the book, then dropping a level 5 scene at the climax because "they finally got together." Your readers chose your book for a specific experience. A sudden spike feels jarring rather than satisfying. If you want a climactic scene that feels more intense, escalate the <em>emotional</em> stakes, not just the physical detail.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: CHARACTER INTIMACY PROFILES                        -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="intimacy-profiles">
+        <div class="section-number">Section Two</div>
+        <h1>Character Intimacy Profiles</h1>
+        <div class="section-desc">
+            Great spice is character-driven. Before you choreograph a single touch,
+            know who these people are when they are vulnerable.
+        </div>
+    </div>
+
+    <div>
+        <h2>Intimacy Profile: Character A</h2>
+        <p class="hint">Fill one profile per POV character. Photocopy this page for additional characters.</p>
+
+        <div class="worksheet">
+            <div class="inline-field">
+                <span class="field-label">Character Name:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Desire &amp; Comfort</h4>
+            <div class="inline-field">
+                <span class="field-label">What they want physically but would never ask for:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What they want emotionally but would never admit:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Hard boundary they will not cross (and why):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">How they show desire (body language, tells):</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Vulnerability Profile</h4>
+            <div class="rating-row">
+                <span class="label">Comfort with touch:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = avoids &rarr; 5 = craves</span>
+            </div>
+            <div class="rating-row">
+                <span class="label">Verbal openness:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = silent &rarr; 5 = vocal</span>
+            </div>
+            <div class="rating-row">
+                <span class="label">Emotional guard:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = open book &rarr; 5 = fortress</span>
+            </div>
+            <div class="rating-row">
+                <span class="label">Need for control:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = surrenders easily &rarr; 5 = must lead</span>
+            </div>
+
+            <h4>Backstory That Shapes Intimacy</h4>
+            <div class="inline-field">
+                <span class="field-label">Past wound affecting trust or vulnerability:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">The lie they believe about themselves in intimacy:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What would make them finally let their guard down:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break">
+        <h2>Intimacy Profile: Character B</h2>
+
+        <div class="worksheet">
+            <div class="inline-field">
+                <span class="field-label">Character Name:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Desire &amp; Comfort</h4>
+            <div class="inline-field">
+                <span class="field-label">What they want physically but would never ask for:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What they want emotionally but would never admit:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Hard boundary they will not cross (and why):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">How they show desire (body language, tells):</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Vulnerability Profile</h4>
+            <div class="rating-row">
+                <span class="label">Comfort with touch:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = avoids &rarr; 5 = craves</span>
+            </div>
+            <div class="rating-row">
+                <span class="label">Verbal openness:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = silent &rarr; 5 = vocal</span>
+            </div>
+            <div class="rating-row">
+                <span class="label">Emotional guard:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = open book &rarr; 5 = fortress</span>
+            </div>
+            <div class="rating-row">
+                <span class="label">Need for control:</span>
+                <div class="rating-circles">
+                    <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+                </div>
+                <span style="font-size:0.8rem;color:#888;margin-left:4px;">1 = surrenders easily &rarr; 5 = must lead</span>
+            </div>
+
+            <h4>Backstory That Shapes Intimacy</h4>
+            <div class="inline-field">
+                <span class="field-label">Past wound affecting trust or vulnerability:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">The lie they believe about themselves in intimacy:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What would make them finally let their guard down:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break">
+        <h2>Chemistry Compatibility Map</h2>
+        <p>Now compare the two profiles. The most compelling spice comes from the <em>gap</em> between these characters&mdash;where one is open and the other is guarded, where one craves what the other fears giving.</p>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <span class="worksheet-title">Chemistry Analysis</span>
+            </div>
+
+            <h4>Where They Clash</h4>
+            <p class="hint">Opposing ratings or conflicting desires that create friction.</p>
+            <div class="write-space-sm"></div>
+
+            <h4>Where They Complement</h4>
+            <p class="hint">Where one character&rsquo;s strength fills the other&rsquo;s gap.</p>
+            <div class="write-space-sm"></div>
+
+            <h4>The Core Tension</h4>
+            <p class="hint">The single biggest obstacle to full vulnerability between them.</p>
+            <div class="write-space-sm"></div>
+
+            <h4>Power Dynamic</h4>
+            <div class="two-col">
+                <div class="col-box">
+                    <h4 style="margin-top:0;">Who leads physically?</h4>
+                    <div class="write-space-xs"></div>
+                    <h4>Does this shift? When?</h4>
+                    <div class="write-space-xs"></div>
+                </div>
+                <div class="col-box">
+                    <h4 style="margin-top:0;">Who leads emotionally?</h4>
+                    <div class="write-space-xs"></div>
+                    <h4>Does this shift? When?</h4>
+                    <div class="write-space-xs"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <div class="box-label">Craft Insight</div>
+            <p style="margin-bottom:0;">The best intimate scenes show the power dynamic shifting in real time. A character who always leads surrendering control&mdash;or a guarded character reaching out first&mdash;tells us more about growth than any dialogue could.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: THE 12 STAGES OF PHYSICAL ESCALATION               -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="escalation">
+        <div class="section-number">Section Three</div>
+        <h1>The 12 Stages of Physical Escalation</h1>
+        <div class="section-desc">
+            Intimacy is a staircase, not an elevator. Map the steps your characters
+            will climb&mdash;and the ones they will linger on.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Escalation Ladder</h2>
+
+        <p>Physical intimacy in fiction follows a progression. Skipping stages feels rushed; lingering on early stages builds anticipation. Not every book will reach every stage&mdash;your heat level (Section 1) determines where the ladder ends.</p>
+
+        <div class="escalation-track">
+            <div class="escalation-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <span class="step-title">Awareness</span>
+                    <span class="step-desc">Heightened physical consciousness of the other person. Noticing warmth, scent, the way they move. No contact.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <span class="step-title">Incidental Touch</span>
+                    <span class="step-desc">Accidental or plausibly deniable contact. Brushing hands, steadying an arm, shoulders touching while seated.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <span class="step-title">Intentional Touch</span>
+                    <span class="step-desc">Deliberate but socially acceptable contact. A hand on the small of the back, tucking hair behind an ear, holding hands.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <span class="step-title">Intimate Proximity</span>
+                    <span class="step-desc">Entering personal space with intent. Foreheads touching, breath on skin, bodies close enough to feel heat.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">5</div>
+                <div class="step-content">
+                    <span class="step-title">The First Kiss</span>
+                    <span class="step-desc">Mouth contact. The most anticipated moment in romance. Can range from tentative to desperate depending on buildup.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">6</div>
+                <div class="step-content">
+                    <span class="step-title">Deepening Kisses</span>
+                    <span class="step-desc">Open mouths, pulling closer, hands in hair. The transition from tenderness to hunger.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">7</div>
+                <div class="step-content">
+                    <span class="step-title">Hands Wander</span>
+                    <span class="step-desc">Touch moves beyond face and hands. Over clothing at first, then under. Mapping the body of the other person.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">8</div>
+                <div class="step-content">
+                    <span class="step-title">Barrier Removal</span>
+                    <span class="step-desc">Clothing comes off, partially or fully. A moment of vulnerability and visual intimacy.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">9</div>
+                <div class="step-content">
+                    <span class="step-title">Skin-to-Skin</span>
+                    <span class="step-desc">Full body contact without barriers. Sensory overload. Often a moment of pause and acknowledgment.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">10</div>
+                <div class="step-content">
+                    <span class="step-title">Oral Intimacy</span>
+                    <span class="step-desc">Mouth on body beyond lips. Neck, collarbone, and further. Where prose style matters most.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">11</div>
+                <div class="step-content">
+                    <span class="step-title">Manual Intimacy</span>
+                    <span class="step-desc">Hands providing direct pleasure. Requires attention to pacing, communication, and character-specific reactions.</span>
+                </div>
+            </div>
+            <div class="escalation-step">
+                <div class="step-num">12</div>
+                <div class="step-content">
+                    <span class="step-title">Full Union</span>
+                    <span class="step-desc">Complete physical intimacy. The culmination&mdash;but not the end. What happens after matters just as much.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-break">
+        <h2>Your Escalation Plan</h2>
+        <p>Map your characters' progression across the book. Not every step needs its own scene&mdash;some can happen within the same encounter. The key is that the reader feels the buildup.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:30px;">Stage</th>
+                    <th style="width:120px;">Type</th>
+                    <th>Chapter / Scene</th>
+                    <th>Context &amp; Trigger</th>
+                    <th style="width:80px;">Who Initiates</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="example-row">
+                    <td>1</td>
+                    <td>Awareness</td>
+                    <td>Ch. 3 &mdash; Training grounds</td>
+                    <td>She notices his scent when he corrects her stance</td>
+                    <td>Neither (accidental)</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Awareness</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Incidental Touch</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Intentional Touch</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Intimate Proximity</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>First Kiss</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Deepening Kisses</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Hands Wander</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Barrier Removal</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Skin-to-Skin</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Oral Intimacy</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Manual Intimacy</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Full Union</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfall</div>
+            <p style="margin-bottom:0;"><strong>The Elevator Problem:</strong> Jumping from stage 2 (incidental touch) to stage 8 (barrier removal) in a single scene. Unless this is a deliberate choice for a specific trope (one night stand, frenzy after near-death), readers experience this as rushed or unearned. The stages you linger on are where anticipation lives.</p>
+        </div>
+
+        <div class="example-box">
+            <div class="box-label">Craft Tip</div>
+            <p style="margin-bottom:0;"><strong>Regression is powerful.</strong> Characters who reach stage 6 and then retreat to stage 1&mdash;avoiding eye contact after a kiss, flinching from accidental touch&mdash;create more tension than a steady march forward. Map at least one regression into your escalation plan.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: THE FIVE LAYERS OF A SPICE SCENE                   -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="five-layers">
+        <div class="section-number">Section Four</div>
+        <h1>The Five Layers of a Spice Scene</h1>
+        <div class="section-desc">
+            A scene that only describes physical action reads like stage directions.
+            Layer in emotion, sensation, thought, and dialogue to make it unforgettable.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Layer Model</h2>
+
+        <p>Every effective intimate scene weaves together five distinct layers. Weak scenes over-rely on one (usually physical). Strong scenes move fluidly between all five, creating a reading experience that engages the whole mind.</p>
+
+        <div class="layer-stack">
+            <div class="layer-item layer-physical">
+                <span class="layer-num">Layer 1</span>
+                <span class="layer-desc"><strong>Physical Action</strong> &mdash; What the bodies are doing. Movement, position, contact, rhythm.</span>
+            </div>
+            <div class="layer-item layer-emotional">
+                <span class="layer-num">Layer 2</span>
+                <span class="layer-desc"><strong>Emotional Current</strong> &mdash; What the characters are feeling. Fear, trust, longing, power, surrender.</span>
+            </div>
+            <div class="layer-item layer-sensory">
+                <span class="layer-num">Layer 3</span>
+                <span class="layer-desc"><strong>Sensory Detail</strong> &mdash; What the body registers. Taste, scent, texture, temperature, sound.</span>
+            </div>
+            <div class="layer-item layer-thought">
+                <span class="layer-num">Layer 4</span>
+                <span class="layer-desc"><strong>Internal Thought</strong> &mdash; What the POV character is thinking. Surprise, comparison, realization, want.</span>
+            </div>
+            <div class="layer-item layer-dialogue">
+                <span class="layer-num">Layer 5</span>
+                <span class="layer-desc"><strong>Dialogue &amp; Sound</strong> &mdash; What is said, whispered, demanded, or left unspoken. Breath, moans, laughter.</span>
+            </div>
+        </div>
+
+        <div class="principle-card">
+            <div class="card-content">
+                The golden ratio: no more than two consecutive sentences on the same layer.
+                Physical &rarr; Emotional &rarr; Sensory &rarr; thought &rarr; dialogue.
+                Weave, don't stack.
+            </div>
+        </div>
+
+        <h3>Layer Audit Worksheet</h3>
+        <p>Use this to audit an existing scene or plan a new one. For each beat of your scene, note which layer you are writing in. If you see three or more consecutive rows in the same layer, rewrite to weave.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:30px;">#</th>
+                    <th>Scene Beat (1&ndash;2 sentence summary)</th>
+                    <th style="width:100px;">Layer(s) Used</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="example-row">
+                    <td>1</td>
+                    <td>His hand slides to the small of her back, pulling her closer.</td>
+                    <td>Physical</td>
+                </tr>
+                <tr class="example-row">
+                    <td>2</td>
+                    <td>Her breath catches&mdash;not from the touch but from what it means. He's choosing her.</td>
+                    <td>Sensory + Emotional</td>
+                </tr>
+                <tr class="example-row">
+                    <td>3</td>
+                    <td>"Tell me to stop," he says against her mouth. She doesn't.</td>
+                    <td>Dialogue</td>
+                </tr>
+                <tr><td>1</td><td></td><td></td></tr>
+                <tr><td>2</td><td></td><td></td></tr>
+                <tr><td>3</td><td></td><td></td></tr>
+                <tr><td>4</td><td></td><td></td></tr>
+                <tr><td>5</td><td></td><td></td></tr>
+                <tr><td>6</td><td></td><td></td></tr>
+                <tr><td>7</td><td></td><td></td></tr>
+                <tr><td>8</td><td></td><td></td></tr>
+                <tr><td>9</td><td></td><td></td></tr>
+                <tr><td>10</td><td></td><td></td></tr>
+                <tr><td>11</td><td></td><td></td></tr>
+                <tr><td>12</td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="page-break">
+        <h2>Deep Dive: Each Layer</h2>
+
+        <div class="insight-box" style="border-left-color: var(--color-heat);">
+            <div class="box-label" style="color: var(--color-heat);">Layer 1: Physical Action</div>
+            <p><strong>What it does:</strong> Grounds the reader in the scene. Provides the choreography.</p>
+            <p><strong>Common mistake:</strong> Over-narrating every movement like an instruction manual. Trust the reader to fill in gaps.</p>
+            <p style="margin-bottom:0;"><strong>Craft move:</strong> Use one precise physical detail rather than cataloguing every touch. "His thumb traced the edge of her collarbone" says more than three sentences of general caressing.</p>
+        </div>
+
+        <div class="insight-box" style="border-left-color: var(--color-emotion);">
+            <div class="box-label" style="color: var(--color-emotion);">Layer 2: Emotional Current</div>
+            <p><strong>What it does:</strong> Gives the scene meaning. Without it, intimacy is just mechanics.</p>
+            <p><strong>Common mistake:</strong> Telling emotion instead of showing it. "She felt overwhelmed" vs. "Her hands were shaking and she couldn't make them stop."</p>
+            <p style="margin-bottom:0;"><strong>Craft move:</strong> Name the emotion the character is trying to hide, not the one on display. The gap between mask and truth is where tension lives.</p>
+        </div>
+
+        <div class="insight-box" style="border-left-color: var(--color-sensory);">
+            <div class="box-label" style="color: var(--color-sensory);">Layer 3: Sensory Detail</div>
+            <p><strong>What it does:</strong> Makes the scene visceral. Puts the reader inside the character's body.</p>
+            <p><strong>Common mistake:</strong> Defaulting to visual-only description. Use all five senses.</p>
+            <p style="margin-bottom:0;"><strong>Craft move:</strong> Lead with an unexpected sense. The taste of salt on skin. The sound of a zipper. The cold of a stone wall against a bare back. Surprise wakes the reader up.</p>
+        </div>
+
+        <div class="insight-box" style="border-left-color: var(--color-highlight);">
+            <div class="box-label" style="color: var(--color-highlight);">Layer 4: Internal Thought</div>
+            <p><strong>What it does:</strong> Reveals character. Shows us who this person is in their most unguarded moment.</p>
+            <p><strong>Common mistake:</strong> Stopping the action for a paragraph of reflection. Keep thoughts tight&mdash;fragments, not essays.</p>
+            <p style="margin-bottom:0;"><strong>Craft move:</strong> Use internal thought for contrast. The character's body says yes while their mind panics. Or their mind surrenders before their body catches up.</p>
+        </div>
+
+        <div class="insight-box" style="border-left-color: var(--color-primary);">
+            <div class="box-label" style="color: var(--color-primary);">Layer 5: Dialogue &amp; Sound</div>
+            <p><strong>What it does:</strong> Creates intimacy through communication. The most character-revealing layer.</p>
+            <p><strong>Common mistake:</strong> Purple dialogue that no human would say during intimacy. Keep it natural, short, and specific to these characters.</p>
+            <p style="margin-bottom:0;"><strong>Craft move:</strong> The most powerful dialogue in a spice scene is often a single word. A name. "Please." "Stay." "More." Let silence do work too.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: SCENE PACING & STRUCTURE                           -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="pacing">
+        <div class="section-number">Section Five</div>
+        <h1>Scene Pacing &amp; Structure</h1>
+        <div class="section-desc">
+            A spice scene is a story within the story. It needs a beginning that earns entry,
+            a middle that escalates, and an end that changes something.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Three-Act Spice Scene</h2>
+
+        <p>Every intimate scene has its own arc. Rushing to the physical peak without building anticipation is the single most common mistake in writing spice. The rule of thirds gives you a framework.</p>
+
+        <div class="pacing-bar">
+            <div class="pacing-segment pacing-anticipation">Anticipation (~40%)</div>
+            <div class="pacing-segment pacing-build">Escalation (~35%)</div>
+            <div class="pacing-segment pacing-climax">Peak &amp; Release (~25%)</div>
+        </div>
+
+        <div class="two-col">
+            <div class="col-box">
+                <h4 style="margin-top:0;color:var(--color-sensory);">Act 1: Anticipation (~40%)</h4>
+                <p>The longest section. This is where tension builds. The approach, the almost-touches, the decision point where both characters choose to cross a line.</p>
+                <p><strong>Key elements:</strong></p>
+                <ul>
+                    <li>The trigger (what sparks this encounter)</li>
+                    <li>The emotional context (why now? what changed?)</li>
+                    <li>The moment of consent / mutual decision</li>
+                    <li>Sensory awareness heightening</li>
+                </ul>
+            </div>
+            <div class="col-box">
+                <h4 style="margin-top:0;color:var(--color-primary);">Act 2: Escalation (~35%)</h4>
+                <p>Physical and emotional intensity increase. Layers weave together. The characters reveal themselves through action, reaction, and vulnerability.</p>
+                <p><strong>Key elements:</strong></p>
+                <ul>
+                    <li>Progressive physical escalation</li>
+                    <li>Emotional barriers lowering</li>
+                    <li>Character-specific responses (not generic)</li>
+                    <li>At least one surprise or reversal</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-box" style="margin-top:0;">
+            <h4 style="margin-top:0;color:var(--color-highlight);">Act 3: Peak &amp; Release (~25%)</h4>
+            <p>The physical and emotional climax, followed by the aftermath. This is where the scene earns its place in the book. Something must be different after this scene&mdash;in the relationship, in a character's understanding of themselves, or in the plot.</p>
+            <p><strong>Key elements:</strong></p>
+            <ul style="margin-bottom:0;">
+                <li>The emotional peak (not just the physical one)</li>
+                <li>A moment of true vulnerability or revelation</li>
+                <li>The immediate aftermath (see Section 9)</li>
+                <li>The shift&mdash;what changed because this happened?</li>
+            </ul>
+        </div>
+
+        <h3>Pacing Planner</h3>
+        <p class="hint">Use this to plan the pacing of a specific scene. Estimate word counts to keep proportions balanced.</p>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <span class="worksheet-title">Scene Pacing Plan</span>
+            </div>
+
+            <div class="inline-field">
+                <span class="field-label">Scene name / location:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Estimated total word count:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Act 1: Anticipation</h4>
+            <div class="inline-field">
+                <span class="field-label">Target word count (~40%):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Trigger / spark:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Emotional context (why now?):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Consent / decision point:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Act 2: Escalation</h4>
+            <div class="inline-field">
+                <span class="field-label">Target word count (~35%):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Key escalation stages (from Section 3):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Emotional barrier that lowers:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Surprise or reversal:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Act 3: Peak &amp; Release</h4>
+            <div class="inline-field">
+                <span class="field-label">Target word count (~25%):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Emotional peak moment:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Vulnerability / revelation:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What changed because of this scene:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfall</div>
+            <p style="margin-bottom:0;"><strong>The 90/10 Scene:</strong> Spending 90% of the word count on physical action and 10% on everything else. If your anticipation section is shorter than your escalation section, you have not built enough tension. Readers should be desperate for these characters to touch <em>before</em> they do.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: SENSORY INTEGRATION                                -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="sensory">
+        <div class="section-number">Section Six</div>
+        <h1>Sensory Integration</h1>
+        <div class="section-desc">
+            Readers experience intimacy through the senses on the page.
+            If you only describe what your characters see, you are leaving four senses on the table.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Five Senses in Intimate Scenes</h2>
+
+        <p>Most writers default to visual and tactile description. But scent is the sense most strongly tied to memory and emotion. Sound creates immediacy. Taste signals closeness that nothing else can. A scene that engages all five senses immerses the reader completely.</p>
+
+        <h3>Sensory Palette Worksheet</h3>
+        <p class="hint">Fill this out for a specific scene. Force yourself to include at least three senses. The ones that feel hardest to write are often the most powerful.</p>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <span class="worksheet-title">Scene Sensory Palette</span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Scene:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <div class="sensory-box">
+            <div class="box-label">Touch &amp; Texture</div>
+            <p><strong>Think about:</strong> Skin temperature. Roughness vs. softness. Pressure. The texture of hair, fabric, scars. The difference between fingertips and palms. Wet vs. dry.</p>
+            <p class="hint">Specific details for this scene:</p>
+            <div class="write-space-sm"></div>
+        </div>
+
+        <div class="sensory-box" style="border-left-color: var(--color-emotion); background: var(--color-emotion-light);">
+            <div class="box-label" style="color: var(--color-emotion);">Scent</div>
+            <p><strong>Think about:</strong> Skin, sweat, soap, perfume/cologne, the environment (smoke, rain, flowers, candle wax). Scent changes as intimacy deepens. What does desire smell like for your characters?</p>
+            <p class="hint">Specific details for this scene:</p>
+            <div class="write-space-sm"></div>
+        </div>
+
+        <div class="sensory-box" style="border-left-color: var(--color-heat); background: var(--color-heat-light);">
+            <div class="box-label" style="color: var(--color-heat);">Taste</div>
+            <p><strong>Think about:</strong> Lips, skin, salt, sweetness, wine or food from earlier, tears, blood (if that fits your genre). Taste implies extreme closeness&mdash;use it at key moments.</p>
+            <p class="hint">Specific details for this scene:</p>
+            <div class="write-space-sm"></div>
+        </div>
+
+        <div class="sensory-box" style="border-left-color: var(--color-highlight); background: var(--color-highlight-light);">
+            <div class="box-label" style="color: var(--color-highlight);">Sound</div>
+            <p><strong>Think about:</strong> Breathing patterns, whispered words, fabric rustling, buttons hitting the floor, the creak of furniture, rain against a window, heartbeats, silence. Sound creates rhythm.</p>
+            <p class="hint">Specific details for this scene:</p>
+            <div class="write-space-sm"></div>
+        </div>
+
+        <div class="sensory-box" style="border-left-color: var(--color-primary); background: var(--color-primary-light);">
+            <div class="box-label" style="color: var(--color-primary);">Sight</div>
+            <p><strong>Think about:</strong> Lighting (candlelight, moonlight, firelight, darkness). What the POV character focuses on&mdash;not a full body scan, but a specific detail. The way someone looks when their guard is down. Eye contact vs. closed eyes.</p>
+            <p class="hint">Specific details for this scene:</p>
+            <div class="write-space-sm"></div>
+        </div>
+
+        <div class="insight-box">
+            <div class="box-label">Craft Insight</div>
+            <p style="margin-bottom:0;"><strong>The dominant sense shifts.</strong> Early in a scene, sight and sound dominate (awareness, approach). As intimacy deepens, touch and scent take over. At peak intensity, internal sensation (heat, pressure, a dissolving sense of self) replaces external observation. Track this shift in your writing.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: DIALOGUE & VERBAL CHEMISTRY                        -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="dialogue">
+        <div class="section-number">Section Seven</div>
+        <h1>Dialogue &amp; Verbal Chemistry</h1>
+        <div class="section-desc">
+            What your characters say&mdash;and refuse to say&mdash;during intimacy
+            reveals more about who they are than any other scene in the book.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Verbal Intimacy Spectrum</h2>
+
+        <p>Dialogue during intimate scenes is not just decoration. It is a tool for characterization, power dynamics, pacing, and emotional escalation. Where your characters fall on the verbal spectrum should be consistent with who they are in every other scene.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Type</th>
+                    <th>What It Sounds Like</th>
+                    <th>Best Used For</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Silence</strong></td>
+                    <td>No words. Breath, sounds, body language only.</td>
+                    <td>Overwhelmed characters. First times. Moments too intense for words.</td>
+                </tr>
+                <tr>
+                    <td><strong>Fragments</strong></td>
+                    <td>"Please." "There." "Don't stop." A name gasped.</td>
+                    <td>Peak intensity. Loss of control. Characters who are usually articulate.</td>
+                </tr>
+                <tr>
+                    <td><strong>Questions</strong></td>
+                    <td>"Is this okay?" "Do you want&mdash;" "Tell me what you need."</td>
+                    <td>Consent. Tenderness. Characters learning each other.</td>
+                </tr>
+                <tr>
+                    <td><strong>Commands</strong></td>
+                    <td>"Look at me." "Don't move." "Say my name."</td>
+                    <td>Dominant characters. Power dynamics. Building tension.</td>
+                </tr>
+                <tr>
+                    <td><strong>Confessions</strong></td>
+                    <td>"I've wanted this since&mdash;" "I can't stop thinking about&mdash;"</td>
+                    <td>Emotional breakthroughs. Vulnerability. Turning points.</td>
+                </tr>
+                <tr>
+                    <td><strong>Banter</strong></td>
+                    <td>Teasing, challenges, competitive remarks, humor.</td>
+                    <td>Enemies-to-lovers. Characters who use wit as armor.</td>
+                </tr>
+                <tr>
+                    <td><strong>Praise</strong></td>
+                    <td>"You're beautiful." "You have no idea what you do to me."</td>
+                    <td>Characters who need to hear they are wanted. Worship dynamics.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Your Characters' Verbal Profiles</h3>
+        <p class="hint">Define how each character communicates during intimacy. This should connect to their personality outside the bedroom.</p>
+
+        <div class="two-col">
+            <div class="col-box">
+                <h4 style="margin-top:0;">Character A</h4>
+                <div class="inline-field">
+                    <span class="field-label">Name:</span>
+                    <span class="field-line"></span>
+                </div>
+                <div class="inline-field">
+                    <span class="field-label">Default mode:</span>
+                    <span class="field-line"></span>
+                </div>
+                <div class="inline-field">
+                    <span class="field-label">When guard drops:</span>
+                    <span class="field-line"></span>
+                </div>
+                <div class="inline-field">
+                    <span class="field-label">What they would never say (until they do):</span>
+                    <span class="field-line"></span>
+                </div>
+            </div>
+            <div class="col-box">
+                <h4 style="margin-top:0;">Character B</h4>
+                <div class="inline-field">
+                    <span class="field-label">Name:</span>
+                    <span class="field-line"></span>
+                </div>
+                <div class="inline-field">
+                    <span class="field-label">Default mode:</span>
+                    <span class="field-line"></span>
+                </div>
+                <div class="inline-field">
+                    <span class="field-label">When guard drops:</span>
+                    <span class="field-line"></span>
+                </div>
+                <div class="inline-field">
+                    <span class="field-label">What they would never say (until they do):</span>
+                    <span class="field-line"></span>
+                </div>
+            </div>
+        </div>
+
+        <h3>Pet Names &amp; Terms of Address</h3>
+        <p>What characters call each other during intimacy carries weight. A shift from a surname to a first name can be as powerful as a kiss. Plan these transitions deliberately.</p>
+
+        <div class="worksheet">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stage of Relationship</th>
+                        <th>Character A Calls B</th>
+                        <th>Character B Calls A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="example-row">
+                        <td>Strangers / antagonists</td>
+                        <td>"Commander" (formal, cold)</td>
+                        <td>"Little thief" (mocking)</td>
+                    </tr>
+                    <tr>
+                        <td>Early tension</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>First intimate moment</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Deepening relationship</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Full vulnerability</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfall</div>
+            <p style="margin-bottom:0;"><strong>The Shakespeare Problem:</strong> Characters who speak in stilted, overly formal, or poetic language during intimacy when they speak casually in every other scene. Intimate dialogue should sound like your character, not like a Hallmark card. If your character swears in combat, they can swear in bed.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8: THE PHYSICS & CONSENT AUDIT                        -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="physics-consent">
+        <div class="section-number">Section Eight</div>
+        <h1>The Physics &amp; Consent Audit</h1>
+        <div class="section-desc">
+            Nothing pulls a reader out of a scene faster than impossible logistics
+            or ambiguous consent. This checklist catches both before your readers do.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Logistics Checklist</h2>
+
+        <p>Fantasy settings allow for magic, but bodies still need to make sense. Run every intimate scene through this checklist during revision. These are the details that beta readers notice and reviewers mention.</p>
+
+        <h3>Spatial &amp; Physical Audit</h3>
+        <ul class="checklist">
+            <li>I can draw the starting position of both characters (standing, sitting, lying down, against a wall, etc.)</li>
+            <li>When positions change, I have shown or implied the transition (not teleported limbs)</li>
+            <li>The setting is accounted for (surface, temperature, space constraints, privacy)</li>
+            <li>Clothing removal makes sense (you cannot take off a shirt while pinned to a wall without letting go first)</li>
+            <li>Hair, jewelry, weapons, or armor have been addressed if they would realistically get in the way</li>
+            <li>Both characters' hands are accounted for (the "third hand" problem: two hands holding, one in hair, one on hip = four hands)</li>
+            <li>If one character is significantly taller/shorter/larger, I have addressed the geometry naturally</li>
+            <li>Time has passed believably (a scene that reads as two minutes but covers elaborate action)</li>
+        </ul>
+
+        <h3>Fantastical Elements Audit</h3>
+        <p class="hint">For romantasy specifically. Skip if writing contemporary.</p>
+        <ul class="checklist">
+            <li>Wings, tails, horns, claws, or other non-human features have been considered for positioning and safety</li>
+            <li>Magic use during intimacy follows the book's established magic system rules</li>
+            <li>Mate bonds, fated connections, or magical compulsions do not override agency (or if they do, the text acknowledges this honestly)</li>
+            <li>If scent/sensory magic is heightened, I have explored what that means during intimacy specifically</li>
+            <li>Power differentials (immortal/mortal, commander/soldier, captor/captive) are addressed, not ignored</li>
+        </ul>
+
+        <h3>Consent as Craft</h3>
+
+        <p>Consent in fiction is not a legal document&mdash;it is a narrative tool. The most compelling consent moments are also moments of character revelation, emotional escalation, and tension. Consent should feel woven into the scene, not bolted on.</p>
+
+        <div class="insight-box">
+            <div class="box-label">Three Levels of Consent Integration</div>
+            <p><strong>Level 1 &mdash; The Pause:</strong> One character pauses and checks. "Is this okay?" Simple, effective, but can feel formulaic if overused.</p>
+            <p><strong>Level 2 &mdash; The Action:</strong> Consent is shown through deliberate action. She pulls him closer. He tilts his chin up in invitation. The body says yes without a questionnaire.</p>
+            <p style="margin-bottom:0;"><strong>Level 3 &mdash; The Revelation:</strong> The consent moment doubles as an emotional turning point. "I don't let people touch me there. But I want you to." Now consent is also vulnerability, backstory, and character growth.</p>
+        </div>
+
+        <h3>Consent Audit for Your Scene</h3>
+        <ul class="checklist">
+            <li>Both characters have demonstrated active willingness (not just the absence of "no")</li>
+            <li>If there is a power imbalance, I have addressed it within the text (not relied on the reader's goodwill)</li>
+            <li>Characters who say stop/slow down/wait are respected immediately, without guilt-tripping</li>
+            <li>If consent is complicated by tropes (dubcon, captor/captive, power dynamics), the narrative framework is honest about the dynamic rather than disguising it as straightforward romance</li>
+            <li>The consent moment serves double duty (also advances character, emotion, or tension)</li>
+            <li>I know where this scene sits on the consent spectrum and it matches my intended reader experience</li>
+        </ul>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfall</div>
+            <p style="margin-bottom:0;"><strong>The Invisible Boundary:</strong> Writing scenes where characters do not have distinct boundaries, preferences, or hesitations. When characters are infinitely willing and infinitely compatible from the first touch, there is no tension, no growth, and no story. Boundaries create the friction that makes intimacy meaningful.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: AFTERMATH & CONSEQUENCES                           -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="aftermath">
+        <div class="section-number">Section Nine</div>
+        <h1>Aftermath &amp; Consequences</h1>
+        <div class="section-desc">
+            An intimate scene earns its place in the book by what changes after.
+            If nothing shifts&mdash;in the characters, the relationship, or the plot&mdash;
+            the scene was decoration, not story.
+        </div>
+    </div>
+
+    <div>
+        <h2>The Aftermath Framework</h2>
+
+        <p>The minutes and hours after an intimate scene are some of the richest character territory in the book. This is where masks come back on&mdash;or don't. Where regret surfaces, or certainty deepens. Where the plot pivots because two people made a choice.</p>
+
+        <h3>Immediate Aftermath (Minutes After)</h3>
+        <p class="hint">Plan what happens in the scene itself, right after the physical peak.</p>
+
+        <div class="worksheet">
+            <div class="inline-field">
+                <span class="field-label">Scene:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Physical Reality</h4>
+            <div class="inline-field">
+                <span class="field-label">Where are they? (Still in bed? Getting dressed? Can't look at each other?)</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Who moves first? What does the movement say?</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Emotional Response</h4>
+            <div class="two-col">
+                <div class="col-box">
+                    <h4 style="margin-top:0;">Character A feels:</h4>
+                    <div class="write-space-xs"></div>
+                    <h4>Character A does:</h4>
+                    <div class="write-space-xs"></div>
+                </div>
+                <div class="col-box">
+                    <h4 style="margin-top:0;">Character B feels:</h4>
+                    <div class="write-space-xs"></div>
+                    <h4>Character B does:</h4>
+                    <div class="write-space-xs"></div>
+                </div>
+            </div>
+
+            <h4>The Pillow Talk Test</h4>
+            <div class="inline-field">
+                <span class="field-label">What do they say to each other (or not say)?</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What is left unspoken that matters?</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h3>Ripple Effects (Hours to Days After)</h3>
+        <p>Every intimate scene should send ripples through the rest of the book. If you can delete the scene and nothing else changes, the scene is not doing enough work.</p>
+
+        <div class="worksheet">
+            <div class="worksheet-header">
+                <span class="worksheet-title">Consequence Tracker</span>
+            </div>
+
+            <h4>Relationship Shift</h4>
+            <div class="inline-field">
+                <span class="field-label">Before this scene, the relationship was:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">After this scene, the relationship is:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">What is different and irreversible?</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Character Growth</h4>
+            <div class="inline-field">
+                <span class="field-label">Character A learned about themselves:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Character B learned about themselves:</span>
+                <span class="field-line"></span>
+            </div>
+
+            <h4>Plot Consequences</h4>
+            <div class="inline-field">
+                <span class="field-label">Does this scene create a new problem or complication?</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Does anyone else find out? What happens?</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">How does this change the next scene between these characters?</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <div class="pitfall-box">
+            <div class="box-label">Common Pitfall</div>
+            <p style="margin-bottom:0;"><strong>The Reset Button:</strong> Characters who are intimate in chapter 12 and then act like acquaintances in chapter 13. Unless the scene is followed by regret, betrayal, or deliberate distancing (which should be on-page), the relationship must be permanently altered. Readers notice when authors forget their own scenes happened.</p>
+        </div>
+
+        <div class="example-box">
+            <div class="box-label">Craft Tip</div>
+            <p style="margin-bottom:0;"><strong>The best aftermath scenes mirror the anticipation.</strong> If Act 1 of the scene was charged with longing, the aftermath might carry quiet certainty. If Act 1 was reckless, the aftermath might be laced with panic. The emotional arc of the scene should complete, not cut off.</p>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SECTION 10: SCENE PLANNING WORKSHEETS                         -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="scene-worksheets">
+        <div class="section-number">Section Ten</div>
+        <h1>Scene Planning Worksheets</h1>
+        <div class="section-desc">
+            Six blank worksheets that pull together every framework in this workbook.
+            Photocopy these pages or print extra copies as needed.
+        </div>
+    </div>
+
+    <!-- WORKSHEET 1 -->
+    <div class="scene-worksheet">
+        <div class="worksheet-header">
+            <span class="worksheet-title">Spice Scene Planner</span>
+            <span class="worksheet-num">Worksheet 1 of 6</span>
+        </div>
+
+        <div class="scene-meta-grid">
+            <div class="inline-field">
+                <span class="field-label">Scene Name:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Chapter:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Escalation Stages Covered:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">POV Character:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Setting / Location:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h4>Why Now? (What triggers this scene &amp; why this moment in the arc)</h4>
+        <div class="write-space-sm"></div>
+
+        <h4>Emotional Stakes (What each character risks by being vulnerable)</h4>
+        <div class="write-space-sm"></div>
+
+        <div class="two-col">
+            <div>
+                <h4>Layers to Emphasize</h4>
+                <ul class="checklist">
+                    <li>Physical Action</li>
+                    <li>Emotional Current</li>
+                    <li>Sensory Detail</li>
+                    <li>Internal Thought</li>
+                    <li>Dialogue &amp; Sound</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Key Senses</h4>
+                <ul class="checklist">
+                    <li>Touch / Texture</li>
+                    <li>Scent</li>
+                    <li>Taste</li>
+                    <li>Sound</li>
+                    <li>Sight</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>What Changes Because of This Scene?</h4>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <!-- WORKSHEET 2 -->
+    <div class="scene-worksheet">
+        <div class="worksheet-header">
+            <span class="worksheet-title">Spice Scene Planner</span>
+            <span class="worksheet-num">Worksheet 2 of 6</span>
+        </div>
+
+        <div class="scene-meta-grid">
+            <div class="inline-field">
+                <span class="field-label">Scene Name:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Chapter:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Escalation Stages Covered:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">POV Character:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Setting / Location:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h4>Why Now? (What triggers this scene &amp; why this moment in the arc)</h4>
+        <div class="write-space-sm"></div>
+
+        <h4>Emotional Stakes (What each character risks by being vulnerable)</h4>
+        <div class="write-space-sm"></div>
+
+        <div class="two-col">
+            <div>
+                <h4>Layers to Emphasize</h4>
+                <ul class="checklist">
+                    <li>Physical Action</li>
+                    <li>Emotional Current</li>
+                    <li>Sensory Detail</li>
+                    <li>Internal Thought</li>
+                    <li>Dialogue &amp; Sound</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Key Senses</h4>
+                <ul class="checklist">
+                    <li>Touch / Texture</li>
+                    <li>Scent</li>
+                    <li>Taste</li>
+                    <li>Sound</li>
+                    <li>Sight</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>What Changes Because of This Scene?</h4>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <!-- WORKSHEET 3 -->
+    <div class="scene-worksheet">
+        <div class="worksheet-header">
+            <span class="worksheet-title">Spice Scene Planner</span>
+            <span class="worksheet-num">Worksheet 3 of 6</span>
+        </div>
+
+        <div class="scene-meta-grid">
+            <div class="inline-field">
+                <span class="field-label">Scene Name:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Chapter:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Escalation Stages Covered:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">POV Character:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Setting / Location:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h4>Why Now? (What triggers this scene &amp; why this moment in the arc)</h4>
+        <div class="write-space-sm"></div>
+
+        <h4>Emotional Stakes (What each character risks by being vulnerable)</h4>
+        <div class="write-space-sm"></div>
+
+        <div class="two-col">
+            <div>
+                <h4>Layers to Emphasize</h4>
+                <ul class="checklist">
+                    <li>Physical Action</li>
+                    <li>Emotional Current</li>
+                    <li>Sensory Detail</li>
+                    <li>Internal Thought</li>
+                    <li>Dialogue &amp; Sound</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Key Senses</h4>
+                <ul class="checklist">
+                    <li>Touch / Texture</li>
+                    <li>Scent</li>
+                    <li>Taste</li>
+                    <li>Sound</li>
+                    <li>Sight</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>What Changes Because of This Scene?</h4>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <!-- WORKSHEET 4 -->
+    <div class="scene-worksheet">
+        <div class="worksheet-header">
+            <span class="worksheet-title">Spice Scene Planner</span>
+            <span class="worksheet-num">Worksheet 4 of 6</span>
+        </div>
+
+        <div class="scene-meta-grid">
+            <div class="inline-field">
+                <span class="field-label">Scene Name:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Chapter:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Escalation Stages Covered:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">POV Character:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Setting / Location:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h4>Why Now? (What triggers this scene &amp; why this moment in the arc)</h4>
+        <div class="write-space-sm"></div>
+
+        <h4>Emotional Stakes (What each character risks by being vulnerable)</h4>
+        <div class="write-space-sm"></div>
+
+        <div class="two-col">
+            <div>
+                <h4>Layers to Emphasize</h4>
+                <ul class="checklist">
+                    <li>Physical Action</li>
+                    <li>Emotional Current</li>
+                    <li>Sensory Detail</li>
+                    <li>Internal Thought</li>
+                    <li>Dialogue &amp; Sound</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Key Senses</h4>
+                <ul class="checklist">
+                    <li>Touch / Texture</li>
+                    <li>Scent</li>
+                    <li>Taste</li>
+                    <li>Sound</li>
+                    <li>Sight</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>What Changes Because of This Scene?</h4>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <!-- WORKSHEET 5 -->
+    <div class="scene-worksheet">
+        <div class="worksheet-header">
+            <span class="worksheet-title">Spice Scene Planner</span>
+            <span class="worksheet-num">Worksheet 5 of 6</span>
+        </div>
+
+        <div class="scene-meta-grid">
+            <div class="inline-field">
+                <span class="field-label">Scene Name:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Chapter:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Escalation Stages Covered:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">POV Character:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Setting / Location:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h4>Why Now? (What triggers this scene &amp; why this moment in the arc)</h4>
+        <div class="write-space-sm"></div>
+
+        <h4>Emotional Stakes (What each character risks by being vulnerable)</h4>
+        <div class="write-space-sm"></div>
+
+        <div class="two-col">
+            <div>
+                <h4>Layers to Emphasize</h4>
+                <ul class="checklist">
+                    <li>Physical Action</li>
+                    <li>Emotional Current</li>
+                    <li>Sensory Detail</li>
+                    <li>Internal Thought</li>
+                    <li>Dialogue &amp; Sound</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Key Senses</h4>
+                <ul class="checklist">
+                    <li>Touch / Texture</li>
+                    <li>Scent</li>
+                    <li>Taste</li>
+                    <li>Sound</li>
+                    <li>Sight</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>What Changes Because of This Scene?</h4>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <!-- WORKSHEET 6 -->
+    <div class="scene-worksheet">
+        <div class="worksheet-header">
+            <span class="worksheet-title">Spice Scene Planner</span>
+            <span class="worksheet-num">Worksheet 6 of 6</span>
+        </div>
+
+        <div class="scene-meta-grid">
+            <div class="inline-field">
+                <span class="field-label">Scene Name:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Chapter:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Heat Level (0&ndash;5):</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Escalation Stages Covered:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">POV Character:</span>
+                <span class="field-line"></span>
+            </div>
+            <div class="inline-field">
+                <span class="field-label">Setting / Location:</span>
+                <span class="field-line"></span>
+            </div>
+        </div>
+
+        <h4>Why Now? (What triggers this scene &amp; why this moment in the arc)</h4>
+        <div class="write-space-sm"></div>
+
+        <h4>Emotional Stakes (What each character risks by being vulnerable)</h4>
+        <div class="write-space-sm"></div>
+
+        <div class="two-col">
+            <div>
+                <h4>Layers to Emphasize</h4>
+                <ul class="checklist">
+                    <li>Physical Action</li>
+                    <li>Emotional Current</li>
+                    <li>Sensory Detail</li>
+                    <li>Internal Thought</li>
+                    <li>Dialogue &amp; Sound</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Key Senses</h4>
+                <ul class="checklist">
+                    <li>Touch / Texture</li>
+                    <li>Scent</li>
+                    <li>Taste</li>
+                    <li>Sound</li>
+                    <li>Sight</li>
+                </ul>
+            </div>
+        </div>
+
+        <h4>What Changes Because of This Scene?</h4>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- APPENDICES                                                    -->
+    <!-- ============================================================ -->
+    <div class="section-title-page" id="appendices">
+        <div class="section-number">Appendices</div>
+        <h1>Quick Reference</h1>
+        <div class="section-desc">
+            Word banks, checklists, and reference cards to keep beside
+            your manuscript while you draft and revise.
+        </div>
+    </div>
+
+    <!-- APPENDIX A: SENSORY WORD BANKS -->
+    <div>
+        <h2>Appendix A: Sensory Word Banks</h2>
+        <p>When you are stuck mid-scene and reaching for the same word again, scan these banks for alternatives. Circle the ones that fit your characters and genre.</p>
+
+        <h3>Touch &amp; Texture</h3>
+        <div class="word-bank">
+            <span class="word">velvet</span>
+            <span class="word">calloused</span>
+            <span class="word">featherlight</span>
+            <span class="word">scorching</span>
+            <span class="word">electric</span>
+            <span class="word">bruising</span>
+            <span class="word">tentative</span>
+            <span class="word">slick</span>
+            <span class="word">aching</span>
+            <span class="word">trembling</span>
+            <span class="word">firm</span>
+            <span class="word">gentle</span>
+            <span class="word">searing</span>
+            <span class="word">rough</span>
+            <span class="word">silken</span>
+            <span class="word">grounding</span>
+            <span class="word">possessive</span>
+            <span class="word">reverent</span>
+            <span class="word">urgent</span>
+            <span class="word">languid</span>
+        </div>
+
+        <h3>Temperature &amp; Sensation</h3>
+        <div class="word-bank">
+            <span class="word">molten</span>
+            <span class="word">shivering</span>
+            <span class="word">flushed</span>
+            <span class="word">burning</span>
+            <span class="word">cool</span>
+            <span class="word">prickling</span>
+            <span class="word">throbbing</span>
+            <span class="word">tingling</span>
+            <span class="word">smoldering</span>
+            <span class="word">goosebumps</span>
+            <span class="word">radiating</span>
+            <span class="word">liquid</span>
+            <span class="word">coiling</span>
+            <span class="word">taut</span>
+            <span class="word">dissolving</span>
+            <span class="word">humming</span>
+        </div>
+
+        <h3>Scent</h3>
+        <div class="word-bank">
+            <span class="word">salt</span>
+            <span class="word">cedar</span>
+            <span class="word">smoke</span>
+            <span class="word">petrichor</span>
+            <span class="word">musk</span>
+            <span class="word">honey</span>
+            <span class="word">iron</span>
+            <span class="word">sweat</span>
+            <span class="word">jasmine</span>
+            <span class="word">leather</span>
+            <span class="word">ink</span>
+            <span class="word">rain</span>
+            <span class="word">wine</span>
+            <span class="word">pine</span>
+            <span class="word">bergamot</span>
+            <span class="word">sandalwood</span>
+        </div>
+
+        <h3>Sound</h3>
+        <div class="word-bank">
+            <span class="word">gasp</span>
+            <span class="word">sigh</span>
+            <span class="word">whisper</span>
+            <span class="word">ragged breath</span>
+            <span class="word">murmur</span>
+            <span class="word">groan</span>
+            <span class="word">rustle</span>
+            <span class="word">heartbeat</span>
+            <span class="word">hitch</span>
+            <span class="word">exhale</span>
+            <span class="word">silence</span>
+            <span class="word">laughter</span>
+            <span class="word">catch</span>
+            <span class="word">thunder</span>
+            <span class="word">creak</span>
+            <span class="word">shatter</span>
+        </div>
+
+        <h3>Movement &amp; Pace</h3>
+        <div class="word-bank">
+            <span class="word">arching</span>
+            <span class="word">yielding</span>
+            <span class="word">pinning</span>
+            <span class="word">pulling</span>
+            <span class="word">grinding</span>
+            <span class="word">rocking</span>
+            <span class="word">cradling</span>
+            <span class="word">tracing</span>
+            <span class="word">dragging</span>
+            <span class="word">clutching</span>
+            <span class="word">bracing</span>
+            <span class="word">collapsing</span>
+            <span class="word">writhing</span>
+            <span class="word">freezing</span>
+            <span class="word">surging</span>
+            <span class="word">melting</span>
+        </div>
+
+        <h3>Emotional Descriptors</h3>
+        <div class="word-bank">
+            <span class="word">desperate</span>
+            <span class="word">worshipful</span>
+            <span class="word">wrecked</span>
+            <span class="word">defiant</span>
+            <span class="word">tender</span>
+            <span class="word">feral</span>
+            <span class="word">consumed</span>
+            <span class="word">unraveling</span>
+            <span class="word">claiming</span>
+            <span class="word">surrendering</span>
+            <span class="word">greedy</span>
+            <span class="word">reverent</span>
+            <span class="word">devastated</span>
+            <span class="word">fierce</span>
+            <span class="word">undone</span>
+            <span class="word">ravenous</span>
+        </div>
+    </div>
+
+    <!-- APPENDIX B: COMMON PITFALLS MASTER CHECKLIST -->
+    <div class="page-break">
+        <h2>Appendix B: The Revision Checklist</h2>
+        <p>Run every intimate scene through this checklist before you call it done. One pass per category.</p>
+
+        <h3>Character &amp; Emotion</h3>
+        <ul class="checklist">
+            <li>Both characters have distinct, individual voices and reactions (not interchangeable)</li>
+            <li>Emotional stakes are clear&mdash;we know what each character risks</li>
+            <li>The scene reveals something new about at least one character</li>
+            <li>Internal thought is present but does not stop the momentum</li>
+            <li>The characters' intimacy profiles (Section 2) are honored</li>
+        </ul>
+
+        <h3>Pacing &amp; Structure</h3>
+        <ul class="checklist">
+            <li>Anticipation section is at least as long as the physical escalation</li>
+            <li>The scene has a clear trigger (why now?)</li>
+            <li>There is at least one surprise, reversal, or power shift</li>
+            <li>The aftermath is present and shows change</li>
+            <li>The scene could not be deleted without affecting the rest of the book</li>
+        </ul>
+
+        <h3>Sensory &amp; Craft</h3>
+        <ul class="checklist">
+            <li>At least three of the five senses are engaged</li>
+            <li>No more than two consecutive sentences on the same layer (physical, emotional, sensory, thought, dialogue)</li>
+            <li>Language register matches the heat level and genre</li>
+            <li>No repeated words within the same paragraph (check: hands, lips, breath, body)</li>
+            <li>Prose rhythm varies (short punchy sentences mixed with longer flowing ones)</li>
+        </ul>
+
+        <h3>Physics &amp; Logistics</h3>
+        <ul class="checklist">
+            <li>All body positions are physically possible</li>
+            <li>Hands are accounted for (no third-hand problem)</li>
+            <li>Clothing removal is logical and sequential</li>
+            <li>Setting details are consistent (they started standing, they are now horizontal&mdash;how?)</li>
+            <li>Fantastical elements (wings, claws, magic) are addressed</li>
+        </ul>
+
+        <h3>Consent &amp; Boundaries</h3>
+        <ul class="checklist">
+            <li>Both characters demonstrate active willingness</li>
+            <li>Power dynamics are acknowledged, not glossed over</li>
+            <li>The consent moment is integrated into the scene (not a speed bump)</li>
+            <li>Character boundaries established in Section 2 are respected or meaningfully crossed</li>
+        </ul>
+    </div>
+
+    <!-- APPENDIX C: HEAT LEVEL QUICK REFERENCE -->
+    <div class="page-break">
+        <h2>Appendix C: Heat Level Quick Reference Card</h2>
+        <p class="hint">Tear out or bookmark this page for quick reference while drafting.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Name</th>
+                    <th>On-Page Content</th>
+                    <th>Language Style</th>
+                    <th>Scene Count (typical)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>0</strong></td>
+                    <td>Sweet</td>
+                    <td>Hand-holding, chaste kisses</td>
+                    <td>Clean, no innuendo</td>
+                    <td>0 explicit scenes</td>
+                </tr>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td>Mild</td>
+                    <td>Kissing, tension, fade to black</td>
+                    <td>Suggestive but not graphic</td>
+                    <td>0&ndash;1 (implied)</td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td>Warm</td>
+                    <td>On-page intimacy, euphemistic</td>
+                    <td>Poetic, metaphorical</td>
+                    <td>1&ndash;2 scenes</td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td>Hot</td>
+                    <td>Explicit with anatomical clarity</td>
+                    <td>Direct but tasteful</td>
+                    <td>2&ndash;4 scenes</td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td>Steamy</td>
+                    <td>Detailed, frequent, arc-driving</td>
+                    <td>Graphic, varied</td>
+                    <td>4&ndash;6 scenes</td>
+                </tr>
+                <tr>
+                    <td><strong>5</strong></td>
+                    <td>Scorching</td>
+                    <td>Boundary-pushing, central to narrative</td>
+                    <td>Explicit, uninhibited</td>
+                    <td>6+ scenes</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="principle-card">
+            <div class="card-content">
+                The heat level is a promise to your reader. Make it intentionally.
+                Keep it consistently. Let it serve the story.
+            </div>
+        </div>
+
+        <h3>The Scene Essentials (One-Page Summary)</h3>
+
+        <div class="quick-ref">
+            <div class="ref-title">Before You Draft</div>
+            <ul>
+                <li>Set your heat level and commit (Section 1)</li>
+                <li>Know both characters' intimacy profiles (Section 2)</li>
+                <li>Identify which escalation stages this scene covers (Section 3)</li>
+                <li>Decide the emotional purpose of this scene (what changes?)</li>
+            </ul>
+        </div>
+
+        <div class="quick-ref">
+            <div class="ref-title">While You Draft</div>
+            <ul>
+                <li>Weave all five layers&mdash;no more than two sentences on the same layer (Section 4)</li>
+                <li>Follow the 40/35/25 pacing rule: anticipation / escalation / peak (Section 5)</li>
+                <li>Engage at least three senses (Section 6)</li>
+                <li>Keep dialogue in character (Section 7)</li>
+            </ul>
+        </div>
+
+        <div class="quick-ref">
+            <div class="ref-title">After You Draft</div>
+            <ul>
+                <li>Run the physics and consent audit (Section 8)</li>
+                <li>Write the aftermath&mdash;something must change (Section 9)</li>
+                <li>Run the full revision checklist (Appendix B)</li>
+                <li>Read the scene aloud. If you cringe, rewrite. If you blush, you might be on the right track.</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
