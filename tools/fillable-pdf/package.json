@@ -1,0 +1,19 @@
+{
+  "name": "@plotbrew/fillable-pdf",
+  "version": "1.0.0",
+  "description": "Reusable pipeline: HTML → Paged.js render → extract field coordinates → inject AcroForm fields → optimized fillable PDF",
+  "main": "src/generate.js",
+  "bin": {
+    "fillable-pdf": "src/generate.js"
+  },
+  "scripts": {
+    "generate": "node src/generate.js",
+    "annotate:romantasy": "node src/annotate-romantasy-guide.js",
+    "build:romantasy": "npm run annotate:romantasy && node src/generate.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide-fillable.html --output ../../romantasy-analysis-guide/printable/Reading-Romantasy-Analysis-Guide-FILLABLE.pdf --timeout 300000"
+  },
+  "dependencies": {
+    "pagedjs": "^0.4.3",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.2.1"
+  }
+}
