@@ -22,7 +22,7 @@ const PX_TO_PT = 72 / 96;
  * if the CDN is unavailable. Falls through to network if no local copy exists.
  */
 async function setupRequestInterception(page) {
-  const localPagedJs = path.resolve(__dirname, '../node_modules/pagedjs/dist/paged.polyfill.js');
+  const localPagedJs = path.resolve(__dirname, 'node_modules/pagedjs/dist/paged.polyfill.js');
   if (!fs.existsSync(localPagedJs)) return;
 
   await page.setRequestInterception(true);

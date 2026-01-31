@@ -28,8 +28,8 @@
 
 const path = require('path');
 const fs = require('fs');
-const { extractFields, generateFlatPdf } = require('./extract-fields');
-const { addFields } = require('./add-fields');
+const { extractFields, generateFlatPdf } = require(path.join(__dirname, 'extract-fields'));
+const { addFields } = require(path.join(__dirname, 'add-fields'));
 
 // ─── Argument parsing ───────────────────────────────────────────────
 
@@ -100,14 +100,18 @@ function findChrome() {
   const candidates = [
     // Playwright's bundled Chromium (common in CI/dev environments)
     ...findPlaywrightChrome(),
-    // Standard locations
+    // Windows
+    process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Google/Chrome/Application/chrome.exe'),
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+    // Linux
     '/usr/bin/google-chrome-stable',
     '/usr/bin/google-chrome',
     '/usr/bin/chromium-browser',
     '/usr/bin/chromium',
     // macOS
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-  ];
+  ].filter(Boolean);
 
   for (const p of candidates) {
     if (fs.existsSync(p)) {

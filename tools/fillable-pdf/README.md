@@ -1,123 +1,84 @@
 # Fillable PDF Pipeline
 
-Automated pipeline that converts HTML workbooks into optimized fillable PDFs with pixel-perfect form field placement.
+Converts HTML workbooks into optimized fillable PDFs with pixel-perfect form field placement.
 
 ## How It Works
 
+1. You put your HTML file in a folder with these tool files
+2. An annotation script marks which elements should be fillable
+3. Puppeteer opens the HTML in Chrome, extracts exact positions of every field
+4. pdf-lib injects AcroForm form fields at those exact positions
+5. You get a fillable PDF
+
+## Setup (One Time)
+
+1. Install [Node.js](https://nodejs.org/) (LTS version)
+2. Make sure you have Google Chrome installed
+
+## Folder Structure
+
+Copy these files into the same folder as your HTML:
+
 ```
-HTML (with data-field-* markers)
-  → Puppeteer loads in Chrome
-  → Paged.js renders pages
-  → JavaScript extracts exact getBoundingClientRect() for every field
-  → Exports flat PDF + field coordinates JSON
-  → pdf-lib injects AcroForm fields at those exact positions
-  → Output: fillable PDF
+your-project-folder/
+├── your-workbook.html              ← your HTML file
+├── annotate-your-workbook.js       ← annotation script (ask Claude Code to write this)
+├── generate.js                     ← pipeline engine
+├── extract-fields.js               ← field extractor
+├── add-fields.js                   ← field injector
+├── package.json                    ← dependencies
 ```
 
-Field positions come from the **actual rendered layout**, not estimates. This eliminates alignment issues.
+## Running It (Romantasy Guide Example)
 
-## Quick Start (Romantasy Guide)
+1. Put `romantasy-analysis-guide.html` in the same folder as the tool files
+2. Open a terminal in that folder
+3. Run:
 
 ```bash
-cd tools/fillable-pdf
 npm install
 npm run build:romantasy
 ```
 
-This runs:
-1. **Annotate** — Adds `data-field-*` attributes to the HTML (956 fields across chapters, tables, writing spaces, checklists)
-2. **Extract** — Opens the annotated HTML in Chrome, waits for Paged.js, extracts field coordinates
-3. **Generate** — Creates the flat PDF from the same render
-4. **Inject** — Adds AcroForm fields at the extracted coordinates
-5. **Output** — `romantasy-analysis-guide/printable/Reading-Romantasy-Analysis-Guide-FILLABLE.pdf`
+The fillable PDF appears in the same folder.
 
-## Reusing for Other Projects
+## Running It (Any Other Project)
 
-### Step 1: Mark Up Your HTML
+1. Put your HTML file in the folder with the tool files
+2. Ask Claude Code to write an annotation script for your HTML (use `annotate-romantasy-guide.js` as a reference)
+3. Run the annotation script: `node annotate-your-workbook.js`
+4. Run the pipeline:
 
-Add `data-field-*` attributes to every element that should become fillable:
+```bash
+node generate.js --input your-workbook-fillable.html --output Your-Workbook-FILLABLE.pdf
+```
+
+## Options
+
+| Flag | What it does | Default |
+|------|-------------|---------|
+| `--input, -i` | Your annotated HTML file | required |
+| `--output, -o` | Output fillable PDF name | required |
+| `--font-size` | Font size in text fields | 10 |
+| `--timeout` | Max wait time in ms | 120000 |
+| `--skip-extract` | Reuse saved field positions | false |
+| `--skip-pdf` | Reuse saved flat PDF | false |
+
+## Field Types
+
+When marking up HTML (or when Claude Code writes the annotation script), these are the field types:
 
 ```html
-<!-- Text field -->
-<span class="field-value" data-field-name="title" data-field-type="text"></span>
+<!-- Text field (single line) -->
+<span data-field-name="title" data-field-type="text"></span>
 
-<!-- Multi-line textarea -->
-<div class="write-space" data-field-name="notes" data-field-type="textarea"></div>
+<!-- Textarea (multi-line writing space) -->
+<div data-field-name="notes" data-field-type="textarea"></div>
 
 <!-- Checkbox -->
 <li data-field-name="agree" data-field-type="checkbox">I agree</li>
 
-<!-- Radio button (needs a group) -->
+<!-- Radio button (pick one from a group) -->
 <span data-field-name="opt_a" data-field-type="radio" data-field-group="choice">A</span>
 <span data-field-name="opt_b" data-field-type="radio" data-field-group="choice">B</span>
-```
-
-Field types: `text`, `textarea`, `checkbox`, `radio`
-
-### Step 2: Run the Pipeline
-
-```bash
-node src/generate.js \
-  --input path/to/your-workbook.html \
-  --output path/to/your-workbook-FILLABLE.pdf
-```
-
-### Options
-
-| Flag | Description | Default |
-|------|-------------|---------|
-| `--input, -i` | HTML file with data-field-* attributes | required |
-| `--output, -o` | Output fillable PDF path | required |
-| `--flat-pdf` | Intermediate flat PDF path | auto |
-| `--fields-json` | Field coordinates JSON path | auto |
-| `--chrome` | Chrome/Chromium binary path | auto-detect |
-| `--font-size` | Default font size for text fields | 10 |
-| `--skip-extract` | Reuse existing fields JSON | false |
-| `--skip-pdf` | Reuse existing flat PDF | false |
-| `--timeout` | Max ms for Paged.js render | 120000 |
-
-### Iterating Quickly
-
-After the first run, use `--skip-extract --skip-pdf` to skip the slow Puppeteer steps and only re-inject fields (useful for tweaking field properties):
-
-```bash
-node src/generate.js \
-  --input your-workbook.html \
-  --output your-workbook-FILLABLE.pdf \
-  --skip-extract --skip-pdf \
-  --font-size 9
-```
-
-## Writing an Annotation Script
-
-For each project, write a script (like `annotate-romantasy-guide.js`) that reads your HTML and adds `data-field-*` attributes. Common patterns:
-
-- **Writing spaces** (`<div class="write-space">`) → `data-field-type="textarea"`
-- **Field-value spans** (`<span class="field-value">`) → `data-field-type="text"`
-- **Checklist items** (`<li>` in `.checklist`) → `data-field-type="checkbox"`
-- **Rating scales** → `data-field-type="radio"` with `data-field-group`
-- **Empty table cells** (`<td></td>`) → `data-field-type="textarea"`
-- **Underscore blanks** (`_____`) → replace with a span with `data-field-type="text"`
-
-## Performance Notes
-
-The pipeline produces optimized fillable PDFs by design:
-
-- **Pure AcroForm fields** — no JavaScript in the PDF, zero input latency
-- **Standard fonts** (Helvetica) for form fields — minimal embedding overhead
-- **No calculation chains** — typing in one field doesn't trigger recalculation of others
-
-For further optimization of the output PDF:
-- Use `qpdf --linearize` for Fast Web View (page-at-a-time loading)
-- Use `qpdf --optimize-images` for image compression
-- Font subsetting with tools like `mutool clean -gggg`
-
-## Architecture
-
-```
-src/
-├── generate.js                 # Main orchestrator (CLI entry point)
-├── extract-fields.js           # Puppeteer: render HTML → extract coordinates + flat PDF
-├── add-fields.js               # pdf-lib: inject AcroForm fields into flat PDF
-└── annotate-romantasy-guide.js # Project-specific: annotate the romantasy guide HTML
 ```
