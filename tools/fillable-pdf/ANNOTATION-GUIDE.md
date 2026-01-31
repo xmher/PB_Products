@@ -152,15 +152,44 @@ fs.writeFileSync(OUTPUT, html, 'utf8');
 console.log(`Annotation complete! Fields annotated: ${fieldCount}`);
 ```
 
+## CRITICAL: Put data-field-* on the INPUT element, not the wrapper
+
+When the HTML has `<input type="checkbox">` or `<input type="text">`, the `data-field-*` attributes MUST go directly on the `<input>` element — NOT on the parent `<li>`, `<label>`, or `<div>`.
+
+The pipeline uses `getBoundingClientRect()` on the element with `data-field-name` to determine the size and position of the PDF form field. If you put it on the `<li>`, the PDF checkbox will be the size of the entire list item (too big). If you put it on the `<input>`, the PDF checkbox will match the small checkbox square (correct).
+
+**WRONG — checkbox covers entire list item:**
+```html
+<li data-field-name="ch1_beat_plot" data-field-type="checkbox"><label><input type="checkbox"> Plot</label></li>
+```
+
+**RIGHT — checkbox matches the input size:**
+```html
+<li><label><input type="checkbox" data-field-name="ch1_beat_plot" data-field-type="checkbox"> Plot</label></li>
+```
+
+**WRONG — text field covers entire label:**
+```html
+<label data-field-name="ch1_pov" data-field-type="text"><strong>POV:</strong> <input type="text"></label>
+```
+
+**RIGHT — text field matches the input:**
+```html
+<label><strong>POV:</strong> <input type="text" data-field-name="ch1_pov" data-field-type="text"></label>
+```
+
+The pipeline automatically hides HTML inputs that have `data-field-name` when generating the flat PDF, so the AcroForm field replaces the HTML input cleanly with no doubling.
+
 ## Important rules
 
 1. Every `data-field-name` must be UNIQUE across the entire document
-2. Use section prefixes to avoid name collisions (especially in repeated structures like chapter logs)
-3. Skip reference/example content — only annotate elements the user should fill in
-4. Skip cells/elements that already have text content (those are labels, not fillable fields)
-5. For chapter logs, loop through all chapters (could be 30 or 100) using the `id="chapter-N"` pattern
-6. Process sections by finding start/end boundaries with `html.indexOf()` to avoid accidental matches across sections
-7. The script reads from `__dirname` (same folder) and writes to the same folder
+2. ALWAYS put `data-field-*` on the `<input>` element itself, not on wrapper elements like `<li>`, `<label>`, or `<div>`
+3. Use section prefixes to avoid name collisions (especially in repeated structures like chapter logs)
+4. Skip reference/example content — only annotate elements the user should fill in
+5. Skip cells/elements that already have text content (those are labels, not fillable fields)
+6. For chapter logs, loop through all chapters (could be 30 or 100) using the `id="chapter-N"` pattern
+7. Process sections by finding start/end boundaries with `html.indexOf()` to avoid accidental matches across sections
+8. The script reads from `__dirname` (same folder) and writes to the same folder
 
 ## Reference implementation
 

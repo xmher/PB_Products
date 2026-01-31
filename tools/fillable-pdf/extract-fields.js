@@ -202,6 +202,30 @@ async function generateFlatPdf(htmlPath, outputPath, opts = {}) {
     );
     await new Promise(r => setTimeout(r, 3000));
 
+    // Hide HTML form inputs that will be replaced by AcroForm fields.
+    // This prevents doubled checkboxes/text fields in the flat PDF.
+    // visibility:hidden keeps element dimensions (for layout) but hides the visual.
+    console.log('[pdf] Hiding HTML inputs (replaced by AcroForm fields)...');
+    await page.evaluate(() => {
+      const style = document.createElement('style');
+      style.textContent = `
+        /* Hide inputs that have data-field-name directly */
+        input[data-field-name],
+        /* Hide inputs inside elements that have data-field-name */
+        [data-field-name] input[type="checkbox"],
+        [data-field-name] input[type="text"],
+        [data-field-name] input[type="radio"] {
+          visibility: hidden !important;
+        }
+        /* Hide contenteditable borders/backgrounds — AcroForm fields replace them */
+        [data-field-name][contenteditable] {
+          border-color: transparent !important;
+          background: transparent !important;
+        }
+      `;
+      document.head.appendChild(style);
+    });
+
     console.log('[pdf] Generating PDF...');
     await page.pdf({
       path: outputPath,
