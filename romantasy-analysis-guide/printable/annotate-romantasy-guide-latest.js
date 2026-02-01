@@ -3,14 +3,20 @@
 /**
  * annotate-romantasy-guide-latest.js
  *
- * Project-specific annotation script for the Romantasy Analysis Guide (LATEST version).
+ * Annotation script for the Romantasy Analysis Guide (LATEST version).
  * Reads the LATEST HTML file and adds data-field-name / data-field-type / data-field-group
  * attributes to every element that should become a fillable PDF field.
  *
- * The LATEST HTML differs from the original:
- *   - Uses <input type="text"> for text fields (pages, POV, location, custom tropes)
- *   - Uses <input type="checkbox"> for checkboxes (beats, heat, tropes, arc driver, tension)
- *   - Uses contenteditable="true" on write-spaces, write-lines, and field-values
+ * The LATEST HTML uses:
+ *   - <span class="field-value" contenteditable="true"> for text fields
+ *   - <input type="text"> for short text inputs (pages, POV, location, custom tropes)
+ *   - <input type="checkbox"> for checkboxes (beats, heat, tropes, arc driver, tension)
+ *   - <label class="rating-check"> for rating scales (heat level, mirror strength)
+ *   - <label class="inline-check"> for inline choices (arc driver, tension source)
+ *   - contenteditable="true" on write-spaces, write-lines
+ *   - Empty <td> cells in beat/trope/spice/craft/synthesis/appendix tables
+ *   - &#9744; checkbox character cells in trope tables
+ *   - Y / N cells in pitfall diagnosis table
  *
  * Run: node annotate-romantasy-guide-latest.js
  */
@@ -41,7 +47,7 @@ const craftToolkitStart = html.indexOf('id="craft-toolkit"');
 if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
   let preSection = html.substring(bookInfoStart, craftToolkitStart);
 
-  // Field-value spans (Title, Author, Series, etc.)
+  // Field-value spans (Title, Author, Series, Pub Year, Page Count, Subgenre)
   preSection = preSection.replace(
     /(<span class="field-value" contenteditable="true">)(<\/span>)/g,
     (match, before, after) => {
@@ -54,12 +60,11 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
     }
   );
 
-  // 1b. Heat Level — checkbox labels with rating-check class
+  // 1b. Heat Level — rating-check checkboxes (0-5) → radio buttons
   const heatStart = preSection.indexOf('Expected Heat Level');
   const heatEnd = preSection.indexOf('Anticipated Tropes');
   if (heatStart !== -1 && heatEnd !== -1) {
     let heatSection = preSection.substring(heatStart, heatEnd);
-    let heatIdx = 0;
     heatSection = heatSection.replace(
       /<label class="rating-check"><input type="checkbox"> (\d)<\/label>/g,
       (match, digit) => {
@@ -88,7 +93,7 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
   if (tropeStart !== -1 && expectStart !== -1) {
     let tropeSection = preSection.substring(tropeStart, expectStart);
 
-    // Named trope checkboxes — li items with a label containing checkbox + text (no input[type=text])
+    // Named trope checkboxes — li items with label containing checkbox + text (no input[type=text])
     tropeSection = tropeSection.replace(
       /<li><label><input type="checkbox"> ([^<]+)<\/label><\/li>/g,
       (match, text) => {
@@ -146,7 +151,7 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
 
 
 // ═══════════════════════════════════════════════════════════════════
-// SECTION 2: CHAPTER LOGS (30 chapters)
+// SECTION 2: CHAPTER LOGS (30 chapters, identical structure)
 // ═══════════════════════════════════════════════════════════════════
 
 for (let ch = 1; ch <= 30; ch++) {
@@ -174,12 +179,13 @@ for (let ch = 1; ch <= 30; ch++) {
   const headerInputNames = [`${prefix}_pages_start`, `${prefix}_pages_end`, `${prefix}_pov`, `${prefix}_location`];
   let headerIdx = 0;
 
-  // Match input fields inside chapter-log-header
   const headerStart = block.indexOf('class="chapter-log-header"');
-  const headerEnd = block.indexOf('</div>', block.indexOf('</div>', block.indexOf('</div>', headerStart + 1) + 1) + 1);
-
   if (headerStart !== -1) {
-    const headerEndPos = block.indexOf('</div>', block.indexOf('class="chapter-log-header"') + 200) + 6;
+    const locationIdx = block.indexOf('Location:', headerStart);
+    const headerEndPos = locationIdx !== -1
+      ? block.indexOf('</div>', block.indexOf('</div>', locationIdx) + 1) + 6
+      : block.indexOf('</div>', headerStart + 200) + 6;
+
     let headerSection = block.substring(headerStart, headerEndPos);
 
     headerSection = headerSection.replace(
@@ -196,12 +202,12 @@ for (let ch = 1; ch <= 30; ch++) {
     block = block.substring(0, headerStart) + headerSection + block.substring(headerEndPos);
   }
 
-  // 2b. Arc Driver checkboxes (Fantasy, Romance, Both Intertwined)
+  // 2b. Arc Driver checkboxes (Fantasy, Romance, Both Intertwined) → radio
   const arcDriverNames = [`${prefix}_arc_fantasy`, `${prefix}_arc_romance`, `${prefix}_arc_both`];
   let arcIdx = 0;
   const arcStart = block.indexOf('Arc Driver:');
   if (arcStart !== -1) {
-    const arcEnd = block.indexOf('</div>', block.indexOf('Tension Source:', arcStart));
+    const arcEnd = block.indexOf('Tension Source:', arcStart);
     if (arcEnd !== -1) {
       let arcSection = block.substring(arcStart, arcEnd);
       arcSection = arcSection.replace(
@@ -218,7 +224,7 @@ for (let ch = 1; ch <= 30; ch++) {
     }
   }
 
-  // 2c. Tension Source checkboxes (Danger, Will-They/Won't-They, Mystery, Emotional Intimacy)
+  // 2c. Tension Source checkboxes (Danger, Will-They/Won't-They, Mystery, Emotional Intimacy) → checkbox
   const tensionSourceNames = [`${prefix}_tsrc_danger`, `${prefix}_tsrc_will_they`, `${prefix}_tsrc_mystery`, `${prefix}_tsrc_emotional`];
   let tsrcIdx = 0;
   const tsrcStart = block.indexOf('Tension Source:');
@@ -257,8 +263,7 @@ for (let ch = 1; ch <= 30; ch++) {
     );
   });
 
-  // 2e. Tension scales — Romance and Plot (1-10 checkboxes)
-  // Romance tension
+  // 2e. Tension scales — Romance and Plot (1-10 checkboxes) → radio
   const romTensionStart = block.indexOf('<span class="tension-label">Romance:</span>');
   if (romTensionStart !== -1) {
     const romTensionEnd = block.indexOf('</div></div>', romTensionStart) + 12;
@@ -273,7 +278,6 @@ for (let ch = 1; ch <= 30; ch++) {
     block = block.substring(0, romTensionStart) + romSection + block.substring(romTensionEnd);
   }
 
-  // Plot tension
   const plotTensionStart = block.indexOf('<span class="tension-label">Plot:</span>');
   if (plotTensionStart !== -1) {
     const plotTensionEnd = block.indexOf('</div></div>', plotTensionStart) + 12;
@@ -288,7 +292,7 @@ for (let ch = 1; ch <= 30; ch++) {
     block = block.substring(0, plotTensionStart) + plotSection + block.substring(plotTensionEnd);
   }
 
-  // 2f. Write-space-xs (job, summary, romance, plot_world, opening_hook, closing_hook)
+  // 2f. Write-space-xs (job, summary, romance_shift, plot_world, opening_hook, closing_hook)
   const writeSpaceNames = [
     `${prefix}_job`, `${prefix}_summary`,
     `${prefix}_romance_shift`, `${prefix}_plot_world`,
@@ -338,13 +342,13 @@ function annotateBeatTable(htmlStr, sectionId, nextSectionIds, sectionPrefix) {
   let section = htmlStr.substring(sectionStart, sectionEnd);
   let cellCounter = 1;
 
-  // Find all beat tables and annotate empty td cells (skip beat-name and example rows)
+  // Find all beat tables and annotate empty td cells (skip header and example/italic rows)
   section = section.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
     return tableMatch.replace(/<tr([^>]*)>([\s\S]*?)<\/tr>/g, (trMatch, trAttrs, trContent) => {
       // Skip header rows
       if (trContent.includes('<th')) return trMatch;
       // Skip example/italic rows
-      if (trMatch.includes('font-style: italic') || trMatch.includes('italic')) return trMatch;
+      if (trMatch.includes('font-style: italic') || trMatch.includes('font-style:italic')) return trMatch;
 
       return trMatch.replace(/<td(?!\s+class="beat-name")([^>]*)>(\s*)<\/td>/g, (tdMatch, tdAttrs, space) => {
         if (tdMatch.includes('data-field')) return tdMatch;
@@ -375,7 +379,7 @@ if (dualArcStart !== -1 && tropesStart !== -1) {
   let dualSection = html.substring(dualArcStart, tropesStart);
   let dualWsIdx = 1;
 
-  // Write-space-sm, write-space-xs contenteditable
+  // Write-space-sm and write-space-xs (contenteditable)
   dualSection = dualSection.replace(
     /<div class="write-space-(sm|xs)" contenteditable="true"><\/div>/g,
     (match, size) => {
@@ -384,7 +388,7 @@ if (dualArcStart !== -1 && tropesStart !== -1) {
     }
   );
 
-  // Mirror effect rating — rating-check checkboxes
+  // Mirror effect rating — rating-check checkboxes (1-5)
   const mirrorStart = dualSection.indexOf('How strong is the mirror effect');
   if (mirrorStart !== -1) {
     const mirrorEnd = dualSection.indexOf('</div>', dualSection.indexOf('rating-scale', mirrorStart) + 10);
@@ -401,12 +405,12 @@ if (dualArcStart !== -1 && tropesStart !== -1) {
     }
   }
 
-  // Empty td cells in binding techniques worksheet table and causality grid
-  // Skip the reference table (which has content like "Symbiotic Magic" + definitions)
+  // Empty td cells in tables (binding techniques worksheet + causality grid)
+  // Skip the reference table (which has "emotion fuels the magic" content)
   let dualCellIdx = 1;
   dualSection = dualSection.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
-    // Skip reference tables (those with substantial content in cells)
-    if (tableMatch.includes('emotion fuels the magic') || tableMatch.includes('emotion fuels the magic')) {
+    // Skip reference tables with substantial content
+    if (tableMatch.includes('emotion fuels the magic') || tableMatch.includes('emotion fuels')) {
       return tableMatch;
     }
     if (tableMatch.includes('How It Works') && tableMatch.includes('Symbiotic Magic') && tableMatch.includes('Crucible Quest')) {
@@ -439,7 +443,7 @@ if (tropeSectionBegin !== -1 && spiceSectionStart !== -1) {
   let tropeSection = html.substring(tropeSectionBegin, spiceSectionStart);
   let tropeCellIdx = 1;
 
-  // Checkbox cells (☐ character = &#9744;)
+  // Checkbox cells (&#9744; = ☐ character) → checkbox
   tropeSection = tropeSection.replace(
     /<td([^>]*)>&#9744;<\/td>/g,
     (match, attrs) => {
@@ -448,13 +452,12 @@ if (tropeSectionBegin !== -1 && spiceSectionStart !== -1) {
     }
   );
 
-  // Empty td cells (for setup/payoff/notes columns)
+  // Empty td cells (for setup/payoff/notes columns) — skip header and example rows
   let tropeTextIdx = 1;
   tropeSection = tropeSection.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
     return tableMatch.replace(/<tr([^>]*)>([\s\S]*?)<\/tr>/g, (trMatch, trAttrs, trContent) => {
       if (trContent.includes('<th')) return trMatch;
-      // Skip example rows
-      if (trMatch.includes('font-style: italic') || trMatch.includes('italic')) return trMatch;
+      if (trMatch.includes('font-style: italic') || trMatch.includes('font-style:italic')) return trMatch;
 
       return trMatch.replace(/<td([^>]*)>(\s*)<\/td>/g, (tdMatch, attrs, space) => {
         if (tdMatch.includes('data-field')) return tdMatch;
@@ -480,11 +483,11 @@ if (spiceBegin !== -1 && craftMovesStart !== -1) {
   let spiceCellIdx = 1;
   let spiceWsIdx = 1;
 
-  // Empty td cells in tables
+  // Empty td cells in tables (heat level progression + banter collection)
   spiceSection = spiceSection.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
     return tableMatch.replace(/<tr([^>]*)>([\s\S]*?)<\/tr>/g, (trMatch, trAttrs, trContent) => {
       if (trContent.includes('<th')) return trMatch;
-      if (trMatch.includes('font-style: italic') || trMatch.includes('italic')) return trMatch;
+      if (trMatch.includes('font-style: italic') || trMatch.includes('font-style:italic')) return trMatch;
 
       return trMatch.replace(/<td([^>]*)>(\s*)<\/td>/g, (tdMatch, attrs, space) => {
         if (tdMatch.includes('data-field')) return tdMatch;
@@ -494,7 +497,7 @@ if (spiceBegin !== -1 && craftMovesStart !== -1) {
     });
   });
 
-  // Write-spaces
+  // Write-spaces (contenteditable)
   spiceSection = spiceSection.replace(
     /<div class="write-space-(sm|xs|md|lg)" contenteditable="true"><\/div>/g,
     (match) => {
@@ -503,7 +506,7 @@ if (spiceBegin !== -1 && craftMovesStart !== -1) {
     }
   );
 
-  // Write-lines
+  // Write-lines (contenteditable)
   spiceSection = spiceSection.replace(
     /<div class="write-lines"([^>]*) contenteditable="true"><\/div>/g,
     (match, attrs) => {
@@ -528,11 +531,11 @@ if (craftBegin !== -1 && synthesisStart !== -1) {
   let craftCellIdx = 1;
   let craftWsIdx = 1;
 
-  // Empty td cells
+  // Empty td cells in technique collection table (skip example/italic rows)
   craftSection = craftSection.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
     return tableMatch.replace(/<tr([^>]*)>([\s\S]*?)<\/tr>/g, (trMatch, trAttrs, trContent) => {
       if (trContent.includes('<th')) return trMatch;
-      if (trMatch.includes('font-style: italic') || trMatch.includes('italic')) return trMatch;
+      if (trMatch.includes('font-style: italic') || trMatch.includes('font-style:italic')) return trMatch;
 
       return trMatch.replace(/<td([^>]*)>(\s*)<\/td>/g, (tdMatch, attrs, space) => {
         if (tdMatch.includes('data-field')) return tdMatch;
@@ -542,7 +545,7 @@ if (craftBegin !== -1 && synthesisStart !== -1) {
     });
   });
 
-  // Write-lines (including Swoon-Worthy Lines)
+  // Write-lines (Swoon-Worthy Lines — large write area)
   craftSection = craftSection.replace(
     /<div class="write-lines"([^>]*) contenteditable="true"><\/div>/g,
     (match, attrs) => {
@@ -565,7 +568,7 @@ const appendixStart = html.indexOf('id="appendix"');
 if (synthBegin !== -1 && appendixStart !== -1) {
   let synthSection = html.substring(synthBegin, appendixStart);
 
-  // Field-value spans (structural metrics)
+  // Field-value spans (structural metrics: chapters_to_inciting, first_kiss_page, etc.)
   const synthFieldLabels = [
     'chapters_to_inciting', 'first_kiss_page', 'midpoint_page',
     'all_is_lost_page', 'total_chapters', 'heat_level'
@@ -582,7 +585,7 @@ if (synthBegin !== -1 && appendixStart !== -1) {
     }
   );
 
-  // Overall assessment table + pitfall table — empty td cells
+  // Overall assessment + pitfall table — empty td cells
   let synthCellIdx = 1;
   synthSection = synthSection.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
     return tableMatch.replace(/<tr([^>]*)>([\s\S]*?)<\/tr>/g, (trMatch, trAttrs, trContent) => {
@@ -609,7 +612,7 @@ if (synthBegin !== -1 && appendixStart !== -1) {
     }
   );
 
-  // Write-lines
+  // Write-lines (lessons for my writing)
   let synthWlIdx = 1;
   synthSection = synthSection.replace(
     /<div class="write-lines"([^>]*) contenteditable="true"><\/div>/g,
@@ -620,7 +623,7 @@ if (synthBegin !== -1 && appendixStart !== -1) {
     }
   );
 
-  // Write-space-sm
+  // Write-space-sm (unraveling test, logline, WIP application)
   let synthWsIdx = 1;
   synthSection = synthSection.replace(
     /<div class="write-space-sm" contenteditable="true"><\/div>/g,
@@ -636,7 +639,7 @@ if (synthBegin !== -1 && appendixStart !== -1) {
 
 
 // ═══════════════════════════════════════════════════════════════════
-// APPENDIX: Integration Patterns Worksheet
+// APPENDIX: Integration Patterns & Glossary
 // ═══════════════════════════════════════════════════════════════════
 
 const appendixBegin = html.indexOf('id="appendix"');
@@ -646,7 +649,7 @@ if (appendixBegin !== -1) {
 
   // Skip the reference table (the one describing each pattern with "How It Works")
   appendixSection = appendixSection.replace(/<table[^>]*>([\s\S]*?)<\/table>/g, (tableMatch) => {
-    // Skip reference tables (those with content)
+    // Skip reference tables with content
     if (tableMatch.includes('emotion fuels') || tableMatch.includes('Bond, curse') ||
         tableMatch.includes('dangerous journey') || tableMatch.includes('Diagnostic Terms') ||
         (tableMatch.includes('How It Works') && tableMatch.includes('Symbiotic Magic'))) {
@@ -672,7 +675,7 @@ if (appendixBegin !== -1) {
 // FINAL: Catch any remaining unannotated fillable elements
 // ═══════════════════════════════════════════════════════════════════
 
-// Remaining write-space or write-lines that weren't caught
+// Remaining write-space or write-lines that weren't caught by section processing
 let remainingIdx = 1;
 html = html.replace(
   /<div class="(write-space-(?:xs|sm|md|lg)|write-lines)"([^>]*) contenteditable="true"([^>]*)><\/div>/g,
