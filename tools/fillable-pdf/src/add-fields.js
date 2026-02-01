@@ -81,7 +81,6 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           const textField = form.createTextField(name);
           textField.addToPage(page, { x: fx, y: fy, width: fw, height: fh });
           textField.setFontSize(fontSize);
-          textField.defaultUpdateAppearances(font);
           textCount++;
           break;
         }
@@ -93,7 +92,6 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           // Smaller font for multi-line areas so more text fits
           const taFontSize = Math.min(fontSize, Math.max(8, Math.floor(fh / 8)));
           textArea.setFontSize(taFontSize);
-          textArea.defaultUpdateAppearances(font);
           textareaCount++;
           break;
         }
@@ -145,7 +143,6 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           const fallback = form.createTextField(name);
           fallback.addToPage(page, { x: fx, y: fy, width: fw, height: fh });
           fallback.setFontSize(fontSize);
-          fallback.defaultUpdateAppearances(font);
           textCount++;
       }
     } catch (err) {
@@ -161,7 +158,7 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
   if (skippedCount > 0) console.log(`[fields] Skipped: ${skippedCount}`);
 
   console.log('[fields] Saving fillable PDF...');
-  const fillableBytes = await pdfDoc.save();
+  const fillableBytes = await pdfDoc.save({ useObjectStreams: true });
   fs.writeFileSync(outputPath, fillableBytes);
 
   const stats = fs.statSync(outputPath);
