@@ -51,6 +51,8 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
 
   // Track radio groups so we create them once
   const radioGroups = new Map();
+  // Track text/textarea field names so we can strip their opaque appearances later
+  const textFieldNames = [];
 
   let textCount = 0;
   let textareaCount = 0;
@@ -81,6 +83,7 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           const textField = form.createTextField(name);
           textField.addToPage(page, { x: fx, y: fy, width: fw, height: fh });
           textField.setFontSize(fontSize);
+          textFieldNames.push(name);
           textCount++;
           break;
         }
@@ -92,6 +95,7 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           // Smaller font for multi-line areas so more text fits
           const taFontSize = Math.min(fontSize, Math.max(8, Math.floor(fh / 8)));
           textArea.setFontSize(taFontSize);
+          textFieldNames.push(name);
           textareaCount++;
           break;
         }
@@ -143,6 +147,7 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           const fallback = form.createTextField(name);
           fallback.addToPage(page, { x: fx, y: fy, width: fw, height: fh });
           fallback.setFontSize(fontSize);
+          textFieldNames.push(name);
           textCount++;
       }
     } catch (err) {
@@ -151,8 +156,22 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
     }
   }
 
-  // Flatten form appearance so fields render correctly in all viewers
+  // Generate appearances for checkboxes/radios (they need checkmark/dot visuals)
   form.updateFieldAppearances(font);
+
+  // Strip opaque appearance streams from text/textarea fields so they don't
+  // cover page content (headings, labels) underneath. The viewer will generate
+  // transparent appearances on demand when the user interacts with a field.
+  for (const tfName of textFieldNames) {
+    try {
+      const tf = form.getTextField(tfName);
+      const widgets = tf.acroField.getWidgets();
+      for (const widget of widgets) {
+        widget.dict.delete(PDFName.of('AP'));
+      }
+    } catch (e) { /* skip if field not found */ }
+  }
+  form.acroForm.dict.set(PDFName.of('NeedAppearances'), pdfDoc.context.obj(true));
 
   console.log(`[fields] Added: ${textCount} text, ${textareaCount} textarea, ${checkboxCount} checkbox, ${radioCount} radio`);
   if (skippedCount > 0) console.log(`[fields] Skipped: ${skippedCount}`);
