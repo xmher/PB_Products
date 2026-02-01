@@ -100,10 +100,11 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
 
         case 'checkbox': {
           const checkbox = form.createCheckBox(name);
-          // Center the checkbox in its allocated space
-          const cbSize = Math.min(fw, fh, 14);
-          const cbX = fx + (fw - cbSize) / 2;
-          const cbY = fy + (fh - cbSize) / 2;
+          // No INSET for checkboxes — the <input> IS the visual element
+          // Use raw extracted size, capped at 10pt
+          const cbSize = Math.min(width, height, 10);
+          const cbX = x + (width - cbSize) / 2;
+          const cbY = y + (height - cbSize) / 2;
           checkbox.addToPage(page, { x: cbX, y: cbY, width: cbSize, height: cbSize });
           checkboxCount++;
           break;
@@ -113,8 +114,10 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           if (!group) {
             console.warn(`[fields] Radio "${name}" has no group, treating as checkbox`);
             const cb = form.createCheckBox(name);
-            const cbSize = Math.min(fw, fh, 14);
-            cb.addToPage(page, { x: fx, y: fy, width: cbSize, height: cbSize });
+            const cbSize = Math.min(width, height, 10);
+            const cbX2 = x + (width - cbSize) / 2;
+            const cbY2 = y + (height - cbSize) / 2;
+            cb.addToPage(page, { x: cbX2, y: cbY2, width: cbSize, height: cbSize });
             checkboxCount++;
             break;
           }
@@ -127,9 +130,11 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
             radioGroups.set(group, radioGroup);
           }
 
-          const rbSize = Math.min(fw, fh, 14);
-          const rbX = fx + (fw - rbSize) / 2;
-          const rbY = fy + (fh - rbSize) / 2;
+          // No INSET for radios — the <input> IS the visual element
+          // Use raw extracted size, capped at 10pt
+          const rbSize = Math.min(width, height, 10);
+          const rbX = x + (width - rbSize) / 2;
+          const rbY = y + (height - rbSize) / 2;
           radioGroup.addOptionToPage(name, page, { x: rbX, y: rbY, width: rbSize, height: rbSize });
           radioCount++;
           break;
