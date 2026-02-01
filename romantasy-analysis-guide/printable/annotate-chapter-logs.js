@@ -8,15 +8,16 @@
  * data-field-group attributes to every fillable element across 100 chapter logs.
  *
  * Each chapter contains:
- *   - contenteditable chapter-number div
- *   - 2 input[type="text"] for start/end page
- *   - 1 input[type="text"] for POV
- *   - 1 input[type="text"] for Location
- *   - 6 write-space-xs (job, summary, romance, plot_world, opening_hook, closing_hook)
+ *   - 1 contenteditable chapter-number div
+ *   - 4 input[type="text"] (start page, end page, POV, location)
+ *   - 6 write-space-xs contenteditable (job, summary, romance, plot_world, opening_hook, closing_hook)
  *   - 6 beat type checkboxes (Plot, Romance, World, Character, Action, Quiet)
- *   - 10 romance tension checkboxes (1-10)
- *   - 10 plot tension checkboxes (1-10)
- *   - 1 write-space-md (craft_move)
+ *   - 10 romance tension checkboxes (1-10, radio)
+ *   - 10 plot tension checkboxes (1-10, radio)
+ *   - 1 write-space-md contenteditable (craft_move)
+ *
+ * Total per chapter: 38 fillable elements
+ * Total across 100 chapters: 3,800 fillable elements
  *
  * Run: node annotate-chapter-logs.js
  */
@@ -74,10 +75,6 @@ for (let ch = 1; ch <= 100; ch++) {
 
   const headerStart = block.indexOf('class="chapter-log-header"');
   if (headerStart !== -1) {
-    // Find the closing </div> of the chapter-log-header
-    // The header has 3 child divs, so we need to find the right closing tag
-    const headerOpenEnd = block.indexOf('>', headerStart) + 1;
-    // Find the end: after "Location:" input and its parent </div> and the header </div>
     const locationIdx = block.indexOf('Location:', headerStart);
     const headerEndPos = locationIdx !== -1
       ? block.indexOf('</div>', block.indexOf('</div>', locationIdx) + 1) + 6
@@ -116,7 +113,7 @@ for (let ch = 1; ch <= 100; ch++) {
     );
   });
 
-  // 4. Tension scales — Romance and Plot (1-10 checkboxes)
+  // 4. Tension scales — Romance and Plot (1-10 checkboxes) → radio
   // Romance tension
   const romTensionStart = block.indexOf('<span class="tension-label">Romance:</span>');
   if (romTensionStart !== -1) {
@@ -147,7 +144,7 @@ for (let ch = 1; ch <= 100; ch++) {
     block = block.substring(0, plotTensionStart) + plotSection + block.substring(plotTensionEnd);
   }
 
-  // 5. Write-space-xs (job, summary, romance, plot_world, opening_hook, closing_hook)
+  // 5. Write-space-xs (job, summary, romance_shift, plot_world, opening_hook, closing_hook)
   const writeSpaceNames = [
     `${prefix}_job`, `${prefix}_summary`,
     `${prefix}_romance_shift`, `${prefix}_plot_world`,
