@@ -6,7 +6,7 @@ A specialized craft workbook for romantasy and dark romance authors who want to 
 
 **Title:** The Shadow's Edge: A Morally Grey Love Interest Workbook
 **Format:** Printable PDF (HTML + Paged.js)
-**Target Page Count:** ~25 pages
+**Target Page Count:** ~40 pages
 **Target Price:** $12.00 - $15.00
 **Target Audience:** Romantasy and dark romance authors
 
@@ -26,10 +26,28 @@ This workbook fills a gap in the current market where:
 - **Wound-to-Behavior Chain** - Reverse-engineer dark traits from formative trauma
 - **Corrupted Syllogism Framework** - Build logical justification for "wrong" choices
 
+### Fantasy-Specific Integration
+- **Power-Morality Mapping** - Connect magical abilities to ethical complexity
+- **Political Pressure Points** - Where authority forces moral compromise
+- **Voice Consistency Tools** - Dialogue patterns by compass position
+
+### Signature Scene Templates
+- **"Who Did This to You"** - The protective rage moment
+- **First Vulnerability** - The crack in the armor
+- **The Declaration** - How grey characters express love differently
+- **Dark Action for Her** - When they cross lines for the protagonist
+
+### Protagonist Balance
+- **Power Dynamic Mapping** - Ensure FMC has agency in each domain
+- **Exception Earning** - What makes her different to him specifically
+- **Her Moral Complexity** - Two grey characters together
+
 ### Consistency Mechanisms
 - **Retcon Prevention Checklist** - Maintain darkness throughout romance arc
 - **Edge Maintenance Log** - Track dark moments across the story
 - **Non-Linear Redemption Tracking** - Plan realistic, messy character growth
+- **Pacing Guide** - When to reveal backstory and vulnerability
+- **Series Continuity** - Avoid domestication trap across multiple books
 
 ### Reader Psychology Integration
 - **The Exception Fantasy** - Map the internal/external behavioral split
@@ -38,15 +56,32 @@ This workbook fills a gap in the current market where:
 
 ## Sections
 
+### Foundations
 1. **Introduction: Beyond Hero or Villain** - The psychology of why readers love morally grey characters
 2. **The Moral Compass Scale** - Define the "line in the sand" they won't cross
+
+### Architecture
 3. **The Wound Architecture** - Backstory reverse-engineering worksheets
 4. **The Logic of Corruption** - Building internally consistent dark choices
-5. **The Exception Fantasy** - The dangerous-to-world/soft-for-her dynamic
-6. **Accountability & Consequences** - Making them pay for their choices
-7. **Retcon Prevention** - Maintaining edge throughout the romance
-8. **Character Blueprint Worksheets** - Comprehensive profile templates
-9. **Archetype Gallery & Language Guide** - Examples and marketing terminology
+
+### Fantasy Integration
+5. **Fantasy & Magic Integration** - Connect moral choices to powers and political position
+6. **Dialogue & Voice** - Maintain distinct voice without heroic "leakage"
+
+### Dynamics
+7. **The Exception Fantasy** - The dangerous-to-world/soft-for-her dynamic
+8. **Signature Scenes** - Templates for "Who Did This to You," first vulnerability, declarations
+9. **Protagonist Balance** - Ensure FMC has agency to match powerful MMC
+10. **Accountability & Consequences** - Making them pay for their choices
+
+### Consistency
+11. **Retcon Prevention** - Maintaining edge throughout the romance
+12. **Pacing the Reveal** - When to show backstory, vulnerability, and softness
+13. **Series Continuity** - Maintain character across multiple books
+
+### Application
+14. **Character Blueprint Worksheets** - Comprehensive profile templates
+15. **Archetype Gallery & Language Guide** - Examples and marketing terminology
 
 ## Technical Details
 
