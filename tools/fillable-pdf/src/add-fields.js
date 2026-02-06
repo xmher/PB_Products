@@ -51,6 +51,8 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
 
   // Track radio groups so we create them once
   const radioGroups = new Map();
+  // Track text/textarea field names so we can strip their opaque appearances later
+  const textFieldNames = [];
 
   let textCount = 0;
   let textareaCount = 0;
@@ -81,7 +83,7 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           const textField = form.createTextField(name);
           textField.addToPage(page, { x: fx, y: fy, width: fw, height: fh });
           textField.setFontSize(fontSize);
-          textField.defaultUpdateAppearances(font);
+          textFieldNames.push(name);
           textCount++;
           break;
         }
@@ -93,17 +95,18 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           // Smaller font for multi-line areas so more text fits
           const taFontSize = Math.min(fontSize, Math.max(8, Math.floor(fh / 8)));
           textArea.setFontSize(taFontSize);
-          textArea.defaultUpdateAppearances(font);
+          textFieldNames.push(name);
           textareaCount++;
           break;
         }
 
         case 'checkbox': {
           const checkbox = form.createCheckBox(name);
-          // Center the checkbox in its allocated space
-          const cbSize = Math.min(fw, fh, 14);
-          const cbX = fx + (fw - cbSize) / 2;
-          const cbY = fy + (fh - cbSize) / 2;
+          // No INSET for checkboxes — the <input> IS the visual element
+          // Use raw extracted size, capped at 10pt
+          const cbSize = Math.min(width, height, 10);
+          const cbX = x + (width - cbSize) / 2;
+          const cbY = y + (height - cbSize) / 2;
           checkbox.addToPage(page, { x: cbX, y: cbY, width: cbSize, height: cbSize });
           checkboxCount++;
           break;
@@ -113,8 +116,10 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           if (!group) {
             console.warn(`[fields] Radio "${name}" has no group, treating as checkbox`);
             const cb = form.createCheckBox(name);
-            const cbSize = Math.min(fw, fh, 14);
-            cb.addToPage(page, { x: fx, y: fy, width: cbSize, height: cbSize });
+            const cbSize = Math.min(width, height, 10);
+            const cbX2 = x + (width - cbSize) / 2;
+            const cbY2 = y + (height - cbSize) / 2;
+            cb.addToPage(page, { x: cbX2, y: cbY2, width: cbSize, height: cbSize });
             checkboxCount++;
             break;
           }
@@ -127,9 +132,11 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
             radioGroups.set(group, radioGroup);
           }
 
-          const rbSize = Math.min(fw, fh, 14);
-          const rbX = fx + (fw - rbSize) / 2;
-          const rbY = fy + (fh - rbSize) / 2;
+          // No INSET for radios — the <input> IS the visual element
+          // Use raw extracted size, capped at 10pt
+          const rbSize = Math.min(width, height, 10);
+          const rbX = x + (width - rbSize) / 2;
+          const rbY = y + (height - rbSize) / 2;
           radioGroup.addOptionToPage(name, page, { x: rbX, y: rbY, width: rbSize, height: rbSize });
           radioCount++;
           break;
@@ -140,7 +147,7 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
           const fallback = form.createTextField(name);
           fallback.addToPage(page, { x: fx, y: fy, width: fw, height: fh });
           fallback.setFontSize(fontSize);
-          fallback.defaultUpdateAppearances(font);
+          textFieldNames.push(name);
           textCount++;
       }
     } catch (err) {
@@ -149,14 +156,28 @@ async function addFields(pdfPath, fields, outputPath, opts = {}) {
     }
   }
 
-  // Flatten form appearance so fields render correctly in all viewers
+  // Generate appearances for checkboxes/radios (they need checkmark/dot visuals)
   form.updateFieldAppearances(font);
+
+  // Strip opaque appearance streams from text/textarea fields so they don't
+  // cover page content (headings, labels) underneath. The viewer will generate
+  // transparent appearances on demand when the user interacts with a field.
+  for (const tfName of textFieldNames) {
+    try {
+      const tf = form.getTextField(tfName);
+      const widgets = tf.acroField.getWidgets();
+      for (const widget of widgets) {
+        widget.dict.delete(PDFName.of('AP'));
+      }
+    } catch (e) { /* skip if field not found */ }
+  }
+  form.acroForm.dict.set(PDFName.of('NeedAppearances'), pdfDoc.context.obj(true));
 
   console.log(`[fields] Added: ${textCount} text, ${textareaCount} textarea, ${checkboxCount} checkbox, ${radioCount} radio`);
   if (skippedCount > 0) console.log(`[fields] Skipped: ${skippedCount}`);
 
   console.log('[fields] Saving fillable PDF...');
-  const fillableBytes = await pdfDoc.save();
+  const fillableBytes = await pdfDoc.save({ useObjectStreams: true });
   fs.writeFileSync(outputPath, fillableBytes);
 
   const stats = fs.statSync(outputPath);

@@ -100,7 +100,7 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
         if (tropeIdx < tropeNames.length) {
           const name = `pre_trope_${tropeNames[tropeIdx++]}`;
           fieldCount++;
-          return `<li data-field-name="${name}" data-field-type="checkbox"><label><input type="checkbox"> ${text}</label></li>`;
+          return `<li><label><input type="checkbox" data-field-name="${name}" data-field-type="checkbox"> ${text}</label></li>`;
         }
         return match;
       }
@@ -115,7 +115,7 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
         const checkName = `pre_trope_custom_check_${customTropeIdx}`;
         const textName = `pre_trope_custom_text_${customTropeIdx}`;
         customTropeIdx++;
-        return `<li data-field-name="${checkName}" data-field-type="checkbox"><label><input type="checkbox"> <input type="text" data-field-name="${textName}" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>`;
+        return `<li><label><input type="checkbox" data-field-name="${checkName}" data-field-type="checkbox"> <input type="text" data-field-name="${textName}" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>`;
       }
     );
 
@@ -256,7 +256,7 @@ for (let ch = 1; ch <= 30; ch++) {
       (liMatch, text) => {
         if (beatIdx < beatNames.length) {
           fieldCount++;
-          return `<li data-field-name="${prefix}_beat_${beatNames[beatIdx++]}" data-field-type="checkbox"><label><input type="checkbox"> ${text}</label></li>`;
+          return `<li><label><input type="checkbox" data-field-name="${prefix}_beat_${beatNames[beatIdx++]}" data-field-type="checkbox"> ${text}</label></li>`;
         }
         return liMatch;
       }

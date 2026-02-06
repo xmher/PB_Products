@@ -30,6 +30,7 @@ const path = require('path');
 const fs = require('fs');
 const { extractFields, generateFlatPdf } = require('./extract-fields');
 const { addFields } = require('./add-fields');
+const { optimizePdf } = require('./optimize-pdf');
 
 // ─── Argument parsing ───────────────────────────────────────────────
 
@@ -209,6 +210,17 @@ async function main() {
   // ── Step 3: Inject AcroForm fields ──────────────────────────────
   console.log('── Step 3: Injecting AcroForm fields ──');
   await addFields(flatPdfPath, fieldData.fields, outputPath, { fontSize });
+
+  console.log('');
+
+  // ── Step 4: Optimize for viewing performance ────────────────────
+  console.log('── Step 4: Optimizing PDF (linearize + compress) ──');
+  try {
+    optimizePdf(outputPath, outputPath);
+  } catch (err) {
+    console.warn(`[optimize] Skipped: ${err.message}`);
+    console.warn('[optimize] Install qpdf for better scroll performance: apt install qpdf');
+  }
 
   console.log('');
 
