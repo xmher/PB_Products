@@ -60,12 +60,12 @@ for (let ch = 1; ch <= 100; ch++) {
   let block = html.substring(actualStart, endPos);
   const prefix = `ch${ch}`;
 
-  // 1. Chapter number (contenteditable span inside div)
+  // 1. Chapter number input box
   block = block.replace(
-    /<div class="chapter-number"><span contenteditable="true">(Chapter \d+)<\/span><\/div>/,
-    (match, text) => {
+    /<div class="chapter-number">Chapter <input type="text" class="chapter-num-input"><\/div>/,
+    () => {
       fieldCount++;
-      return `<div class="chapter-number"><span contenteditable="true" data-field-name="${prefix}_title" data-field-type="text">${text}</span></div>`;
+      return `<div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="${prefix}_num" data-field-type="text"></div>`;
     }
   );
 
