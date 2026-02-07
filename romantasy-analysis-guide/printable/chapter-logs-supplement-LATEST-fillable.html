@@ -83,6 +83,19 @@
             margin-bottom: 0.5rem; padding-bottom: 0.4rem;
             border-bottom: 2px solid var(--color-guide);
         }
+        .chapter-num-input {
+            width: 2.5em;
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-guide);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #ccc;
+            background: #fafafa;
+            text-align: center;
+            padding: 0.1em 0.2em;
+        }
         .chapter-log-header {
             display: grid; grid-template-columns: 1fr 1fr 1fr;
             gap: 0.5rem; margin-bottom: 0.5rem; padding-bottom: 0.5rem;
@@ -200,7 +213,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-1">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch1_title" data-field-type="text">Chapter 1</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch1_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch1_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch1_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch1_pov" data-field-type="text"></div>
@@ -259,7 +272,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-2">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch2_title" data-field-type="text">Chapter 2</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch2_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch2_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch2_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch2_pov" data-field-type="text"></div>
@@ -318,7 +331,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-3">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch3_title" data-field-type="text">Chapter 3</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch3_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch3_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch3_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch3_pov" data-field-type="text"></div>
@@ -377,7 +390,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-4">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch4_title" data-field-type="text">Chapter 4</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch4_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch4_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch4_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch4_pov" data-field-type="text"></div>
@@ -436,7 +449,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-5">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch5_title" data-field-type="text">Chapter 5</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch5_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch5_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch5_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch5_pov" data-field-type="text"></div>
@@ -495,7 +508,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-6">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch6_title" data-field-type="text">Chapter 6</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch6_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch6_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch6_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch6_pov" data-field-type="text"></div>
@@ -554,7 +567,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-7">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch7_title" data-field-type="text">Chapter 7</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch7_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch7_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch7_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch7_pov" data-field-type="text"></div>
@@ -613,7 +626,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-8">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch8_title" data-field-type="text">Chapter 8</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch8_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch8_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch8_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch8_pov" data-field-type="text"></div>
@@ -672,7 +685,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-9">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch9_title" data-field-type="text">Chapter 9</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch9_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch9_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch9_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch9_pov" data-field-type="text"></div>
@@ -731,7 +744,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-10">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch10_title" data-field-type="text">Chapter 10</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch10_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch10_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch10_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch10_pov" data-field-type="text"></div>
@@ -790,7 +803,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-11">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch11_title" data-field-type="text">Chapter 11</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch11_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch11_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch11_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch11_pov" data-field-type="text"></div>
@@ -849,7 +862,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-12">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch12_title" data-field-type="text">Chapter 12</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch12_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch12_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch12_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch12_pov" data-field-type="text"></div>
@@ -908,7 +921,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-13">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch13_title" data-field-type="text">Chapter 13</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch13_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch13_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch13_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch13_pov" data-field-type="text"></div>
@@ -967,7 +980,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-14">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch14_title" data-field-type="text">Chapter 14</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch14_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch14_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch14_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch14_pov" data-field-type="text"></div>
@@ -1026,7 +1039,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-15">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch15_title" data-field-type="text">Chapter 15</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch15_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch15_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch15_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch15_pov" data-field-type="text"></div>
@@ -1085,7 +1098,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-16">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch16_title" data-field-type="text">Chapter 16</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch16_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch16_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch16_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch16_pov" data-field-type="text"></div>
@@ -1144,7 +1157,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-17">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch17_title" data-field-type="text">Chapter 17</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch17_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch17_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch17_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch17_pov" data-field-type="text"></div>
@@ -1203,7 +1216,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-18">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch18_title" data-field-type="text">Chapter 18</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch18_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch18_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch18_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch18_pov" data-field-type="text"></div>
@@ -1262,7 +1275,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-19">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch19_title" data-field-type="text">Chapter 19</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch19_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch19_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch19_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch19_pov" data-field-type="text"></div>
@@ -1321,7 +1334,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-20">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch20_title" data-field-type="text">Chapter 20</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch20_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch20_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch20_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch20_pov" data-field-type="text"></div>
@@ -1380,7 +1393,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-21">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch21_title" data-field-type="text">Chapter 21</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch21_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch21_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch21_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch21_pov" data-field-type="text"></div>
@@ -1439,7 +1452,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-22">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch22_title" data-field-type="text">Chapter 22</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch22_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch22_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch22_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch22_pov" data-field-type="text"></div>
@@ -1498,7 +1511,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-23">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch23_title" data-field-type="text">Chapter 23</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch23_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch23_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch23_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch23_pov" data-field-type="text"></div>
@@ -1557,7 +1570,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-24">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch24_title" data-field-type="text">Chapter 24</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch24_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch24_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch24_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch24_pov" data-field-type="text"></div>
@@ -1616,7 +1629,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-25">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch25_title" data-field-type="text">Chapter 25</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch25_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch25_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch25_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch25_pov" data-field-type="text"></div>
@@ -1675,7 +1688,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-26">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch26_title" data-field-type="text">Chapter 26</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch26_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch26_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch26_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch26_pov" data-field-type="text"></div>
@@ -1734,7 +1747,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-27">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch27_title" data-field-type="text">Chapter 27</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch27_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch27_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch27_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch27_pov" data-field-type="text"></div>
@@ -1793,7 +1806,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-28">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch28_title" data-field-type="text">Chapter 28</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch28_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch28_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch28_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch28_pov" data-field-type="text"></div>
@@ -1852,7 +1865,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-29">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch29_title" data-field-type="text">Chapter 29</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch29_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch29_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch29_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch29_pov" data-field-type="text"></div>
@@ -1911,7 +1924,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-30">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch30_title" data-field-type="text">Chapter 30</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch30_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch30_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch30_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch30_pov" data-field-type="text"></div>
@@ -1970,7 +1983,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-31">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch31_title" data-field-type="text">Chapter 31</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch31_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch31_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch31_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch31_pov" data-field-type="text"></div>
@@ -2029,7 +2042,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-32">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch32_title" data-field-type="text">Chapter 32</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch32_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch32_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch32_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch32_pov" data-field-type="text"></div>
@@ -2088,7 +2101,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-33">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch33_title" data-field-type="text">Chapter 33</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch33_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch33_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch33_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch33_pov" data-field-type="text"></div>
@@ -2147,7 +2160,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-34">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch34_title" data-field-type="text">Chapter 34</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch34_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch34_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch34_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch34_pov" data-field-type="text"></div>
@@ -2206,7 +2219,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-35">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch35_title" data-field-type="text">Chapter 35</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch35_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch35_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch35_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch35_pov" data-field-type="text"></div>
@@ -2265,7 +2278,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-36">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch36_title" data-field-type="text">Chapter 36</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch36_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch36_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch36_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch36_pov" data-field-type="text"></div>
@@ -2324,7 +2337,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-37">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch37_title" data-field-type="text">Chapter 37</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch37_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch37_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch37_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch37_pov" data-field-type="text"></div>
@@ -2383,7 +2396,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-38">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch38_title" data-field-type="text">Chapter 38</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch38_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch38_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch38_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch38_pov" data-field-type="text"></div>
@@ -2442,7 +2455,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-39">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch39_title" data-field-type="text">Chapter 39</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch39_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch39_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch39_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch39_pov" data-field-type="text"></div>
@@ -2501,7 +2514,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-40">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch40_title" data-field-type="text">Chapter 40</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch40_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch40_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch40_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch40_pov" data-field-type="text"></div>
@@ -2560,7 +2573,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-41">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch41_title" data-field-type="text">Chapter 41</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch41_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch41_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch41_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch41_pov" data-field-type="text"></div>
@@ -2619,7 +2632,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-42">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch42_title" data-field-type="text">Chapter 42</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch42_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch42_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch42_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch42_pov" data-field-type="text"></div>
@@ -2678,7 +2691,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-43">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch43_title" data-field-type="text">Chapter 43</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch43_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch43_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch43_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch43_pov" data-field-type="text"></div>
@@ -2737,7 +2750,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-44">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch44_title" data-field-type="text">Chapter 44</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch44_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch44_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch44_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch44_pov" data-field-type="text"></div>
@@ -2796,7 +2809,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-45">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch45_title" data-field-type="text">Chapter 45</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch45_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch45_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch45_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch45_pov" data-field-type="text"></div>
@@ -2855,7 +2868,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-46">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch46_title" data-field-type="text">Chapter 46</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch46_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch46_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch46_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch46_pov" data-field-type="text"></div>
@@ -2914,7 +2927,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-47">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch47_title" data-field-type="text">Chapter 47</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch47_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch47_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch47_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch47_pov" data-field-type="text"></div>
@@ -2973,7 +2986,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-48">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch48_title" data-field-type="text">Chapter 48</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch48_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch48_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch48_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch48_pov" data-field-type="text"></div>
@@ -3032,7 +3045,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-49">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch49_title" data-field-type="text">Chapter 49</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch49_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch49_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch49_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch49_pov" data-field-type="text"></div>
@@ -3091,7 +3104,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-50">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch50_title" data-field-type="text">Chapter 50</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch50_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch50_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch50_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch50_pov" data-field-type="text"></div>
@@ -3150,7 +3163,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-51">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch51_title" data-field-type="text">Chapter 51</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch51_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch51_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch51_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch51_pov" data-field-type="text"></div>
@@ -3209,7 +3222,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-52">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch52_title" data-field-type="text">Chapter 52</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch52_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch52_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch52_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch52_pov" data-field-type="text"></div>
@@ -3268,7 +3281,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-53">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch53_title" data-field-type="text">Chapter 53</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch53_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch53_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch53_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch53_pov" data-field-type="text"></div>
@@ -3327,7 +3340,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-54">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch54_title" data-field-type="text">Chapter 54</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch54_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch54_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch54_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch54_pov" data-field-type="text"></div>
@@ -3386,7 +3399,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-55">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch55_title" data-field-type="text">Chapter 55</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch55_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch55_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch55_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch55_pov" data-field-type="text"></div>
@@ -3445,7 +3458,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-56">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch56_title" data-field-type="text">Chapter 56</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch56_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch56_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch56_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch56_pov" data-field-type="text"></div>
@@ -3504,7 +3517,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-57">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch57_title" data-field-type="text">Chapter 57</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch57_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch57_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch57_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch57_pov" data-field-type="text"></div>
@@ -3563,7 +3576,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-58">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch58_title" data-field-type="text">Chapter 58</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch58_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch58_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch58_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch58_pov" data-field-type="text"></div>
@@ -3622,7 +3635,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-59">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch59_title" data-field-type="text">Chapter 59</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch59_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch59_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch59_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch59_pov" data-field-type="text"></div>
@@ -3681,7 +3694,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-60">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch60_title" data-field-type="text">Chapter 60</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch60_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch60_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch60_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch60_pov" data-field-type="text"></div>
@@ -3740,7 +3753,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-61">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch61_title" data-field-type="text">Chapter 61</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch61_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch61_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch61_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch61_pov" data-field-type="text"></div>
@@ -3799,7 +3812,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-62">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch62_title" data-field-type="text">Chapter 62</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch62_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch62_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch62_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch62_pov" data-field-type="text"></div>
@@ -3858,7 +3871,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-63">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch63_title" data-field-type="text">Chapter 63</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch63_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch63_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch63_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch63_pov" data-field-type="text"></div>
@@ -3917,7 +3930,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-64">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch64_title" data-field-type="text">Chapter 64</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch64_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch64_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch64_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch64_pov" data-field-type="text"></div>
@@ -3976,7 +3989,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-65">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch65_title" data-field-type="text">Chapter 65</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch65_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch65_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch65_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch65_pov" data-field-type="text"></div>
@@ -4035,7 +4048,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-66">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch66_title" data-field-type="text">Chapter 66</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch66_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch66_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch66_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch66_pov" data-field-type="text"></div>
@@ -4094,7 +4107,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-67">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch67_title" data-field-type="text">Chapter 67</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch67_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch67_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch67_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch67_pov" data-field-type="text"></div>
@@ -4153,7 +4166,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-68">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch68_title" data-field-type="text">Chapter 68</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch68_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch68_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch68_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch68_pov" data-field-type="text"></div>
@@ -4212,7 +4225,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-69">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch69_title" data-field-type="text">Chapter 69</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch69_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch69_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch69_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch69_pov" data-field-type="text"></div>
@@ -4271,7 +4284,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-70">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch70_title" data-field-type="text">Chapter 70</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch70_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch70_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch70_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch70_pov" data-field-type="text"></div>
@@ -4330,7 +4343,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-71">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch71_title" data-field-type="text">Chapter 71</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch71_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch71_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch71_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch71_pov" data-field-type="text"></div>
@@ -4389,7 +4402,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-72">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch72_title" data-field-type="text">Chapter 72</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch72_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch72_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch72_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch72_pov" data-field-type="text"></div>
@@ -4448,7 +4461,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-73">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch73_title" data-field-type="text">Chapter 73</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch73_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch73_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch73_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch73_pov" data-field-type="text"></div>
@@ -4507,7 +4520,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-74">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch74_title" data-field-type="text">Chapter 74</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch74_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch74_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch74_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch74_pov" data-field-type="text"></div>
@@ -4566,7 +4579,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-75">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch75_title" data-field-type="text">Chapter 75</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch75_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch75_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch75_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch75_pov" data-field-type="text"></div>
@@ -4625,7 +4638,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-76">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch76_title" data-field-type="text">Chapter 76</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch76_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch76_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch76_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch76_pov" data-field-type="text"></div>
@@ -4684,7 +4697,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-77">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch77_title" data-field-type="text">Chapter 77</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch77_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch77_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch77_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch77_pov" data-field-type="text"></div>
@@ -4743,7 +4756,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-78">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch78_title" data-field-type="text">Chapter 78</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch78_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch78_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch78_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch78_pov" data-field-type="text"></div>
@@ -4802,7 +4815,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-79">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch79_title" data-field-type="text">Chapter 79</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch79_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch79_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch79_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch79_pov" data-field-type="text"></div>
@@ -4861,7 +4874,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-80">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch80_title" data-field-type="text">Chapter 80</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch80_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch80_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch80_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch80_pov" data-field-type="text"></div>
@@ -4920,7 +4933,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-81">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch81_title" data-field-type="text">Chapter 81</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch81_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch81_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch81_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch81_pov" data-field-type="text"></div>
@@ -4979,7 +4992,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-82">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch82_title" data-field-type="text">Chapter 82</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch82_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch82_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch82_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch82_pov" data-field-type="text"></div>
@@ -5038,7 +5051,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-83">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch83_title" data-field-type="text">Chapter 83</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch83_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch83_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch83_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch83_pov" data-field-type="text"></div>
@@ -5097,7 +5110,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-84">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch84_title" data-field-type="text">Chapter 84</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch84_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch84_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch84_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch84_pov" data-field-type="text"></div>
@@ -5156,7 +5169,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-85">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch85_title" data-field-type="text">Chapter 85</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch85_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch85_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch85_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch85_pov" data-field-type="text"></div>
@@ -5215,7 +5228,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-86">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch86_title" data-field-type="text">Chapter 86</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch86_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch86_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch86_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch86_pov" data-field-type="text"></div>
@@ -5274,7 +5287,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-87">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch87_title" data-field-type="text">Chapter 87</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch87_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch87_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch87_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch87_pov" data-field-type="text"></div>
@@ -5333,7 +5346,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-88">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch88_title" data-field-type="text">Chapter 88</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch88_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch88_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch88_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch88_pov" data-field-type="text"></div>
@@ -5392,7 +5405,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-89">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch89_title" data-field-type="text">Chapter 89</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch89_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch89_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch89_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch89_pov" data-field-type="text"></div>
@@ -5451,7 +5464,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-90">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch90_title" data-field-type="text">Chapter 90</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch90_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch90_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch90_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch90_pov" data-field-type="text"></div>
@@ -5510,7 +5523,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-91">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch91_title" data-field-type="text">Chapter 91</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch91_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch91_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch91_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch91_pov" data-field-type="text"></div>
@@ -5569,7 +5582,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-92">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch92_title" data-field-type="text">Chapter 92</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch92_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch92_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch92_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch92_pov" data-field-type="text"></div>
@@ -5628,7 +5641,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-93">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch93_title" data-field-type="text">Chapter 93</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch93_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch93_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch93_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch93_pov" data-field-type="text"></div>
@@ -5687,7 +5700,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-94">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch94_title" data-field-type="text">Chapter 94</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch94_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch94_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch94_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch94_pov" data-field-type="text"></div>
@@ -5746,7 +5759,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-95">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch95_title" data-field-type="text">Chapter 95</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch95_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch95_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch95_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch95_pov" data-field-type="text"></div>
@@ -5805,7 +5818,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-96">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch96_title" data-field-type="text">Chapter 96</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch96_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch96_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch96_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch96_pov" data-field-type="text"></div>
@@ -5864,7 +5877,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-97">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch97_title" data-field-type="text">Chapter 97</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch97_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch97_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch97_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch97_pov" data-field-type="text"></div>
@@ -5923,7 +5936,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-98">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch98_title" data-field-type="text">Chapter 98</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch98_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch98_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch98_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch98_pov" data-field-type="text"></div>
@@ -5982,7 +5995,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-99">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch99_title" data-field-type="text">Chapter 99</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch99_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch99_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch99_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch99_pov" data-field-type="text"></div>
@@ -6041,7 +6054,7 @@
 </div>
 
 <div class="chapter-log" id="chapter-100">
-    <div class="chapter-number"><span contenteditable="true" data-field-name="ch100_title" data-field-type="text">Chapter 100</span></div>
+    <div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="ch100_num" data-field-type="text"></div>
     <div class="chapter-log-header">
         <div><strong>Start page</strong> <input type="text" data-field-name="ch100_pages_start" data-field-type="text"><br><strong>End page</strong> <input type="text" data-field-name="ch100_pages_end" data-field-type="text"></div>
         <div><strong>POV:</strong> <input type="text" data-field-name="ch100_pov" data-field-type="text"></div>
