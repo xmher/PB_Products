@@ -4108,11 +4108,17 @@
 </div>
 
 <div style="margin-top: 1rem; break-inside: avoid;">
-    <h4>This book is: <span class="text-muted" style="font-weight: 600; font-size: 0.85rem;">(mark on spectrum)</span></h4>
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-romance);">Fantasy Romance</span>
-        <div style="flex-grow: 1; height: 4px; background: linear-gradient(to right, var(--color-romance), var(--color-fantasy)); border-radius: 2px;"></div>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-fantasy);">Romantic Fantasy</span>
+    <h4>This book is: <span class="text-muted" style="font-weight: 600; font-size: 0.85rem;">(check one)</span></h4>
+    <div style="display: flex; align-items: center; gap: 0.3rem; margin: 0.5rem 0;">
+        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-romance);">Fantasy Romance</span>
+        <div class="rating-scale" style="flex-grow: 1; justify-content: space-between; margin: 0 0.5rem;">
+            <label class="rating-check"><input type="checkbox"> 1</label>
+            <label class="rating-check"><input type="checkbox"> 2</label>
+            <label class="rating-check"><input type="checkbox"> 3</label>
+            <label class="rating-check"><input type="checkbox"> 4</label>
+            <label class="rating-check"><input type="checkbox"> 5</label>
+        </div>
+        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-fantasy);">Romantic Fantasy</span>
     </div>
     <h4 style="margin-top: 1rem;">Why? What evidence supports your placement?</h4>
     <div class="write-space-md" contenteditable="true"></div>
