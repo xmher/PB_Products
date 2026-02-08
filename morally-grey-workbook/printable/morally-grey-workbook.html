@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morally Grey Love Interest Workbook: A Psychological Architecture Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/pagedjs/dist/paged.polyfill.js"></script>
+    <style>
+        :root {
+            /* MORALLY GREY WORKBOOK COLOR PALETTE - Dark noir with silver and blood accents */
+            --color-primary: #1a1a2e;
+            --color-primary-light: rgba(26, 26, 46, 0.06);
+            --color-bg: #faf8f6;
+            --color-noir: #0f0f1a;
+            --color-accent: #a0a0b8;
+            --color-accent-light: rgba(160, 160, 184, 0.12);
+            --color-highlight: #8b1a1a;
+            --color-highlight-light: rgba(139, 26, 26, 0.07);
+            --color-text-main: #121212;
+            --color-text-sub: #444444;
+            --color-text-muted: #888888;
+
+            /* Section-specific accent colors */
+            --color-shadow: #2d1b4e;
+            --color-shadow-light: rgba(45, 27, 78, 0.08);
+            --color-wound: #6b3a3a;
+            --color-wound-light: rgba(107, 58, 58, 0.08);
+            --color-steel: #4a5568;
+            --color-steel-light: rgba(74, 85, 104, 0.08);
+            --color-danger: #991b1b;
+            --color-danger-light: rgba(153, 27, 27, 0.06);
+
+            --font-display: 'Libre Baskerville', serif;
+            --font-accent: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+
+            --theme-color: var(--color-primary);
+            --theme-color-light: var(--color-primary-light);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            font-size: 11pt;
+        }
+
+        /* PAGE SETUP */
+        @page {
+            size: 8.5in 11in;
+            margin: 70px 80px 100px 80px;
+            background: var(--color-bg);
+            @bottom-center {
+                content: counter(page);
+                font-family: 'Libre Baskerville', serif;
+                font-size: 0.7rem;
+                font-weight: 700;
+                color: var(--color-primary);
+            }
+            @bottom-left {
+                content: string(section-title);
+                font-family: 'Libre Baskerville', serif;
+                font-size: 0.6rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #888;
+            }
+        }
+
+        @page:first {
+            @bottom-center { content: none; }
+            @bottom-left { content: none; }
+        }
+
+        /* DECORATIVE PAGE BORDER */
+        .pagedjs_page {
+            background: var(--color-bg) !important;
+            position: relative !important;
+        }
+
+        .pagedjs_pagebox {
+            position: relative !important;
+        }
+
+        .pagedjs_pagebox::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 18px !important;
+            left: 18px !important;
+            right: 18px !important;
+            bottom: 18px !important;
+            border: 2px solid var(--color-primary) !important;
+            pointer-events: none !important;
+            z-index: 1000 !important;
+        }
+
+        .pagedjs_pagebox::after {
+            content: '' !important;
+            position: absolute !important;
+            top: 12px !important;
+            left: 12px !important;
+            width: 30px !important;
+            height: 30px !important;
+            border-top: 3px solid var(--color-accent) !important;
+            border-left: 3px solid var(--color-accent) !important;
+            pointer-events: none !important;
+            z-index: 1001 !important;
+        }
+
+        /* TYPOGRAPHY */
+        h2 { string-set: section-title content(); }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-noir);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-noir);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-accent);
+            break-after: avoid;
+        }
+
+        h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--theme-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            break-after: avoid;
+        }
+
+        h4 {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-text-sub);
+            margin-top: 1.25rem;
+            margin-bottom: 0.5rem;
+            break-after: avoid;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+            hyphens: auto;
+            orphans: 3;
+            widows: 3;
+        }
+
+        .lead-text {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .hint {
+            font-family: var(--font-accent);
+            font-style: italic;
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            break-after: avoid;
+        }
+
+        ul, ol { margin: 1rem 0 1rem 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+
+        /* TITLE PAGE */
+        .title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 9in;
+            break-after: page;
+        }
+
+        .guide-badge {
+            font-family: var(--font-display);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+            border: 1.5px solid var(--color-accent);
+            padding: 6px 20px;
+            margin-bottom: 2.5rem;
+            display: inline-block;
+        }
+
+        .title-page h1 {
+            font-size: 2.4rem;
+            letter-spacing: 5px;
+            margin-bottom: 0.75rem;
+            color: var(--color-primary);
+        }
+
+        .title-subtitle {
+            font-family: var(--font-accent);
+            font-size: 1.5rem;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--color-text-sub);
+            margin-bottom: 2rem;
+            line-height: 1.4;
+        }
+
+        .title-tagline {
+            font-family: var(--font-accent);
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+            max-width: 500px;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .title-divider {
+            width: 120px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            margin: 0 auto 2rem;
+        }
+
+        .title-edition {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--color-text-muted);
+        }
+
+        /* TABLE OF CONTENTS */
+        .toc-page {
+            break-after: page;
+        }
+
+        .toc-page h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .toc-section {
+            margin-bottom: 0.25rem;
+        }
+
+        .toc-section a {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            text-decoration: none;
+            color: var(--color-text-main);
+            padding: 6px 0;
+            border-bottom: 1px dotted #ddd;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+        }
+
+        .toc-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .toc-section .toc-title {
+            flex-shrink: 0;
+        }
+
+        .toc-section .toc-page-num {
+            font-family: var(--font-display);
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-left: 8px;
+            flex-shrink: 0;
+            content: target-counter(attr(href url), page);
+        }
+
+        .toc-group-label {
+            font-family: var(--font-accent);
+            font-size: 1rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--color-primary);
+            margin-top: 1.25rem;
+            margin-bottom: 0.25rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--color-accent);
+        }
+
+        .toc-group-label:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        /* SECTION TITLE PAGES */
+        .section-title-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 8in;
+            break-before: page;
+            break-after: page;
+        }
+
+        .section-title-page .section-number {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .section-title-page h1 {
+            font-size: 2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title-page .section-desc {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            max-width: 450px;
+            line-height: 1.6;
+        }
+
+        /* CONTENT BOXES */
+        .insight-box {
+            background: var(--color-primary-light);
+            border-left: 4px solid var(--color-primary);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .insight-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .principle-card {
+            border: 1.5px solid var(--color-accent);
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 6px;
+            text-align: center;
+            break-inside: avoid;
+        }
+
+        .principle-card .card-content {
+            font-family: var(--font-accent);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--color-text-sub);
+            line-height: 1.6;
+        }
+
+        .example-box {
+            background: var(--color-accent-light);
+            border-left: 4px solid var(--color-accent);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .example-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6a6a80;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .danger-box {
+            background: var(--color-danger-light);
+            border-left: 4px solid var(--color-danger);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .danger-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-danger);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .shadow-box {
+            background: var(--color-shadow-light);
+            border-left: 4px solid var(--color-shadow);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .shadow-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-shadow);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .wound-box {
+            background: var(--color-wound-light);
+            border-left: 4px solid var(--color-wound);
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+            border-radius: 0 6px 6px 0;
+            break-inside: avoid;
+        }
+
+        .wound-box .box-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-wound);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* QUICK REFERENCE BOX */
+        .quick-ref {
+            border: 1.5px solid var(--color-primary);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin: 1.25rem 0;
+            break-inside: avoid;
+        }
+
+        .quick-ref .ref-title {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .quick-ref ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .quick-ref ul li {
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .quick-ref ul li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.25rem 0;
+            font-size: 0.9rem;
+        }
+
+        thead th {
+            background: var(--color-primary);
+            color: white;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        tbody td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0ddd8;
+            vertical-align: top;
+        }
+
+        tbody tr:nth-child(even) {
+            background: rgba(0,0,0,0.02);
+        }
+
+        tbody tr.example-row {
+            background: var(--color-accent-light);
+            font-style: italic;
+            color: var(--color-text-sub);
+        }
+
+        /* WRITE SPACES */
+        .write-space {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 120px;
+            margin: 0.75rem 0 1.25rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        .write-space-xs {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 45px;
+            margin: 0.5rem 0 1rem;
+            background: white;
+            padding: 8px 12px;
+        }
+
+        .write-space-sm {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 70px;
+            margin: 0.5rem 0 1rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        .write-space-md {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 150px;
+            margin: 0.75rem 0 1.25rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        .write-space-lg {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 4px;
+            min-height: 220px;
+            margin: 0.75rem 0 1.25rem;
+            background: white;
+            background-image: repeating-linear-gradient(
+                transparent,
+                transparent 27px,
+                #e8e6e2 27px,
+                #e8e6e2 28px
+            );
+            background-position: 0 12px;
+            padding: 12px;
+        }
+
+        /* TWO-COLUMN LAYOUT */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .three-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .col-box {
+            border: 1.5px solid #d0cdc8;
+            border-radius: 6px;
+            padding: 1rem;
+            break-inside: avoid;
+        }
+
+        .col-box h4 {
+            margin-top: 0;
+            color: var(--color-primary);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-style: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* MORAL SPECTRUM SCALE */
+        .moral-spectrum {
+            display: flex;
+            gap: 0;
+            margin: 1rem 0 1.5rem;
+            break-inside: avoid;
+        }
+
+        .spectrum-level {
+            flex: 1;
+            text-align: center;
+            padding: 12px 6px;
+            border: 1px solid #d0cdc8;
+            font-size: 0.75rem;
+        }
+
+        .spectrum-level .level-label {
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .spectrum-level .level-desc {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 0.85rem;
+            display: block;
+        }
+
+        .spectrum-hero { background: #f0f4f8; }
+        .spectrum-hero .level-label { color: #2b6cb0; }
+        .spectrum-light-grey { background: #f0f0f4; }
+        .spectrum-light-grey .level-label { color: #5a5a80; }
+        .spectrum-grey { background: #e8e4ee; }
+        .spectrum-grey .level-label { color: #4a3660; }
+        .spectrum-dark-grey { background: #e4dce8; }
+        .spectrum-dark-grey .level-label { color: #3d1e5c; }
+        .spectrum-villain { background: #eee4e4; }
+        .spectrum-villain .level-label { color: #8b1a1a; }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            padding-left: 1.75rem;
+            position: relative;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            border: 1.5px solid var(--color-primary);
+            border-radius: 2px;
+        }
+
+        /* RATING CIRCLES */
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .rating-row .label {
+            font-size: 0.9rem;
+            min-width: 140px;
+        }
+
+        .rating-circles {
+            display: flex;
+            gap: 4px;
+        }
+
+        .rating-circles .circle {
+            width: 18px;
+            height: 18px;
+            border: 1.5px solid var(--color-primary);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* DRIVE TRACKER */
+        .drive-track {
+            margin: 1rem 0;
+        }
+
+        .drive-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 8px 0;
+            border-bottom: 1px solid #e8e6e2;
+            break-inside: avoid;
+        }
+
+        .drive-label {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            min-width: 130px;
+            color: var(--color-primary);
+        }
+
+        .drive-bar {
+            flex: 1;
+            display: flex;
+            gap: 2px;
+        }
+
+        .drive-bar .segment {
+            flex: 1;
+            height: 20px;
+            border: 1px solid #d0cdc8;
+            background: white;
+        }
+
+        .drive-bar .segment:first-child {
+            border-radius: 3px 0 0 3px;
+        }
+
+        .drive-bar .segment:last-child {
+            border-radius: 0 3px 3px 0;
+        }
+
+        .drive-endpoints {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-accent);
+            font-size: 0.75rem;
+            font-style: italic;
+            color: var(--color-text-muted);
+            min-width: 120px;
+        }
+
+        /* TIMELINE TRACK */
+        .timeline-track {
+            margin: 1rem 0;
+        }
+
+        .timeline-beat {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 10px 0;
+            border-bottom: 1px solid #e8e6e2;
+            break-inside: avoid;
+        }
+
+        .beat-marker {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: white;
+            background: var(--color-primary);
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .beat-content {
+            flex: 1;
+        }
+
+        .beat-content .beat-title {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--color-text-main);
+        }
+
+        .beat-content .beat-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-sub);
+            margin-top: 2px;
+        }
+
+        .beat-field {
+            flex: 0 0 200px;
+        }
+
+        .beat-field .write-space-xs {
+            min-height: 28px;
+            margin: 0;
+        }
+
+        /* WORKSHEET HEADER */
+        .worksheet-header {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px 6px 0 0;
+            margin-top: 1.5rem;
+            break-after: avoid;
+        }
+
+        .worksheet-header h3 {
+            color: white;
+            margin: 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .worksheet-body {
+            border: 1.5px solid var(--color-primary);
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* FIELD ROWS */
+        .field-row {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .field-label {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            min-width: 120px;
+            flex-shrink: 0;
+        }
+
+        .field-input {
+            flex: 1;
+            border-bottom: 1.5px solid #d0cdc8;
+            min-height: 24px;
+        }
+
+        /* VERSUS COMPARISON */
+        .versus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .versus-table th {
+            padding: 10px 12px;
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .versus-table th:first-child {
+            background: var(--color-primary);
+            color: white;
+            width: 25%;
+        }
+
+        .versus-table th:nth-child(2) {
+            background: #2b6cb0;
+            color: white;
+        }
+
+        .versus-table th:nth-child(3) {
+            background: var(--color-shadow);
+            color: white;
+        }
+
+        .versus-table th:nth-child(4) {
+            background: var(--color-danger);
+            color: white;
+        }
+
+        .versus-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e0ddd8;
+            vertical-align: top;
+            font-size: 0.85rem;
+        }
+
+        .versus-table td:first-child {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--color-primary);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ==================== TITLE PAGE ==================== -->
+    <div class="title-page">
+        <div class="guide-badge">A Psychological Architecture Guide</div>
+        <h1>Morally Grey<br>Love Interest<br>Workbook</h1>
+        <div class="title-subtitle">Build Characters They Can't Forget</div>
+        <div class="title-divider"></div>
+        <div class="title-tagline">
+            Structural frameworks, psychological profiling tools, and consistency systems
+            for crafting morally complex love interests who maintain their edge
+            from first page to last.
+        </div>
+        <div class="title-edition">First Edition</div>
+    </div>
+
+    <!-- ==================== HOW TO USE THIS WORKBOOK ==================== -->
+    <div class="toc-page">
+        <h1>How to Use This Workbook</h1>
+
+        <p class="lead-text">
+            This is not a collection of prompts. It is a structural blueprint for building
+            the kind of character readers describe as "unhinged but make it romantic" &mdash;
+            the love interest who is dangerous to everyone except the one person
+            who makes them question everything.
+        </p>
+
+        <div class="insight-box">
+            <div class="box-label">The Core Problem This Workbook Solves</div>
+            <p style="margin-bottom: 0;">Most morally grey characters fail in one of two ways: they soften into secretly-good heroes by Act 3 (the <strong>Retcon</strong>), or they stay so dark that the romance feels unsafe rather than thrilling (the <strong>Toxic Trap</strong>). This workbook gives you the architectural tools to walk that knife's edge consistently.</p>
+        </div>
+
+        <h3>Work Through It In Order or Jump to What You Need</h3>
+        <p><strong>Sections 1&ndash;3</strong> build your character's psychological foundation. <strong>Sections 4&ndash;5</strong> map how that psychology moves through your plot and romance. <strong>Sections 6&ndash;8</strong> provide consistency and quality-control tools to use during drafting and revision.</p>
+
+        <h3>Pair With Your Other Tools</h3>
+        <ul>
+            <li><strong>Character Database (Notion):</strong> Transfer your completed profile into your series database for cross-book tracking.</li>
+            <li><strong>Spice Scene Workbook:</strong> Use Section 5 ("The Exception Blueprint") to inform your intimacy scenes &mdash; the morally grey character's vulnerability in these moments is what separates them from a villain.</li>
+            <li><strong>Romantasy Analysis Guide:</strong> Study how published authors handle moral ambiguity &mdash; note which characters maintain their edge vs. which get retconned.</li>
+        </ul>
+    </div>
+
+    <!-- ==================== TABLE OF CONTENTS ==================== -->
+    <div class="toc-page">
+        <h1>Contents</h1>
+
+        <div class="toc-group-label">Foundation</div>
+
+        <div class="toc-section">
+            <a href="#s1"><span class="toc-title"><strong>1</strong> &mdash; The Moral Compass Scale</span><span class="toc-page-num"></span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#s2"><span class="toc-title"><strong>2</strong> &mdash; Backstory Reverse Engineering</span><span class="toc-page-num"></span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#s3"><span class="toc-title"><strong>3</strong> &mdash; The Logic of Corruption</span><span class="toc-page-num"></span></a>
+        </div>
+
+        <div class="toc-group-label">Architecture</div>
+
+        <div class="toc-section">
+            <a href="#s4"><span class="toc-title"><strong>4</strong> &mdash; The Heroic / Grey / Villainous Sliding Scale</span><span class="toc-page-num"></span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#s5"><span class="toc-title"><strong>5</strong> &mdash; The "Exception" Blueprint</span><span class="toc-page-num"></span></a>
+        </div>
+
+        <div class="toc-group-label">Consistency &amp; Quality Control</div>
+
+        <div class="toc-section">
+            <a href="#s6"><span class="toc-title"><strong>6</strong> &mdash; Accountability &amp; Consequence Tracker</span><span class="toc-page-num"></span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#s7"><span class="toc-title"><strong>7</strong> &mdash; Relationship Chemistry Architecture</span><span class="toc-page-num"></span></a>
+        </div>
+        <div class="toc-section">
+            <a href="#s8"><span class="toc-title"><strong>8</strong> &mdash; The Retcon Prevention System</span><span class="toc-page-num"></span></a>
+        </div>
+
+        <div class="toc-group-label">Reference</div>
+
+        <div class="toc-section">
+            <a href="#appendix"><span class="toc-title"><strong>App</strong> &mdash; Appendices</span><span class="toc-page-num"></span></a>
+        </div>
+    </div>
+
+
+    <!-- ==================== SECTION 1: THE MORAL COMPASS SCALE ==================== -->
+    <div class="section-title-page" id="s1">
+        <div class="section-number">Section One</div>
+        <h1>The Moral<br>Compass Scale</h1>
+        <div class="section-desc">
+            Define the personal code your character lives by &mdash; not society's rules, but the
+            internal logic that makes every dark choice feel inevitable.
+        </div>
+    </div>
+
+    <h2>The Moral Compass Scale</h2>
+
+    <p class="lead-text">
+        Every compelling morally grey character operates by a code. Not a moral code in the traditional sense &mdash;
+        but a set of internal rules that are utterly logical <em>to them</em>, even when they're
+        horrifying to everyone else. Your first job is to define that code.
+    </p>
+
+    <div class="principle-card">
+        <div class="card-content">
+            "He is not chaotic. He is not random. He has a system &mdash;<br>
+            it's just not one you'd want to live inside."
+        </div>
+    </div>
+
+    <h3>The Spectrum: Where Does Your Character Sit?</h3>
+    <p>Mark where your character begins the story. You'll track how they shift in Section 4.</p>
+
+    <div class="moral-spectrum">
+        <div class="spectrum-level spectrum-hero">
+            <span class="level-label">Hero</span>
+            <span class="level-desc">Greater good over self</span>
+        </div>
+        <div class="spectrum-level spectrum-light-grey">
+            <span class="level-label">Light Grey</span>
+            <span class="level-desc">Good ends, questionable means</span>
+        </div>
+        <div class="spectrum-level spectrum-grey">
+            <span class="level-label">Grey</span>
+            <span class="level-desc">Self-interest with limits</span>
+        </div>
+        <div class="spectrum-level spectrum-dark-grey">
+            <span class="level-label">Dark Grey</span>
+            <span class="level-desc">Ruthless with selective mercy</span>
+        </div>
+        <div class="spectrum-level spectrum-villain">
+            <span class="level-label">Villain</span>
+            <span class="level-desc">Destruction without remorse</span>
+        </div>
+    </div>
+
+    <h3>Your Character's Personal Code</h3>
+    <p class="hint">What are the 3&ndash;5 rules they never break? These are the "lines in the sand" that keep them from sliding into true villainy.</p>
+
+    <div class="worksheet-header">
+        <h3>The Code Worksheet</h3>
+    </div>
+    <div class="worksheet-body">
+        <div class="field-row">
+            <span class="field-label">Rule 1:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Rule 2:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Rule 3:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Rule 4:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Rule 5:</span>
+            <div class="field-input"></div>
+        </div>
+        <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>Why this code and not society's?</strong> What happened to make them reject conventional morality?</p>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <h3>The Line They Will Not Cross</h3>
+    <p>This is the single non-negotiable &mdash; the act that even they consider unforgivable. It is what separates them from a villain, and your reader needs to know it exists, even if the character never says it aloud.</p>
+
+    <div class="field-row">
+        <span class="field-label">The Line:</span>
+        <div class="field-input"></div>
+    </div>
+    <p class="hint">Why is <em>this</em> the line? What does it reveal about the wound underneath the armor?</p>
+    <div class="write-space-sm"></div>
+
+    <h3>Psychological Drive Ratings</h3>
+    <p>Rate your character's core drives on a scale of 1&ndash;10 by filling in the segments. These drives power every choice they make.</p>
+
+    <div class="drive-track">
+        <div class="drive-item">
+            <span class="drive-label">Power</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Low</span><span>Obsessive</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Protection</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Indifferent</span><span>Feral</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Control</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Passive</span><span>Dominating</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Loyalty</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Mercenary</span><span>Ride-or-die</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Vengeance</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Forgiving</span><span>Scorched earth</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Secrecy</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Open book</span><span>Buried alive</span></div>
+        </div>
+    </div>
+
+
+    <!-- ==================== SECTION 2: BACKSTORY REVERSE ENGINEERING ==================== -->
+    <div class="section-title-page" id="s2">
+        <div class="section-number">Section Two</div>
+        <h1>Backstory Reverse<br>Engineering</h1>
+        <div class="section-desc">
+            Every dark trait was once a survival strategy. Trace the line
+            from wound to weapon &mdash; and discover the person your character
+            was before the world broke them.
+        </div>
+    </div>
+
+    <h2>Backstory Reverse Engineering</h2>
+
+    <p class="lead-text">
+        The most common mistake with morally grey backstories is making them <em>excuses</em>.
+        "He kills because his parents were murdered" is a backstory. "He kills because he learned at age nine
+        that the only way to stop pain is to become the thing people fear" is a <em>psychology</em>.
+        This section builds the psychology.
+    </p>
+
+    <div class="principle-card">
+        <div class="card-content">
+            The Wound &rarr; The Lie &rarr; The Weapon &rarr; The Code<br>
+            <span style="font-size: 0.9rem; color: #888; display: block; margin-top: 0.5rem;">Every morally grey character is built on this pipeline.</span>
+        </div>
+    </div>
+
+    <h3>The Wound-to-Weapon Pipeline</h3>
+
+    <div class="worksheet-header">
+        <h3>Step 1: The Core Wound</h3>
+    </div>
+    <div class="worksheet-body">
+        <p style="margin-bottom: 0.5rem;">What is the defining trauma or experience that shattered their original worldview?</p>
+        <div class="write-space-sm"></div>
+        <div class="field-row">
+            <span class="field-label">Age when it happened:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Who caused it:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">What they lost:</span>
+            <div class="field-input"></div>
+        </div>
+    </div>
+
+    <div class="worksheet-header">
+        <h3>Step 2: The Lie They Believe</h3>
+    </div>
+    <div class="worksheet-body">
+        <p style="margin-bottom: 0.5rem;">What false conclusion did they draw from the wound? This is the corrupted lens through which they see all relationships, power, and love.</p>
+        <div class="two-col">
+            <div class="col-box">
+                <h4>The Lie (in their words)</h4>
+                <div class="write-space-sm"></div>
+            </div>
+            <div class="col-box">
+                <h4>The Truth (that they can't see)</h4>
+                <div class="write-space-sm"></div>
+            </div>
+        </div>
+
+        <div class="example-box">
+            <div class="box-label">Example</div>
+            <p style="margin-bottom:0;"><strong>Wound:</strong> Betrayed by the one person he trusted at age 14.<br>
+            <strong>Lie:</strong> "Love is a leash. Anyone who gets close enough to love you gets close enough to destroy you."<br>
+            <strong>Truth:</strong> Vulnerability is not weakness &mdash; it was the betrayer who was weak, not the act of trusting.</p>
+        </div>
+    </div>
+
+    <div class="worksheet-header">
+        <h3>Step 3: The Weapon They Forged</h3>
+    </div>
+    <div class="worksheet-body">
+        <p style="margin-bottom: 0.5rem;">How did the wound and the lie shape the specific "dark" traits your character is known for? Each weapon is a survival strategy that worked &mdash; once.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dark Trait</th>
+                    <th>The Survival Logic</th>
+                    <th>When It First Worked</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="example-row">
+                    <td><em>e.g., Ruthless manipulation</em></td>
+                    <td><em>"If I control the game, no one can change the rules on me again"</em></td>
+                    <td><em>Age 15 &mdash; outmaneuvered the court advisor who orchestrated his exile</em></td>
+                </tr>
+                <tr>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                </tr>
+                <tr>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                </tr>
+                <tr>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>The Ghost Scene</h3>
+    <p>Write the single scene from their past &mdash; real or imagined &mdash; that haunts them. This is the moment they replay when they can't sleep. It doesn't need to appear in your book, but <em>you</em> need to know it.</p>
+    <div class="write-space-lg"></div>
+
+
+    <!-- ==================== SECTION 3: THE LOGIC OF CORRUPTION ==================== -->
+    <div class="section-title-page" id="s3">
+        <div class="section-number">Section Three</div>
+        <h1>The Logic of<br>Corruption</h1>
+        <div class="section-desc">
+            Your character doesn't think they're the villain. Build the internal logic
+            that makes every terrible choice feel like the only rational option.
+        </div>
+    </div>
+
+    <h2>The Logic of Corruption</h2>
+
+    <p class="lead-text">
+        The difference between a compelling morally grey character and a "villain with a sad backstory"
+        is internal consistency. Your character must be able to justify their worst actions using
+        logic that is <em>wrong</em> but <em>coherent</em>. The reader should be able to follow the reasoning,
+        even while being horrified by the conclusion.
+    </p>
+
+    <div class="danger-box">
+        <div class="box-label">The Failure State</div>
+        <p style="margin-bottom:0;">If your character does something terrible and your narrator immediately signals "but he felt bad about it," you have written a hero in a grey costume. True moral ambiguity means the character believes they were <strong>right</strong> &mdash; or at minimum, that no better option existed.</p>
+    </div>
+
+    <h3>The Corruption Logic Framework</h3>
+    <p>For each morally questionable action your character takes in the story, trace their internal reasoning.</p>
+
+    <div class="worksheet-header">
+        <h3>Action &rarr; Logic Chain</h3>
+    </div>
+    <div class="worksheet-body">
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">Morally Questionable Action #1</p>
+        <div class="field-row">
+            <span class="field-label">What they did:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Who was harmed:</span>
+            <div class="field-input"></div>
+        </div>
+        <p style="margin-bottom: 0.25rem; margin-top: 0.75rem;"><strong>Their internal justification</strong> (in their voice, not yours):</p>
+        <div class="write-space-sm"></div>
+        <div class="field-row">
+            <span class="field-label">What would a hero have done instead?</span>
+        </div>
+        <div class="field-input" style="margin-bottom: 0.75rem;"></div>
+        <div class="field-row">
+            <span class="field-label">Why does your character believe the heroic option was naive or impossible?</span>
+        </div>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <div class="worksheet-header">
+        <h3>Action &rarr; Logic Chain</h3>
+    </div>
+    <div class="worksheet-body">
+        <p style="margin-bottom: 0.5rem; font-weight: 600;">Morally Questionable Action #2</p>
+        <div class="field-row">
+            <span class="field-label">What they did:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Who was harmed:</span>
+            <div class="field-input"></div>
+        </div>
+        <p style="margin-bottom: 0.25rem; margin-top: 0.75rem;"><strong>Their internal justification</strong> (in their voice, not yours):</p>
+        <div class="write-space-sm"></div>
+        <div class="field-row">
+            <span class="field-label">What would a hero have done instead?</span>
+        </div>
+        <div class="field-input" style="margin-bottom: 0.75rem;"></div>
+        <div class="field-row">
+            <span class="field-label">Why does your character believe the heroic option was naive or impossible?</span>
+        </div>
+        <div class="write-space-sm"></div>
+    </div>
+
+    <h3>The Introspection Test</h3>
+    <p>When your character reflects on a dark choice, where does their mind go? Circle the pattern that fits your character &mdash; this determines how you write their internal monologue.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pattern</th>
+                <th>What It Sounds Like</th>
+                <th>What It Means</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Rationalization</strong></td>
+                <td>"They would have done the same to me."</td>
+                <td>Deflects guilt by universalizing the behavior</td>
+            </tr>
+            <tr>
+                <td><strong>Compartmentalization</strong></td>
+                <td>"That was necessary. This is different."</td>
+                <td>Separates "dark actions" from sense of self</td>
+            </tr>
+            <tr>
+                <td><strong>Reframing</strong></td>
+                <td>"I didn't destroy them. I freed them from a worse fate."</td>
+                <td>Converts harmful action into perceived mercy</td>
+            </tr>
+            <tr>
+                <td><strong>Suppression</strong></td>
+                <td>[Does not think about it at all]</td>
+                <td>Refuses engagement; reveals itself in nightmares, tics, drinking</td>
+            </tr>
+            <tr>
+                <td><strong>Ownership</strong></td>
+                <td>"I did that. I'd do it again."</td>
+                <td>Full acceptance &mdash; the darkest and most charismatic pattern</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="field-row">
+        <span class="field-label">Your character's primary pattern:</span>
+        <div class="field-input"></div>
+    </div>
+    <div class="field-row">
+        <span class="field-label">Secondary pattern (under stress):</span>
+        <div class="field-input"></div>
+    </div>
+
+
+    <!-- ==================== SECTION 4: THE SLIDING SCALE ==================== -->
+    <div class="section-title-page" id="s4">
+        <div class="section-number">Section Four</div>
+        <h1>The Heroic / Grey /<br>Villainous<br>Sliding Scale</h1>
+        <div class="section-desc">
+            A morally grey character is not static. Map where they sit at every
+            major story beat &mdash; and watch the pattern that emerges.
+        </div>
+    </div>
+
+    <h2>The Heroic / Grey / Villainous Sliding Scale</h2>
+
+    <p class="lead-text">
+        The most satisfying morally grey arcs don't travel in a straight line from dark to light.
+        They oscillate. Your character should drift toward heroism in one scene and snap back to
+        ruthlessness in the next. The reader should never feel entirely safe.
+    </p>
+
+    <div class="shadow-box">
+        <div class="box-label">The Key Insight</div>
+        <p style="margin-bottom:0;">A morally grey character who spends the entire book in the "Grey" column is <em>boring</em>.
+        The magic is in the <strong>movement</strong> &mdash; the moments where they slide toward heroism or villainy, and the reader holds their breath wondering which way they'll land.</p>
+    </div>
+
+    <h3>The Approach Matrix</h3>
+    <p>Use this reference to understand the behavioral differences across the spectrum.</p>
+
+    <table class="versus-table">
+        <thead>
+            <tr>
+                <th>Element</th>
+                <th>Heroic</th>
+                <th>Morally Grey</th>
+                <th>Villainous</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Motivation</td>
+                <td>Greater good / altruism</td>
+                <td>Personal ambition / loyalty</td>
+                <td>Selfishness / destruction</td>
+            </tr>
+            <tr>
+                <td>Methods</td>
+                <td>Ethical / lawful</td>
+                <td>Opportunistic / pragmatic</td>
+                <td>Cruel / lawless</td>
+            </tr>
+            <tr>
+                <td>Remorse</td>
+                <td>High / immediate</td>
+                <td>Selective / reflected</td>
+                <td>Low / non-existent</td>
+            </tr>
+            <tr>
+                <td>Agency</td>
+                <td>Shared with others</td>
+                <td>Intense / independent</td>
+                <td>Dominant / manipulative</td>
+            </tr>
+            <tr>
+                <td>Relationship</td>
+                <td>Healthy / equal</td>
+                <td>Intense / "the exception"</td>
+                <td>Obsessive / controlling</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Beat-by-Beat Tracking</h3>
+    <p>For each major story beat, record <em>where</em> your character sits on the spectrum and <em>what</em> pushed them there. Mark H (Heroic), G (Grey), or V (Villainous) in the marker.</p>
+
+    <div class="timeline-track">
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">Opening / Introduction</div>
+                <div class="beat-desc">Where does the reader first meet them? What impression do they leave?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">First Interaction with Love Interest</div>
+                <div class="beat-desc">Are they at their darkest? Most charming? Most guarded?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">Inciting Incident / Act 1 Turn</div>
+                <div class="beat-desc">What choice do they make, and where does it land on the scale?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">Midpoint Shift</div>
+                <div class="beat-desc">This is often where the character shifts direction. Toward light or deeper darkness?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">The "Dark Night" / Crisis Point</div>
+                <div class="beat-desc">Their worst action or their most vulnerable moment. Which did you choose?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">Climax Decision</div>
+                <div class="beat-desc">The choice that defines who they truly are. Where do they land?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+        <div class="timeline-beat">
+            <div class="beat-marker"></div>
+            <div class="beat-content">
+                <div class="beat-title">Resolution / Final State</div>
+                <div class="beat-desc">Have they shifted from where they started? How much &mdash; and is it permanent?</div>
+            </div>
+            <div class="beat-field"><div class="write-space-xs"></div></div>
+        </div>
+    </div>
+
+    <div class="insight-box">
+        <div class="box-label">Pattern Check</div>
+        <p style="margin-bottom:0;">Look at the pattern you've created. If every beat is "G" (grey), add more oscillation. If the character ends firmly at "H" (heroic), ask yourself: have you accidentally written a redemption arc instead of a morally grey arc? A morally grey character at the end of the book should still be <em>grey</em> &mdash; changed, perhaps, but not sanitized.</p>
+    </div>
+
+
+    <!-- ==================== SECTION 5: THE "EXCEPTION" BLUEPRINT ==================== -->
+    <div class="section-title-page" id="s5">
+        <div class="section-number">Section Five</div>
+        <h1>The "Exception"<br>Blueprint</h1>
+        <div class="section-desc">
+            Dangerous to everyone. Soft for one person.
+            Design the specific mechanism that makes this dynamic
+            believable rather than contradictory.
+        </div>
+    </div>
+
+    <h2>The "Exception" Blueprint</h2>
+
+    <p class="lead-text">
+        The single most powerful fantasy in romantasy is "being the exception" &mdash; the one person a dangerous
+        individual chooses to be gentle with. But this only works if the mechanism is specific. <em>Why</em> this person?
+        <em>What</em> does the love interest see or sense that cracks the armor? And critically &mdash; does being the
+        exception <em>change</em> the character, or just reveal what was always underneath?
+    </p>
+
+    <div class="principle-card">
+        <div class="card-content">
+            He doesn't become good. He becomes <em>hers</em>.
+        </div>
+    </div>
+
+    <h3>The Exception Mechanism</h3>
+
+    <div class="worksheet-header">
+        <h3>Why This Person?</h3>
+    </div>
+    <div class="worksheet-body">
+        <p style="margin-bottom: 0.5rem;">What is it about the love interest specifically that gets past the armor? Be precise &mdash; "she's special" is not an answer.</p>
+
+        <div class="field-row">
+            <span class="field-label">What she does that no one else does:</span>
+        </div>
+        <div class="write-space-sm"></div>
+
+        <div class="field-row">
+            <span class="field-label">What she sees that no one else sees:</span>
+        </div>
+        <div class="write-space-sm"></div>
+
+        <div class="field-row">
+            <span class="field-label">What she refuses to do that everyone else does:</span>
+        </div>
+        <div class="write-space-sm"></div>
+
+        <div class="example-box">
+            <div class="box-label">Example Mechanism</div>
+            <p style="margin-bottom:0;"><strong>Does:</strong> Challenges him publicly without flinching &mdash; treats his power as irrelevant.<br>
+            <strong>Sees:</strong> The flinch he hides when children are hurt &mdash; evidence the code runs deeper than survival.<br>
+            <strong>Refuses:</strong> To fear him. Everyone else's fear feeds his armor. Her fearlessness starves it.</p>
+        </div>
+    </div>
+
+    <h3>The Softening Inventory</h3>
+    <p>How does being "the exception" manifest in observable behavior? List the specific things your character does <em>only</em> for this person.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>With Everyone Else</th>
+                <th>With the Love Interest</th>
+                <th>When This First Appears</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="example-row">
+                <td><em>Never explains his decisions</em></td>
+                <td><em>Pauses. Offers one sentence of context. Hates himself for it.</em></td>
+                <td><em>Chapter 8 &mdash; after she calls him a coward</em></td>
+            </tr>
+            <tr>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="danger-box">
+        <div class="box-label">The Critical Constraint</div>
+        <p style="margin-bottom:0;">Being the exception should not erase the character's darkness. He should still be capable of ruthlessness <em>in the same chapter</em> he's gentle with the love interest. The contrast is the point. If he's soft in a scene with her, show him being merciless in the very next scene. The reader needs both.</p>
+    </div>
+
+
+    <!-- ==================== SECTION 6: ACCOUNTABILITY & CONSEQUENCE TRACKER ==================== -->
+    <div class="section-title-page" id="s6">
+        <div class="section-number">Section Six</div>
+        <h1>Accountability &amp;<br>Consequence<br>Tracker</h1>
+        <div class="section-desc">
+            Modern readers demand consequences. Every dark action needs a cost &mdash;
+            or your grey character becomes a toxic one.
+        </div>
+    </div>
+
+    <h2>Accountability &amp; Consequence Tracker</h2>
+
+    <p class="lead-text">
+        The line between "morally grey" and "toxic" is accountability. A toxic character's actions
+        are romanticized without consequence. A morally grey character's actions cost them something &mdash;
+        relationships, trust, sleep, pieces of their soul. Your reader needs to see the price.
+    </p>
+
+    <div class="insight-box">
+        <div class="box-label">The Three Types of Consequence</div>
+        <p style="margin-bottom:0;">
+            <strong>Social:</strong> How others react &mdash; lost trust, broken alliances, feared rather than respected.<br>
+            <strong>Emotional:</strong> What it costs internally &mdash; nightmares, numbness, self-loathing they'd never admit to.<br>
+            <strong>Narrative:</strong> How the plot pushes back &mdash; the plan fails, the ally betrays, the power corrupts.
+        </p>
+    </div>
+
+    <h3>Consequence Log</h3>
+    <p class="hint">For each major morally grey action, track all three consequence types. If any row is empty, your reader may feel the character is getting away with it.</p>
+
+    <div class="worksheet-header">
+        <h3>Consequence Log: Action 1</h3>
+    </div>
+    <div class="worksheet-body">
+        <div class="field-row">
+            <span class="field-label">The Action:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Chapter/Scene:</span>
+            <div class="field-input"></div>
+        </div>
+        <p style="margin: 0.75rem 0 0.25rem;"><strong>Social Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <p style="margin: 0.25rem 0;"><strong>Emotional Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <p style="margin: 0.25rem 0;"><strong>Narrative Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <div class="field-row">
+            <span class="field-label">When does the consequence land?</span>
+            <div class="field-input"></div>
+        </div>
+    </div>
+
+    <div class="worksheet-header">
+        <h3>Consequence Log: Action 2</h3>
+    </div>
+    <div class="worksheet-body">
+        <div class="field-row">
+            <span class="field-label">The Action:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Chapter/Scene:</span>
+            <div class="field-input"></div>
+        </div>
+        <p style="margin: 0.75rem 0 0.25rem;"><strong>Social Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <p style="margin: 0.25rem 0;"><strong>Emotional Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <p style="margin: 0.25rem 0;"><strong>Narrative Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <div class="field-row">
+            <span class="field-label">When does the consequence land?</span>
+            <div class="field-input"></div>
+        </div>
+    </div>
+
+    <div class="worksheet-header">
+        <h3>Consequence Log: Action 3</h3>
+    </div>
+    <div class="worksheet-body">
+        <div class="field-row">
+            <span class="field-label">The Action:</span>
+            <div class="field-input"></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Chapter/Scene:</span>
+            <div class="field-input"></div>
+        </div>
+        <p style="margin: 0.75rem 0 0.25rem;"><strong>Social Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <p style="margin: 0.25rem 0;"><strong>Emotional Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <p style="margin: 0.25rem 0;"><strong>Narrative Consequence:</strong></p>
+        <div class="write-space-xs"></div>
+        <div class="field-row">
+            <span class="field-label">When does the consequence land?</span>
+            <div class="field-input"></div>
+        </div>
+    </div>
+
+
+    <!-- ==================== SECTION 7: RELATIONSHIP CHEMISTRY ARCHITECTURE ==================== -->
+    <div class="section-title-page" id="s7">
+        <div class="section-number">Section Seven</div>
+        <h1>Relationship<br>Chemistry<br>Architecture</h1>
+        <div class="section-desc">
+            Moral ambiguity is the engine of romantic tension.
+            Map exactly how the grey creates the spark.
+        </div>
+    </div>
+
+    <h2>Relationship Chemistry Architecture</h2>
+
+    <p class="lead-text">
+        In the best romantasy, the morally grey character's darkness is not <em>separate</em> from the romance &mdash;
+        it is the romance. Their moral ambiguity creates the tension, the danger, the "should I trust them"
+        question that makes every touch feel like a risk and every moment of softness feel earned.
+    </p>
+
+    <h3>The Tension Triangle</h3>
+    <p>Every morally grey romance operates on three axes of tension. Rate each 1&ndash;10 and note how they shift across the story.</p>
+
+    <div class="drive-track">
+        <div class="drive-item">
+            <span class="drive-label">Danger</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>"Safe"</span><span>"Run"</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Desire</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Indifferent</span><span>Consumed</span></div>
+        </div>
+        <div class="drive-item">
+            <span class="drive-label">Trust</span>
+            <div class="drive-bar">
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+                <div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div><div class="segment"></div>
+            </div>
+            <div class="drive-endpoints"><span>Zero</span><span>Absolute</span></div>
+        </div>
+    </div>
+
+    <div class="shadow-box">
+        <div class="box-label">The Chemistry Formula</div>
+        <p style="margin-bottom:0;">The best morally grey romances keep <strong>Danger</strong> and <strong>Desire</strong> high while <strong>Trust</strong> climbs slowly and unevenly. When Trust finally catches up, it should feel like a hard-won victory &mdash; not a given.</p>
+    </div>
+
+    <h3>How the Grey Creates the Spark</h3>
+    <p>For each trope your romance uses, identify how your character's moral ambiguity <em>specifically</em> fuels it.</p>
+
+    <div class="worksheet-header">
+        <h3>Trope-to-Tension Mapping</h3>
+    </div>
+    <div class="worksheet-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>Trope</th>
+                    <th>How the Grey Fuels It</th>
+                    <th>The Specific Moment It Ignites</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="example-row">
+                    <td><em>Enemies to Lovers</em></td>
+                    <td><em>They're genuinely on opposite sides &mdash; his goals require actions she finds monstrous</em></td>
+                    <td><em>Ch 12: He saves her life using the exact power she despises him for</em></td>
+                </tr>
+                <tr>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                </tr>
+                <tr>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                </tr>
+                <tr>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                    <td><div class="write-space-xs"></div></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Vulnerability Moments</h3>
+    <p>The moments where the armor cracks are the most powerful scenes in a morally grey romance. Plan them carefully &mdash; too many and the character loses their edge; too few and the romance feels cold.</p>
+
+    <p class="hint">Aim for 3&ndash;5 vulnerability moments across the full book. Each should feel like a surprise.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>What Triggers It</th>
+                <th>What the LI Sees</th>
+                <th>How He Recovers (Armor Rebuilds)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- ==================== SECTION 8: THE RETCON PREVENTION SYSTEM ==================== -->
+    <div class="section-title-page" id="s8">
+        <div class="section-number">Section Eight</div>
+        <h1>The Retcon<br>Prevention<br>System</h1>
+        <div class="section-desc">
+            The tools to keep your character dark, consistent, and honest
+            from the first chapter to the last page &mdash; even when the
+            romance tempts you to soften them.
+        </div>
+    </div>
+
+    <h2>The Retcon Prevention System</h2>
+
+    <p class="lead-text">
+        The "Great Romantasy Retcon" happens when an author spends half a book
+        establishing a character as ruthless and dark, only to reveal that they were "secretly good all along"
+        and every bad action had a noble motive. Readers call this the "cinnamon roll in a leather jacket"
+        problem &mdash; and they hate it.
+    </p>
+
+    <div class="danger-box">
+        <div class="box-label">The Four Retcon Traps</div>
+        <p>
+            <strong>1. The Secret Noble Motive:</strong> "He was only cruel to protect her from a worse enemy!" (Makes all darkness fake.)<br>
+            <strong>2. The Instant Softening:</strong> One kiss and he's suddenly gentle in all contexts. (Erases everything that made him interesting.)<br>
+            <strong>3. The Narrator Apology:</strong> Internal monologue constantly signals "but he felt SO bad about it." (Undermines his grey conviction.)<br>
+            <strong>4. The Consequence-Free Arc:</strong> He does terrible things but nothing bad ever comes of it. (Removes the stakes that make grey compelling.)
+        </p>
+    </div>
+
+    <h3>The Consistency Checklist</h3>
+    <p>Use this during drafting and revision. For each chapter where your morally grey character appears, check the following.</p>
+
+    <div class="worksheet-header">
+        <h3>Per-Chapter Grey Audit</h3>
+    </div>
+    <div class="worksheet-body">
+        <div class="field-row">
+            <span class="field-label">Chapter:</span>
+            <div class="field-input"></div>
+        </div>
+
+        <ul class="checklist">
+            <li>Does the character make at least one choice a "hero" would not make?</li>
+            <li>Is their internal logic consistent with the code established in Section 1?</li>
+            <li>If they show vulnerability, do they also show ruthlessness in the same chapter or the next?</li>
+            <li>Are other characters reacting realistically to their behavior (not just accepting it)?</li>
+            <li>Is the narrator's tone neutral about their dark choices (not apologizing or glorifying)?</li>
+            <li>If this is a romantic scene, does the character retain their edge (not becoming a completely different person)?</li>
+            <li>Would removing this character's grey actions from the chapter change the plot? (If not, the grey is cosmetic.)</li>
+        </ul>
+    </div>
+
+    <h3>The "Still Grey?" Stress Test</h3>
+    <p>Answer these questions about your character at the <em>end</em> of your book.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Your Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Would your character still kill someone to protect what's theirs?</td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>If the love interest left, would they revert to their darkest self &mdash; or worse?</td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>Is there still at least one thing they've done that the love interest hasn't forgiven?</td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>Can a reader describe your character without using the word "good"?</td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+            <tr>
+                <td>Does the HEA feel earned <em>because</em> of the grey &mdash; not in spite of it?</td>
+                <td><div class="write-space-xs"></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="insight-box">
+        <div class="box-label">The Goal</div>
+        <p style="margin-bottom:0;">If you answered "no" to more than one question above, your character may have been accidentally redeemed. Return to Sections 3 and 4 and reintroduce moral friction. Remember: the reader fell in love with the <em>grey</em>. Don't steal it from them.</p>
+    </div>
+
+    <h3>The Final Gut Check</h3>
+    <p>Complete this sentence for your character. If you can't finish it honestly, the grey isn't working yet.</p>
+
+    <div class="principle-card">
+        <div class="card-content">
+            "My character is not a good person who does bad things.<br>
+            My character is ___________________________________<br>
+            who ___________________________________."
+        </div>
+    </div>
+
+
+    <!-- ==================== APPENDICES ==================== -->
+    <div class="section-title-page" id="appendix">
+        <div class="section-number">Appendices</div>
+        <h1>Reference &amp;<br>Quick Tools</h1>
+        <div class="section-desc">
+            Archetype glossary, trope compatibility guide,
+            and a revision checklist for your morally grey love interest.
+        </div>
+    </div>
+
+    <h2>Appendix A: Morally Grey Archetype Quick Reference</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Archetype</th>
+                <th>Core Drive</th>
+                <th>Signature Tension</th>
+                <th>Reader Fantasy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>The Shadow Daddy</strong></td>
+                <td>Protection through dominance</td>
+                <td>Terrifying power held in check by one person</td>
+                <td>"He'd burn the world, but he'd carry me out first"</td>
+            </tr>
+            <tr>
+                <td><strong>The Villain Who Loves Only Her</strong></td>
+                <td>Possession / obsession</td>
+                <td>His goals are monstrous but she is sacred</td>
+                <td>"Being chosen by the most dangerous person alive"</td>
+            </tr>
+            <tr>
+                <td><strong>The Reluctant Monster</strong></td>
+                <td>Self-loathing / control</td>
+                <td>Fears his own nature; she makes him forget to be afraid</td>
+                <td>"I see the real you, and I'm not afraid"</td>
+            </tr>
+            <tr>
+                <td><strong>The Calculating Strategist</strong></td>
+                <td>Power / ambition</td>
+                <td>Everything is a game &mdash; except her</td>
+                <td>"The chess master who loses control for the first time"</td>
+            </tr>
+            <tr>
+                <td><strong>The Broken Soldier</strong></td>
+                <td>Survival / duty</td>
+                <td>Has done unforgivable things for a cause he's losing faith in</td>
+                <td>"He's seen too much, but she reminds him why it mattered"</td>
+            </tr>
+            <tr>
+                <td><strong>The Trickster King</strong></td>
+                <td>Chaos / freedom</td>
+                <td>Delights in destruction; finds himself building something for her</td>
+                <td>"The one who makes mischief feel like foreplay"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="field-row" style="margin-top: 1rem;">
+        <span class="field-label">Your character's primary archetype:</span>
+        <div class="field-input"></div>
+    </div>
+    <div class="field-row">
+        <span class="field-label">Secondary archetype (if blended):</span>
+        <div class="field-input"></div>
+    </div>
+
+    <h2>Appendix B: Trope Compatibility Guide</h2>
+    <p>These tropes pair naturally with a morally grey love interest. Check the ones your story uses and note how the grey amplifies each.</p>
+
+    <div class="two-col">
+        <div class="col-box">
+            <h4>High-Tension Tropes</h4>
+            <ul class="checklist">
+                <li>Enemies to Lovers</li>
+                <li>Forced Proximity</li>
+                <li>Touch Her and Die</li>
+                <li>There Was Only One Bed</li>
+                <li>Captive / Captor</li>
+                <li>Fated Mates / Soul Bond</li>
+            </ul>
+        </div>
+        <div class="col-box">
+            <h4>Slow-Burn Tropes</h4>
+            <ul class="checklist">
+                <li>Forbidden Love</li>
+                <li>Marriage of Convenience</li>
+                <li>He Falls First (and harder)</li>
+                <li>Grumpy / Sunshine</li>
+                <li>Bodyguard / Protector</li>
+                <li>Hidden Identity</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Appendix C: Revision Checklist</h2>
+    <p>Run through this checklist after completing your draft to ensure your morally grey character is consistent, compelling, and not accidentally redeemed.</p>
+
+    <ul class="checklist">
+        <li><strong>Code Consistency:</strong> Is the personal code from Section 1 upheld throughout? Does the character break it &mdash; and if so, is it a significant moment?</li>
+        <li><strong>Backstory Integration:</strong> Does the wound from Section 2 echo in at least 3 key scenes without being stated outright?</li>
+        <li><strong>Logic Holds:</strong> Can a reader trace the internal justification for every dark action (Section 3)?</li>
+        <li><strong>Scale Movement:</strong> Does the character oscillate between heroic and villainous behavior (Section 4), or are they static?</li>
+        <li><strong>Exception Earned:</strong> Is the "why this person" (Section 5) demonstrated through action, not just attraction?</li>
+        <li><strong>Consequences Land:</strong> Does every major dark action have a social, emotional, or narrative cost (Section 6)?</li>
+        <li><strong>Chemistry Sourced:</strong> Does the romantic tension come <em>from</em> the moral ambiguity, not in spite of it (Section 7)?</li>
+        <li><strong>No Retcon:</strong> At the end of the book, is the character still morally grey &mdash; not secretly redeemed (Section 8)?</li>
+        <li><strong>Contrast Maintained:</strong> In chapters with romantic softness, is there also a scene showing the character's ruthless side?</li>
+        <li><strong>Reader Safety:</strong> Is it clear that the character is grey (complex, accountable) rather than toxic (abusive, consequence-free)?</li>
+    </ul>
+
+    <div class="principle-card" style="margin-top: 2rem;">
+        <div class="card-content">
+            "The reader didn't fall in love with a hero wearing a mask.<br>
+            They fell in love with the monster who learned to be gentle<br>
+            &mdash; but only for them. Don't take that away."
+        </div>
+    </div>
+
+</body>
+</html>
