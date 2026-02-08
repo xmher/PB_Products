@@ -95,7 +95,7 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
         if (tropeIdx < tropeNames.length) {
           const name = `pre_trope_${tropeNames[tropeIdx++]}`;
           fieldCount++;
-          return `<li data-field-name="${name}" data-field-type="checkbox"><label><input type="checkbox"> ${text}</label></li>`;
+          return `<li><label><input type="checkbox" data-field-name="${name}" data-field-type="checkbox"> ${text}</label></li>`;
         }
         return match;
       }
@@ -110,7 +110,7 @@ if (bookInfoStart !== -1 && craftToolkitStart !== -1) {
         const checkName = `pre_trope_custom_check_${customTropeIdx}`;
         const textName = `pre_trope_custom_text_${customTropeIdx}`;
         customTropeIdx++;
-        return `<li data-field-name="${checkName}" data-field-type="checkbox"><label><input type="checkbox"> <input type="text" data-field-name="${textName}" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>`;
+        return `<li><label><input type="checkbox" data-field-name="${checkName}" data-field-type="checkbox"> <input type="text" data-field-name="${textName}" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>`;
       }
     );
 
@@ -457,12 +457,12 @@ if (tropeSectionBegin !== -1 && spiceSectionStart !== -1) {
   let tropeSection = html.substring(tropeSectionBegin, spiceSectionStart);
   let tropeCellIdx = 1;
 
-  // Checkbox cells (☐ character = &#9744;)
+  // Checkbox cells (☐ character = &#9744;) — replace with actual checkbox input
   tropeSection = tropeSection.replace(
     /<td([^>]*)>&#9744;<\/td>/g,
     (match, attrs) => {
       fieldCount++;
-      return `<td${attrs} data-field-name="s6_trope_check_${tropeCellIdx++}" data-field-type="checkbox">&#9744;</td>`;
+      return `<td${attrs}><input type="checkbox" data-field-name="s6_trope_check_${tropeCellIdx++}" data-field-type="checkbox"></td>`;
     }
   );
 
