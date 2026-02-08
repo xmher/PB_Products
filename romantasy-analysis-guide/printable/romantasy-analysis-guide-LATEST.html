@@ -657,6 +657,15 @@
             height: 105px;
         }
 
+        .beat-table.reference td {
+            height: auto;
+            padding: 6px 10px;
+        }
+
+        .beat-table.reference {
+            break-inside: avoid;
+        }
+
         .beat-table.expanded td {
             height: 180px;
         }
@@ -5070,7 +5079,7 @@
 
 <p>Use the reference table below to identify which patterns are at work, then capture your findings in the blank worksheet that follows.</p>
 
-<table class="beat-table compact">
+<table class="beat-table reference break-before">
     <thead>
         <tr>
             <th style="width: 25%;">Pattern</th>
