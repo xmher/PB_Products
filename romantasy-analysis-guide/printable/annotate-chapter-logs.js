@@ -155,7 +155,7 @@ for (let ch = 1; ch <= 100; ch++) {
       (liMatch, text) => {
         if (beatIdx < beatNames.length) {
           fieldCount++;
-          return `<li><label><input type="checkbox" data-field-name="${prefix}_beat_${beatNames[beatIdx++]}" data-field-type="checkbox"> ${text}</label></li>`;
+          return `<li data-field-name="${prefix}_beat_${beatNames[beatIdx++]}" data-field-type="checkbox"><label><input type="checkbox"> ${text}</label></li>`;
         }
         return liMatch;
       }
