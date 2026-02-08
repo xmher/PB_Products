@@ -536,7 +536,7 @@
         }
 
         .write-lines {
-            min-height: 2.5in;
+            min-height: 2.2in;
             background: #fafafa;
             border: 1px solid #ccc;
             margin: 0.5rem 0;
@@ -655,6 +655,15 @@
 
         .beat-table.compact td {
             height: 105px;
+        }
+
+        .beat-table.reference td {
+            height: auto;
+            padding: 6px 10px;
+        }
+
+        .beat-table.reference {
+            break-inside: avoid;
         }
 
         .beat-table.expanded td {
@@ -1204,14 +1213,14 @@
 <p>You don't have to fill in every section. Choose the level that fits your reading session — or mix and match chapter to chapter.</p>
 
 <div class="two-col">
-    <div class="insight-box">
+    <div class="insight-box" style="margin: 0.5rem 0;">
         <span class="insight-label">Quick-Fill</span>
         <p>About 2-3 minutes per chapter, plus 20 minutes when you finish the book.</p>
         <p>You'll complete chapter logs with tension ratings, do a quick post-read synthesis, and capture 3-5 craft moves. In the chapter logs, look for the <sup class="qf-label">QF</sup> marker — those are the fields to focus on.</p>
         <p>Ideal if you're reading for pleasure but want to stay aware of craft.</p>
     </div>
 
-    <div class="insight-box">
+    <div class="insight-box" style="margin: 0.5rem 0;">
         <span class="insight-label">Deep-Dive</span>
         <p>About 5-10 minutes per chapter, plus an hour or more after finishing.</p>
         <p>Fill in every question in the chapter logs — you can ignore the <sup class="qf-label">QF</sup> labels and work through all the fields. Then track romance and fantasy beats, analyse tropes, log spice scenes, and dissect standout moments.</p>
@@ -1220,11 +1229,11 @@
 </div>
 </div>
 
-<div style="break-inside: avoid;">
+<div>
 <h3>Top Tip: The Color-Coding System</h3>
 <p>If you're reading a physical book, colored sticky page markers or highlighters can help you track different elements as you go. Here's a suggested system.</p>
 
-<table>
+<table class="beat-table reference">
     <thead>
         <tr>
             <th>Color</th>
@@ -3857,7 +3866,7 @@
     <p><strong>Break Into Two:</strong> The protagonist makes a choice to enter the new world. This is the first time they actively decide rather than react. In romantasy, this might mean: accepting a bargain, entering the Fae realm, joining a rebellion, or agreeing to a fake marriage/arrangement.</p>
 </div>
 
-<table class="beat-table fantasy">
+<table class="beat-table fantasy break-before">
     <thead>
         <tr>
             <th>Beat</th>
@@ -4107,15 +4116,22 @@
     </div>
 </div>
 
-<div style="margin-top: 1rem; break-inside: avoid;">
-    <h4>This book is: <span class="text-muted" style="font-weight: 600; font-size: 0.85rem;">(mark on spectrum)</span></h4>
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin: 0.5rem 0;">
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-romance);">Fantasy Romance</span>
-        <div style="flex-grow: 1; height: 4px; background: linear-gradient(to right, var(--color-romance), var(--color-fantasy)); border-radius: 2px;"></div>
-        <span style="font-size: 0.8rem; font-weight: 600; color: var(--color-fantasy);">Romantic Fantasy</span>
+<div style="margin-top: 1rem;">
+    <h4>This book is: <span class="text-muted" style="font-weight: 600; font-size: 0.85rem;">(check one)</span></h4>
+    <div style="display: flex; align-items: center; gap: 0.3rem; margin: 0.5rem 0;">
+        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-romance);">Fantasy Romance</span>
+        <div class="rating-scale" style="flex-grow: 1; justify-content: space-between; margin: 0 0.5rem;">
+            <label class="rating-check"><input type="checkbox" data-field-name="s5_spectrum_1" data-field-type="radio" data-field-group="s5_spectrum"> 1</label>
+            <label class="rating-check"><input type="checkbox" data-field-name="s5_spectrum_2" data-field-type="radio" data-field-group="s5_spectrum"> 2</label>
+            <label class="rating-check"><input type="checkbox" data-field-name="s5_spectrum_3" data-field-type="radio" data-field-group="s5_spectrum"> 3</label>
+            <label class="rating-check"><input type="checkbox" data-field-name="s5_spectrum_4" data-field-type="radio" data-field-group="s5_spectrum"> 4</label>
+            <label class="rating-check"><input type="checkbox" data-field-name="s5_spectrum_5" data-field-type="radio" data-field-group="s5_spectrum"> 5</label>
+        </div>
+        <span style="font-size: 0.75rem; font-weight: 600; color: var(--color-fantasy);">Romantic Fantasy</span>
     </div>
-    <h4 style="margin-top: 1rem;">Why? What evidence supports your placement?</h4>
-    <div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_1" data-field-type="textarea"></div>
+    <div style="height: 4px; background: linear-gradient(to right, var(--color-romance), var(--color-fantasy)); border-radius: 2px; margin: 0.25rem 0 1rem 0;"></div>
+    <h4>Why? What evidence supports your placement?</h4>
+    <div class="write-space-sm" style="min-height: 1.8in;" contenteditable="true" data-field-name="s5_dual_arc_1" data-field-type="textarea"></div>
 </div>
 
 <h3 class="break-before">The Bridge: What Binds the Arcs?</h3>
@@ -4132,7 +4148,7 @@
         <p><strong>In your own words, what is the bridge in this book? What single mechanism makes the two arcs inseparable?</strong></p>
     </div>
 
-    <div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_2" data-field-type="textarea"></div>
+    <div class="write-space-lg" contenteditable="true" data-field-name="misc_field_1" data-field-type="textarea"></div>
 </div>
 
 <p style="margin-top: 0.5rem;"><strong>Review the common binding techniques below, then use the next page to note which ones appear in this book:</strong></p>
@@ -4333,22 +4349,22 @@
 </div>
 
 <h4>Fantasy midpoint event (what happens and what chapter/%):</h4>
-<div class="write-space-xs" contenteditable="true" data-field-name="s5_dual_arc_3" data-field-type="textarea"></div>
+<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_2" data-field-type="textarea"></div>
 
-<h4>Romance midpoint event (what happens and what chapter/%):</h4>
-<div class="write-space-xs" contenteditable="true" data-field-name="s5_dual_arc_4" data-field-type="textarea"></div>
+<h4 class="break-before">Romance midpoint event (what happens and what chapter/%):</h4>
+<div class="write-space-lg" style="min-height: 3.5in;" contenteditable="true" data-field-name="misc_field_2" data-field-type="textarea"></div>
 
 <h4>How do they connect? Does one cause the other?</h4>
-<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_5" data-field-type="textarea"></div>
+<div class="write-space-lg" style="min-height: 3.5in;" contenteditable="true" data-field-name="misc_field_3" data-field-type="textarea"></div>
 
-<h3>The Emotional Mirror</h3>
+<h3 class="break-before">The Emotional Mirror</h3>
 
 <p>In deeply integrated romantasy, the state of the world reflects the state of the relationship. This is the Emotional Mirror—and when an author uses it well, the world itself becomes an expression of the love story.</p>
 
 <p>Look for: weather that shifts with mood, magic that responds to emotional truth, kingdoms that thrive when the couple is united and crumble when they're apart, physical landscapes that mirror internal states. This isn't just atmosphere—it's structural integration at the level of world-building.</p>
 
 <h4>Examples of the Emotional Mirror in this book:</h4>
-<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_6" data-field-type="textarea"></div>
+<div class="write-space-lg" style="min-height: 4in;" contenteditable="true" data-field-name="misc_field_4" data-field-type="textarea"></div>
 
 <h4>How strong is the mirror effect? <span class="text-muted" style="font-weight: normal; font-size: 0.9rem;">(check one)</span></h4>
 <div class="rating-scale">
@@ -4365,16 +4381,16 @@
 <p>After filling in the grid, the bridge identifier, and the midpoint analysis, sit with these questions. They'll help you synthesise everything you've observed about how this book weaves its arcs.</p>
 
 <h4>At what point in the book does the romance begin to drive the fantasy plot (not just accompany it)?</h4>
-<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_7" data-field-type="textarea"></div>
+<div class="write-space" contenteditable="true" data-field-name="s5_dual_arc_3" data-field-type="textarea"></div>
 
 <h4>Where are the "saggy" spots—chapters where one arc pauses while the other progresses?</h4>
-<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_8" data-field-type="textarea"></div>
+<div class="write-space" contenteditable="true" data-field-name="s5_dual_arc_4" data-field-type="textarea"></div>
 
 <h4>Does the climax resolve both arcs simultaneously, or does one resolve before the other?</h4>
-<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_9" data-field-type="textarea"></div>
+<div class="write-space" contenteditable="true" data-field-name="s5_dual_arc_5" data-field-type="textarea"></div>
 
-<h4>What is the single causal link that holds everything together? (The one thing that, if removed, collapses both arcs.)</h4>
-<div class="write-space-sm" contenteditable="true" data-field-name="s5_dual_arc_10" data-field-type="textarea"></div>
+<h4 class="break-before">What is the single causal link that holds everything together? (The one thing that, if removed, collapses both arcs.)</h4>
+<div class="write-space-md" contenteditable="true" data-field-name="misc_field_5" data-field-type="textarea"></div>
 
 <div class="principle-card">
     <span class="principle-title">What You're Really Learning</span>
@@ -4437,7 +4453,7 @@
     <p><strong>The Best Version:</strong> The bond forces them together, but they must CHOOSE each other to make it real. Fate brings them together; love makes them stay.</p>
 </div>
 
-<table>
+<table class="beat-table compact">
     <thead>
         <tr>
             <th>Trope</th>
@@ -4513,20 +4529,20 @@
     <p><strong>Almost Kiss (Interrupted):</strong> Delayed gratification builds tension. Look for: How close do they get? What interrupts? How do they react to the interruption?</p>
 </div>
 
-<table>
+<table class="beat-table expanded">
     <thead>
         <tr>
-            <th>Micro Trope</th>
-            <th>Found?</th>
-            <th>Chapter</th>
+            <th style="width: 35%;">Micro Trope</th>
+            <th style="width: 10%;">Found?</th>
+            <th style="width: 12%;">Chapter</th>
             <th>How It's Executed</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>"Who Did This To You?"</td>
-            <td style="width: 10%; text-align: center;" data-field-name="s6_trope_check_7" data-field-type="checkbox">&#9744;</td>
-            <td style="width: 12%;" data-field-name="s6_trope_text_19" data-field-type="text"></td>
+            <td style="text-align: center;" data-field-name="s6_trope_check_7" data-field-type="checkbox">&#9744;</td>
+            <td data-field-name="s6_trope_text_19" data-field-type="text"></td>
             <td data-field-name="s6_trope_text_20" data-field-type="text"></td>
         </tr>
         <tr>
@@ -4976,14 +4992,14 @@
 </div>
 
 <h4>My one-sentence logline (must require both arcs):</h4>
-<div class="write-space-md" contenteditable="true" data-field-name="misc_field_1" data-field-type="textarea"></div>
+<div class="write-space-lg" contenteditable="true" data-field-name="misc_field_6" data-field-type="textarea"></div>
 
 <div class="insight-box" style="margin-top: 1.5rem;">
     <span class="insight-label">Structural Pitfall Diagnosis</span>
     <p>Based on your reading, does this book suffer from any of these common integration failures? Be honest—even books you love can have structural weaknesses. Identifying them teaches you what to avoid.</p>
 </div>
 
-<table>
+<table class="beat-table">
     <thead>
         <tr>
             <th style="width: 25%;">Pitfall</th>
@@ -4992,25 +5008,30 @@
         </tr>
     </thead>
     <tbody>
+        <tr style="color: var(--color-text-muted); font-style: italic;">
+            <td style="vertical-align: top; font-style: normal;"><strong>Pacing Whiplash</strong><br><span class="text-muted" style="font-size: 0.8rem;">Tone shifts jarringly between arcs</span></td>
+            <td style="text-align: center; vertical-align: top;">Y</td>
+            <td style="vertical-align: top;">Ch 12-14: Three intense battle chapters followed by a sudden ball scene with no transition.</td>
+        </tr>
         <tr>
             <td style="vertical-align: top;"><strong>Bolted-On Romance</strong><br><span class="text-muted" style="font-size: 0.8rem;">Romance could be removed without affecting fantasy plot</span></td>
             <td style="text-align: center; vertical-align: top;" data-field-name="s9_yn_15" data-field-type="text">Y / N</td>
-            <td style="height: 0.8in; vertical-align: top;" data-field-name="s9_cell_11" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s9_cell_11" data-field-type="textarea"></td>
         </tr>
         <tr>
             <td style="vertical-align: top;"><strong>"Plot? What Plot?"</strong><br><span class="text-muted" style="font-size: 0.8rem;">Fantasy exists only to create romantic scenarios</span></td>
             <td style="text-align: center; vertical-align: top;" data-field-name="s9_yn_16" data-field-type="text">Y / N</td>
-            <td style="height: 0.8in; vertical-align: top;" data-field-name="s9_cell_12" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s9_cell_12" data-field-type="textarea"></td>
         </tr>
         <tr>
             <td style="vertical-align: top;"><strong>Logic-Leap</strong><br><span class="text-muted" style="font-size: 0.8rem;">Characters act against their intelligence to serve plot</span></td>
             <td style="text-align: center; vertical-align: top;" data-field-name="s9_yn_17" data-field-type="text">Y / N</td>
-            <td style="height: 0.8in; vertical-align: top;" data-field-name="s9_cell_13" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s9_cell_13" data-field-type="textarea"></td>
         </tr>
         <tr>
             <td style="vertical-align: top;"><strong>Stakes Asymmetry</strong><br><span class="text-muted" style="font-size: 0.8rem;">One arc carries life-or-death stakes, the other doesn't</span></td>
             <td style="text-align: center; vertical-align: top;" data-field-name="s9_yn_18" data-field-type="text">Y / N</td>
-            <td style="height: 0.8in; vertical-align: top;" data-field-name="s9_cell_14" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s9_cell_14" data-field-type="textarea"></td>
         </tr>
     </tbody>
 </table>
@@ -5020,13 +5041,13 @@
 <p>Having analysed how this book handles dual-arc integration, now turn the lens on your own work-in-progress. These questions bridge analysis and application.</p>
 
 <h4>What binding technique(s) does your WIP use to connect its arcs?</h4>
-<div class="write-space-md" contenteditable="true" data-field-name="misc_field_2" data-field-type="textarea"></div>
+<div class="write-space-lg" contenteditable="true" data-field-name="misc_field_7" data-field-type="textarea"></div>
 
 <h4>Could your WIP pass the Unraveling Test? If not, what causal links are missing?</h4>
-<div class="write-space-md" contenteditable="true" data-field-name="misc_field_3" data-field-type="textarea"></div>
+<div class="write-space-lg" contenteditable="true" data-field-name="misc_field_8" data-field-type="textarea"></div>
 
-<h4>What did this book's through-thread teach you that you can apply to your own?</h4>
-<div class="write-space-md" contenteditable="true" data-field-name="misc_field_4" data-field-type="textarea"></div>
+<h4 class="break-before">What did this book's through-thread teach you that you can apply to your own?</h4>
+<div class="write-space-lg" contenteditable="true" data-field-name="misc_field_9" data-field-type="textarea"></div>
 
 <div class="flourish-divider">
     <span class="divider-icon">&#9830;</span>
@@ -5058,10 +5079,10 @@
 
 <p>Use the reference table below to identify which patterns are at work, then capture your findings in the blank worksheet that follows.</p>
 
-<table>
+<table class="beat-table reference break-before">
     <thead>
         <tr>
-            <th style="width: 30%;">Pattern</th>
+            <th style="width: 25%;">Pattern</th>
             <th>How It Works</th>
         </tr>
     </thead>
@@ -5103,7 +5124,7 @@
 
 <p class="hint" style="margin-top: 1rem;"><em>Record the integration patterns you identified in this book.</em></p>
 
-<table>
+<table class="beat-table expanded">
     <thead>
         <tr>
             <th style="width: 30%;">Pattern Used</th>
@@ -5112,19 +5133,19 @@
     </thead>
     <tbody>
         <tr>
-            <td style="height: 0.9in; vertical-align: top;" data-field-name="app_cell_1" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="app_cell_1" data-field-type="textarea"></td>
             <td style="vertical-align: top;" data-field-name="app_cell_2" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 0.9in; vertical-align: top;" data-field-name="app_cell_3" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="app_cell_3" data-field-type="textarea"></td>
             <td style="vertical-align: top;" data-field-name="app_cell_4" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 0.9in; vertical-align: top;" data-field-name="app_cell_5" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="app_cell_5" data-field-type="textarea"></td>
             <td style="vertical-align: top;" data-field-name="app_cell_6" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 0.9in; vertical-align: top;" data-field-name="app_cell_7" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="app_cell_7" data-field-type="textarea"></td>
             <td style="vertical-align: top;" data-field-name="app_cell_8" data-field-type="textarea"></td>
         </tr>
     </tbody>

@@ -375,14 +375,32 @@ if (dualArcStart !== -1 && tropesStart !== -1) {
   let dualSection = html.substring(dualArcStart, tropesStart);
   let dualWsIdx = 1;
 
-  // Write-space-sm, write-space-xs contenteditable
+  // Write-space-sm, write-space-xs, write-space contenteditable (with optional inline styles)
   dualSection = dualSection.replace(
-    /<div class="write-space-(sm|xs)" contenteditable="true"><\/div>/g,
-    (match, size) => {
+    /<div class="write-space(?:-(sm|xs))?"([^>]*) contenteditable="true"([^>]*)><\/div>/g,
+    (match) => {
+      if (match.includes('data-field-name')) return match;
       fieldCount++;
-      return match.replace(' contenteditable="true">', ` contenteditable="true" data-field-name="s5_dual_arc_${dualWsIdx++}" data-field-type="textarea">`);
+      return match.replace(' contenteditable="true"', ` contenteditable="true" data-field-name="s5_dual_arc_${dualWsIdx++}" data-field-type="textarea"`);
     }
   );
+
+  // Spectrum rating — rating-check checkboxes (Fantasy Romance 1-5 Romantic Fantasy)
+  const spectrumStart = dualSection.indexOf('This book is:');
+  if (spectrumStart !== -1) {
+    const spectrumEnd = dualSection.indexOf('</div>', dualSection.indexOf('rating-scale', spectrumStart) + 10);
+    if (spectrumEnd !== -1) {
+      let spectrumSection = dualSection.substring(spectrumStart, spectrumEnd + 6);
+      spectrumSection = spectrumSection.replace(
+        /<label class="rating-check"><input type="checkbox"> (\d)<\/label>/g,
+        (match, digit) => {
+          fieldCount++;
+          return `<label class="rating-check"><input type="checkbox" data-field-name="s5_spectrum_${digit}" data-field-type="radio" data-field-group="s5_spectrum"> ${digit}</label>`;
+        }
+      );
+      dualSection = dualSection.substring(0, spectrumStart) + spectrumSection + dualSection.substring(spectrumEnd + 6);
+    }
+  }
 
   // Mirror effect rating — rating-check checkboxes
   const mirrorStart = dualSection.indexOf('How strong is the mirror effect');
@@ -675,7 +693,7 @@ if (appendixBegin !== -1) {
 // Remaining write-space or write-lines that weren't caught
 let remainingIdx = 1;
 html = html.replace(
-  /<div class="(write-space-(?:xs|sm|md|lg)|write-lines)"([^>]*) contenteditable="true"([^>]*)><\/div>/g,
+  /<div class="(write-space(?:-(?:xs|sm|md|lg))?|write-lines)"([^>]*) contenteditable="true"([^>]*)><\/div>/g,
   (match, cls, before, after) => {
     if (match.includes('data-field-name')) return match;
     fieldCount++;
