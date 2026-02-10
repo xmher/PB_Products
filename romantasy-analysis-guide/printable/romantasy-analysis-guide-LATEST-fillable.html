@@ -571,23 +571,34 @@
             list-style: none;
             margin: 1rem 0;
             padding: 0;
+            columns: unset !important;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-flow: column;
+            grid-template-rows: repeat(3, auto);
+            gap: 0;
         }
 
         .checklist li {
             margin-bottom: 0.75rem;
             font-size: 0.95rem;
+            break-inside: avoid;
         }
 
         .checklist label {
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
         }
 
         .checklist input[type="checkbox"] {
             width: 14px;
             height: 14px;
-            margin: 0 0.3rem 0 0;
+            margin: 0;
             accent-color: var(--theme-color);
             vertical-align: middle;
+            flex-shrink: 0;
         }
 
         /* RATING SCALE */
@@ -1626,7 +1637,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch1_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch1_arc_fantasy" data-field-type="radio" data-field-group="ch1_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch1_arc_romance" data-field-type="radio" data-field-group="ch1_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch1_arc_both" data-field-type="radio" data-field-group="ch1_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch1_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch1_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch1_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch1_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1690,7 +1701,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch2_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch2_arc_fantasy" data-field-type="radio" data-field-group="ch2_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch2_arc_romance" data-field-type="radio" data-field-group="ch2_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch2_arc_both" data-field-type="radio" data-field-group="ch2_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch2_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch2_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch2_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch2_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1754,7 +1765,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch3_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch3_arc_fantasy" data-field-type="radio" data-field-group="ch3_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch3_arc_romance" data-field-type="radio" data-field-group="ch3_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch3_arc_both" data-field-type="radio" data-field-group="ch3_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch3_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch3_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch3_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch3_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1818,7 +1829,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch4_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch4_arc_fantasy" data-field-type="radio" data-field-group="ch4_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch4_arc_romance" data-field-type="radio" data-field-group="ch4_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch4_arc_both" data-field-type="radio" data-field-group="ch4_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch4_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch4_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch4_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch4_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1882,7 +1893,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch5_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch5_arc_fantasy" data-field-type="radio" data-field-group="ch5_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch5_arc_romance" data-field-type="radio" data-field-group="ch5_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch5_arc_both" data-field-type="radio" data-field-group="ch5_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch5_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch5_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch5_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch5_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1946,7 +1957,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch6_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch6_arc_fantasy" data-field-type="radio" data-field-group="ch6_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch6_arc_romance" data-field-type="radio" data-field-group="ch6_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch6_arc_both" data-field-type="radio" data-field-group="ch6_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch6_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch6_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch6_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch6_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2010,7 +2021,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch7_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch7_arc_fantasy" data-field-type="radio" data-field-group="ch7_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch7_arc_romance" data-field-type="radio" data-field-group="ch7_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch7_arc_both" data-field-type="radio" data-field-group="ch7_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch7_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch7_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch7_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch7_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2074,7 +2085,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch8_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch8_arc_fantasy" data-field-type="radio" data-field-group="ch8_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch8_arc_romance" data-field-type="radio" data-field-group="ch8_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch8_arc_both" data-field-type="radio" data-field-group="ch8_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch8_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch8_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch8_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch8_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2138,7 +2149,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch9_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch9_arc_fantasy" data-field-type="radio" data-field-group="ch9_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch9_arc_romance" data-field-type="radio" data-field-group="ch9_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch9_arc_both" data-field-type="radio" data-field-group="ch9_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch9_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch9_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch9_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch9_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2202,7 +2213,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch10_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch10_arc_fantasy" data-field-type="radio" data-field-group="ch10_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch10_arc_romance" data-field-type="radio" data-field-group="ch10_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch10_arc_both" data-field-type="radio" data-field-group="ch10_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch10_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch10_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch10_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch10_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2266,7 +2277,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch11_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch11_arc_fantasy" data-field-type="radio" data-field-group="ch11_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch11_arc_romance" data-field-type="radio" data-field-group="ch11_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch11_arc_both" data-field-type="radio" data-field-group="ch11_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch11_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch11_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch11_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch11_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2330,7 +2341,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch12_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch12_arc_fantasy" data-field-type="radio" data-field-group="ch12_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch12_arc_romance" data-field-type="radio" data-field-group="ch12_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch12_arc_both" data-field-type="radio" data-field-group="ch12_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch12_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch12_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch12_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch12_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2394,7 +2405,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch13_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch13_arc_fantasy" data-field-type="radio" data-field-group="ch13_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch13_arc_romance" data-field-type="radio" data-field-group="ch13_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch13_arc_both" data-field-type="radio" data-field-group="ch13_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch13_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch13_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch13_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch13_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2458,7 +2469,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch14_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch14_arc_fantasy" data-field-type="radio" data-field-group="ch14_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch14_arc_romance" data-field-type="radio" data-field-group="ch14_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch14_arc_both" data-field-type="radio" data-field-group="ch14_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch14_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch14_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch14_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch14_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2522,7 +2533,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch15_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch15_arc_fantasy" data-field-type="radio" data-field-group="ch15_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch15_arc_romance" data-field-type="radio" data-field-group="ch15_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch15_arc_both" data-field-type="radio" data-field-group="ch15_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch15_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch15_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch15_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch15_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2586,7 +2597,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch16_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch16_arc_fantasy" data-field-type="radio" data-field-group="ch16_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch16_arc_romance" data-field-type="radio" data-field-group="ch16_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch16_arc_both" data-field-type="radio" data-field-group="ch16_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch16_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch16_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch16_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch16_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2650,7 +2661,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch17_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch17_arc_fantasy" data-field-type="radio" data-field-group="ch17_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch17_arc_romance" data-field-type="radio" data-field-group="ch17_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch17_arc_both" data-field-type="radio" data-field-group="ch17_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch17_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch17_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch17_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch17_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2714,7 +2725,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch18_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch18_arc_fantasy" data-field-type="radio" data-field-group="ch18_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch18_arc_romance" data-field-type="radio" data-field-group="ch18_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch18_arc_both" data-field-type="radio" data-field-group="ch18_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch18_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch18_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch18_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch18_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2778,7 +2789,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch19_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch19_arc_fantasy" data-field-type="radio" data-field-group="ch19_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch19_arc_romance" data-field-type="radio" data-field-group="ch19_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch19_arc_both" data-field-type="radio" data-field-group="ch19_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch19_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch19_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch19_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch19_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2842,7 +2853,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch20_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch20_arc_fantasy" data-field-type="radio" data-field-group="ch20_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch20_arc_romance" data-field-type="radio" data-field-group="ch20_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch20_arc_both" data-field-type="radio" data-field-group="ch20_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch20_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch20_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch20_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch20_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2906,7 +2917,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch21_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch21_arc_fantasy" data-field-type="radio" data-field-group="ch21_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch21_arc_romance" data-field-type="radio" data-field-group="ch21_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch21_arc_both" data-field-type="radio" data-field-group="ch21_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch21_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch21_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch21_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch21_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2970,7 +2981,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch22_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch22_arc_fantasy" data-field-type="radio" data-field-group="ch22_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch22_arc_romance" data-field-type="radio" data-field-group="ch22_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch22_arc_both" data-field-type="radio" data-field-group="ch22_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch22_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch22_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch22_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch22_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3034,7 +3045,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch23_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch23_arc_fantasy" data-field-type="radio" data-field-group="ch23_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch23_arc_romance" data-field-type="radio" data-field-group="ch23_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch23_arc_both" data-field-type="radio" data-field-group="ch23_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch23_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch23_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch23_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch23_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3098,7 +3109,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch24_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch24_arc_fantasy" data-field-type="radio" data-field-group="ch24_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch24_arc_romance" data-field-type="radio" data-field-group="ch24_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch24_arc_both" data-field-type="radio" data-field-group="ch24_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch24_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch24_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch24_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch24_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3162,7 +3173,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch25_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch25_arc_fantasy" data-field-type="radio" data-field-group="ch25_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch25_arc_romance" data-field-type="radio" data-field-group="ch25_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch25_arc_both" data-field-type="radio" data-field-group="ch25_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch25_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch25_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch25_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch25_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3226,7 +3237,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch26_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch26_arc_fantasy" data-field-type="radio" data-field-group="ch26_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch26_arc_romance" data-field-type="radio" data-field-group="ch26_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch26_arc_both" data-field-type="radio" data-field-group="ch26_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch26_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch26_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch26_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch26_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3290,7 +3301,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch27_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch27_arc_fantasy" data-field-type="radio" data-field-group="ch27_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch27_arc_romance" data-field-type="radio" data-field-group="ch27_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch27_arc_both" data-field-type="radio" data-field-group="ch27_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch27_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch27_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch27_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch27_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3354,7 +3365,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch28_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch28_arc_fantasy" data-field-type="radio" data-field-group="ch28_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch28_arc_romance" data-field-type="radio" data-field-group="ch28_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch28_arc_both" data-field-type="radio" data-field-group="ch28_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch28_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch28_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch28_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch28_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3418,7 +3429,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch29_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch29_arc_fantasy" data-field-type="radio" data-field-group="ch29_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch29_arc_romance" data-field-type="radio" data-field-group="ch29_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch29_arc_both" data-field-type="radio" data-field-group="ch29_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch29_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch29_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch29_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch29_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3482,7 +3493,7 @@
         <div><strong>Location:</strong> <input type="text" data-field-name="ch30_location" data-field-type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch30_arc_fantasy" data-field-type="radio" data-field-group="ch30_arc_driver"> Fantasy</label> <label class="inline-check"><input type="checkbox" data-field-name="ch30_arc_romance" data-field-type="radio" data-field-group="ch30_arc_driver"> Romance</label> <label class="inline-check"><input type="checkbox" data-field-name="ch30_arc_both" data-field-type="radio" data-field-group="ch30_arc_driver"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox" data-field-name="ch30_tsrc_danger" data-field-type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox" data-field-name="ch30_tsrc_will_they" data-field-type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox" data-field-name="ch30_tsrc_mystery" data-field-type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox" data-field-name="ch30_tsrc_emotional" data-field-type="checkbox"> Emotional Intimacy</label></div>
     </div>

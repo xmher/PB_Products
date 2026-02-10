@@ -103,16 +103,29 @@
             background: #fafafa; margin: 0.2rem 0;
         }
         .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .checklist { list-style: none; margin: 0.3rem 0; padding: 0; }
+        .checklist {
+            list-style: none; margin: 0.3rem 0; padding: 0;
+            columns: unset !important;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-flow: column;
+            grid-template-rows: repeat(3, auto);
+            gap: 0;
+        }
         .checklist li {
             margin-bottom: 0.25rem; font-size: 0.75rem;
+            break-inside: avoid;
         }
         .checklist label {
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
         }
         .checklist input[type="checkbox"] {
-            width: 12px; height: 12px; margin: 0 0.25rem 0 0; accent-color: var(--color-guide);
+            width: 12px; height: 12px; margin: 0; accent-color: var(--color-guide);
             vertical-align: middle;
+            flex-shrink: 0;
         }
         .tension-row { display: flex; align-items: center; margin: 0.25rem 0; }
         .tension-label {
@@ -233,7 +246,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -297,7 +310,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -361,7 +374,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -425,7 +438,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -489,7 +502,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -553,7 +566,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -617,7 +630,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -681,7 +694,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -745,7 +758,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -809,7 +822,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -873,7 +886,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -937,7 +950,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1001,7 +1014,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1065,7 +1078,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1129,7 +1142,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1193,7 +1206,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1257,7 +1270,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1321,7 +1334,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1385,7 +1398,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1449,7 +1462,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1513,7 +1526,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1577,7 +1590,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1641,7 +1654,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1705,7 +1718,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1769,7 +1782,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1833,7 +1846,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1897,7 +1910,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -1961,7 +1974,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2025,7 +2038,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2089,7 +2102,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2153,7 +2166,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2217,7 +2230,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2281,7 +2294,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2345,7 +2358,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2409,7 +2422,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2473,7 +2486,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2537,7 +2550,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2601,7 +2614,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2665,7 +2678,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2729,7 +2742,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2793,7 +2806,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2857,7 +2870,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2921,7 +2934,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -2985,7 +2998,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3049,7 +3062,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3113,7 +3126,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3177,7 +3190,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3241,7 +3254,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3305,7 +3318,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3369,7 +3382,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3433,7 +3446,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3497,7 +3510,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3561,7 +3574,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3625,7 +3638,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3689,7 +3702,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3753,7 +3766,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3817,7 +3830,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3881,7 +3894,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -3945,7 +3958,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4009,7 +4022,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4073,7 +4086,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4137,7 +4150,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4201,7 +4214,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4265,7 +4278,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4329,7 +4342,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4393,7 +4406,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4457,7 +4470,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4521,7 +4534,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4585,7 +4598,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4649,7 +4662,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4713,7 +4726,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4777,7 +4790,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4841,7 +4854,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4905,7 +4918,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -4969,7 +4982,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5033,7 +5046,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5097,7 +5110,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5161,7 +5174,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5225,7 +5238,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5289,7 +5302,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5353,7 +5366,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5417,7 +5430,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5481,7 +5494,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5545,7 +5558,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5609,7 +5622,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5673,7 +5686,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5737,7 +5750,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5801,7 +5814,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5865,7 +5878,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5929,7 +5942,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -5993,7 +6006,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6057,7 +6070,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6121,7 +6134,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6185,7 +6198,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6249,7 +6262,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6313,7 +6326,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6377,7 +6390,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6441,7 +6454,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6505,7 +6518,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
@@ -6569,7 +6582,7 @@
         <div><strong>Location:</strong> <input type="text"></div>
     </div>
 
-    <div style="display: flex; gap: 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3rem 1.5rem; align-items: baseline; font-size: 0.85rem; margin-top: 0.3rem; padding-bottom: 0.3rem; border-bottom: 1px solid #eee;">
         <div><sup class="qf-label">QF</sup> <strong>Arc Driver:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check one)</span> <label class="inline-check"><input type="checkbox"> Fantasy</label> <label class="inline-check"><input type="checkbox"> Romance</label> <label class="inline-check"><input type="checkbox"> Both Intertwined</label></div>
         <div><sup class="qf-label">QF</sup> <strong>Tension Source:</strong> <span class="text-muted" style="font-size: 0.9rem;">(check all that apply)</span> <label class="inline-check"><input type="checkbox"> Danger</label> <label class="inline-check"><input type="checkbox"> Will-They/Won't-They</label> <label class="inline-check"><input type="checkbox"> Mystery</label> <label class="inline-check"><input type="checkbox"> Emotional Intimacy</label></div>
     </div>
