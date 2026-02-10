@@ -741,6 +741,14 @@
         .text-muted { color: var(--color-text-muted); }
         .break-before { break-before: page; }
         .break-after { break-after: page; }
+        .cont-label {
+            font-family: var(--font-display);
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-text-muted);
+            margin-bottom: 0.2rem;
+        }
 
         /* TABLE OF CONTENTS */
         .toc-page {
@@ -4528,7 +4536,8 @@
     </tbody>
 </table>
 
-<table class="beat-table break-before" style="table-layout: fixed;">
+<div class="cont-label break-before">cont.</div>
+<table class="beat-table" style="table-layout: fixed; margin-top: 0;">
     <colgroup>
         <col style="width: 23%;">
         <col style="width: 12%;">
@@ -4647,7 +4656,8 @@
     </tbody>
 </table>
 
-<table class="beat-table expanded break-before" style="table-layout: fixed; width: 100%;">
+<div class="cont-label break-before">cont.</div>
+<table class="beat-table expanded" style="table-layout: fixed; width: 100%; margin-top: 0;">
     <colgroup>
         <col style="width: 30%;">
         <col style="width: 12%;">
@@ -4690,7 +4700,8 @@
     </tbody>
 </table>
 
-<table class="beat-table expanded break-before" style="table-layout: fixed; width: 100%;">
+<div class="cont-label break-before">cont.</div>
+<table class="beat-table expanded" style="table-layout: fixed; width: 100%; margin-top: 0;">
     <colgroup>
         <col style="width: 30%;">
         <col style="width: 12%;">
@@ -4957,6 +4968,19 @@
             <td style="vertical-align: top;"></td>
             <td style="width: 30%; vertical-align: top;"></td>
         </tr>
+    </tbody>
+</table>
+
+<div class="cont-label break-before">cont.</div>
+<table style="margin-top: 0;">
+    <thead>
+        <tr>
+            <th style="width: 20%;">Category</th>
+            <th>The Quote/Example</th>
+            <th style="width: 30%;">Why It Works</th>
+        </tr>
+    </thead>
+    <tbody>
         <tr>
             <td style="width: 20%; height: 2.1in; vertical-align: top;">Emotional Moment</td>
             <td style="vertical-align: top;"></td>
