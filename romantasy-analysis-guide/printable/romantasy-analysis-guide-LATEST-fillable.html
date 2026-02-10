@@ -574,8 +574,6 @@
             columns: unset !important;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            grid-auto-flow: column;
-            grid-template-rows: repeat(3, auto);
             gap: 0;
         }
 
@@ -1364,31 +1362,28 @@
 </div>
 
 <h4>Anticipated Tropes <span class="text-muted" style="font-weight: 600; font-size: 0.85rem;">(check what you expect based on cover/blurb)</span></h4>
-<ul class="checklist" style="columns: 2;">
+<ul class="checklist" style="grid-template-columns: 1fr 1fr 1fr;">
     <li><label><input type="checkbox" data-field-name="pre_trope_enemies_to_lovers" data-field-type="checkbox"> Enemies to Lovers</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_forced_proximity" data-field-type="checkbox"> Forced Proximity</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_fated_mates" data-field-type="checkbox"> Fated Mates / Soul Bond</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_slow_burn" data-field-type="checkbox"> Slow Burn</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_forbidden_love" data-field-type="checkbox"> Forbidden Love</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_grumpy_sunshine" data-field-type="checkbox"> Grumpy/Sunshine</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_morally_grey" data-field-type="checkbox"> Morally Grey Hero</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_found_family" data-field-type="checkbox"> Found Family</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_only_one_bed" data-field-type="checkbox"> Only One Bed</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_fake_relationship" data-field-type="checkbox"> Fake Relationship</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_arranged_marriage" data-field-type="checkbox"> Arranged Marriage</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_hidden_identity" data-field-type="checkbox"> Hidden Identity / Secret Royalty</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_touch_her_and_die" data-field-type="checkbox"> Touch Her and Die</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_falls_first" data-field-type="checkbox"> He Falls First / She Falls First</label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_possessive_protective" data-field-type="checkbox"> Possessive / Protective Hero</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_villain_gets_girl" data-field-type="checkbox"> Villain Gets the Girl</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_forced_proximity" data-field-type="checkbox"> Forced Proximity</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_forbidden_love" data-field-type="checkbox"> Forbidden Love</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_found_family" data-field-type="checkbox"> Found Family</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_arranged_marriage" data-field-type="checkbox"> Arranged Marriage</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_falls_first" data-field-type="checkbox"> He Falls First / She Falls First</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_who_did_this" data-field-type="checkbox"> Who Did This to You</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_fated_mates" data-field-type="checkbox"> Fated Mates / Soul Bond</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_grumpy_sunshine" data-field-type="checkbox"> Grumpy/Sunshine</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_only_one_bed" data-field-type="checkbox"> Only One Bed</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_hidden_identity" data-field-type="checkbox"> Hidden Identity / Secret Royalty</label></li>
+    <li><label><input type="checkbox" data-field-name="pre_trope_possessive_protective" data-field-type="checkbox"> Possessive / Protective Hero</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_redemption_arc" data-field-type="checkbox"> Redemption Arc</label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_1" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_1" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_2" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_2" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>
     <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_3" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_3" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_4" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_4" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_5" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_5" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>
-    <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_6" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_6" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:70%;"></label></li>
 </ul>
 
 <h3 class="break-before">Expectations & Goals</h3>
@@ -4575,31 +4570,31 @@
         </tr>
         <tr>
             <td data-field-name="s6_trope_extra_1" data-field-type="text"></td>
-            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_trope_check_7" data-field-type="checkbox"></td>
-            <td data-field-name="s6_trope_text_19" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_20" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_21" data-field-type="text"></td>
+            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_macro_extra_check_1" data-field-type="checkbox"></td>
+            <td data-field-name="s6_macro_extra_setup_1" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_payoff_1" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_analysis_1" data-field-type="text"></td>
         </tr>
         <tr>
             <td data-field-name="s6_trope_extra_2" data-field-type="text"></td>
-            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_trope_check_8" data-field-type="checkbox"></td>
-            <td data-field-name="s6_trope_text_22" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_23" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_24" data-field-type="text"></td>
+            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_macro_extra_check_2" data-field-type="checkbox"></td>
+            <td data-field-name="s6_macro_extra_setup_2" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_payoff_2" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_analysis_2" data-field-type="text"></td>
         </tr>
         <tr>
             <td data-field-name="s6_trope_extra_3" data-field-type="text"></td>
-            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_trope_check_9" data-field-type="checkbox"></td>
-            <td data-field-name="s6_trope_text_25" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_26" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_27" data-field-type="text"></td>
+            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_macro_extra_check_3" data-field-type="checkbox"></td>
+            <td data-field-name="s6_macro_extra_setup_3" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_payoff_3" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_analysis_3" data-field-type="text"></td>
         </tr>
         <tr>
             <td data-field-name="s6_trope_extra_4" data-field-type="text"></td>
-            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_trope_check_10" data-field-type="checkbox"></td>
-            <td data-field-name="s6_trope_text_28" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_29" data-field-type="text"></td>
-            <td data-field-name="s6_trope_text_30" data-field-type="text"></td>
+            <td style="text-align: center;"><input type="checkbox" data-field-name="s6_macro_extra_check_4" data-field-type="checkbox"></td>
+            <td data-field-name="s6_macro_extra_setup_4" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_payoff_4" data-field-type="text"></td>
+            <td data-field-name="s6_macro_extra_analysis_4" data-field-type="text"></td>
         </tr>
     </tbody>
 </table>
@@ -4959,34 +4954,34 @@
     </thead>
     <tbody>
         <tr>
-            <td style="width: 12%; height: 1.4in; vertical-align: top;" data-field-name="s7_spice_cell_17" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_18" data-field-type="textarea"></td>
-            <td style="width: 25%; vertical-align: top;" data-field-name="s7_spice_cell_19" data-field-type="textarea"></td>
+            <td style="width: 12%; height: 1.4in; vertical-align: top;" data-field-name="s7_banter_cell_1" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_2" data-field-type="textarea"></td>
+            <td style="width: 25%; vertical-align: top;" data-field-name="s7_banter_cell_3" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_spice_cell_20" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_21" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_22" data-field-type="textarea"></td>
+            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_banter_cell_4" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_5" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_6" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_spice_cell_23" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_24" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_25" data-field-type="textarea"></td>
+            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_banter_cell_7" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_8" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_9" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_spice_cell_26" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_27" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_28" data-field-type="textarea"></td>
+            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_banter_cell_10" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_11" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_12" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_spice_cell_29" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_30" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_31" data-field-type="textarea"></td>
+            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_banter_cell_13" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_14" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_15" data-field-type="textarea"></td>
         </tr>
         <tr>
-            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_spice_cell_32" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_33" data-field-type="textarea"></td>
-            <td style="vertical-align: top;" data-field-name="s7_spice_cell_34" data-field-type="textarea"></td>
+            <td style="height: 1.4in; vertical-align: top;" data-field-name="s7_banter_cell_16" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_17" data-field-type="textarea"></td>
+            <td style="vertical-align: top;" data-field-name="s7_banter_cell_18" data-field-type="textarea"></td>
         </tr>
     </tbody>
 </table>
