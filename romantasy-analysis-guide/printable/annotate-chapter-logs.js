@@ -8,16 +8,17 @@
  * data-field-group attributes to every fillable element across 100 chapter logs.
  *
  * Each chapter contains:
- *   - 1 contenteditable chapter-number div
- *   - 4 input[type="text"] (start page, end page, POV, location)
- *   - 6 write-space-xs contenteditable (job, summary, romance, plot_world, opening_hook, closing_hook)
+ *   - input[type="text"] for chapter number
+ *   - 2 input[type="text"] for start/end page
+ *   - 1 input[type="text"] for POV
+ *   - 1 input[type="text"] for Location
+ *   - 3 arc driver checkboxes (Fantasy, Romance, Both Intertwined)
+ *   - 4 tension source checkboxes (Danger, Will-They/Won't-They, Mystery, Emotional Intimacy)
+ *   - 6 write-space-xs (job, summary, romance, plot_world, opening_hook, closing_hook)
  *   - 6 beat type checkboxes (Plot, Romance, World, Character, Action, Quiet)
- *   - 10 romance tension checkboxes (1-10, radio)
- *   - 10 plot tension checkboxes (1-10, radio)
- *   - 1 write-space-md contenteditable (craft_move)
- *
- * Total per chapter: 38 fillable elements
- * Total across 100 chapters: 3,800 fillable elements
+ *   - 10 romance tension checkboxes (1-10)
+ *   - 10 plot tension checkboxes (1-10)
+ *   - 1 write-space-md (craft_move)
  *
  * Run: node annotate-chapter-logs.js
  */
@@ -60,12 +61,12 @@ for (let ch = 1; ch <= 100; ch++) {
   let block = html.substring(actualStart, endPos);
   const prefix = `ch${ch}`;
 
-  // 1. Chapter number input box
+  // 1. Chapter number (input field inside chapter-number div)
   block = block.replace(
-    /<div class="chapter-number">Chapter <input type="text" class="chapter-num-input"><\/div>/,
-    () => {
+    /<div class="chapter-number">Chapter <input type="text"><\/div>/,
+    (match) => {
       fieldCount++;
-      return `<div class="chapter-number">Chapter <input type="text" class="chapter-num-input" data-field-name="${prefix}_num" data-field-type="text"></div>`;
+      return `<div class="chapter-number">Chapter <input type="text" data-field-name="${prefix}_number" data-field-type="text"></div>`;
     }
   );
 
@@ -75,6 +76,10 @@ for (let ch = 1; ch <= 100; ch++) {
 
   const headerStart = block.indexOf('class="chapter-log-header"');
   if (headerStart !== -1) {
+    // Find the closing </div> of the chapter-log-header
+    // The header has 3 child divs, so we need to find the right closing tag
+    const headerOpenEnd = block.indexOf('>', headerStart) + 1;
+    // Find the end: after "Location:" input and its parent </div> and the header </div>
     const locationIdx = block.indexOf('Location:', headerStart);
     const headerEndPos = locationIdx !== -1
       ? block.indexOf('</div>', block.indexOf('</div>', locationIdx) + 1) + 6
@@ -96,7 +101,51 @@ for (let ch = 1; ch <= 100; ch++) {
     block = block.substring(0, headerStart) + headerSection + block.substring(headerEndPos);
   }
 
-  // 3. Beat type checkboxes (Plot, Romance, World, Character, Action, Quiet)
+  // 3. Arc Driver checkboxes (Fantasy, Romance, Both Intertwined)
+  const arcDriverNames = [`${prefix}_arc_fantasy`, `${prefix}_arc_romance`, `${prefix}_arc_both`];
+  let arcIdx = 0;
+  const arcStart = block.indexOf('Arc Driver:');
+  if (arcStart !== -1) {
+    const tensionSrcStart = block.indexOf('Tension Source:', arcStart);
+    if (tensionSrcStart !== -1) {
+      let arcSection = block.substring(arcStart, tensionSrcStart);
+      arcSection = arcSection.replace(
+        /<label class="inline-check"><input type="checkbox"> (Fantasy|Romance|Both Intertwined)<\/label>/g,
+        (match, label) => {
+          if (arcIdx < arcDriverNames.length) {
+            fieldCount++;
+            return `<label class="inline-check"><input type="checkbox" data-field-name="${arcDriverNames[arcIdx++]}" data-field-type="radio" data-field-group="${prefix}_arc_driver"> ${label}</label>`;
+          }
+          return match;
+        }
+      );
+      block = block.substring(0, arcStart) + arcSection + block.substring(tensionSrcStart);
+    }
+  }
+
+  // 4. Tension Source checkboxes (Danger, Will-They/Won't-They, Mystery, Emotional Intimacy)
+  const tensionSourceNames = [`${prefix}_tsrc_danger`, `${prefix}_tsrc_will_they`, `${prefix}_tsrc_mystery`, `${prefix}_tsrc_emotional`];
+  let tsrcIdx = 0;
+  const tsrcStart = block.indexOf('Tension Source:');
+  if (tsrcStart !== -1) {
+    const tsrcEnd = block.indexOf('</div>', tsrcStart + 10);
+    if (tsrcEnd !== -1) {
+      let tsrcSection = block.substring(tsrcStart, tsrcEnd);
+      tsrcSection = tsrcSection.replace(
+        /<label class="inline-check"><input type="checkbox"> (Danger|Will-They\/Won&#x27;t-They|Will-They\/Won't-They|Mystery|Emotional Intimacy)<\/label>/g,
+        (match, label) => {
+          if (tsrcIdx < tensionSourceNames.length) {
+            fieldCount++;
+            return `<label class="inline-check"><input type="checkbox" data-field-name="${tensionSourceNames[tsrcIdx++]}" data-field-type="checkbox"> ${label}</label>`;
+          }
+          return match;
+        }
+      );
+      block = block.substring(0, tsrcStart) + tsrcSection + block.substring(tsrcEnd);
+    }
+  }
+
+  // 5. Beat type checkboxes (Plot, Romance, World, Character, Action, Quiet)
   const beatNames = ['plot', 'romance', 'world', 'character', 'action', 'quiet'];
   let beatIdx = 0;
   const beatChecklistRegex = /<ul class="checklist"[^>]*>([\s\S]*?)<\/ul>/;
@@ -106,14 +155,14 @@ for (let ch = 1; ch <= 100; ch++) {
       (liMatch, text) => {
         if (beatIdx < beatNames.length) {
           fieldCount++;
-          return `<li><label><input type="checkbox" data-field-name="${prefix}_beat_${beatNames[beatIdx++]}" data-field-type="checkbox"> ${text}</label></li>`;
+          return `<li data-field-name="${prefix}_beat_${beatNames[beatIdx++]}" data-field-type="checkbox"><label><input type="checkbox"> ${text}</label></li>`;
         }
         return liMatch;
       }
     );
   });
 
-  // 4. Tension scales — Romance and Plot (1-10 checkboxes) → radio
+  // 6. Tension scales — Romance and Plot (1-10 checkboxes)
   // Romance tension
   const romTensionStart = block.indexOf('<span class="tension-label">Romance:</span>');
   if (romTensionStart !== -1) {
@@ -144,7 +193,7 @@ for (let ch = 1; ch <= 100; ch++) {
     block = block.substring(0, plotTensionStart) + plotSection + block.substring(plotTensionEnd);
   }
 
-  // 5. Write-space-xs (job, summary, romance_shift, plot_world, opening_hook, closing_hook)
+  // 7. Write-space-xs (job, summary, romance, plot_world, opening_hook, closing_hook)
   const writeSpaceNames = [
     `${prefix}_job`, `${prefix}_summary`,
     `${prefix}_romance_shift`, `${prefix}_plot_world`,
@@ -162,7 +211,7 @@ for (let ch = 1; ch <= 100; ch++) {
     }
   );
 
-  // 6. Write-space-md (craft_move)
+  // 8. Write-space-md (craft_move)
   block = block.replace(
     /<div class="write-space-md" contenteditable="true"><\/div>/,
     (match) => {
