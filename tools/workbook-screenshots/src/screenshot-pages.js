@@ -26,7 +26,7 @@
  *
  * Mockup mode (for Etsy/marketplace listings):
  *   --mockup            Add padding + drop shadow for product mockup images
- *   --mockup-bg <hex>   Background color for mockup (default: #ede8e1)
+ *   --mockup-bg <hex>   Background/padding color (default: auto-detect from page)
  *   --mockup-padding <N> Padding in pixels (default: 80)
  *   --no-shadow         Disable drop shadow in mockup mode
  *
@@ -58,7 +58,7 @@ function parseArgs(argv) {
     renderer: 'auto',
     keepPdf: false,
     mockup: false,
-    mockupBg: '#ede8e1',
+    mockupBg: 'auto',
     mockupPadding: 80,
     mockupShadow: true,
   };
@@ -95,7 +95,7 @@ Options:
 
 Mockup mode (for Etsy/marketplace listings):
   --mockup            Shrink page + add padding & drop shadow for product mockups
-  --mockup-bg <hex>   Background color (default: #ede8e1, warm neutral)
+  --mockup-bg <hex>   Background/padding color (default: auto-detect from page)
   --mockup-padding <N> Padding in pixels (default: 80)
   --no-shadow         Disable the drop shadow
 
@@ -147,6 +147,26 @@ function findMagickBinary() {
   if (hasBinary('magick')) return 'magick';
   if (!IS_WIN && hasBinary('convert')) return 'convert';
   return null;
+}
+
+/**
+ * Sample a corner pixel from an image to detect page background color.
+ * Returns a hex color string like "#f5f0eb".
+ */
+function samplePageColor(magickBin, filepath) {
+  // Sample pixel at (5,5) to avoid any anti-aliased edge artifacts
+  const result = spawnSync(magickBin, [
+    filepath, '-format', '%[hex:p{5,5}]', 'info:',
+  ], { stdio: 'pipe', timeout: 10000 });
+
+  if (result.status === 0 && result.stdout) {
+    const hex = result.stdout.toString().trim();
+    if (hex.match(/^[0-9A-Fa-f]{6,8}$/)) {
+      return '#' + hex.substring(0, 6);
+    }
+  }
+  // Fallback if detection fails
+  return '#ffffff';
 }
 
 /**
@@ -399,14 +419,17 @@ function applyMockup(outputDir, opts) {
 
   if (files.length === 0) return;
 
-  const bg = opts.mockupBg;
+  const autoColor = opts.mockupBg === 'auto';
   const pad = opts.mockupPadding;
 
-  console.log(`[3/3] Applying mockup treatment (bg: ${bg}, padding: ${pad}px, shadow: ${opts.mockupShadow ? 'on' : 'off'})...`);
+  console.log(`[3/3] Applying mockup treatment (bg: ${autoColor ? 'auto-detect from page' : opts.mockupBg}, padding: ${pad}px, shadow: ${opts.mockupShadow ? 'on' : 'off'})...`);
 
   let processed = 0;
   for (const file of files) {
     const filepath = path.join(outputDir, file);
+
+    // Detect page background color by sampling a corner pixel, or use the explicit color
+    const bg = autoColor ? samplePageColor(magick, filepath) : opts.mockupBg;
 
     // Build ImageMagick args as an array — cross-platform, no shell escaping
     const args = [filepath];
