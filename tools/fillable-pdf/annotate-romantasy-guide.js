@@ -16,8 +16,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const INPUT = path.resolve(__dirname, '../../../romantasy-analysis-guide/printable/romantasy-analysis-guide.html');
-const OUTPUT = path.resolve(__dirname, '../../../romantasy-analysis-guide/printable/romantasy-analysis-guide-fillable.html');
+const INPUT = path.resolve(__dirname, 'romantasy-analysis-guide.html');
+const OUTPUT = path.resolve(__dirname, 'romantasy-analysis-guide-fillable.html');
 
 // ─── Utility ──────────────────────────────────────────────────────
 

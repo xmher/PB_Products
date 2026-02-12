@@ -28,9 +28,8 @@
 
 const path = require('path');
 const fs = require('fs');
-const { extractFields, generateFlatPdf } = require('./extract-fields');
-const { addFields } = require('./add-fields');
-const { optimizePdf } = require('./optimize-pdf');
+const { extractFields, generateFlatPdf } = require(path.join(__dirname, 'extract-fields'));
+const { addFields } = require(path.join(__dirname, 'add-fields'));
 
 // ─── Argument parsing ───────────────────────────────────────────────
 
@@ -101,14 +100,18 @@ function findChrome() {
   const candidates = [
     // Playwright's bundled Chromium (common in CI/dev environments)
     ...findPlaywrightChrome(),
-    // Standard locations
+    // Windows
+    process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Google/Chrome/Application/chrome.exe'),
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+    // Linux
     '/usr/bin/google-chrome-stable',
     '/usr/bin/google-chrome',
     '/usr/bin/chromium-browser',
     '/usr/bin/chromium',
     // macOS
     '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-  ];
+  ].filter(Boolean);
 
   for (const p of candidates) {
     if (fs.existsSync(p)) {
@@ -210,17 +213,6 @@ async function main() {
   // ── Step 3: Inject AcroForm fields ──────────────────────────────
   console.log('── Step 3: Injecting AcroForm fields ──');
   await addFields(flatPdfPath, fieldData.fields, outputPath, { fontSize });
-
-  console.log('');
-
-  // ── Step 4: Optimize for viewing performance ────────────────────
-  console.log('── Step 4: Optimizing PDF (linearize + compress) ──');
-  try {
-    optimizePdf(outputPath, outputPath);
-  } catch (err) {
-    console.warn(`[optimize] Skipped: ${err.message}`);
-    console.warn('[optimize] Install qpdf for better scroll performance: apt install qpdf');
-  }
 
   console.log('');
 
