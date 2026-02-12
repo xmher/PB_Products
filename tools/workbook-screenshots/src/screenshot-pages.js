@@ -3,6 +3,8 @@
 /**
  * screenshot-pages.js — Screenshot every page of an HTML workbook as PNG/JPEG
  *
+ * Cross-platform (Windows, macOS, Linux).
+ *
  * Pipeline:
  *   1. Render the HTML workbook to a multi-page PDF
  *      - Primary: wkhtmltopdf (reliable, handles @page CSS natively)
@@ -29,16 +31,17 @@
  *   --no-shadow         Disable drop shadow in mockup mode
  *
  * Prerequisites:
- *   - pdftoppm (from poppler-utils): sudo apt install poppler-utils / brew install poppler
- *   - wkhtmltopdf (recommended): sudo apt install wkhtmltopdf / brew install wkhtmltopdf
- *   - OR puppeteer + Chrome (fallback): npm install puppeteer
- *   - convert (from ImageMagick, for --mockup): sudo apt install imagemagick / brew install imagemagick
+ *   Windows:  choco install wkhtmltopdf poppler imagemagick
+ *   macOS:    brew install wkhtmltopdf poppler imagemagick
+ *   Linux:    sudo apt install wkhtmltopdf poppler-utils imagemagick
  */
 
 const { execSync, spawnSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
+
+const IS_WIN = process.platform === 'win32';
 
 // ---------------------------------------------------------------------------
 // CLI argument parsing
@@ -96,10 +99,10 @@ Mockup mode (for Etsy/marketplace listings):
   --mockup-padding <N> Padding in pixels (default: 80)
   --no-shadow         Disable the drop shadow
 
-Prerequisites:
-  pdftoppm    — sudo apt install poppler-utils  /  brew install poppler
-  wkhtmltopdf — sudo apt install wkhtmltopdf    /  brew install wkhtmltopdf
-  convert     — sudo apt install imagemagick    /  brew install imagemagick  (for --mockup)
+Prerequisites (install any you don't have):
+  Windows:  choco install wkhtmltopdf poppler imagemagick
+  macOS:    brew install wkhtmltopdf poppler imagemagick
+  Linux:    sudo apt install wkhtmltopdf poppler-utils imagemagick
 `);
         process.exit(0);
       default:
@@ -117,16 +120,54 @@ Prerequisites:
 }
 
 // ---------------------------------------------------------------------------
-// Utility: check if a binary is available
+// Cross-platform utilities
 // ---------------------------------------------------------------------------
 
+/**
+ * Check if a binary is available on PATH.
+ * Uses "where" on Windows, "which" on Unix.
+ */
 function hasBinary(name) {
   try {
-    execSync(`which ${name}`, { stdio: 'pipe' });
+    const cmd = IS_WIN ? 'where' : 'which';
+    execSync(`${cmd} ${name}`, { stdio: 'pipe' });
     return true;
   } catch {
     return false;
   }
+}
+
+/**
+ * Find the ImageMagick binary.
+ * - IM7 (Windows default): "magick"
+ * - IM6 (Linux default):   "convert"
+ * On Windows, "convert" collides with a system utility, so always prefer "magick".
+ */
+function findMagickBinary() {
+  if (hasBinary('magick')) return 'magick';
+  if (!IS_WIN && hasBinary('convert')) return 'convert';
+  return null;
+}
+
+/**
+ * Run a command with array args via spawnSync. Cross-platform, no shell escaping needed.
+ */
+function run(cmd, args, opts = {}) {
+  const result = spawnSync(cmd, args, {
+    stdio: opts.stdio || 'pipe',
+    timeout: opts.timeout || 300000,
+  });
+
+  if (opts.allowFailure) return result;
+
+  if (result.error) {
+    throw new Error(`Failed to run ${cmd}: ${result.error.message}`);
+  }
+  if (result.status !== 0 && !opts.ignoreExit) {
+    const stderr = result.stderr ? result.stderr.toString().trim() : '';
+    throw new Error(`${cmd} exited with code ${result.status}${stderr ? ': ' + stderr : ''}`);
+  }
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -137,7 +178,6 @@ function htmlToPdfWkhtml(htmlPath, pdfPath) {
   console.log(`[1/2] Rendering with wkhtmltopdf...`);
 
   const args = [
-    'wkhtmltopdf',
     '--page-size', 'Letter',
     '--enable-local-file-access',
     '--no-stop-slow-scripts',
@@ -150,14 +190,13 @@ function htmlToPdfWkhtml(htmlPath, pdfPath) {
   ];
 
   // wkhtmltopdf exits 1 on network errors (fonts) even when it produces valid output
-  const result = spawnSync(args[0], args.slice(1), {
+  spawnSync('wkhtmltopdf', args, {
     stdio: ['pipe', 'pipe', 'pipe'],
     timeout: 300000,
   });
 
   if (!fs.existsSync(pdfPath) || fs.statSync(pdfPath).size === 0) {
-    const stderr = result.stderr ? result.stderr.toString() : '';
-    throw new Error(`wkhtmltopdf failed to produce PDF.\n${stderr}`);
+    throw new Error('wkhtmltopdf failed to produce a PDF. Check that the HTML file is valid.');
   }
 
   const sizeMB = (fs.statSync(pdfPath).size / 1024 / 1024).toFixed(2);
@@ -173,14 +212,20 @@ async function htmlToPdfPuppeteer(htmlPath, pdfPath, opts) {
 
   const puppeteer = require('puppeteer');
 
-  // Auto-detect Chrome binary
+  // Auto-detect Chrome binary across platforms
   const chromeCandidates = [
     process.env.CHROME_PATH,
+    // Windows
+    process.env.LOCALAPPDATA && path.join(process.env.LOCALAPPDATA, 'Google/Chrome/Application/chrome.exe'),
+    process.env.PROGRAMFILES && path.join(process.env.PROGRAMFILES, 'Google/Chrome/Application/chrome.exe'),
+    process.env['PROGRAMFILES(X86)'] && path.join(process.env['PROGRAMFILES(X86)'], 'Google/Chrome/Application/chrome.exe'),
+    // macOS
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    // Linux
     '/usr/bin/google-chrome-stable',
     '/usr/bin/google-chrome',
     '/usr/bin/chromium-browser',
     '/usr/bin/chromium',
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
   ].filter(Boolean);
 
   let chromePath = null;
@@ -249,9 +294,10 @@ async function htmlToPdfPuppeteer(htmlPath, pdfPath, opts) {
 function pdfToImages(pdfPath, outputDir, opts) {
   if (!hasBinary('pdftoppm')) {
     console.error(
-      'Error: pdftoppm not found. Install it with:\n' +
-      '  Ubuntu/Debian: sudo apt-get install poppler-utils\n' +
-      '  macOS:         brew install poppler'
+      'Error: pdftoppm not found. Install it:\n' +
+      '  Windows:       choco install poppler\n' +
+      '  macOS:         brew install poppler\n' +
+      '  Ubuntu/Debian: sudo apt install poppler-utils'
     );
     process.exit(1);
   }
@@ -259,18 +305,19 @@ function pdfToImages(pdfPath, outputDir, opts) {
   const prefix = path.join(outputDir, 'page');
   const formatFlag = opts.format === 'jpeg' ? '-jpeg' : '-png';
 
-  const cmdParts = ['pdftoppm', `-r ${opts.dpi}`, formatFlag];
+  // Build args array (no shell escaping needed)
+  const args = ['-r', String(opts.dpi), formatFlag];
 
   if (opts.pages) {
     const { first, last } = getPageBounds(opts.pages);
-    if (first) cmdParts.push(`-f ${first}`);
-    if (last) cmdParts.push(`-l ${last}`);
+    if (first) args.push('-f', String(first));
+    if (last) args.push('-l', String(last));
   }
 
-  cmdParts.push(`"${pdfPath}"`, `"${prefix}"`);
+  args.push(pdfPath, prefix);
 
   console.log(`[2/2] Converting PDF pages to ${opts.format.toUpperCase()} at ${opts.dpi} DPI...`);
-  execSync(cmdParts.join(' '), { stdio: 'inherit', timeout: 300000 });
+  run('pdftoppm', args, { stdio: 'inherit' });
 
   // Remove unwanted pages for non-contiguous selections like "1,3,7"
   if (opts.pages && opts.pages.includes(',')) {
@@ -334,11 +381,13 @@ function pruneUnwantedPages(outputDir, opts) {
 // ---------------------------------------------------------------------------
 
 function applyMockup(outputDir, opts) {
-  if (!hasBinary('convert')) {
+  const magick = findMagickBinary();
+  if (!magick) {
     console.error(
-      'Error: ImageMagick "convert" not found. Install it with:\n' +
-      '  Ubuntu/Debian: sudo apt-get install imagemagick\n' +
-      '  macOS:         brew install imagemagick'
+      'Error: ImageMagick not found. Install it:\n' +
+      '  Windows:       choco install imagemagick\n' +
+      '  macOS:         brew install imagemagick\n' +
+      '  Ubuntu/Debian: sudo apt install imagemagick'
     );
     process.exit(1);
   }
@@ -359,26 +408,35 @@ function applyMockup(outputDir, opts) {
   for (const file of files) {
     const filepath = path.join(outputDir, file);
 
-    const cmdParts = ['convert', `"${filepath}"`];
+    // Build ImageMagick args as an array — cross-platform, no shell escaping
+    const args = [filepath];
 
     if (opts.mockupShadow) {
-      // Create a drop shadow: opacity 40%, blur 12px, offset +0+6
-      cmdParts.push(
-        '\\( +clone -background black -shadow 40x12+0+6 \\)',
+      // Clone the image, create a black shadow, then merge with background
+      args.push(
+        '(', '+clone', '-background', 'black', '-shadow', '40x12+0+6', ')',
         '+swap',
-        `-background "${bg}"`,
-        '-layers merge +repage',
+        '-background', bg,
+        '-layers', 'merge', '+repage',
       );
     }
 
     // Add padding border around the result
-    cmdParts.push(
-      `-bordercolor "${bg}"`,
-      `-border ${pad}`,
-      `"${filepath}"`,
+    args.push(
+      '-bordercolor', bg,
+      '-border', String(pad),
+      filepath,
     );
 
-    execSync(cmdParts.join(' '), { stdio: 'pipe', timeout: 30000 });
+    // "magick" (IM7) is used directly; "convert" (IM6) is used directly too.
+    // spawnSync with arg arrays avoids all shell escaping issues.
+    const result = spawnSync(magick, args, { stdio: 'pipe', timeout: 30000 });
+    if (result.status !== 0) {
+      const stderr = result.stderr ? result.stderr.toString().trim() : '';
+      console.error(`\nWarning: mockup failed for ${file}${stderr ? ': ' + stderr : ''}`);
+      continue;
+    }
+
     processed++;
     process.stdout.write(`\r[3/3] ${processed}/${files.length} — ${file}`);
   }
