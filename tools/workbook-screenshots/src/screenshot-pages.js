@@ -22,10 +22,17 @@
  *   --renderer <name>   Force renderer: "wkhtmltopdf" or "puppeteer" (default: auto)
  *   --keep-pdf          Keep the intermediate PDF file
  *
+ * Mockup mode (for Etsy/marketplace listings):
+ *   --mockup            Add padding + drop shadow for product mockup images
+ *   --mockup-bg <hex>   Background color for mockup (default: #ede8e1)
+ *   --mockup-padding <N> Padding in pixels (default: 80)
+ *   --no-shadow         Disable drop shadow in mockup mode
+ *
  * Prerequisites:
  *   - pdftoppm (from poppler-utils): sudo apt install poppler-utils / brew install poppler
  *   - wkhtmltopdf (recommended): sudo apt install wkhtmltopdf / brew install wkhtmltopdf
  *   - OR puppeteer + Chrome (fallback): npm install puppeteer
+ *   - convert (from ImageMagick, for --mockup): sudo apt install imagemagick / brew install imagemagick
  */
 
 const { execSync, spawnSync } = require('child_process');
@@ -47,18 +54,26 @@ function parseArgs(argv) {
     timeout: 120000,
     renderer: 'auto',
     keepPdf: false,
+    mockup: false,
+    mockupBg: '#ede8e1',
+    mockupPadding: 80,
+    mockupShadow: true,
   };
 
   for (let i = 2; i < argv.length; i++) {
     switch (argv[i]) {
-      case '--input':    args.input    = argv[++i]; break;
-      case '--output':   args.output   = argv[++i]; break;
-      case '--pages':    args.pages    = argv[++i]; break;
-      case '--dpi':      args.dpi      = Number(argv[++i]); break;
-      case '--format':   args.format   = argv[++i]; break;
-      case '--timeout':  args.timeout  = Number(argv[++i]); break;
-      case '--renderer': args.renderer = argv[++i]; break;
-      case '--keep-pdf': args.keepPdf  = true; break;
+      case '--input':          args.input         = argv[++i]; break;
+      case '--output':         args.output        = argv[++i]; break;
+      case '--pages':          args.pages         = argv[++i]; break;
+      case '--dpi':            args.dpi           = Number(argv[++i]); break;
+      case '--format':         args.format        = argv[++i]; break;
+      case '--timeout':        args.timeout       = Number(argv[++i]); break;
+      case '--renderer':       args.renderer      = argv[++i]; break;
+      case '--keep-pdf':       args.keepPdf       = true; break;
+      case '--mockup':         args.mockup        = true; break;
+      case '--mockup-bg':      args.mockupBg      = argv[++i]; break;
+      case '--mockup-padding': args.mockupPadding = Number(argv[++i]); break;
+      case '--no-shadow':      args.mockupShadow  = false; break;
       case '--help':
         console.log(`
 Usage: node screenshot-pages.js --input <html> --output <dir> [options]
@@ -75,9 +90,16 @@ Options:
   --renderer <name>   Force: "wkhtmltopdf" or "puppeteer" (default: auto-detect)
   --keep-pdf          Keep the intermediate PDF file
 
+Mockup mode (for Etsy/marketplace listings):
+  --mockup            Shrink page + add padding & drop shadow for product mockups
+  --mockup-bg <hex>   Background color (default: #ede8e1, warm neutral)
+  --mockup-padding <N> Padding in pixels (default: 80)
+  --no-shadow         Disable the drop shadow
+
 Prerequisites:
-  pdftoppm  — sudo apt install poppler-utils  /  brew install poppler
-  wkhtmltopdf (recommended) — sudo apt install wkhtmltopdf  /  brew install wkhtmltopdf
+  pdftoppm    — sudo apt install poppler-utils  /  brew install poppler
+  wkhtmltopdf — sudo apt install wkhtmltopdf    /  brew install wkhtmltopdf
+  convert     — sudo apt install imagemagick    /  brew install imagemagick  (for --mockup)
 `);
         process.exit(0);
       default:
@@ -308,6 +330,63 @@ function pruneUnwantedPages(outputDir, opts) {
 }
 
 // ---------------------------------------------------------------------------
+// Step 3 (optional): Mockup post-processing via ImageMagick
+// ---------------------------------------------------------------------------
+
+function applyMockup(outputDir, opts) {
+  if (!hasBinary('convert')) {
+    console.error(
+      'Error: ImageMagick "convert" not found. Install it with:\n' +
+      '  Ubuntu/Debian: sudo apt-get install imagemagick\n' +
+      '  macOS:         brew install imagemagick'
+    );
+    process.exit(1);
+  }
+
+  const ext = opts.format === 'jpeg' ? 'jpg' : 'png';
+  const files = fs.readdirSync(outputDir)
+    .filter(f => f.startsWith('page-') && f.endsWith(`.${ext}`))
+    .sort();
+
+  if (files.length === 0) return;
+
+  const bg = opts.mockupBg;
+  const pad = opts.mockupPadding;
+
+  console.log(`[3/3] Applying mockup treatment (bg: ${bg}, padding: ${pad}px, shadow: ${opts.mockupShadow ? 'on' : 'off'})...`);
+
+  let processed = 0;
+  for (const file of files) {
+    const filepath = path.join(outputDir, file);
+
+    const cmdParts = ['convert', `"${filepath}"`];
+
+    if (opts.mockupShadow) {
+      // Create a drop shadow: opacity 40%, blur 12px, offset +0+6
+      cmdParts.push(
+        '\\( +clone -background black -shadow 40x12+0+6 \\)',
+        '+swap',
+        `-background "${bg}"`,
+        '-layers merge +repage',
+      );
+    }
+
+    // Add padding border around the result
+    cmdParts.push(
+      `-bordercolor "${bg}"`,
+      `-border ${pad}`,
+      `"${filepath}"`,
+    );
+
+    execSync(cmdParts.join(' '), { stdio: 'pipe', timeout: 30000 });
+    processed++;
+    process.stdout.write(`\r[3/3] ${processed}/${files.length} — ${file}`);
+  }
+
+  console.log(`\n[3/3] Mockup applied to ${processed} images`);
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -325,7 +404,7 @@ async function main() {
 
   console.log(`Input:  ${htmlPath}`);
   console.log(`Output: ${outputDir}/`);
-  console.log(`DPI:    ${args.dpi}  |  Format: ${args.format}${args.pages ? '  |  Pages: ' + args.pages : ''}`);
+  console.log(`DPI:    ${args.dpi}  |  Format: ${args.format}${args.pages ? '  |  Pages: ' + args.pages : ''}${args.mockup ? '  |  Mockup: on' : ''}`);
   console.log('');
 
   // Determine renderer
@@ -346,6 +425,12 @@ async function main() {
 
   // Step 2: PDF → images
   pdfToImages(tmpPdf, outputDir, args);
+
+  // Step 3 (optional): Mockup post-processing
+  if (args.mockup) {
+    console.log('');
+    applyMockup(outputDir, args);
+  }
 
   // Cleanup
   if (!args.keepPdf) {
