@@ -1,0 +1,16 @@
+{
+  "name": "@plotbrew/workbook-screenshots",
+  "version": "1.0.0",
+  "description": "Screenshot every page of an HTML workbook as individual PNGs — uses wkhtmltopdf + pdftoppm",
+  "main": "src/screenshot-pages.js",
+  "scripts": {
+    "screenshot": "node src/screenshot-pages.js",
+    "screenshot:romantasy": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide.html --output ../../romantasy-analysis-guide/printable/screenshots",
+    "screenshot:romantasy-latest": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide-LATEST.html --output ../../romantasy-analysis-guide/printable/screenshots-latest",
+    "screenshot:spice": "node src/screenshot-pages.js --input ../../spice-scene-workbook/printable/spice-scene-workbook.html --output ../../spice-scene-workbook/printable/screenshots",
+    "screenshot:chapter-logs": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/chapter-logs-supplement-LATEST.html --output ../../romantasy-analysis-guide/printable/screenshots-chapter-logs"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^24.2.1"
+  }
+}
