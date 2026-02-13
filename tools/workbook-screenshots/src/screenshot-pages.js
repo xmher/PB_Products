@@ -154,9 +154,10 @@ function findMagickBinary() {
  * Returns a hex color string like "#f5f0eb".
  */
 function samplePageColor(magickBin, filepath) {
-  // Sample pixel at (5,5) to avoid any anti-aliased edge artifacts
+  // Sample pixel at (50,50) — far enough inward to avoid any border,
+  // edge artifacts, or anti-aliased edges from the PDF render
   const result = spawnSync(magickBin, [
-    filepath, '-format', '%[hex:p{5,5}]', 'info:',
+    filepath, '-format', '%[hex:p{50,50}]', 'info:',
   ], { stdio: 'pipe', timeout: 10000 });
 
   if (result.status === 0 && result.stdout) {
