@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
 /**
- * screenshot-pages.js — Screenshot every page of an HTML workbook as PNG/JPEG
+ * screenshot-pages.js — Screenshot every page of an HTML or PDF workbook as PNG/JPEG
  *
  * Cross-platform (Windows, macOS, Linux).
  *
  * Pipeline:
- *   1. Render the HTML workbook to a multi-page PDF
+ *   1. (HTML only) Render the HTML workbook to a multi-page PDF
  *      - Primary: wkhtmltopdf (reliable, handles @page CSS natively)
  *      - Fallback: Puppeteer + Chrome (if wkhtmltopdf not installed)
  *   2. Convert each PDF page to a high-res image via pdftoppm
  *
  * Usage:
- *   node screenshot-pages.js --input <html-file> --output <dir> [options]
+ *   node screenshot-pages.js --input <html-or-pdf> --output <dir> [options]
  *
  * Options:
- *   --input    <path>   Path to the HTML workbook (required)
+ *   --input    <path>   Path to HTML or PDF file (required)
  *   --output   <dir>    Output directory for images (default: ./screenshots)
  *   --pages    <range>  Pages to capture: "1-5", "3", "1,4,7-10" (default: all)
  *   --dpi      <num>    Image resolution in DPI (default: 200)
  *   --format   <fmt>    Image format: png or jpeg (default: png)
  *   --timeout  <ms>     Max wait for rendering in ms (default: 120000)
- *   --renderer <name>   Force renderer: "wkhtmltopdf" or "puppeteer" (default: auto)
- *   --keep-pdf          Keep the intermediate PDF file
+ *   --renderer <name>   Force renderer: "wkhtmltopdf" or "puppeteer" (default: auto, HTML only)
+ *   --keep-pdf          Keep the intermediate PDF file (HTML only)
  *
  * Mockup mode (for Etsy/marketplace listings):
  *   --mockup            Add padding + drop shadow for product mockup images
@@ -79,19 +79,20 @@ function parseArgs(argv) {
       case '--no-shadow':      args.mockupShadow  = false; break;
       case '--help':
         console.log(`
-Usage: node screenshot-pages.js --input <html> --output <dir> [options]
+Usage: node screenshot-pages.js --input <html-or-pdf> --output <dir> [options]
 
-Screenshots every page of a Paged.js / @page CSS workbook as individual images.
+Screenshots every page of an HTML or PDF workbook as individual images.
+If the input is a PDF, the HTML→PDF step is skipped automatically.
 
 Options:
-  --input    <path>   Path to the HTML workbook (required)
+  --input    <path>   Path to HTML or PDF file (required)
   --output   <dir>    Output directory for images (default: ./screenshots)
   --pages    <range>  Pages to capture: "1-5", "3", "1,4,7-10" (default: all)
   --dpi      <num>    Image resolution in DPI (default: 200)
   --format   <fmt>    png or jpeg (default: png)
   --timeout  <ms>     Max ms for rendering (default: 120000)
-  --renderer <name>   Force: "wkhtmltopdf" or "puppeteer" (default: auto-detect)
-  --keep-pdf          Keep the intermediate PDF file
+  --renderer <name>   Force: "wkhtmltopdf" or "puppeteer" (default: auto, HTML only)
+  --keep-pdf          Keep the intermediate PDF file (HTML only)
 
 Mockup mode (for Etsy/marketplace listings):
   --mockup            Shrink page + add padding & drop shadow for product mockups
@@ -474,39 +475,49 @@ function applyMockup(outputDir, opts) {
 
 async function main() {
   const args = parseArgs(process.argv);
-  const htmlPath = path.resolve(args.input);
+  const inputPath = path.resolve(args.input);
   const outputDir = path.resolve(args.output);
+  const isPdf = /\.pdf$/i.test(inputPath);
 
-  if (!fs.existsSync(htmlPath)) {
-    console.error(`Error: HTML file not found: ${htmlPath}`);
+  if (!fs.existsSync(inputPath)) {
+    console.error(`Error: file not found: ${inputPath}`);
     process.exit(1);
   }
 
   fs.mkdirSync(outputDir, { recursive: true });
 
-  console.log(`Input:  ${htmlPath}`);
+  console.log(`Input:  ${inputPath}`);
   console.log(`Output: ${outputDir}/`);
   console.log(`DPI:    ${args.dpi}  |  Format: ${args.format}${args.pages ? '  |  Pages: ' + args.pages : ''}${args.mockup ? '  |  Mockup: on' : ''}`);
   console.log('');
 
-  // Determine renderer
-  let renderer = args.renderer;
-  if (renderer === 'auto') {
-    renderer = hasBinary('wkhtmltopdf') ? 'wkhtmltopdf' : 'puppeteer';
-  }
+  let pdfPath;
+  let cleanupPdf = false;
 
-  // Step 1: HTML → PDF
-  const tmpPdf = path.join(os.tmpdir(), `workbook-${Date.now()}.pdf`);
-  if (renderer === 'wkhtmltopdf') {
-    htmlToPdfWkhtml(htmlPath, tmpPdf);
+  if (isPdf) {
+    // Input is already a PDF — skip HTML→PDF entirely
+    pdfPath = inputPath;
   } else {
-    await htmlToPdfPuppeteer(htmlPath, tmpPdf, args);
-  }
+    // Step 1: HTML → PDF
+    pdfPath = path.join(os.tmpdir(), `workbook-${Date.now()}.pdf`);
+    cleanupPdf = true;
 
-  console.log('');
+    let renderer = args.renderer;
+    if (renderer === 'auto') {
+      renderer = hasBinary('wkhtmltopdf') ? 'wkhtmltopdf' : 'puppeteer';
+    }
+
+    if (renderer === 'wkhtmltopdf') {
+      htmlToPdfWkhtml(inputPath, pdfPath);
+    } else {
+      await htmlToPdfPuppeteer(inputPath, pdfPath, args);
+    }
+
+    console.log('');
+  }
 
   // Step 2: PDF → images
-  pdfToImages(tmpPdf, outputDir, args);
+  pdfToImages(pdfPath, outputDir, args);
 
   // Step 3 (optional): Mockup post-processing
   if (args.mockup) {
@@ -514,11 +525,13 @@ async function main() {
     applyMockup(outputDir, args);
   }
 
-  // Cleanup
-  if (!args.keepPdf) {
-    fs.unlinkSync(tmpPdf);
-  } else {
-    console.log(`\nIntermediate PDF kept at: ${tmpPdf}`);
+  // Cleanup temp PDF (only if we created one from HTML)
+  if (cleanupPdf) {
+    if (!args.keepPdf) {
+      fs.unlinkSync(pdfPath);
+    } else {
+      console.log(`\nIntermediate PDF kept at: ${pdfPath}`);
+    }
   }
 }
 
