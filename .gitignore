@@ -1,0 +1,7 @@
+node_modules/
+
+# Generated screenshot / mockup directories
+**/screenshots/
+**/screenshots-*/
+**/mockups/
+**/mockups-*/

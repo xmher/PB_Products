@@ -1,0 +1,20 @@
+{
+  "name": "@plotbrew/workbook-screenshots",
+  "version": "1.1.0",
+  "description": "Screenshot every page of an HTML workbook as individual PNGs — with optional Etsy mockup mode",
+  "main": "src/screenshot-pages.js",
+  "scripts": {
+    "screenshot": "node src/screenshot-pages.js",
+    "screenshot:romantasy": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide.html --output ../../romantasy-analysis-guide/printable/screenshots",
+    "screenshot:romantasy-latest": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide-LATEST.html --output ../../romantasy-analysis-guide/printable/screenshots-latest",
+    "screenshot:spice": "node src/screenshot-pages.js --input ../../spice-scene-workbook/printable/spice-scene-workbook.html --output ../../spice-scene-workbook/printable/screenshots",
+    "screenshot:chapter-logs": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/chapter-logs-supplement-LATEST.html --output ../../romantasy-analysis-guide/printable/screenshots-chapter-logs",
+    "mockup:romantasy": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide.html --output ../../romantasy-analysis-guide/printable/mockups --mockup",
+    "mockup:romantasy-latest": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide-LATEST.html --output ../../romantasy-analysis-guide/printable/mockups-latest --mockup",
+    "mockup:spice": "node src/screenshot-pages.js --input ../../spice-scene-workbook/printable/spice-scene-workbook.html --output ../../spice-scene-workbook/printable/mockups --mockup",
+    "mockup:chapter-logs": "node src/screenshot-pages.js --input ../../romantasy-analysis-guide/printable/chapter-logs-supplement-LATEST.html --output ../../romantasy-analysis-guide/printable/mockups-chapter-logs --mockup"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^24.2.1"
+  }
+}
