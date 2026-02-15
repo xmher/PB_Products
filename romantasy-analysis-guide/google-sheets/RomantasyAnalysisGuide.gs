@@ -304,8 +304,8 @@ function createBookOverviewSheet(ss) {
   sheet.getRange(1, 1, 2, 5).setValues(headers);
 
   // Style headers
-  sheet.getRange('A1:B1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold');
-  sheet.getRange('D1:E1').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A1:B1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
+  sheet.getRange('D1:E1').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
   sheet.getRange('A2:E2').setBackground(COLORS.secondary).setFontWeight('bold');
 
   // Metadata fields
@@ -479,7 +479,7 @@ function createRomanceBeatsSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('ROMANCE BEAT TRACKER (Romancing the Beat - Gwen Hayes)');
-  sheet.getRange('A1:G1').merge().setBackground(COLORS.romance).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:G1').merge().setBackground(COLORS.romance).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Headers
   const headers = ['Beat', 'Phase', 'Chapter', 'Page', '%', 'How It\'s Executed', 'Quote/Moment'];
@@ -529,7 +529,7 @@ function createRomanceBeatsSheet(ss) {
 
   // Add character section
   sheet.getRange('A17').setValue('CHARACTER WOUNDS & LIES');
-  sheet.getRange('A17:G17').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A17:G17').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const charHeaders = ['Character', 'Role', 'The Wound/Ghost', 'The Lie They Believe', 'The Truth They Need', 'Want vs Need', 'Transformation Moment'];
   sheet.getRange(18, 1, 1, charHeaders.length).setValues([charHeaders]);
@@ -555,7 +555,7 @@ function createFantasyBeatsSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('FANTASY BEAT TRACKER (Save the Cat! / Three-Act Structure)');
-  sheet.getRange('A1:F1').merge().setBackground(COLORS.fantasy).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:F1').merge().setBackground(COLORS.fantasy).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Headers
   const headers = ['Beat', 'Act', 'Chapter', 'Page', 'What Happens', 'Romance Connection'];
@@ -621,7 +621,7 @@ function createTropeTrackerSheet(ss) {
 
   // Macro Tropes Section
   sheet.getRange('A1').setValue('MACRO TROPES (Relationship Dynamics)');
-  sheet.getRange('A1:G1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A1:G1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const macroHeaders = ['Trope', 'Present?', 'Setup Chapter', 'Payoff Chapter', 'Setup Description', 'Payoff Description', 'What Makes It Work'];
   sheet.getRange(2, 1, 1, macroHeaders.length).setValues([macroHeaders]);
@@ -638,7 +638,7 @@ function createTropeTrackerSheet(ss) {
   // Micro Tropes Section
   const microStartRow = 3 + macroData.length + 2;
   sheet.getRange(microStartRow, 1).setValue('MICRO TROPES (Viral Moments)');
-  sheet.getRange(microStartRow, 1, 1, 7).merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange(microStartRow, 1, 1, 7).merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   sheet.getRange(microStartRow + 1, 1, 1, macroHeaders.length).setValues([macroHeaders]);
   sheet.getRange(microStartRow + 1, 1, 1, macroHeaders.length).setBackground(COLORS.secondary).setFontWeight('bold');
@@ -687,11 +687,11 @@ function createSpiceTrackerSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('SPICE & INTIMACY TRACKER');
-  sheet.getRange('A1:I1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:I1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Heat Level Key
   sheet.getRange('A2').setValue('Heat Levels: 0=Clean | 1=Sweet | 2=Mild | 3=Moderate | 4=Steamy | 5=Explicit');
-  sheet.getRange('A2:I2').merge().setBackground(COLORS.light).setFontStyle('italic');
+  sheet.getRange('A2:I2').merge().setBackground(COLORS.light).setFontStyle('italic').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Headers
   const headers = ['#', 'Chapter', 'Heat Level', 'Scene Type', 'Emotional Context', 'What It Reveals', 'Dynamic Shift After', 'Plot Integrated?', 'Sensory Details'];
@@ -764,7 +764,7 @@ function createBanterCollectionSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('BANTER & VERBAL CHEMISTRY COLLECTION');
-  sheet.getRange('A1:F1').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:F1').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Headers
   const headers = ['Chapter', 'The Quote/Exchange', 'Technique Used', 'What It Reveals', 'Why It Works', 'Use In My WIP?'];
@@ -804,11 +804,11 @@ function createCraftMovesSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('CRAFT MOVES TO STEAL');
-  sheet.getRange('A1:F1').merge().setBackground(COLORS.craft).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:F1').merge().setBackground(COLORS.craft).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Subtitle
   sheet.getRange('A2').setValue('Your personal library of techniques to emulate. When you read something brilliant, capture it here.');
-  sheet.getRange('A2:F2').merge().setFontStyle('italic');
+  sheet.getRange('A2:F2').merge().setFontStyle('italic').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Headers
   const headers = ['Category', 'Chapter/Page', 'The Quote/Example', 'Why It Works', 'How I\'ll Use It', 'Used?'];
@@ -858,7 +858,7 @@ function createCharacterAnalysisSheet(ss) {
 
   // H1 Section
   sheet.getRange('A1').setValue('PROTAGONIST (H1) ANALYSIS');
-  sheet.getRange('A1:C1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A1:C1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const h1Fields = [
     ['Name', ''],
@@ -883,7 +883,7 @@ function createCharacterAnalysisSheet(ss) {
 
   // H2 Section
   sheet.getRange('D1').setValue('LOVE INTEREST (H2) ANALYSIS');
-  sheet.getRange('D1:F1').merge().setBackground(COLORS.romance).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('D1:F1').merge().setBackground(COLORS.romance).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   sheet.getRange(2, 4, h1Fields.length, 2).setValues(h1Fields);
 
@@ -906,7 +906,7 @@ function createCharacterAnalysisSheet(ss) {
 
   // Voice Comparison Section
   sheet.getRange('A20').setValue('CHARACTER VOICE COMPARISON');
-  sheet.getRange('A20:E20').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A20:E20').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const voiceHeaders = ['Element', 'H1', 'H2', 'Notes'];
   sheet.getRange(21, 1, 1, voiceHeaders.length).setValues([voiceHeaders]);
@@ -935,11 +935,11 @@ function createPostReadSynthesisSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('POST-READ SYNTHESIS');
-  sheet.getRange('A1:D1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:D1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Structural Metrics
   sheet.getRange('A3').setValue('STRUCTURAL METRICS');
-  sheet.getRange('A3:B3').merge().setBackground(COLORS.fantasy).setFontWeight('bold');
+  sheet.getRange('A3:B3').merge().setBackground(COLORS.fantasy).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const metrics = [
     ['Chapters until inciting incident', ''],
@@ -953,7 +953,7 @@ function createPostReadSynthesisSheet(ss) {
 
   // Overall Assessment
   sheet.getRange('A10').setValue('OVERALL ASSESSMENT');
-  sheet.getRange('A10:D10').merge().setBackground(COLORS.romance).setFontWeight('bold');
+  sheet.getRange('A10:D10').merge().setBackground(COLORS.romance).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const assessHeaders = ['Element', 'Rating (1-5)', 'Notes'];
   sheet.getRange(11, 1, 1, assessHeaders.length).setValues([assessHeaders]);
@@ -978,7 +978,7 @@ function createPostReadSynthesisSheet(ss) {
 
   // Lessons Section
   sheet.getRange('A22').setValue('LESSONS FOR MY WRITING');
-  sheet.getRange('A22:D22').merge().setBackground(COLORS.craft).setFontWeight('bold');
+  sheet.getRange('A22:D22').merge().setBackground(COLORS.craft).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const lessons = [
     ['Three things this book did exceptionally well:', ''],
@@ -999,7 +999,7 @@ function createPostReadSynthesisSheet(ss) {
 
   // Hybrid Success Test
   sheet.getRange('A37').setValue('HYBRID SUCCESS TEST');
-  sheet.getRange('A37:D37').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A37:D37').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const testQuestions = [
     ['Did the romance NEED the fantasy elements to work?', ''],
@@ -1030,11 +1030,11 @@ function createTensionVisualizerSheet(ss) {
 
   // Title
   sheet.getRange('A1').setValue('TENSION VISUALIZER');
-  sheet.getRange('A1:Z1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14);
+  sheet.getRange('A1:Z1').merge().setBackground(COLORS.primary).setFontColor(COLORS.white).setFontWeight('bold').setFontSize(14).setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Instructions
   sheet.getRange('A2').setValue('Enter tension values (1-10) from your Chapter Log. A sparkline chart will visualize the pacing.');
-  sheet.getRange('A2:Z2').merge().setFontStyle('italic');
+  sheet.getRange('A2:Z2').merge().setFontStyle('italic').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   // Headers
   sheet.getRange('A4').setValue('Chapter');
@@ -1061,7 +1061,7 @@ function createTensionVisualizerSheet(ss) {
 
   // Sparkline section
   sheet.getRange('A9').setValue('TENSION CHARTS');
-  sheet.getRange('A9:Z9').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold');
+  sheet.getRange('A9:Z9').merge().setBackground(COLORS.accent).setFontColor(COLORS.white).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   sheet.getRange('A10').setValue('Romantic Tension:');
   sheet.getRange('B10').setFormula('=SPARKLINE(B5:Z5, {"charttype","line"; "color","#E8B4B8"; "linewidth",2})');
@@ -1074,7 +1074,7 @@ function createTensionVisualizerSheet(ss) {
 
   // Analysis section
   sheet.getRange('A16').setValue('PACING ANALYSIS');
-  sheet.getRange('A16:D16').merge().setBackground(COLORS.craft).setFontWeight('bold');
+  sheet.getRange('A16:D16').merge().setBackground(COLORS.craft).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
 
   const analysisFields = [
     ['Highest romantic tension chapter:', '=IF(MAX(B5:Z5)>0, MATCH(MAX(B5:Z5),B5:Z5,0), "")'],
