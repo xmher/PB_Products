@@ -827,6 +827,27 @@
         .break-before { break-before: page; }
         .break-after { break-after: page; }
 
+        /* EXPECTATIONS & GOALS - equal boxes filling one page */
+        .expectations-page {
+            break-before: page;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .expectations-page h3 {
+            margin-top: 0;
+            flex-shrink: 0;
+        }
+        .expectations-page h4 {
+            margin-top: 0.4rem;
+            margin-bottom: 0.3rem;
+            flex-shrink: 0;
+        }
+        .expectations-page .write-lines {
+            flex: 1 1 0;
+            min-height: 0;
+        }
+
         /* TABLE OF CONTENTS */
         .toc-page {
             break-after: page;
@@ -1461,7 +1482,8 @@
     <li><label><input type="checkbox" data-field-name="pre_trope_custom_check_3" data-field-type="checkbox"> <input type="text" data-field-name="pre_trope_custom_text_3" data-field-type="text" style="border:none; border-bottom:1px solid #ccc; background:transparent; font-size:0.85rem; outline:none; width:60%;"></label></li>
 </ul>
 
-<h3 class="break-before">Expectations & Goals</h3>
+<div class="expectations-page">
+<h3>Expectations & Goals</h3>
 
 <h4>What do I expect from this book based on cover/blurb?</h4>
 <div class="write-lines" contenteditable="true" data-field-name="pre_expectations" data-field-type="textarea"></div>
@@ -1471,6 +1493,7 @@
 
 <h4>What weakness in my own writing do I hope this book can help me improve?</h4>
 <div class="write-lines" contenteditable="true" data-field-name="pre_weakness" data-field-type="textarea"></div>
+</div>
 
 
 <!-- ==========================================
