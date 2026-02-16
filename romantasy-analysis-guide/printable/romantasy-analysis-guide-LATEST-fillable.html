@@ -746,6 +746,20 @@
             font-size: 11pt;
         }
 
+        /* Page break to split each chapter log across two pages */
+        .chapter-log > :not(.two-col) + .two-col + .two-col {
+            break-before: page;
+        }
+
+        /* Enlarge chapter log answer boxes to fill two pages */
+        .chapter-log .write-space-xs {
+            min-height: 2.8in;
+        }
+
+        .chapter-log .write-space-md {
+            min-height: 4in;
+        }
+
         .chapter-number {
             font-family: var(--font-display);
             font-size: 1.1rem;
