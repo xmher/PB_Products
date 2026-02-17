@@ -3,32 +3,37 @@
 /**
  * review-layout.js — AI-powered visual layout reviewer for Paged.js HTML workbooks
  *
- * Loop:
- *   1. Render HTML in headless Chrome, wait for Paged.js
- *   2. Screenshot every page
- *   3. Tile pages into 2x2 spreads
- *   4. Send spreads + HTML source to Claude for design review
- *   5. Claude returns JSON edits (search/replace pairs)
- *   6. Apply edits to the HTML file
- *   7. Repeat until Claude says "LGTM" or max rounds reached
+ * Two modes:
+ *
+ *   AUTO MODE (requires Chrome/Puppeteer):
+ *     Renders HTML → screenshots pages → tiles spreads → Claude reviews → applies edits → loops
+ *
+ *   SCREENSHOTS MODE (works anywhere):
+ *     Takes a folder of pre-made page PNGs → tiles spreads → Claude reviews → applies edits
+ *     Use your existing workbook-screenshots tool to generate the PNGs first.
  *
  * Usage:
- *   ANTHROPIC_API_KEY=sk-... node src/review-layout.js --input <html-file> [options]
+ *   # Auto mode — full loop with rendering
+ *   ANTHROPIC_API_KEY=sk-... node src/review-layout.js --input <html-file>
+ *
+ *   # Screenshots mode — skip rendering, use existing PNGs
+ *   ANTHROPIC_API_KEY=sk-... node src/review-layout.js --input <html-file> --screenshots <png-dir>
  *
  * Options:
- *   --input     <path>   HTML file to review (required)
- *   --rounds    <num>    Max review rounds (default: 5)
- *   --pages     <range>  Only review these pages: "1-10", "5,8,12-15" (default: all)
- *   --spread    <num>    Pages per spread image: 2 or 4 (default: 4)
- *   --model     <id>     Claude model to use (default: claude-sonnet-4-5-20250929)
- *   --out       <dir>    Directory for screenshots/spreads (default: ./.layout-review)
- *   --verbose            Show full Claude responses
- *   --dry-run            Analyze only, don't apply edits
+ *   --input        <path>  HTML file to review/edit (required)
+ *   --screenshots  <dir>   Folder of page PNGs (page-001.png, page-02.png, etc.)
+ *                           If provided, skips rendering and uses these directly.
+ *   --rounds       <num>   Max review rounds (default: 5)
+ *   --pages        <range> Only review these pages: "1-10", "5,8,12-15" (default: all)
+ *   --spread       <num>   Pages per spread image: 2 or 4 (default: 4)
+ *   --model        <id>    Claude model to use (default: claude-sonnet-4-5-20250929)
+ *   --out          <dir>   Directory for working files (default: ./.layout-review)
+ *   --verbose              Show full Claude responses
+ *   --dry-run              Analyze only, don't apply edits
  */
 
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
 
 // ---------------------------------------------------------------------------
 // CLI
@@ -37,6 +42,7 @@ const os = require('os');
 function parseArgs(argv) {
   const args = {
     input: null,
+    screenshots: null,
     rounds: 5,
     pages: null,
     spread: 4,
@@ -48,27 +54,58 @@ function parseArgs(argv) {
 
   for (let i = 2; i < argv.length; i++) {
     switch (argv[i]) {
-      case '--input':   args.input   = argv[++i]; break;
-      case '--rounds':  args.rounds  = Number(argv[++i]); break;
-      case '--pages':   args.pages   = argv[++i]; break;
-      case '--spread':  args.spread  = Number(argv[++i]); break;
-      case '--model':   args.model   = argv[++i]; break;
-      case '--out':     args.out     = argv[++i]; break;
-      case '--verbose': args.verbose = true; break;
-      case '--dry-run': args.dryRun  = true; break;
+      case '--input':       args.input       = argv[++i]; break;
+      case '--screenshots': args.screenshots = argv[++i]; break;
+      case '--rounds':      args.rounds      = Number(argv[++i]); break;
+      case '--pages':       args.pages       = argv[++i]; break;
+      case '--spread':      args.spread      = Number(argv[++i]); break;
+      case '--model':       args.model       = argv[++i]; break;
+      case '--out':         args.out         = argv[++i]; break;
+      case '--verbose':     args.verbose     = true; break;
+      case '--dry-run':     args.dryRun      = true; break;
       case '--help':
         console.log(`
-Usage: ANTHROPIC_API_KEY=sk-... node src/review-layout.js --input <html> [options]
+AI-Powered Layout Reviewer for Paged.js Workbooks
+
+Usage:
+  ANTHROPIC_API_KEY=sk-... node src/review-layout.js --input <html> [options]
+
+Modes:
+  Auto mode (default):
+    Renders HTML with Puppeteer + Paged.js, screenshots pages, sends to Claude.
+    Requires Chrome/Chromium installed.
+
+  Screenshots mode (--screenshots <dir>):
+    Skips rendering. Uses pre-made page PNGs from the given directory.
+    Generate them first with: npm run screenshot:romantasy (in workbook-screenshots tool)
+    Expects filenames like: page-01.png, page-001.png, page-1.png
 
 Options:
-  --input     <path>   HTML file to review (required)
-  --rounds    <num>    Max review rounds (default: 5)
-  --pages     <range>  Pages to review: "1-10", "5,8,12-15" (default: all)
-  --spread    <num>    Pages per spread: 2 or 4 (default: 4)
-  --model     <id>     Claude model (default: claude-sonnet-4-5-20250929)
-  --out       <dir>    Working directory for images (default: ./.layout-review)
-  --verbose            Show full Claude responses
-  --dry-run            Analyze only, don't apply edits
+  --input        <path>  HTML file to review/edit (required)
+  --screenshots  <dir>   Folder of existing page PNGs (enables screenshots mode)
+  --rounds       <num>   Max review rounds (default: 5)
+  --pages        <range> Pages to review: "1-10", "5,8,12-15" (default: all)
+  --spread       <num>   Pages per spread: 2 or 4 (default: 4)
+  --model        <id>    Claude model (default: claude-sonnet-4-5-20250929)
+  --out          <dir>   Working directory (default: ./.layout-review)
+  --verbose              Show full Claude responses
+  --dry-run              Analyze only, don't apply edits
+
+Examples:
+  # Full auto — render + review + edit loop
+  node src/review-layout.js --input ../../guide/printable/guide-LATEST.html
+
+  # Use existing screenshots, review first 20 pages, 3 rounds max
+  node src/review-layout.js \\
+    --input ../../guide/printable/guide-LATEST.html \\
+    --screenshots ../../guide/printable/screenshots-latest \\
+    --pages 1-20 --rounds 3
+
+  # Dry run — just see what Claude would change
+  node src/review-layout.js \\
+    --input ../../guide/printable/guide-LATEST.html \\
+    --screenshots ../../guide/printable/screenshots-latest \\
+    --dry-run --verbose
 `);
         process.exit(0);
       default:
@@ -91,11 +128,82 @@ Options:
 }
 
 // ---------------------------------------------------------------------------
-// Step 1: Render HTML + screenshot each Paged.js page
+// Page range parsing
+// ---------------------------------------------------------------------------
+
+function parsePageRange(rangeStr) {
+  const pages = new Set();
+  for (const part of rangeStr.split(',')) {
+    const trimmed = part.trim();
+    if (trimmed.includes('-')) {
+      const [a, b] = trimmed.split('-').map(Number);
+      for (let i = a; i <= b; i++) pages.add(i);
+    } else {
+      pages.add(Number(trimmed));
+    }
+  }
+  return pages;
+}
+
+// ---------------------------------------------------------------------------
+// Screenshot source: load from a directory of PNGs
+// ---------------------------------------------------------------------------
+
+function loadScreenshotsFromDir(screenshotDir, opts) {
+  if (!fs.existsSync(screenshotDir)) {
+    console.error(`Error: screenshots directory not found: ${screenshotDir}`);
+    process.exit(1);
+  }
+
+  // Match common page-naming patterns: page-01.png, page-001.png, page-1.png
+  const files = fs.readdirSync(screenshotDir)
+    .filter(f => /^page[-_]?\d+\.png$/i.test(f))
+    .sort((a, b) => {
+      const numA = parseInt(a.match(/(\d+)/)[1], 10);
+      const numB = parseInt(b.match(/(\d+)/)[1], 10);
+      return numA - numB;
+    });
+
+  if (files.length === 0) {
+    console.error(`Error: no page-*.png files found in ${screenshotDir}`);
+    console.error('Expected filenames like: page-01.png, page-001.png, page-1.png');
+    process.exit(1);
+  }
+
+  const wantedPages = opts.pages ? parsePageRange(opts.pages) : null;
+
+  const screenshots = [];
+  for (const file of files) {
+    const pageNum = parseInt(file.match(/(\d+)/)[1], 10);
+    if (wantedPages && !wantedPages.has(pageNum)) continue;
+
+    screenshots.push({
+      pageNum,
+      path: path.join(screenshotDir, file),
+    });
+  }
+
+  console.log(`  Loaded ${screenshots.length} page screenshots from ${screenshotDir}`);
+  return { screenshots, totalPages: files.length };
+}
+
+// ---------------------------------------------------------------------------
+// Screenshot source: render with Puppeteer (auto mode)
 // ---------------------------------------------------------------------------
 
 async function screenshotPages(htmlPath, outputDir, opts) {
-  const puppeteer = require('puppeteer');
+  let puppeteer;
+  try {
+    puppeteer = require('puppeteer');
+  } catch {
+    try {
+      puppeteer = require('puppeteer-core');
+    } catch {
+      console.error('Error: Neither puppeteer nor puppeteer-core is installed.');
+      console.error('Either install puppeteer, or use --screenshots mode with pre-made PNGs.');
+      process.exit(1);
+    }
+  }
 
   // Find Chrome
   const chromeCandidates = [
@@ -136,7 +244,7 @@ async function screenshotPages(htmlPath, outputDir, opts) {
 
     // Wait for Paged.js to finish rendering
     await page.waitForSelector('.pagedjs_page', { timeout: 30000 });
-    // Give it extra time for complex layouts
+    // Extra time for complex layouts
     await new Promise(r => setTimeout(r, 3000));
 
     // Get all page elements
@@ -144,7 +252,6 @@ async function screenshotPages(htmlPath, outputDir, opts) {
     const totalPages = pageElements.length;
     console.log(`  Found ${totalPages} pages`);
 
-    // Determine which pages to screenshot
     const wantedPages = opts.pages ? parsePageRange(opts.pages) : null;
 
     const screenshots = [];
@@ -166,22 +273,8 @@ async function screenshotPages(htmlPath, outputDir, opts) {
   }
 }
 
-function parsePageRange(rangeStr) {
-  const pages = new Set();
-  for (const part of rangeStr.split(',')) {
-    const trimmed = part.trim();
-    if (trimmed.includes('-')) {
-      const [a, b] = trimmed.split('-').map(Number);
-      for (let i = a; i <= b; i++) pages.add(i);
-    } else {
-      pages.add(Number(trimmed));
-    }
-  }
-  return pages;
-}
-
 // ---------------------------------------------------------------------------
-// Step 2: Tile pages into spread images
+// Tile pages into spread images
 // ---------------------------------------------------------------------------
 
 async function tileSpreads(screenshots, outputDir, pagesPerSpread) {
@@ -194,12 +287,13 @@ async function tileSpreads(screenshots, outputDir, pagesPerSpread) {
   const pageW = firstMeta.width;
   const pageH = firstMeta.height;
 
-  const cols = pagesPerSpread === 2 ? 2 : 2;
+  const cols = 2;
   const rows = pagesPerSpread === 2 ? 1 : 2;
   const gap = 20;
+  const labelH = 40; // space for page number labels
 
   const spreadW = cols * pageW + (cols - 1) * gap;
-  const spreadH = rows * pageH + (rows - 1) * gap;
+  const spreadH = rows * (pageH + labelH) + (rows - 1) * gap;
 
   const spreads = [];
 
@@ -208,16 +302,35 @@ async function tileSpreads(screenshots, outputDir, pagesPerSpread) {
     const spreadNum = Math.floor(i / pagesPerSpread) + 1;
     const spreadPath = path.join(outputDir, `spread-${String(spreadNum).padStart(2, '0')}.png`);
 
-    // Create composite
-    const composites = batch.map((shot, idx) => {
+    // Create page number label images
+    const composites = [];
+    for (let idx = 0; idx < batch.length; idx++) {
       const col = idx % cols;
       const row = Math.floor(idx / cols);
-      return {
-        input: shot.path,
-        left: col * (pageW + gap),
-        top: row * (pageH + gap),
-      };
-    });
+      const x = col * (pageW + gap);
+      const y = row * (pageH + labelH + gap);
+
+      // Page number label (rendered as SVG text)
+      const labelSvg = Buffer.from(`<svg width="${pageW}" height="${labelH}">
+        <rect width="${pageW}" height="${labelH}" fill="#333"/>
+        <text x="${pageW / 2}" y="${labelH / 2 + 6}" text-anchor="middle"
+              font-family="sans-serif" font-size="18" font-weight="bold" fill="white">
+          Page ${batch[idx].pageNum}
+        </text>
+      </svg>`);
+
+      composites.push({
+        input: labelSvg,
+        left: x,
+        top: y,
+      });
+
+      composites.push({
+        input: batch[idx].path,
+        left: x,
+        top: y + labelH,
+      });
+    }
 
     await sharp({
       create: {
@@ -228,27 +341,28 @@ async function tileSpreads(screenshots, outputDir, pagesPerSpread) {
       },
     })
       .composite(composites)
-      .png({ quality: 85 })
+      .png()
       .toFile(spreadPath);
 
     const pageRange = batch.map(s => s.pageNum);
     spreads.push({
       path: spreadPath,
       pages: pageRange,
-      label: `Pages ${pageRange[0]}-${pageRange[pageRange.length - 1]}`,
+      label: `Pages ${pageRange[0]}–${pageRange[pageRange.length - 1]}`,
     });
   }
 
-  // Downscale spreads if they're too large for the API (max ~20MB per image)
+  // Downscale large spreads for API limits
   for (const spread of spreads) {
     const stat = fs.statSync(spread.path);
-    if (stat.size > 15 * 1024 * 1024) {
+    if (stat.size > 10 * 1024 * 1024) {
       const resized = spread.path.replace('.png', '-resized.png');
       await sharp(spread.path)
-        .resize({ width: Math.round(spreadW * 0.6) })
+        .resize({ width: Math.round(spreadW * 0.5) })
         .png()
         .toFile(resized);
       fs.renameSync(resized, spread.path);
+      console.log(`  Downscaled ${path.basename(spread.path)} (was ${(stat.size / 1024 / 1024).toFixed(1)}MB)`);
     }
   }
 
@@ -257,10 +371,10 @@ async function tileSpreads(screenshots, outputDir, pagesPerSpread) {
 }
 
 // ---------------------------------------------------------------------------
-// Step 3: Send to Claude for design review
+// Send to Claude for design review
 // ---------------------------------------------------------------------------
 
-const SYSTEM_PROMPT = `You are an expert book designer and typographer reviewing a print-ready workbook/guide rendered with Paged.js. You're looking at tiled page spreads (multiple pages stitched together).
+const SYSTEM_PROMPT = `You are an expert book designer and typographer reviewing a print-ready workbook/guide rendered with Paged.js. You're looking at tiled page spreads — each image shows multiple pages with page numbers labeled.
 
 YOUR JOB: Look at every page carefully and identify visual layout problems. Then provide precise HTML edits to fix them.
 
@@ -321,15 +435,13 @@ async function reviewWithClaude(spreads, htmlSource, model, round, totalRounds) 
   const Anthropic = require('@anthropic-ai/sdk');
   const client = new Anthropic();
 
-  // Build message content: images + HTML source
   const content = [];
 
   content.push({
     type: 'text',
-    text: `## Layout Review — Round ${round}/${totalRounds}\n\nBelow are the page spreads from the current render. After the images, you'll find the full HTML source.\n\nReview every spread for layout issues and return your edits.`,
+    text: `## Layout Review — Round ${round}/${totalRounds}\n\nBelow are the page spreads from the current render. Each spread shows ${spreads[0]?.pages.length || 4} pages with page numbers labeled. After the images, you'll find the full HTML source.\n\nReview every spread for layout issues and return your edits.`,
   });
 
-  // Add spread images
   for (const spread of spreads) {
     const imageData = fs.readFileSync(spread.path);
     const base64 = imageData.toString('base64');
@@ -349,7 +461,6 @@ async function reviewWithClaude(spreads, htmlSource, model, round, totalRounds) 
     });
   }
 
-  // Add HTML source
   content.push({
     type: 'text',
     text: `\n---\n\n## HTML Source (for making edits)\n\n\`\`\`html\n${htmlSource}\n\`\`\``,
@@ -358,7 +469,7 @@ async function reviewWithClaude(spreads, htmlSource, model, round, totalRounds) 
   console.log(`  Sending ${spreads.length} spreads + HTML to Claude (${model})...`);
 
   const response = await client.messages.create({
-    model: model,
+    model,
     max_tokens: 16000,
     system: SYSTEM_PROMPT,
     messages: [{ role: 'user', content }],
@@ -373,11 +484,10 @@ async function reviewWithClaude(spreads, htmlSource, model, round, totalRounds) 
 }
 
 // ---------------------------------------------------------------------------
-// Step 4: Parse and apply edits
+// Parse and apply edits
 // ---------------------------------------------------------------------------
 
 function parseEdits(responseText) {
-  // Extract JSON block from response
   const jsonMatch = responseText.match(/```json\s*([\s\S]*?)```/);
   if (!jsonMatch) {
     console.log('  No JSON edit block found in response.');
@@ -387,12 +497,10 @@ function parseEdits(responseText) {
   try {
     const parsed = JSON.parse(jsonMatch[1]);
 
-    // Check if it's the LGTM signal
     if (Array.isArray(parsed) && parsed.length === 0) {
       return { edits: [], lgtm: true };
     }
 
-    // Could be an object with LGTM flag
     if (!Array.isArray(parsed) && parsed.LGTM) {
       return { edits: parsed.edits || [], lgtm: true };
     }
@@ -411,21 +519,20 @@ function applyEdits(htmlPath, edits) {
 
   for (const edit of edits) {
     if (!edit.old || !edit.new) {
-      console.log(`  Skipping edit (missing old/new): ${edit.issue || 'unknown'}`);
+      console.log(`  SKIP — missing old/new: ${edit.issue || 'unknown'}`);
       failed++;
       continue;
     }
 
     if (!html.includes(edit.old)) {
-      console.log(`  MISS — could not find match for: "${edit.old.substring(0, 80)}..."`);
+      console.log(`  MISS — no match: "${edit.old.substring(0, 80)}..."`);
       failed++;
       continue;
     }
 
-    // Check uniqueness
     const occurrences = html.split(edit.old).length - 1;
     if (occurrences > 1) {
-      console.log(`  SKIP — "${edit.old.substring(0, 60)}..." matches ${occurrences} locations (ambiguous)`);
+      console.log(`  SKIP — ambiguous (${occurrences} matches): "${edit.old.substring(0, 60)}..."`);
       failed++;
       continue;
     }
@@ -450,6 +557,7 @@ async function main() {
   const args = parseArgs(process.argv);
   const htmlPath = path.resolve(args.input);
   const outputDir = path.resolve(args.out);
+  const useExistingScreenshots = !!args.screenshots;
 
   if (!fs.existsSync(htmlPath)) {
     console.error(`Error: file not found: ${htmlPath}`);
@@ -458,28 +566,45 @@ async function main() {
 
   fs.mkdirSync(outputDir, { recursive: true });
 
+  const mode = useExistingScreenshots ? 'screenshots' : 'auto';
+
   console.log('');
   console.log('=== Layout Reviewer ===');
   console.log(`Input:    ${htmlPath}`);
+  console.log(`Mode:     ${mode}${useExistingScreenshots ? ` (${args.screenshots})` : ''}`);
   console.log(`Model:    ${args.model}`);
   console.log(`Rounds:   up to ${args.rounds}`);
   console.log(`Spread:   ${args.spread}-up`);
-  console.log(`Dry run:  ${args.dryRun}`);
+  if (args.pages) console.log(`Pages:    ${args.pages}`);
+  if (args.dryRun) console.log(`Dry run:  yes`);
   console.log('');
+
+  if (useExistingScreenshots && args.rounds > 1) {
+    console.log('Note: screenshots mode uses the same PNGs each round.');
+    console.log('      Only round 1 visuals will be accurate; later rounds');
+    console.log('      still apply edits but can\'t see their own results.');
+    console.log('      For iterative visual review, re-run screenshots between rounds.\n');
+  }
 
   for (let round = 1; round <= args.rounds; round++) {
     console.log(`\n--- Round ${round}/${args.rounds} ---\n`);
 
-    // Clean output dir for this round
     const roundDir = path.join(outputDir, `round-${round}`);
     fs.mkdirSync(roundDir, { recursive: true });
 
-    // 1. Screenshot
-    console.log('[1/4] Rendering & screenshotting...');
-    const { screenshots, totalPages } = await screenshotPages(htmlPath, roundDir, args);
+    // 1. Get screenshots
+    let screenshots, totalPages;
+
+    if (useExistingScreenshots) {
+      console.log('[1/4] Loading existing screenshots...');
+      ({ screenshots, totalPages } = loadScreenshotsFromDir(args.screenshots, args));
+    } else {
+      console.log('[1/4] Rendering & screenshotting...');
+      ({ screenshots, totalPages } = await screenshotPages(htmlPath, roundDir, args));
+    }
 
     if (screenshots.length === 0) {
-      console.log('No pages found. Check that the HTML uses Paged.js.');
+      console.log('No pages found.');
       break;
     }
 
@@ -502,7 +627,7 @@ async function main() {
       console.log('--- End response ---\n');
     }
 
-    // Save response for reference
+    // Save response
     fs.writeFileSync(
       path.join(roundDir, 'claude-response.md'),
       responseText,
@@ -526,7 +651,7 @@ async function main() {
     }
 
     if (args.dryRun) {
-      console.log('  [dry-run] Edits NOT applied. See claude-response.md for details.');
+      console.log('\n  [dry-run] Edits NOT applied. See claude-response.md for details.');
       for (const edit of edits) {
         console.log(`    - Page ${edit.page || '?'}: ${edit.issue || edit.fix}`);
       }
