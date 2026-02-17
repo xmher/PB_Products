@@ -182,8 +182,8 @@
             break-after: avoid;
         }
 
-        ul, ol { margin: 1rem 0 1rem 1.5rem; }
-        li { margin-bottom: 0.5rem; }
+        ul, ol { margin: 1rem 0 1rem 1.5rem; break-inside: avoid; }
+        li { margin-bottom: 0.5rem; break-inside: avoid; }
 
         /* TITLE PAGE */
         .title-page {
@@ -313,7 +313,7 @@
             border-left: 4px solid var(--theme-color);
             background: rgba(107, 45, 77, 0.06);
             padding: 20px 25px;
-            margin: 3.5rem 0;
+            margin: 2rem 0;
             break-inside: avoid;
         }
 
@@ -618,6 +618,7 @@
             align-items: baseline;
             margin: 0.6rem 0;
             gap: 0.5rem;
+            break-inside: avoid;
         }
 
         .field-label {
@@ -715,7 +716,7 @@
 
         .beat-table td {
             padding: 10px 12px;
-            height: 145px;
+            min-height: 145px;
         }
 
         .beat-table .beat-name {
@@ -727,11 +728,11 @@
         }
 
         .beat-table.compact td {
-            height: 105px;
+            min-height: 105px;
         }
 
         .beat-table.expanded td {
-            height: 180px;
+            min-height: 180px;
         }
 
         /* CHAPTER LOG */
@@ -764,6 +765,7 @@
             padding-bottom: 1rem;
             background: rgba(107, 45, 77, 0.04);
             border-bottom: 2px solid var(--color-romance);
+            break-inside: avoid;
         }
 
         /* TENSION TRACKER */
@@ -798,6 +800,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
+            break-inside: avoid;
         }
 
         /* CRAFT COMPACT - fits two insight boxes on one page */
@@ -4298,35 +4301,35 @@
     </thead>
     <tbody>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
         <tr>
-            <td style="height: 0.95in; vertical-align: top;"></td>
+            <td style="min-height: 0.95in; vertical-align: top;"></td>
             <td style="vertical-align: top;"></td>
         </tr>
     </tbody>
@@ -4913,7 +4916,7 @@
 
 <p>Some lines just hit. Copy them here with page numbers so you can study them later. Over time, you'll start to notice patterns in what makes you swoon.</p>
 
-<div class="write-lines" style="min-height: 7in;" contenteditable="true"></div>
+<div class="write-lines" style="min-height: 5in;" contenteditable="true"></div>
 
 
 <!-- ==========================================

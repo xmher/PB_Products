@@ -100,6 +100,7 @@
             display: grid; grid-template-columns: 1fr 1fr 1fr;
             gap: 0.5rem; margin-bottom: 0.5rem; padding-bottom: 0.5rem;
             border-bottom: 1px solid #eee; font-size: 0.85rem;
+            break-inside: avoid;
         }
         h4 { font-family: var(--font-display); font-size: 0.8rem; margin: 0.5rem 0 0.2rem 0; }
         .mt-0 { margin-top: 0; }
@@ -115,8 +116,8 @@
             min-height: 1.3in; border: 1px solid #ccc;
             background: #fafafa; margin: 0.2rem 0;
         }
-        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-        .checklist { list-style: none; margin: 0.3rem 0; padding: 0; }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; break-inside: avoid; }
+        .checklist { list-style: none; margin: 0.3rem 0; padding: 0; break-inside: avoid; }
         .checklist li {
             margin-bottom: 0.25rem; font-size: 0.75rem;
         }
