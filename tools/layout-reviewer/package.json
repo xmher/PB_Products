@@ -1,0 +1,19 @@
+{
+  "name": "@plotbrew/layout-reviewer",
+  "version": "1.0.0",
+  "description": "AI-powered visual layout reviewer — renders HTML with Paged.js, screenshots pages, sends spreads to Claude for design critique, and auto-applies fixes",
+  "main": "src/review-layout.js",
+  "scripts": {
+    "review": "node src/review-layout.js",
+    "review:romantasy": "node src/review-layout.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide-LATEST.html",
+    "review:romantasy-fillable": "node src/review-layout.js --input ../../romantasy-analysis-guide/printable/romantasy-analysis-guide-LATEST-fillable.html",
+    "review:chapter-logs": "node src/review-layout.js --input ../../romantasy-analysis-guide/printable/chapter-logs-supplement-LATEST.html"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "sharp": "^0.33.2"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^24.2.1"
+  }
+}
